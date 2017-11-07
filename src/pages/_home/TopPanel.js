@@ -1,11 +1,10 @@
-import index from '../../../.cache/layouts';
 import React, { Component } from 'react';
-import { fade, fadeUpIn } from 'style/animations';
+import { fade } from 'style/animations';
 import colors from 'style/colors';
-import { ifSeen } from 'style/helpers';
 import { stretchFull } from 'style/mixins';
 import { media } from 'style/sizes';
-import styled, { css, keyframes } from 'styled-components';
+import { fadeUpInCss } from 'style/snippets';
+import styled, { keyframes } from 'styled-components';
 
 import headerImg from './header.jpg';
 
@@ -45,11 +44,6 @@ const TextContainer = styled.div`
   ${media.mediumOnly`
     text-align: center;
   `};
-`;
-
-export const fadeUpInCss = css`
-  opacity: 0;
-  animation: ${ifSeen(`${fadeUpIn} 1.2s forwards`)};
 `;
 
 export const SpacedAnimatedText = styled.h1`

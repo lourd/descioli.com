@@ -2,10 +2,11 @@ import wrapInSeen from 'lib/hoc/wrapInSeen';
 import React, { Component } from 'react';
 import colors from 'style/colors';
 import { media } from 'style/sizes';
+import { fadeUpInCss } from 'style/snippets';
 import styled from 'styled-components';
 
 import LetterCarousel from './LetterCarousel';
-import { fadeUpInCss, SpacedAnimatedText } from './TopPanel';
+import { SpacedAnimatedText } from './TopPanel';
 
 export const Container = styled.div`
   background-color: white;
@@ -17,7 +18,6 @@ export const Container = styled.div`
 
 const Line1 = wrapInSeen(SpacedAnimatedText.extend`
   letter-spacing: -5px;
-  animation-delay: 0.5s;
   font-size: 5em;
   ${media.large`
     font-size: 6em;

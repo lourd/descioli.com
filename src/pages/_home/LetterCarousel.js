@@ -47,8 +47,8 @@ class LetterCarousel extends Component {
   };
 
   getNextIndex() {
-    return (this.state.index + 1) % this.props.letters.length;
-    // return Math.floor(Math.random() * this.props.letters.length);
+    // return (this.state.index + 1) % this.props.letters.length;
+    return Math.floor(Math.random() * this.props.letters.length);
   }
 
   componentWillUnmount() {
