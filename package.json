@@ -1,0 +1,25 @@
+{
+  "name": "louis-personal-site",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "start": "gatsby develop",
+    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "gatsby": "^1.9.99",
+    "gatsby-link": "^1.6.24",
+    "gatsby-plugin-react-helmet": "^1.0.8",
+    "gatsby-plugin-react-next": "^1.0.4",
+    "react-icons": "^2.2.7",
+    "react-transition-group": "^2.2.1",
+    "styled-components": "2.2.0"
+  },
+  "devDependencies": {
+    "gatsby-plugin-resolve-src": "^1.0.0",
+    "gatsby-plugin-styled-components": "^1.0.5",
+    "prettier": "^1.7.4"
+  }
+}
