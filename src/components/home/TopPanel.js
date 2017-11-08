@@ -5,6 +5,7 @@ import { stretchFull } from 'style/mixins';
 import { media } from 'style/sizes';
 import { fadeUpInCss } from 'style/snippets';
 import styled, { keyframes } from 'styled-components';
+import OnMouseMove from 'lib/components/OnMouseMove';
 
 import headerImg from './header.jpg';
 
@@ -26,7 +27,6 @@ const ImgBackground = styled.div`
   background-image: url(${headerImg});
   background-size: cover;
   background-position: center right;
-
   z-index: -1;
   position: fixed;
   &:after {
@@ -91,11 +91,32 @@ const RotatingHand = styled.span`
   animation: ${peaceSpin} 10s infinite;
 `;
 
+class MovingImgBackground extends Component {
+  render() {
+    return (
+      <OnMouseMove
+        render={({ x, y }) => {
+          const xd = x / window.innerWidth;
+          const yd = y / window.innerHeight;
+          const [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);
+          return (
+            <ImgBackground
+              style={{
+                transform: `translate3d(${xDist}%, ${yDist}%, 0) scale(1.1)`
+              }}
+            />
+          );
+        }}
+      />
+    );
+  }
+}
+
 class TopPanel extends Component {
   render() {
     return (
       <Panel>
-        <ImgBackground />
+        <MovingImgBackground />
         <TextContainer>
           <GiantText>Hey.</GiantText>
           <SubText>It me</SubText>
