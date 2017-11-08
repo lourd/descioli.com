@@ -1,6 +1,6 @@
-import { css } from "styled-components";
+import { css } from 'styled-components';
 
-const breakpoints = {
+export const breakpoints = {
   small: 481,
   medium: 768,
   large: 1025,
@@ -9,7 +9,7 @@ const breakpoints = {
 };
 
 // Iterate through the sizes and create a media template
-const media = Object.keys(breakpoints).reduce((acc, key) => {
+export const media = Object.keys(breakpoints).reduce((acc, key) => {
   // Makes a rule for the minimum width, using mobile-first approach
   acc[key] = (...args) => css`
     @media (min-width: ${breakpoints[key] / 16}em) {
@@ -24,5 +24,3 @@ const media = Object.keys(breakpoints).reduce((acc, key) => {
   `;
   return acc;
 }, {});
-
-export { breakpoints, media };

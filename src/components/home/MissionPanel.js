@@ -48,7 +48,7 @@ const BigIcon = Icon.extend`
 `;
 
 const Inner = styled.div`
-  margin: 50px 0px;
+  margin: 50px 0px 30px;
 `;
 
 export default function MissionPanel() {
