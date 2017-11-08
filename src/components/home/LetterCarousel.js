@@ -17,12 +17,13 @@ class LetterCarousel extends Component {
   static propTypes = {
     letters: PropTypes.array.isRequired,
     duration: PropTypes.number.isRequired,
-    delay: PropTypes.number
+    delay: PropTypes.number,
+    random: PropTypes.bool
   };
 
   static defaultProps = {
     duration: 1.1,
-    iterationDelay: 7,
+    iterationDelay: 2,
     delay: 0
   };
 
@@ -47,8 +48,9 @@ class LetterCarousel extends Component {
   };
 
   getNextIndex() {
-    // return (this.state.index + 1) % this.props.letters.length;
-    return Math.floor(Math.random() * this.props.letters.length);
+    if (this.props.random)
+      return Math.floor(Math.random() * this.props.letters.length);
+    return (this.state.index + 1) % this.props.letters.length;
   }
 
   componentWillUnmount() {
