@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 import colors from 'style/colors';
-import { media, sizes } from 'style/sizes';
-
-const Blob = props => <pre>{JSON.stringify(props, null, 2)}</pre>;
+import sizes from 'style/sizes';
 
 const Row = styled.div`
   display: flex;
@@ -55,10 +53,10 @@ const ContactData = styled.section`
   display: flex;
   flex-flow: column;
   margin: 10px 0px 5px;
-  ${media.small`
+  @media (min-width: ${sizes.small}) {
     flex-flow: row wrap;
     margin: 0px;
-  `};
+  }
   justify-content: center;
 `;
 
@@ -66,9 +64,9 @@ const ContactDatum = styled.h5`
   padding: 0px 5px;
   margin-bottom: 7px;
   text-align: center;
-  ${media.small`
+  @media (min-width: ${sizes.small}) {
     margin-bottom: 0px;
-  `};
+  }
 `;
 
 const SectionTitle = styled.h2`
@@ -96,10 +94,10 @@ const Years = styled.div`
   color: #999;
   font-size: 0.8em;
   width: 100%;
-  ${media.medium`
+  @media (min-width: ${sizes.medium}) {
     flex: 1;
     text-align: right;
-  `};
+  }
 `;
 
 const SubTitle = styled.h3`
@@ -108,15 +106,15 @@ const SubTitle = styled.h3`
 `;
 
 const SchoolSection = styled.div`
-  ${media.small`
+  @media (min-width: ${sizes.small}) {
     padding-left: 13px;
-  `};
+  }
   margin-top: 11px;
   ${Row} {
     margin-bottom: 10px;
-    ${media.medium`
+    @media (min-width: ${sizes.medium}) {
       margin-bottom: 5px;
-    `};
+    }
   }
   p {
     padding-left: 15px;
@@ -130,9 +128,9 @@ const SchoolSection = styled.div`
   }
   :last-child {
     margin-bottom: 10px;
-    ${media.small`
+    @media (min-width: ${sizes.small}) {
       margin-bottom: 5px;
-    `};
+    }
   }
 `;
 
@@ -183,68 +181,63 @@ const School = props => (
   </SchoolSection>
 );
 
-const JobSection = styled.div`
-  ${media.small`
+const JobContainer = styled.div`
+  align-items: baseline;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  @media (min-width: ${sizes.small}) {
     padding-left: 13px;
-  `};
-  ${Row} {
-    margin-bottom: 5px;
-    ${media.mediumOnly`
-      margin-top: 15px;
-    `};
   }
-  ${SubTitle} {
-    display: inline-block;
-  }
-  p {
-    ${media.small`
-      padding-left: 15px;
-    `};
-    margin-top: -5px;
-    margin-bottom: 0.5em;
-    font-size: 0.8em;
-    line-height: 1.2;
-    &:not(:last-child) {
-      margin-bottom: 0.5em;
-    }
+  @media (min-width: ${sizes.medium}) {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin-top: inherit;
   }
   :last-child {
     margin-bottom: 10px;
-    ${media.small`
+    @media (min-width: ${sizes.small}) {
       margin-bottom: 5px;
-    `};
+    }
+  }
+  ${SubTitle} {
+    display: inline-block;
   }
 `;
 
 const Word = styled.span`
   font-size: 0.8em;
-  padding: 0px 5px;
+  @media (min-width: ${sizes.medium}) {
+    padding: 0px 5px;
+  }
 `;
 
 const For = Word.extend`
   display: none;
-  ${media.medium`
+  @media (min-width: ${sizes.medium}) {
     display: inline-block;
-  `};
+  }
 `;
 
 const MobileBr = styled.br`
-  ${media.medium`
+  @media (min-width: ${sizes.medium}) {
     display: none;
-  `};
+  }
 `;
 
-const Light = styled.span`
+const Comma = styled.span`
   font-weight: 100;
+  display: none;
+  :after {
+    content: ',';
+  }
+  @media (min-width: ${sizes.medium}) {
+    display: inherit;
+  }
 `;
 
 const Job = props => {
-  let company = (
-    <SubTitle>
-      {props.company}
-      <Light>,</Light>
-    </SubTitle>
-  );
+  let company = <SubTitle>{props.company}</SubTitle>;
   if (props.site) {
     company = (
       <a href={props.site} target="_blank">
@@ -253,18 +246,16 @@ const Job = props => {
     );
   }
   return (
-    <JobSection>
-      <Row>
-        <span>
-          <SubTitle>{props.role}</SubTitle>
-          <For>{'for'}</For>
-          <MobileBr />
-          {company}
-          <Word>{props.location}</Word>
-        </span>
-        <Years>{props.dates}</Years>
-      </Row>
-    </JobSection>
+    <JobContainer>
+      <SubTitle>{props.role}</SubTitle>
+      <For>{'for'}</For>
+      <MobileBr />
+      {company}
+      <Comma />
+      <MobileBr />
+      <Word>{props.location}</Word>
+      <Years>{props.dates}</Years>
+    </JobContainer>
   );
 };
 
@@ -343,8 +334,8 @@ export const pageQuery = graphql`
   }
 `;
 
-const ResumeDataWrapper = props => (
+const Resume = props => (
   <ResumePage {...props.data.allResumeYaml.edges[0].node} />
 );
 
-export default ResumeDataWrapper;
+export default Resume;

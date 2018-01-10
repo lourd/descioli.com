@@ -8,6 +8,13 @@ export const breakpoints = {
   xxl: 1601
 };
 
+const sizes = Object.keys(breakpoints).reduce((acc, key) => {
+  acc[key] = `${breakpoints[key] / 16}em`;
+  return acc;
+}, {});
+
+export default sizes;
+
 // Iterate through the sizes and create a media template
 export const media = Object.keys(breakpoints).reduce((acc, key) => {
   // Makes a rule for the minimum width, using mobile-first approach
