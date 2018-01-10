@@ -1,0 +1,131 @@
+
+- name: Louis Robert DeScioli
+  email: louis.descioli@gmail.com
+  site: descioli.design
+  github: lourd
+  twitter: louisdescioli
+  linkedin: louisdescioli
+  education:
+    - school:
+        name: Massachusetts Institute of Technology
+        link: https://web.mit.edu/
+      degree: Bachelor of Science
+      major:
+        name: Electrical Engineering and Computer Science (6-2)
+        link: https://www.eecs.mit.edu/academics-admissions/undergraduate-programs/course-6-2-electrical-eng-computer-science
+      concentration:
+        name: Comparative Media Studies
+        link: https://cmsw.mit.edu
+      years: Aug. 2011 - June 2014
+      extracurriculars:
+        - name: Gordon Engineering Leadership Program
+          link: https://gelp.mit.edu
+        - name: Undergraduate Practice Opportunities Program
+          link: https://upop.mit.edu/
+        - name: Delta Upsilon & Theta Tau Fraternities
+    - school:
+        name: United States Air Force Academy
+        link: https://www.usafa.edu/
+      transfer: Transferred to MIT after sophomore year
+      major:
+        name: Computer Engineering
+        link: https://www.usafa.edu/department/electrical-computer-engineering/
+      years: June 2009 - July 2011
+      extracurriculars:
+        - name: CS-26 and CS-11
+        - name: Cadet Orchestra
+        - name: Blue Bards - Pit Orchestra
+        - name: Ultimate Frisbee Club Team
+      commendations:
+        - 'Deans List: Fall 2009, Spring 2010, and Fall 2010'
+    - school:
+        name: Kingwood High School
+        link: https://www.humbleisd.net/khs
+      years: Aug. 2005 - May 2009
+  work:
+    - company: Out Here Studio
+      site: http://outhere.studio
+      location: Cambridge, MA
+      role: Founder, Designer, & Developer
+      dates: July 2017 - Present
+    - company: Sidekicks
+      site: https://sidekicks.com/
+      location: Cambridge, MA
+      role: Senior Designer & UI Engineer
+      dates: Oct. 2016 - June 2017
+    - company: Grove
+      site: https://grovegrown.com
+      location: Somerville, MA
+      role: Head of Sales and Strategy
+      dates: Apr. 2016 - July 2016
+    - company: Grove
+      site: https://grovegrown.com
+      location: Somerville, MA
+      role: Lead Software Engineer
+      dates: Jan. 2014 - July 2016
+    - company: Vecna
+      site: https://www.vecna.com
+      location: Cambridge, MA
+      role: Embedded Systems Engineering Intern
+      dates: June 2013 - Aug. 2013
+    - company: 6.00 - Intro to CS and Programming
+      location: MIT
+      role: Lab Assistant
+      dates: Aug. 2012 - May 2013
+    - company: MIT China Education Technology Initiative
+      site: https://ceti.mit.edu/
+      location: Dalian, Wuhan, & Wuxi, China
+      role: Student Teacher
+      dates: June 2012 - July 2012
+    - company: Mediated Matter Group
+      location: MIT Media Lab
+      site: http://matter.media.mit.edu/
+      role: Research Assistant
+      dates: Oct. 2011 - Dec. 2011
+    - company: iCracked
+      location: Boston, MA
+      site: https://www.icracked.com/
+      role: Device Repair Technician
+      dates: Aug. 2011 - Feb. 2014
+  volunteer:
+    - company: Resilient Coders
+      site: https://www.resilientcoders.org/
+      location: Boston, MA
+      role: Mentor
+      dates: July 2017 - Present
+    - company: NodeSchool Boston
+      site: https://nodeschool.io/
+      location: Boston, MA
+      role: Mentor
+      dates: Oct. 2016 - June 2017
+    - company: Technology Chapter Alumni Association
+      location: Boston, MA
+      role: Director
+      dates: Aug. 2014 - Feb. 2017
+    - company: HackMIT
+      site: https://hackmit.org
+      location: Cambridge, MA
+      role: Mentor
+      dates: Sep. 2015, Sep 2016
+    - company: Boston Urban Agriculture Meetup
+      site: https://www.meetup.com/Boston-Area-Urban-Agriculture/
+      location: Boston, MA
+      role: Co-organizer
+      dates: July 2015 - July 2016
+    - company: Boston Meteor Meetup
+      site: https://www.meetup.com/Meteor-Boston/
+      location: Boston, MA
+      role: Co-organizer
+      dates: Nov. 2014 - Sep. 2015
+    - company: Delta Upsilon Technology Chapter
+      location: Boston, MA
+      role: President
+      dates: Aug. 2013 - Dec. 2013
+    - company: MIT Interfraternity Council
+      location: Cambridge, MA
+      role: Vice President
+      dates: Nov. 2011 - Oct. 2012
+    - company: Dept. of Computer Science
+      location: Colorado Springs, CO
+      role: Research Assistant
+      dates: Sep. 2010 - May 2011
