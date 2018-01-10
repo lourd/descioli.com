@@ -3,23 +3,24 @@ import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
 
-import './index.css';
+import 'style/global.css';
+
+const keywords = [
+  'software engineer',
+  'portfolio',
+  'design',
+  'personal site'
+].join(',');
 
 const TemplateWrapper = ({ children }) => (
   <div>
-    <Helmet
-      title="Louis DeScioli"
-      meta={[
-        {
-          name: 'description',
-          content: 'The personal site and portfolio of one Louis R DeScioli'
-        },
-        {
-          name: 'keywords',
-          content: 'software engineer, portfolio, design, personal site'
-        }
-      ]}
-    />
+    <Helmet titleTemplate="%s | Louis DeScioli" defaultTitle="Louis DeScioli">
+      <meta
+        name="description"
+        content="The personal site and portfolio of one Louis R DeScioli"
+      />
+      <meta name="keywords" content={keywords} />
+    </Helmet>
     {children()}
   </div>
 );
