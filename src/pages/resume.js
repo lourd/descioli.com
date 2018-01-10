@@ -88,8 +88,6 @@ const Contact = props => (
   </ContactData>
 );
 
-const ResumeSection = styled.section``;
-
 const Years = styled.div`
   color: #999;
   font-size: 0.8em;
@@ -267,18 +265,18 @@ const ResumePage = props => (
     <Container>
       <Name>{props.name}</Name>
       <Contact {...props} />
-      <ResumeSection>
+      <section>
         <SectionTitle>Professional Work Experiences</SectionTitle>
         {props.work.map((job, i) => <Job key={i} {...job} />)}
-      </ResumeSection>
-      <ResumeSection>
+      </section>
+      <section>
         <SectionTitle>Volunteer Work Experiences</SectionTitle>
         {props.volunteer.map((job, i) => <Job key={i} {...job} />)}
-      </ResumeSection>
-      <ResumeSection>
+      </section>
+      <section>
         <SectionTitle>Education</SectionTitle>
         {props.education.map((school, i) => <School key={i} {...school} />)}
-      </ResumeSection>
+      </section>
     </Container>
   </main>
 );
