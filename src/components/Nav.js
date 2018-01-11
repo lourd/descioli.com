@@ -44,7 +44,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${shadows({ startingElevation: 0 })};
+  ${shadows({ startingElevation: 1 })};
   transition: box-shadow 250ms, transform 250ms;
   @media print {
     display: none;
