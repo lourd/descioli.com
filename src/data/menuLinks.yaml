@@ -1,10 +1,15 @@
 - path: /
   copy: Home
+  color: red
+- path: /projects
+  copy: My life's works
+  color: green
 - path: /resume
   copy: My life in one page
-- path: /projects
-  copy: Projects
+  color: blue
 - path: /internet
   copy: My places on the internet
+  color: orange
 - url: https://github.com/lourd/descioli-design
-  copy: This website's source
+  copy: This website's code
+  color: purple
