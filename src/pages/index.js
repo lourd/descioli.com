@@ -2,21 +2,15 @@ import React, { Component } from 'react';
 
 import TopPanel from 'components/home/TopPanel';
 import MissionPanel from 'components/home/MissionPanel';
-import GrovePanel from 'components/home/GrovePanel';
+import ProjectPanel from 'components/home/ProjectPanel';
 
 class Homepage extends Component {
   render() {
     return (
       <main>
-        <TopPanel />
-        <MissionPanel />
-        {this.props.data.allProjectsYaml.edges.map(edge => (
-          <GrovePanel
-            key={edge.node.id}
-            copy={edge.node.byline}
-            img={`/img/${edge.node.img}`}
-          />
-        ))}
+        <TopPanel
+          bylines={this.props.data.allBylinesYaml.edges.map(edge => edge.node)}
+        />
       </main>
     );
   }
@@ -25,13 +19,11 @@ class Homepage extends Component {
 export default Homepage;
 
 export const pageQuery = graphql`
-  query ProjectsQuery {
-    allProjectsYaml {
+  query HomeQuery {
+    allBylinesYaml {
       edges {
         node {
-          byline
-          img
-          id
+          text
         }
       }
     }

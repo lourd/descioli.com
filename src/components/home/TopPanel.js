@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { fade } from 'style/animations';
 import colors from 'style/colors';
 import { stretchFull } from 'style/mixins';
-import { media } from 'style/sizes';
-import { fadeUpInCss } from 'style/snippets';
+import sizes from 'style/sizes';
+import { fadeDownInCss } from 'style/snippets';
 import styled, { keyframes } from 'styled-components';
 import OnMouseMove from 'lib/components/OnMouseMove';
+import Bylines from './Bylines';
 
 import headerImg from './header.jpg';
 
@@ -15,18 +16,22 @@ const Panel = styled.div`
   position: relative;
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
   color: white;
   position: relative;
 `;
 
-const ImgBackground = styled.div`
+const ImgBackground = styled.div.attrs({
+  style: props => ({
+    transform: `translate3d(${props.dX}, ${props.dY}, 0) scale(1.1)`
+  })
+})`
   ${stretchFull};
   background-image: url(${headerImg});
   background-size: cover;
-  background-position: center right;
+  background-position: 75% center;
   z-index: -1;
   position: fixed;
   &:after {
@@ -35,99 +40,49 @@ const ImgBackground = styled.div`
     ${stretchFull};
     background-color: ${colors.black};
     opacity: 1;
-    animation: ${fade({ to: 0.5 })} 1s forwards 3s;
+    animation: ${fade({ to: 0.25 })} 1s forwards 1.2s;
   }
 `;
 
 const TextContainer = styled.div`
   text-align: left;
-  ${media.mediumOnly`
-    text-align: center;
-  `};
-`;
-
-export const SpacedAnimatedText = styled.h1`
-  letter-spacing: -2px;
-  ${fadeUpInCss};
-`;
-
-const GiantText = SpacedAnimatedText.extend`
-  font-size: 9.5em;
-  margin-left: -6px;
-  letter-spacing: -5px;
-  animation-delay: 0.5s;
-`;
-
-const SubText = SpacedAnimatedText.extend`
-  font-size: 5em;
-  margin-top: -25px;
-  animation-delay: 1s;
-`;
-
-const SubberText = SpacedAnimatedText.extend`
-  font-size: 3em;
-  margin-top: -25px;
-  animation-delay: 1.5s;
-`;
-
-const EmojiText = SpacedAnimatedText.extend`
-  font-size: 2.5em;
-  margin-top: -15px;
-  margin-left: -3px;
-  animation-delay: 2s;
-`;
-
-const peaceSpin = keyframes`
-  0%, 90%, 100% {
-    transform: scaleX(1) rotate(0deg);
-  }
-  93%, 97% {
-    transform: scaleX(-1) rotate(20deg);
+  font-size: 0.8em;
+  padding: 10% 0px 0px 5%;
+  @media (min-width: ${sizes.medium}) {
+    font-size: 1em;
+    padding: 50px 0px 20px 50px;
   }
 `;
 
-const RotatingHand = styled.span`
-  display: inline-block;
-  animation: ${peaceSpin} 10s infinite;
+const Name = styled.h1`
+  ${fadeDownInCss};
+  font-size: 4.5em;
+  font-weight: lighter;
+  letter-spacing: -1px;
+  animation-delay: 0s;
+  margin-bottom: 0;
+  animation-delay: ${props => props.delay}s;
 `;
 
-class MovingImgBackground extends Component {
-  render() {
-    return (
-      <OnMouseMove
-        render={({ x, y }) => {
-          const xd = x / window.innerWidth;
-          const yd = y / window.innerHeight;
-          const [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);
-          return (
-            <ImgBackground
-              style={{
-                transform: `translate3d(${xDist}%, ${yDist}%, 0) scale(1.1)`
-              }}
-            />
-          );
-        }}
-      />
-    );
-  }
-}
+const MovingImgBackground = () => (
+  <OnMouseMove
+    render={({ x, y }) => {
+      const xd = x / window.innerWidth;
+      const yd = y / window.innerHeight;
+      const [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);
+      return <ImgBackground dX={`${xDist}%`} dY={`${yDist}%`} />;
+    }}
+  />
+);
 
-class TopPanel extends Component {
-  render() {
-    return (
-      <Panel>
-        <MovingImgBackground />
-        <TextContainer>
-          <GiantText>Hey.</GiantText>
-          <SubText>It me</SubText>
-          <SubberText>Lou</SubberText>
-          <EmojiText>
-            <RotatingHand>✌🏼</RotatingHand>
-          </EmojiText>
-        </TextContainer>
-      </Panel>
-    );
-  }
-}
+const TopPanel = props => (
+  <Panel>
+    <MovingImgBackground />
+    <TextContainer>
+      <Name delay={0.2}>Louis R. DeScioli</Name>
+      <Bylines bylines={props.bylines} delay={2} interval={5} />
+    </TextContainer>
+  </Panel>
+);
 
 export default TopPanel;

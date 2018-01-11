@@ -42,6 +42,12 @@
         name: Kingwood High School
         link: https://www.humbleisd.net/khs
       years: Aug. 2005 - May 2009
+      extracurriculars:
+        - name: National Honor Society
+        - name: Varsity Swimming
+        - name: Varsity Track & Field
+        - name: Orchestra
+        - name: Beta Club
   work:
     - company: Out Here Studio
       site: http://outhere.studio

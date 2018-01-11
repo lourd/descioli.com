@@ -6,7 +6,11 @@ import { fadeUpInCss } from 'style/snippets';
 import styled from 'styled-components';
 
 import LetterCarousel from './LetterCarousel';
-import { SpacedAnimatedText } from './TopPanel';
+
+const SpacedAnimatedText = styled.h1`
+  letter-spacing: -2px;
+  ${fadeUpInCss};
+`;
 
 export const Container = styled.div`
   background-color: white;

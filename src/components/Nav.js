@@ -8,8 +8,6 @@ import { shadows } from 'style/snippets';
 import Ripple from 'react-ink';
 import color from 'color';
 
-const bgColor = 'red';
-
 injectGlobal`
   .noScroll {
     overflow: hidden;
@@ -17,13 +15,13 @@ injectGlobal`
 `;
 
 const Button = styled.button`
-  background-color: ${bgColor};
+  background-color: navy;
   position: fixed;
   border-radius: 50%;
-  bottom: 20px;
-  right: 20px;
-  height: 50px;
-  width: 50px;
+  bottom: 10px;
+  right: 10px;
+  height: 70px;
+  width: 70px;
   z-index: 3;
   border: none;
   cursor: pointer;
@@ -32,15 +30,20 @@ const Button = styled.button`
   user-select: none;
   outline: none;
   @media (min-width: ${sizes.medium}) {
-    top: 20px;
+    bottom: 40px;
+    right: 40px;
+    transform: scale(1.1);
+  }
+  @media (min-width: ${sizes.large}) {
+    top: 40px;
     bottom: inherit;
-    height: 70px;
-    width: 70px;
+    transform: scale(1.2);
   }
   display: flex;
   justify-content: center;
   align-items: center;
-  ${props => shadows({ startingElevation: props.isOpen ? 0 : 1 })};
+  ${shadows({ startingElevation: 0 })};
+  transition: box-shadow 250ms, transform 250ms;
   @media print {
     display: none;
   }
@@ -66,7 +69,7 @@ const MenuContainer = styled.nav`
   background-color: ${props => props.color};
 `;
 
-const ExtMenuLink = styled.a`
+const StyledMenuLink = styled.a`
   display: block;
   color: white;
   font-size: 2em;
@@ -79,7 +82,8 @@ const ExtMenuLink = styled.a`
   transition: background-color 250ms;
   &:nth-child(${props => props.i + 1}) {
     background-color: ${props => props.bgColor};
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: ${props =>
         color(props.bgColor)
           .darken(0.15)
@@ -94,31 +98,32 @@ const ExtMenuLink = styled.a`
   }
 `;
 
-const IntMenuLink = ExtMenuLink.withComponent(Link);
+const StyledIntMenuLink = StyledMenuLink.withComponent(Link);
 
 const MenuLink = props => {
   if (props.url) {
     return (
-      <ExtMenuLink i={props.i} bgColor={props.color} href={props.url}>
+      <StyledMenuLink i={props.i} bgColor={props.color} href={props.url}>
         {props.copy}
-      </ExtMenuLink>
+      </StyledMenuLink>
     );
   }
   return (
-    <IntMenuLink
+    <StyledIntMenuLink
       to={props.path}
       i={props.i}
       bgColor={props.color}
       onClick={props.onClick}
     >
       {props.copy}
-    </IntMenuLink>
+    </StyledIntMenuLink>
   );
 };
 
 const Menu = props => (
   <MenuContainer
     isOpen={props.open}
+    aria-hidden={!props.open}
     color={props.links[props.links.length - 1].color}
   >
     {props.links.map((link, i) => (

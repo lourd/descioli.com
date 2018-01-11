@@ -10,7 +10,10 @@ const keywords = [
   'software engineer',
   'portfolio',
   'design',
-  'personal site'
+  'personal site',
+  'software',
+  'augmented reality',
+  'indie game dev'
 ].join(',');
 
 const TemplateWrapper = props => (
@@ -39,6 +42,7 @@ export const pageQuery = graphql`
           path
           copy
           url
+          color
         }
       }
     }
