@@ -1,0 +1,10 @@
+- path: /
+  copy: Home
+- path: /resume
+  copy: My life in one page
+- path: /projects
+  copy: Projects
+- path: /internet
+  copy: My places on the internet
+- url: https://github.com/lourd/descioli-design
+  copy: This website's source

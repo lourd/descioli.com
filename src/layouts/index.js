@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
+import Nav from 'components/Nav';
 
 import 'style/global.css';
 
@@ -12,7 +13,7 @@ const keywords = [
   'personal site'
 ].join(',');
 
-const TemplateWrapper = ({ children }) => (
+const TemplateWrapper = props => (
   <div>
     <Helmet titleTemplate="%s | Louis DeScioli" defaultTitle="Louis DeScioli">
       <meta
@@ -21,12 +22,27 @@ const TemplateWrapper = ({ children }) => (
       />
       <meta name="keywords" content={keywords} />
     </Helmet>
-    {children()}
+    <Nav links={props.data.allMenuLinksYaml.edges.map(edge => edge.node)} />
+    {props.children()}
   </div>
 );
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func
 };
+
+export const pageQuery = graphql`
+  query LayoutQuery {
+    allMenuLinksYaml {
+      edges {
+        node {
+          path
+          copy
+          url
+        }
+      }
+    }
+  }
+`;
 
 export default TemplateWrapper;
