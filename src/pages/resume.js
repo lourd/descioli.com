@@ -76,15 +76,17 @@ const SectionTitle = styled.h2`
 
 const Contact = props => (
   <ContactData>
-    <Link to="/">
-      <ContactDatum>{props.site}</ContactDatum>
-    </Link>
-    <a href={`mailto:${props.email}`}>
-      <ContactDatum>{props.email}</ContactDatum>
-    </a>
-    <a href={`https://twitter.com/${props.twitter}`} target="_blank">
-      <ContactDatum>@{props.twitter}</ContactDatum>
-    </a>
+    <ContactDatum>
+      <Link to="/">{props.site}</Link>
+    </ContactDatum>
+    <ContactDatum>
+      <a href={`mailto:${props.email}`}>{props.email}</a>
+    </ContactDatum>
+    <ContactDatum>
+      <a href={`https://twitter.com/${props.twitter}`} target="_blank">
+        @{props.twitter}
+      </a>
+    </ContactDatum>
   </ContactData>
 );
 
@@ -135,9 +137,11 @@ const SchoolSection = styled.div`
 const School = props => (
   <SchoolSection>
     <Row>
-      <a href={props.school.link} target="_blank">
-        <SubTitle>{props.school.name}</SubTitle>
-      </a>
+      <SubTitle>
+        <a href={props.school.link} target="_blank">
+          {props.school.name}
+        </a>
+      </SubTitle>
       <Years>{props.years}</Years>
     </Row>
     {props.degree && (
@@ -235,7 +239,7 @@ const Comma = styled.span`
 `;
 
 const Job = props => {
-  let company = <SubTitle>{props.company}</SubTitle>;
+  let company = props.company;
   if (props.site) {
     company = (
       <a href={props.site} target="_blank">
@@ -248,7 +252,7 @@ const Job = props => {
       <SubTitle>{props.role}</SubTitle>
       <For>{'for'}</For>
       <MobileBr />
-      {company}
+      <SubTitle>{company}</SubTitle>
       <Comma />
       <MobileBr />
       <Word>{props.location}</Word>
