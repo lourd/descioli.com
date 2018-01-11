@@ -42,7 +42,7 @@ const Name = styled.h1`
 
 const TopPanel = props => (
   <Panel>
-    <MovingImgBackground img={headerImg} />
+    <MovingImgBackground img={headerImg} delay={1} />
     <TextContainer>
       <Name delay={0.2}>Louis R. DeScioli</Name>
       <Bylines bylines={props.bylines} delay={2} interval={5} />

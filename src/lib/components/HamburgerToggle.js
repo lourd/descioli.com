@@ -78,7 +78,7 @@ const HamburgerToggle = props => {
 };
 
 HamburgerToggle.defaultProps = {
-  length: 37,
+  length: 35,
   barGap: 11,
   thickness: 3
 };

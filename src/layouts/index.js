@@ -6,29 +6,20 @@ import Nav from 'components/Nav';
 
 import 'style/global.css';
 
-const keywords = [
-  'software engineer',
-  'portfolio',
-  'design',
-  'personal site',
-  'software',
-  'augmented reality',
-  'indie game dev'
-].join(',');
-
-const TemplateWrapper = props => (
-  <div>
-    <Helmet titleTemplate="%s | Louis DeScioli" defaultTitle="Louis DeScioli">
-      <meta
-        name="description"
-        content="The personal site and portfolio of one Louis R DeScioli"
-      />
-      <meta name="keywords" content={keywords} />
-    </Helmet>
-    <Nav links={props.data.allMenuLinksYaml.edges.map(edge => edge.node)} />
-    {props.children()}
-  </div>
-);
+const TemplateWrapper = props => {
+  const meta = props.data.allMetaYaml.edges[0].node;
+  const links = props.data.allMenuLinksYaml.edges.map(edge => edge.node);
+  return (
+    <div>
+      <Helmet titleTemplate={`%s | ${meta.title}`} defaultTitle={meta.title}>
+        <meta name="description" content={meta.description} />
+        <meta name="keywords" content={meta.keywords.join(',')} />
+      </Helmet>
+      <Nav links={links} />
+      {props.children()}
+    </div>
+  );
+};
 
 TemplateWrapper.propTypes = {
   children: PropTypes.func
@@ -43,6 +34,15 @@ export const pageQuery = graphql`
           copy
           url
           color
+        }
+      }
+    }
+    allMetaYaml {
+      edges {
+        node {
+          description
+          title
+          keywords
         }
       }
     }

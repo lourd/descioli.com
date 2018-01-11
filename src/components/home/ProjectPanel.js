@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { findDOMNode } from 'react-dom';
-import styled from 'styled-components';
-import { fadeUpInCss } from 'style/snippets';
-import { shadow } from 'style/helpers';
-import { media, breakpoints } from 'style/sizes';
+import PageLocation from 'lib/components/PageLocation';
 import wrapInSeen from 'lib/hoc/wrapInSeen';
-import windowMoved from 'lib/windowMoved';
-import clamp from 'lib/clamp';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { shadow } from 'style/helpers';
+import { breakpoints, media } from 'style/sizes';
+import { fadeUpInCss } from 'style/snippets';
+import styled from 'styled-components';
 
 const Container = styled.div`
   background-color: white;
@@ -60,41 +58,6 @@ const Title = wrapInSeen(styled.h1`
   font-size: 3.5em;
   `};
 `);
-
-/**
- * Passing an object to the render prop with properties:
- *  position: 0 to 1, representing where the element is relative to to the
- *      visible screen. 1 for bottom and below, 0 for top and above.
- */
-class PageLocation extends Component {
-  state = {
-    position: 0
-  };
-
-  componentDidMount() {
-    this.loop = requestAnimationFrame(this.update);
-  }
-
-  update = timestamp => {
-    if (windowMoved(timestamp)) {
-      const el = findDOMNode(this);
-      const top = el.getBoundingClientRect().top;
-      const height = el.getBoundingClientRect().height;
-      const middle = top + height / 2;
-      const position = clamp(middle / window.innerHeight, 0, 1);
-      this.setState({ position });
-    }
-    this.loop = requestAnimationFrame(this.update);
-  };
-
-  componentWillUnmount() {
-    cancelAnimationFrame(this.loop);
-  }
-
-  render() {
-    return this.props.render(this.state.position);
-  }
-}
 
 export default class ProjectPanel extends Component {
   static propTypes = {

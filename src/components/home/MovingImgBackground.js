@@ -8,12 +8,12 @@ import styled from 'styled-components';
 
 const ImgBackground = styled.div.attrs({
   style: props => ({
-    transform: `translate3d(${props.dX}, ${props.dY}, 0) scale(1.1)`,
-    backgroundImage: `url(${props.img})`
+    transform: `translate3d(${props.dX}, ${props.dY}, 0) scale(1.1)`
   })
 })`
   ${stretchFull};
   background-size: cover;
+  background-image: url(${props => props.img});
   background-position: 75% center;
   z-index: -1;
   position: fixed;
@@ -22,7 +22,8 @@ const ImgBackground = styled.div.attrs({
     z-index: 1;
     ${stretchFull};
     background-color: ${colors.black};
-    animation: ${fade({ from: 1, to: 0.25 })} 1s forwards 1.2s;
+    animation: ${fade({ from: 1, to: 0.25 })} forwards 1.2s;
+    animation-delay ${props => props.delay}s;
   }
 `;
 
@@ -33,7 +34,12 @@ const MovingImgBackground = props => (
       const yd = y / window.innerHeight;
       const [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);
       return (
-        <ImgBackground dX={`${xDist}%`} dY={`${yDist}%`} img={props.img} />
+        <ImgBackground
+          dX={`${xDist}%`}
+          dY={`${yDist}%`}
+          img={props.img}
+          delay={props.delay}
+        />
       );
     }}
   />
