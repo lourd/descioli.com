@@ -6,6 +6,8 @@
 - text: Systems Thinker
 - text: MIT Engineer
 - text: User Interface Engineer
+- text: Interaction Engineer
+- text: Human Computer Interaction Engineer
 - text: Front-end Developer
 - text: Back-end Developer
 - text: Designer
@@ -16,6 +18,8 @@
 - text: Italian
 - text: Swimmer
 - text: Snowboarder
+- text: Bad Surfer
+- text: Middling Climber
 - text: American
 - text: Indie Game Developer
 - text: Programmer
@@ -63,7 +67,6 @@
 - text: Founder
 - text: Guy with a Beard
 - text: Cis White Male
-- text: He Him
 - text: Small Business Owner
 - text: Lover
 - text: Hugger
@@ -71,3 +74,8 @@
 - text: Engineering Leader
 - text: Musician
 - text: Outdoorsman
+- text: Tinkerer
+- text: Inventor
+- text: Exceptional Cook
+- text: Technology Consultant
+- text: Animator

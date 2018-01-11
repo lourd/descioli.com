@@ -1,12 +1,12 @@
 import React from 'react';
 import styled, { injectGlobal } from 'styled-components';
-import sizes from 'style/sizes';
 import Link from 'gatsby-link';
-import BodyClass from 'lib/components/BodyClass';
-import HamburgerToggle from 'lib/components/HamburgerToggle';
-import { shadows } from 'style/snippets';
 import Ripple from 'react-ink';
 import color from 'color';
+import sizes from 'style/sizes';
+import BodyClass from 'lib/components/BodyClass';
+import HamburgerToggle from 'lib/components/HamburgerToggle';
+import { shadows, fadeUpInCss } from 'style/snippets';
 
 injectGlobal`
   .noScroll {
@@ -29,6 +29,8 @@ const Button = styled.button`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
   outline: none;
+  ${fadeUpInCss};
+  animation-delay: 3s;
   @media (min-width: ${sizes.medium}) {
     bottom: 40px;
     right: 40px;

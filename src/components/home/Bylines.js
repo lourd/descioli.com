@@ -21,6 +21,7 @@ const outAnim = fadeOutTo({ x: 5, y: 20 });
 const Byline = styled.span`
   position: absolute;
   top: 0;
+  max-width: 85vw;
   &.anim-enter-active {
     animation: ${inAnim} 0.8s forwards;
   }
