@@ -30,14 +30,14 @@ const BarThree = Bar.extend`
   transform-origin: bottom right;
   transform: ${props =>
     props.isOpen
-      ? `translate3d(${-props.deltaX}px, ${-props.bottomYOpen}px, 0px) rotate(-45deg)`
+      ? `translate3d(${-props.deltaX}px, ${
+          props.bottomYOpen
+        }px, 0px) rotate(-45deg)`
       : `translate3d(0px, ${props.bottomY}px, 0px)`};
 `;
 
 const HamburgerContainer = styled.span`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   width: 45px;
   height: 45px;
   display: flex;
@@ -55,7 +55,7 @@ const HamburgerToggle = props => {
   const deltaY = props.barGap - sqrt2over4 * props.length;
 
   const topYOpen = topY + deltaY;
-  const bottomYOpen = bottomY - deltaY;
+  const bottomYOpen = -bottomY + deltaY;
   const toggleProps = {
     topY,
     bottomY,
