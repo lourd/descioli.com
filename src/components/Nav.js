@@ -15,7 +15,7 @@ injectGlobal`
 `;
 
 const Button = styled.button`
-  background-color: navy;
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   border-radius: 50%;
   bottom: 10px;
