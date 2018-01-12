@@ -6,7 +6,8 @@ import color from 'color';
 import sizes from 'style/sizes';
 import BodyClass from 'lib/components/BodyClass';
 import HamburgerToggle from 'lib/components/HamburgerToggle';
-import { shadows, fadeUpInCss } from 'style/snippets';
+import { shadows } from 'style/snippets';
+import { fadeIn } from 'style/animations';
 
 injectGlobal`
   .noScroll {
@@ -15,11 +16,10 @@ injectGlobal`
 `;
 
 const Button = styled.button`
-  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   border-radius: 50%;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
   height: 70px;
   width: 70px;
   z-index: 3;
@@ -29,23 +29,27 @@ const Button = styled.button`
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   user-select: none;
   outline: none;
-  ${fadeUpInCss};
-  animation-delay: 3s;
-  @media (min-width: ${sizes.medium}) {
-    bottom: 40px;
-    right: 40px;
-    transform: scale(1.1);
-  }
-  @media (min-width: ${sizes.large}) {
-    top: 40px;
-    bottom: inherit;
-    transform: scale(1.2);
-  }
   display: flex;
   justify-content: center;
   align-items: center;
-  ${shadows({ startingElevation: 1 })};
-  transition: box-shadow 250ms, transform 250ms;
+  opacity: 0;
+  animation: ${fadeIn} 1.2s forwards;
+  animation-delay: 3s;
+  background-color: rgba(0, 0, 0, ${props => (props.isOpen ? 0 : 0.4)});
+  ${props => shadows({ startingElevation: props.isOpen ? 0 : 1 })};
+  transition: box-shadow 250ms, transform 250ms, background-color 250ms;
+  @media (min-width: ${sizes.medium}) {
+    bottom: 40px;
+    right: 40px;
+    transform: scale(1.3);
+  }
+  @media (min-width: ${sizes.large}) {
+    top: 48px;
+    right: 5%;
+    bottom: inherit;
+    transform: ${props =>
+      props.isOpen ? `scale(1.5) translateY(-24px)` : 'scale(1.2)'};
+  }
   @media print {
     display: none;
   }

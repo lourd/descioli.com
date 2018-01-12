@@ -30,9 +30,13 @@ const ImgBackground = styled.div.attrs({
 const MovingImgBackground = props => (
   <OnMouseMove
     render={({ x, y }) => {
-      const xd = x / window.innerWidth;
-      const yd = y / window.innerHeight;
-      const [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);
+      let xDist = 0;
+      let yDist = 0;
+      if (typeof window !== 'undefined') {
+        const xd = x / window.innerWidth;
+        const yd = y / window.innerHeight;
+        [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);
+      }
       return (
         <ImgBackground
           dX={`${xDist}%`}

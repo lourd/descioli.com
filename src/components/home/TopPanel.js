@@ -23,7 +23,7 @@ const Panel = styled.div`
 const TextContainer = styled.div`
   text-align: left;
   font-size: 0.8em;
-  padding: 10% 0px 0px 5%;
+  padding: 10% 5% 0px 5%;
   @media (min-width: ${sizes.medium}) {
     font-size: 1em;
     padding: 50px 0px 20px 50px;
