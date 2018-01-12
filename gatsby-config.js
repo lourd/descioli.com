@@ -23,6 +23,12 @@ module.exports = {
       options: {
         plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files']
       }
+    },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-53420391-3'
+      }
     }
   ]
 };
