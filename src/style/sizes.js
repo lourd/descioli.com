@@ -8,26 +8,18 @@ export const breakpoints = {
   xxl: 1601
 };
 
-const sizes = Object.keys(breakpoints).reduce((acc, key) => {
+/**
+ * Produces small, smallMax, medium, mediumMax, etc. using ems for
+ * units because it's more consistent across all resolutions and
+ * browsers for correct responsiveness
+ */
+const sizes = Object.keys(breakpoints).reduce((acc, key, i, keys) => {
   acc[key] = `${breakpoints[key] / 16}em`;
+  if (i > 0) {
+    const lastKey = keys[i - 1];
+    acc[`${lastKey}Max`] = `${(breakpoints[key] - 1) / 16}em`;
+  }
   return acc;
 }, {});
 
 export default sizes;
-
-// Iterate through the sizes and create a media template
-export const media = Object.keys(breakpoints).reduce((acc, key) => {
-  // Makes a rule for the minimum width, using mobile-first approach
-  acc[key] = (...args) => css`
-    @media (min-width: ${breakpoints[key] / 16}em) {
-      ${css(...args)};
-    }
-  `;
-  // Makes a rule for using max-width, in cases where it's needed
-  acc[`${key}Only`] = (...args) => css`
-    @media (max-width: ${(breakpoints[key] - 1) / 16}em) {
-      ${css(...args)};
-    }
-  `;
-  return acc;
-}, {});

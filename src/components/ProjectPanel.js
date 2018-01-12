@@ -3,15 +3,15 @@ import wrapInSeen from 'lib/hoc/wrapInSeen';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { shadow } from 'style/helpers';
-import { breakpoints, media } from 'style/sizes';
+import sizes from 'style/sizes';
 import { fadeUpInCss } from 'style/snippets';
 import styled from 'styled-components';
 
 const Container = styled.div`
   background-color: white;
-  ${media.large`
+  @media (min-width: ${sizes.large}) {
     padding-bottom: 40px;
-  `};
+  }
 `;
 
 const Inner = styled.section`
@@ -39,14 +39,14 @@ const BgImg = styled.div`
   background-size: cover;
   background-position: center;
   z-index: -1;
-  ${media.large`
+  @media (min-width: ${sizes.large}) {
     border-radius: 10px;
     ${shadow(2)};
     transition: box-shadow 200ms;
     &:hover {
       ${shadow(3)};
     }
-  `};
+  }
 `;
 
 const Title = wrapInSeen(styled.h1`
@@ -54,9 +54,9 @@ const Title = wrapInSeen(styled.h1`
   max-width: 800px;
   ${fadeUpInCss};
   font-size: 2.3em;
-  ${media.medium`
-  font-size: 3.5em;
-  `};
+  @media (min-width: ${sizes.medium}) {
+    font-size: 3.5em;
+  }
 `);
 
 export default class ProjectPanel extends Component {

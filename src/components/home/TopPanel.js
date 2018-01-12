@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import sizes from 'style/sizes';
 import { fadeDownInCss } from 'style/snippets';
+import { fadeIn } from 'style/animations';
 import Bylines from './Bylines';
 import headerImg from './header.jpg';
 import MovingImgBackground from './MovingImgBackground';
@@ -40,12 +41,52 @@ const Name = styled.h1`
   animation-delay: ${props => props.delay}s;
 `;
 
+const CTA = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  font-size: 1.5em;
+  opacity: 0;
+  animation: ${fadeIn} 1.2s forwards;
+  animation-delay: ${props => props.delay}s;
+  @media (max-width: ${sizes.smallMax}) {
+    max-width: 70vw;
+  }
+  h4 {
+    font-weight: lighter;
+    margin-bottom: 5px;
+    font-size: 1.3em;
+  }
+  h3 {
+    font-size: 2em;
+    transition: transform 250ms;
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+    }
+  }
+  a {
+    color: white;
+  }
+`;
+
 const TopPanel = props => (
   <Panel>
     <MovingImgBackground img={headerImg} delay={1} />
     <TextContainer>
       <Name delay={0.2}>Louis R. DeScioli</Name>
-      <Bylines bylines={props.bylines} delay={2} interval={5} />
+      <Bylines bylines={props.bylines} delay={1.8} interval={5} />
+      <CTA delay={2.5}>
+        <h4>Play with my latest creation</h4>
+        <h3>
+          <a
+            href="https://itunes.apple.com/us/app/out-here-archery/id1309822636?mt=8"
+            target="_blank"
+          >
+            Out Here Archery
+          </a>
+        </h3>
+      </CTA>
     </TextContainer>
   </Panel>
 );
