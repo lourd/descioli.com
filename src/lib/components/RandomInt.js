@@ -1,11 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import OnInterval from 'lib/components/OnInterval';
 
 class RandomInt extends React.Component {
   static defaultProps = {
-    interval: 3,
     delay: 0,
     origin: 0
+  };
+
+  static propTypes = {
+    interval: PropTypes.number.isRequired,
+    delay: PropTypes.number.isRequired,
+    origin: PropTypes.number.isRequired,
+    render: PropTypes.func.isRequired,
+    max: PropTypes.number.isRequired
   };
 
   state = {

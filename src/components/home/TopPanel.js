@@ -75,7 +75,7 @@ const TopPanel = props => (
     <MovingImgBackground img={headerImg} delay={1} />
     <TextContainer>
       <Name delay={0.2}>Louis R. DeScioli</Name>
-      <Bylines bylines={props.bylines} delay={1.8} interval={5} />
+      <Bylines bylines={props.bylines} delay={1.8} interval={3} />
       <CTA delay={2.5}>
         <h4>Play with my latest creation</h4>
         <h3>
