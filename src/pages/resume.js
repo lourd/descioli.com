@@ -5,6 +5,20 @@ import Helmet from 'react-helmet';
 import colors from 'style/colors';
 import sizes from 'style/sizes';
 
+/**
+ * Handles the formatting for the different expected types of date range data
+ * @param {Object|String} dates
+ */
+const datesFormatter = dates => {
+  if (typeof dates === 'string') return dates;
+  const { start, end, recurring } = dates;
+  if (recurring) {
+    return recurring.map(obj => obj.date).join(', ');
+  }
+  if (!end) return `${start} - Present`;
+  return `${start} - ${end}`;
+};
+
 const Row = styled.div`
   display: flex;
   flex-flow: row wrap;
@@ -90,7 +104,7 @@ const Contact = props => (
   </ContactData>
 );
 
-const Years = styled.div`
+const StyledYears = styled.div`
   color: #999;
   font-size: 0.8em;
   width: 100%;
@@ -99,6 +113,10 @@ const Years = styled.div`
     text-align: right;
   }
 `;
+
+const Years = ({ children, ...props }) => (
+  <StyledYears {...props}>{datesFormatter(children)}</StyledYears>
+);
 
 const SubTitle = styled.h3`
   font-size: 0.9em;
@@ -309,7 +327,10 @@ export const pageQuery = graphql`
               name
               link
             }
-            years
+            years {
+              start(formatString: "MMM YYYY")
+              end(formatString: "MMM YYYY")
+            }
             transfer
             extracurriculars {
               name
@@ -321,14 +342,23 @@ export const pageQuery = graphql`
             location
             site
             role
-            dates
+            dates {
+              start(formatString: "MMM YYYY")
+              end(formatString: "MMM YYYY")
+            }
           }
           volunteer {
             company
             location
             site
             role
-            dates
+            dates {
+              start(formatString: "MMM YYYY")
+              end(formatString: "MMM YYYY")
+              recurring {
+                date(formatString: "MMM YYYY")
+              }
+            }
           }
         }
       }

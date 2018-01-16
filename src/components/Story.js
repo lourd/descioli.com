@@ -1,9 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
-import Blob from 'lib/components/Blob';
+import Head from 'react-helmet';
 
 const Story = ({ data }) => {
-  return <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />;
+  return (
+    <div>
+      <Head>
+        <title>{data.markdownRemark.frontmatter.title}</title>
+        <meta
+          name="description"
+          content={data.markdownRemark.frontmatter.description}
+        />
+        <meta
+          name="keywords"
+          content={data.markdownRemark.frontmatter.tags.join(',')}
+        />
+      </Head>
+      <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
+    </div>
+  );
 };
 
 export default Story;
@@ -13,9 +28,15 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
+        creation(formatString: "MMMM DD, YYYY")
         slug
         title
+        description
+        tags
+        dates {
+          start
+          end
+        }
       }
     }
   }

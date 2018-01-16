@@ -16,7 +16,9 @@
       concentration:
         name: Comparative Media Studies
         link: https://cmsw.mit.edu
-      years: Aug. 2011 - June 2014
+      years:
+        start: 2011-08-01
+        end: 2014-06-30
       extracurriculars:
         - name: Gordon Engineering Leadership Program
           link: https://gelp.mit.edu
@@ -30,7 +32,9 @@
       major:
         name: Computer Engineering
         link: https://www.usafa.edu/department/electrical-computer-engineering/
-      years: June 2009 - July 2011
+      years:
+        start: 2009-06-25
+        end: 2011-07-19
       extracurriculars:
         - name: CS-26 and CS-11
         - name: Cadet Orchestra
@@ -41,7 +45,9 @@
     - school:
         name: Kingwood High School
         link: https://www.humbleisd.net/khs
-      years: Aug. 2005 - May 2009
+      years:
+        start: 2005-08-01
+        end: 2009-05-31
       extracurriculars:
         - name: National Honor Society
         - name: Varsity Swimming
@@ -53,85 +59,113 @@
       site: http://outhere.studio
       location: Cambridge, MA
       role: Founder, Designer, & Developer
-      dates: July 2017 - Present
+      dates:
+        start: 2017-07-01
     - company: Sidekicks
       site: https://sidekicks.com/
       location: Cambridge, MA
       role: Senior Designer & UI Engineer
-      dates: Oct. 2016 - June 2017
+      dates:
+        start: 2016-10-01
+        end: 2017-06-30
     - company: Grove
       site: https://grovegrown.com
       location: Somerville, MA
       role: Head of Sales and Strategy
-      dates: Apr. 2016 - July 2016
+      dates:
+        start: 2016-04-01
+        end: 2016-06-30
     - company: Grove
       site: https://grovegrown.com
       location: Somerville, MA
       role: Lead Software Engineer
-      dates: Jan. 2014 - July 2016
+      dates:
+        start: 2014-01-03
+        end: 2016-06-30
     - company: Vecna
       site: https://www.vecna.com
       location: Cambridge, MA
       role: Embedded Systems Engineering Intern
-      dates: June 2013 - Aug. 2013
+      dates:
+        start: 2013-06-01
+        end: 2013-08-14
     - company: 6.00 - Intro to CS and Programming
       location: MIT
       role: Lab Assistant
-      dates: Aug. 2012 - May 2013
+      dates:
+        start: 2012-09-01
+        end: 2013-05-30
     - company: MIT China Education Technology Initiative
       site: https://ceti.mit.edu/
       location: Dalian, Wuhan, & Wuxi, China
       role: Student Teacher
-      dates: June 2012 - July 2012
+      dates:
+        start: 2012-06-01
+        end: 2012-07-30
     - company: Mediated Matter Group
       location: MIT Media Lab
       site: http://matter.media.mit.edu/
       role: Research Assistant
-      dates: Oct. 2011 - Dec. 2011
-    - company: iCracked
-      location: Boston, MA
-      site: https://www.icracked.com/
-      role: Device Repair Technician
-      dates: Aug. 2011 - Feb. 2014
+      dates:
+        start: 2011-10-01
+        end: 2011-12-15
   volunteer:
     - company: Resilient Coders
       site: https://www.resilientcoders.org/
       location: Boston, MA
       role: Mentor
-      dates: July 2017 - Present
+      dates:
+        start: 2017-07-01
     - company: NodeSchool Boston
       site: https://nodeschool.io/
       location: Boston, MA
       role: Mentor
-      dates: Oct. 2016 - June 2017
+      dates:
+        start: 2016-10-01
+        end: 2017-10-15
     - company: Technology Chapter Alumni Association
       location: Boston, MA
       role: Director
-      dates: Aug. 2014 - Feb. 2017
+      dates:
+        start: 2014-08-01
+        end: 2017-02-20
     - company: HackMIT
       site: https://hackmit.org
       location: Cambridge, MA
       role: Mentor
-      dates: Sep. 2015, Sep 2016
+      dates:
+        recurring:
+          - date: 2015-09-01
+          - date: 2016-09-01
     - company: Boston Urban Agriculture Meetup
       site: https://www.meetup.com/Boston-Area-Urban-Agriculture/
       location: Boston, MA
       role: Co-organizer
-      dates: July 2015 - July 2016
+      dates:
+        start: 2015-07-01
+        end: 2016-06-30
     - company: Boston Meteor Meetup
       site: https://www.meetup.com/Meteor-Boston/
       location: Boston, MA
       role: Co-organizer
-      dates: Nov. 2014 - Sep. 2015
+      dates:
+        start: 2014-11-01
+        end: 2015-09-30
     - company: Delta Upsilon Technology Chapter
       location: Boston, MA
       role: President
-      dates: Aug. 2013 - Dec. 2013
+      dates:
+        start: 2013-08-01
+        end: 2013-12-31
     - company: MIT Interfraternity Council
       location: Cambridge, MA
       role: Vice President
-      dates: Nov. 2011 - Oct. 2012
+      dates:
+        start: 2011-11-01
+        end: 2012-10-31
     - company: Dept. of Computer Science
       location: USAFA
       role: Research Assistant
-      dates: Sep. 2010 - May 2011
+      dates:
+        start: 2010-09-01
+        end: 2011-05-05

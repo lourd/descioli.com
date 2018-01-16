@@ -7,7 +7,7 @@ import Nav from 'components/Nav';
 import 'style/global.css';
 
 const TemplateWrapper = props => {
-  const meta = props.data.allMetaYaml.edges[0].node;
+  const meta = props.data.site.siteMetadata;
   const links = props.data.allMenuLinksYaml.edges.map(edge => edge.node);
   return (
     <div>
@@ -27,6 +27,14 @@ TemplateWrapper.propTypes = {
 
 export const pageQuery = graphql`
   query LayoutQuery {
+    site {
+      siteMetadata {
+        title
+        keywords
+        description
+        siteUrl
+      }
+    }
     allMenuLinksYaml {
       edges {
         node {
@@ -34,15 +42,6 @@ export const pageQuery = graphql`
           copy
           url
           color
-        }
-      }
-    }
-    allMetaYaml {
-      edges {
-        node {
-          description
-          title
-          keywords
         }
       }
     }

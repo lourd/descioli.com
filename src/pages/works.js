@@ -22,9 +22,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             slug
-            gif {
-              relativePath
-            }
           }
         }
       }

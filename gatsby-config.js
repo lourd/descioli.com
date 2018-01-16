@@ -1,6 +1,17 @@
 module.exports = {
   siteMetadata: {
-    // title: `whaaa`
+    title: `Louis R. DeScioli`,
+    description: 'The personal site and portfolio of one Louis R DeScioli',
+    siteUrl: `descioli.design`,
+    keywords: [
+      'software engineer',
+      'portfolio',
+      'design',
+      'personal site',
+      'software',
+      'augmented reality',
+      'indie game dev'
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -14,8 +25,15 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'projects',
+        name: 'data',
         path: `${__dirname}/src/data/`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: 'stories',
+        path: `${__dirname}/src/stories/`
       }
     },
     {
