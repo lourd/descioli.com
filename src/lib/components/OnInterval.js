@@ -2,10 +2,7 @@ import React from 'react';
 
 class OnInterval extends React.Component {
   componentDidMount() {
-    this.timer = setTimeout(
-      this.tick,
-      (this.props.delay + this.props.interval) * 1000
-    );
+    this.timer = setTimeout(this.tick, this.props.delay * 1000);
   }
 
   tick = () => {

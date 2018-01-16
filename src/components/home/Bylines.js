@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import RandomInt from 'lib/components/RandomInt';
 import TextCarousel from 'components/TextCarousel';
@@ -17,12 +18,18 @@ const Bylines = props => (
     <RandomInt
       max={props.bylines.length}
       interval={props.interval}
-      delay={props.delay}
+      delay={props.delay + props.interval}
       render={num => (
-        <TextCarousel childKey={num}>{props.bylines[num].text}</TextCarousel>
+        <TextCarousel childKey={num}>{props.bylines[num]}</TextCarousel>
       )}
     />
   </BylinesContainer>
 );
+
+Bylines.propTypes = {
+  bylines: PropTypes.arrayOf(PropTypes.string).isRequired,
+  delay: PropTypes.number.isRequired,
+  interval: PropTypes.number.isRequired
+};
 
 export default Bylines;

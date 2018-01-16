@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import sizes from 'style/sizes';
 import { fadeDownInCss } from 'style/snippets';
 import { fadeIn } from 'style/animations';
+import MovingImgBackground from 'components/MovingImgBackground';
 import Bylines from './Bylines';
 import headerImg from './header.jpg';
-import MovingImgBackground from './MovingImgBackground';
 
 const Panel = styled.div`
   height: 100vh;

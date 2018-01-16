@@ -4,7 +4,7 @@ import TopPanel from 'components/home/TopPanel';
 const Homepage = props => (
   <main>
     <TopPanel
-      bylines={props.data.allBylinesYaml.edges.map(edge => edge.node)}
+      bylines={props.data.allBylinesYaml.edges.map(edge => edge.node.text)}
     />
   </main>
 );
