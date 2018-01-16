@@ -60,13 +60,14 @@ const CTA = styled.div`
   h3 {
     font-size: 2em;
     transition: transform 250ms;
-    &:hover,
-    &:focus {
-      transform: scale(1.05);
-    }
   }
   a {
     color: white;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
   }
 `;
 
