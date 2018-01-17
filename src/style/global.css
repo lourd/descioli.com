@@ -530,3 +530,6 @@ pre tt:after {
     font-size: 100%;
   }
 }
+a:active {
+  color: rgb(250, 145, 33);
+}

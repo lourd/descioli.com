@@ -59,12 +59,14 @@
       site: http://outhere.studio
       location: Cambridge, MA
       role: Founder, Designer, & Developer
+      story: out-here
       dates:
         start: 2017-07-01
     - company: Sidekicks
       site: https://sidekicks.com/
       location: Cambridge, MA
       role: Senior Designer & UI Engineer
+      story: sidekicks
       dates:
         start: 2016-10-01
         end: 2017-06-30
@@ -72,6 +74,7 @@
       site: https://grovegrown.com
       location: Somerville, MA
       role: Head of Sales and Strategy
+      story: grove
       dates:
         start: 2016-04-01
         end: 2016-06-30
@@ -79,6 +82,7 @@
       site: https://grovegrown.com
       location: Somerville, MA
       role: Lead Software Engineer
+      story: grove
       dates:
         start: 2014-01-03
         end: 2016-06-30
@@ -86,6 +90,7 @@
       site: https://www.vecna.com
       location: Cambridge, MA
       role: Embedded Systems Engineering Intern
+      story: vecna
       dates:
         start: 2013-06-01
         end: 2013-08-14
@@ -99,6 +104,7 @@
       site: https://ceti.mit.edu/
       location: Dalian, Wuhan, & Wuxi, China
       role: Student Teacher
+      story: ceti
       dates:
         start: 2012-06-01
         end: 2012-07-30
@@ -106,6 +112,7 @@
       location: MIT Media Lab
       site: http://matter.media.mit.edu/
       role: Research Assistant
+      story: mediated-matter
       dates:
         start: 2011-10-01
         end: 2011-12-15

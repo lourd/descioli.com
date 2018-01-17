@@ -47,9 +47,6 @@ const Container = styled.div`
   }
   a {
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
   }
   @media print {
     a {
@@ -150,6 +147,11 @@ const SchoolSection = styled.div`
       margin-bottom: 5px;
     }
   }
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 const School = props => (
@@ -203,25 +205,36 @@ const School = props => (
 
 const JobContainer = styled.div`
   align-items: baseline;
-  margin-bottom: 5px;
-  margin-top: 15px;
-  @media (min-width: ${sizes.small}) {
-    padding-left: 13px;
-  }
+  padding: 10px 13px;
   @media (min-width: ${sizes.medium}) {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    margin-top: inherit;
+    padding: 4px 8px;
+    margin: 0px;
   }
   :last-child {
-    margin-bottom: 10px;
+    padding-bottom: 10px;
     @media (min-width: ${sizes.small}) {
-      margin-bottom: 5px;
+      padding-bottom: 5px;
     }
   }
   ${SubTitle} {
     display: inline-block;
+  }
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
+
+const StoryJobContainer = JobContainer.withComponent(Link).extend`
+  display: block;
+  text-decoration: none;
+  transition: background-color 250ms;
+  &:hover, &:focus {
+    background-color: #eee;
   }
 `;
 
@@ -258,15 +271,18 @@ const Comma = styled.span`
 
 const Job = props => {
   let company = props.company;
-  if (props.site) {
+  if (!props.story && props.site) {
     company = (
       <a href={props.site} target="_blank">
         {company}
       </a>
     );
   }
+  // TODO use fragment
+  const Container = props.story ? StoryJobContainer : JobContainer;
+  const containerProps = props.story ? { to: `/${props.story}` } : {};
   return (
-    <JobContainer>
+    <Container {...containerProps}>
       <SubTitle>{props.role}</SubTitle>
       <For>{'for'}</For>
       <MobileBr />
@@ -275,7 +291,7 @@ const Job = props => {
       <MobileBr />
       <Word>{props.location}</Word>
       <Years>{props.dates}</Years>
-    </JobContainer>
+    </Container>
   );
 };
 
@@ -342,6 +358,7 @@ export const pageQuery = graphql`
             location
             site
             role
+            story
             dates {
               start(formatString: "MMM YYYY")
               end(formatString: "MMM YYYY")
