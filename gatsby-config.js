@@ -40,7 +40,10 @@ module.exports = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
-          'gatsby-remark-images',
+          {
+            resolve: 'my-gatsby-remark-images',
+            options: { maxWidth: 800, addCaptions: true }
+          },
           'gatsby-remark-copy-linked-files',
           'my-gatsby-remark-youtube',
           // This has to come after the youtube plugin
