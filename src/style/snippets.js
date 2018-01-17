@@ -17,6 +17,10 @@ export const fadeInCss = css`
   animation: ${ifSeen(`${fadeIn} 1.2s forwards`)};
 `;
 
+export const textShadow = css`
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+`;
+
 /**
  * Computes a top-shadow for an elevation effect.
  * @param {Number} elevation - elevation level

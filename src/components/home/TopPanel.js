@@ -53,7 +53,7 @@ const CTA = styled.div`
     max-width: 70vw;
   }
   h4 {
-    font-weight: lighter;
+    font-weight: 300;
     margin-bottom: 5px;
     font-size: 1.3em;
   }

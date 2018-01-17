@@ -1,13 +1,10 @@
 ---
-creation: 2018-01-16
-lastEdit: 2018-01-16
+creation: 2018-01-15
+lastEdit: 2018-01-15
 title: Grove
-description: My venture into software beyond surfaces
-slug: grove
-image: ./grumpycat.jpg
-dates:
-  start: 2014-01-03
-  end: 2016-06-30
+description: Where it all began
+path: /grove
+image: ./myTripleTower.jpg
 tags:
   - work
   - project
@@ -21,6 +18,12 @@ tags:
   - sales
 ---
 
-# Groooooooooove
-
 Go check out the [Out Here](/out-here) thing
+![Grove](./grove.gif "isnt she lovely")
+
+![The triple-tower system in my home](./kickstarter.jpg "crushing it")
+
+https://www.youtube.com/watch?v=jRAK3tnJK5I
+Early adopters
+
+They're the best

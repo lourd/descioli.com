@@ -10,6 +10,7 @@ import sizes from 'style/sizes';
  * @param {Object|String} dates
  */
 const datesFormatter = dates => {
+  if (!dates) return null;
   if (typeof dates === 'string') return dates;
   const { start, end, recurring } = dates;
   if (recurring) {
@@ -47,8 +48,8 @@ const Container = styled.div`
   }
   a {
     text-decoration: none;
-    a:active {
-      color: rgb(250, 145, 33);
+    &:active {
+      color: #f78409;
     }
   }
   @media print {
@@ -281,9 +282,8 @@ const Job = props => {
       </a>
     );
   }
-  // TODO use fragment
   const Container = props.story ? StoryJobContainer : JobContainer;
-  const containerProps = props.story ? { to: `/${props.story}` } : {};
+  const containerProps = props.story ? { to: props.story } : {};
   return (
     <Container {...containerProps}>
       <SubTitle>{props.role}</SubTitle>
@@ -375,9 +375,9 @@ export const pageQuery = graphql`
             dates {
               start(formatString: "MMM YYYY")
               end(formatString: "MMM YYYY")
-              recurring {
-                date(formatString: "MMM YYYY")
-              }
+              # recurring {
+              #   date(formatString: "MMM YYYY")
+              # }
             }
           }
         }

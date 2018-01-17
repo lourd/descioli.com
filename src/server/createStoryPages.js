@@ -11,7 +11,7 @@ async function createStoryPages({
         edges {
           node {
             frontmatter {
-              slug
+              path
             }
           }
         }
@@ -24,11 +24,8 @@ async function createStoryPages({
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
-      path: `/${node.frontmatter.slug}`,
-      component: storyTemplate,
-      context: {
-        slug: node.frontmatter.slug
-      }
+      path: node.frontmatter.path,
+      component: storyTemplate
     });
   });
 }
