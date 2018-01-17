@@ -39,7 +39,13 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       options: {
-        plugins: ['gatsby-remark-images', 'gatsby-remark-copy-linked-files']
+        plugins: [
+          'gatsby-remark-images',
+          'gatsby-remark-copy-linked-files',
+          'my-gatsby-remark-youtube',
+          // This has to come after the youtube plugin
+          'gatsby-remark-responsive-iframe'
+        ]
       }
     },
     {
