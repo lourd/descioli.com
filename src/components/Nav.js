@@ -8,6 +8,7 @@ import BodyClass from 'lib/components/BodyClass';
 import HamburgerToggle from 'lib/components/HamburgerToggle';
 import { shadows } from 'style/snippets';
 import { fadeIn } from 'style/animations';
+import colors from 'style/colors';
 
 injectGlobal`
   .noScroll {
@@ -18,10 +19,10 @@ injectGlobal`
 const Button = styled.button`
   position: fixed;
   border-radius: 50%;
-  bottom: 20px;
-  right: 20px;
-  height: 70px;
-  width: 70px;
+  bottom: 16px;
+  right: 16px;
+  height: 56px;
+  width: 56px;
   z-index: 3;
   border: none;
   cursor: pointer;
@@ -35,16 +36,16 @@ const Button = styled.button`
   opacity: 0;
   animation: ${fadeIn} 1.2s forwards;
   animation-delay: 3s;
-  background-color: rgba(0, 0, 0, ${props => (props.isOpen ? 0 : 0.4)});
-  ${props => shadows({ startingElevation: props.isOpen ? 0 : 1 })};
+  background-color: ${props => (props.isOpen ? 'transparent' : colors.primary)};
+  ${props => shadows({ startingElevation: props.isOpen ? 0 : 2 })};
   transition: box-shadow 250ms, transform 250ms, background-color 250ms;
   @media (min-width: ${sizes.medium}) {
-    bottom: 40px;
-    right: 40px;
+    bottom: 24px;
+    right: 24px;
     transform: scale(1.3);
   }
   @media (min-width: ${sizes.large}) {
-    top: 48px;
+    top: 52px;
     right: 5%;
     bottom: inherit;
     transform: ${props =>
