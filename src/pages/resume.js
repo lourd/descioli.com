@@ -47,6 +47,9 @@ const Container = styled.div`
   }
   a {
     text-decoration: none;
+    a:active {
+      color: rgb(250, 145, 33);
+    }
   }
   @media print {
     a {
@@ -91,7 +94,7 @@ const Contact = props => (
       <Link to="/">{props.site}</Link>
     </ContactDatum>
     <ContactDatum>
-      <a href={`mailto:${props.email}`}>{props.email}</a>
+      <a href={`mailto:${props.email}+ddesign`}>{props.email}</a>
     </ContactDatum>
     <ContactDatum>
       <a href={`https://twitter.com/${props.twitter}`} target="_blank">
