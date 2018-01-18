@@ -9,6 +9,7 @@ import HamburgerToggle from 'lib/components/HamburgerToggle';
 import { shadows } from 'style/snippets';
 import { fadeIn } from 'style/animations';
 import colors from 'style/colors';
+import OnEscape from 'lib/components/OnEscape';
 
 injectGlobal`
   .noScroll {
@@ -36,7 +37,8 @@ const Button = styled.button`
   opacity: 0;
   animation: ${fadeIn} 1.2s forwards;
   animation-delay: 3s;
-  background-color: ${props => (props.isOpen ? 'transparent' : colors.primary)};
+  background-color: ${props =>
+    props.isOpen ? 'transparent' : 'rgba(0,0,0,0.5)'};
   ${props => shadows({ startingElevation: props.isOpen ? 0 : 2 })};
   transition: box-shadow 250ms, transform 250ms, background-color 250ms;
   @media (min-width: ${sizes.medium}) {
@@ -156,6 +158,7 @@ export default class Nav extends React.Component {
           onClick={this.toggle}
         />
         {this.state.open && <BodyClass className="noScroll" />}
+        {this.state.open && <OnEscape handler={this.toggle} />}
       </span>
     );
   }
