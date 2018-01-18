@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'react-helmet';
 import Img from 'gatsby-image';
-import { shadows, textShadow } from 'style/snippets';
+import { shadows, textShadow, serifFont } from 'style/snippets';
 import colors from 'style/colors';
 import sizes from 'style/sizes';
 
@@ -13,7 +13,7 @@ const Page = styled.div``;
 const Content = styled.div`
   max-width: ${maxWidth};
   margin: 0 auto;
-  padding: 15px ${sidePadding};
+  padding: 20px ${sidePadding};
   img {
     display: block;
     margin: 1.6em auto;
@@ -31,12 +31,29 @@ const Content = styled.div`
     padding-left: 0;
     padding-right: 0;
   }
+  main {
+    padding-top: 10px;
+    p,
+    li {
+      ${serifFont};
+    }
+  }
+  figcaption {
+    font-size: 0.9em;
+    margin-top: 10px;
+    color: #777;
+    text-align: center;
+    line-height: 1.3;
+  }
 `;
 
 const Header = styled.div`
   position: relative;
-  max-height: 600px;
-  overflow: hidden;
+`;
+
+const HeaderImg = styled(Img)`
+  min-height: 50vh;
+  max-height: 700px;
 `;
 
 const HeaderContent = styled.div`
@@ -108,7 +125,7 @@ const Story = ({ data }) => {
         />
       </Head>
       <Header>
-        <Img
+        <HeaderImg
           sizes={data.markdownRemark.frontmatter.image.childImageSharp.sizes}
         />
         <HeaderContent>
@@ -142,7 +159,7 @@ export const pageQuery = graphql`
         tags
         image {
           childImageSharp {
-            sizes(maxWidth: 1000, maxHeight: 1000) {
+            sizes(maxWidth: 1600, maxHeight: 700) {
               ...GatsbyImageSharpSizes_withWebp
             }
           }
