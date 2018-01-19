@@ -94,12 +94,7 @@ const Contact = props => (
       <Link to="/">{props.site}</Link>
     </ContactDatum>
     <ContactDatum>
-      <a href={`mailto:${props.email}+ddesign`}>{props.email}</a>
-    </ContactDatum>
-    <ContactDatum>
-      <a href={`https://twitter.com/${props.twitter}`} target="_blank">
-        @{props.twitter}
-      </a>
+      <a href={`mailto:${props.email}`}>{props.email}</a>
     </ContactDatum>
   </ContactData>
 );
@@ -114,8 +109,8 @@ const StyledYears = styled.div`
   }
 `;
 
-const Years = ({ children, ...props }) => (
-  <StyledYears {...props}>{datesFormatter(children)}</StyledYears>
+const Years = ({ children }) => (
+  <StyledYears>{datesFormatter(children)}</StyledYears>
 );
 
 const SubTitle = styled.h3`
@@ -329,8 +324,6 @@ export const pageQuery = graphql`
           name
           email
           site
-          github
-          twitter
           education {
             school {
               name

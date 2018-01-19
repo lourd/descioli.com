@@ -128,6 +128,18 @@ const MenuLink = props => {
   );
 };
 
+const year = new Date().getFullYear();
+
+const Copyright = styled.div`
+  color: white;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+  font-weight: lighter;
+`;
+
 const Menu = props => (
   <MenuContainer
     isOpen={props.open}
@@ -137,6 +149,7 @@ const Menu = props => (
     {props.links.map((link, i) => (
       <MenuLink key={i} i={i} onClick={props.onClick} {...link} />
     ))}
+    <Copyright>Louis DeScioli &copy; {year}</Copyright>
   </MenuContainer>
 );
 
