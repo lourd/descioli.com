@@ -90,7 +90,6 @@
       site: https://www.vecna.com
       location: Cambridge, MA
       role: Embedded Systems Engineering Intern
-      story: /vecna
       dates:
         start: 2013-06-01
         end: 2013-08-14
@@ -104,7 +103,6 @@
       site: https://ceti.mit.edu/
       location: Dalian, Wuhan, & Wuxi, China
       role: Student Teacher
-      story: /ceti
       dates:
         start: 2012-06-01
         end: 2012-07-30

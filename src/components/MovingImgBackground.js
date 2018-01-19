@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 
 import OnMouseMove from 'lib/components/OnMouseMove';
 import { fade } from 'style/animations';
-import colors from 'style/colors';
-import { stretchFull } from 'style/mixins';
+import { stretchFull } from 'style/snippets';
 import styled from 'styled-components';
 
 const ImgBackground = styled.div.attrs({
@@ -21,7 +20,7 @@ const ImgBackground = styled.div.attrs({
     content: '';
     z-index: 1;
     ${stretchFull};
-    background-color: ${colors.black};
+    background-color: ${props => props.theme.black};
     animation: ${fade({ from: 1, to: 0.25 })} forwards 1.2s;
     animation-delay ${props => props.delay}s;
   }

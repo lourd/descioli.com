@@ -1,6 +1,7 @@
 ---
 creation: 2018-01-17
 lastEdit: 2018-01-17
+date: 2017-10-01
 title: Soundscape Safari
 description: Making immersive music with playful animal characters using mobile AR
 path: /soundscape-safari
@@ -15,3 +16,5 @@ tags:
 ---
 
 ##foo
+
+https://devpost.com/software/augmented-fifth

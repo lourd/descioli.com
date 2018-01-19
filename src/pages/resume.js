@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 import Helmet from 'react-helmet';
-import colors from 'style/colors';
 import sizes from 'style/sizes';
 
 /**
@@ -34,13 +33,13 @@ const Container = styled.div`
   }
   max-width: 800px;
   margin: 0 auto;
-  color: ${colors.black};
+  color: ${props => props.theme.black};
   h2 {
     &:after {
       content: ' ';
       display: block;
       padding-top: 2px;
-      border-bottom: 1px solid ${colors.black};
+      border-bottom: 1px solid ${props => props.theme.black};
     }
   }
   h3 {
@@ -307,11 +306,11 @@ const ResumePage = props => (
       <Name>{props.name}</Name>
       <Contact {...props} />
       <section>
-        <SectionTitle>Professional Work Experiences</SectionTitle>
+        <SectionTitle>Experience</SectionTitle>
         {props.work.map((job, i) => <Job key={i} {...job} />)}
       </section>
       <section>
-        <SectionTitle>Volunteer Work Experiences</SectionTitle>
+        <SectionTitle>Volunteer Experience</SectionTitle>
         {props.volunteer.map((job, i) => <Job key={i} {...job} />)}
       </section>
       <section>

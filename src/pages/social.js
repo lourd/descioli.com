@@ -54,8 +54,8 @@ const Page = styled.main`
 
 const SocialPage = props => (
   <Page>
-    {props.data.allInternetsYaml.edges.map(edge => (
-      <SocialSquare {...edge.node} />
+    {props.data.allInternetsYaml.edges.map((edge, i) => (
+      <SocialSquare key={i} {...edge.node} />
     ))}
   </Page>
 );

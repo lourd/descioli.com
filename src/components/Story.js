@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Head from 'react-helmet';
 import Img from 'gatsby-image';
-import { shadows, textShadow, serifFont } from 'style/snippets';
-import colors from 'style/colors';
+import { shadows } from 'style/snippets';
 import sizes from 'style/sizes';
 
 const maxWidth = '800px';
@@ -19,8 +18,8 @@ const Content = styled.div`
     margin: 1.6em auto;
     max-width: 100%;
   }
-  .gatsby-resp-iframe-wrapper,
   img,
+  .gatsby-resp-iframe-wrapper,
   .gatsby-resp-image-wrapper {
     ${shadows()};
   }
@@ -35,7 +34,7 @@ const Content = styled.div`
     padding-top: 10px;
     p,
     li {
-      ${serifFont};
+      font-family: ${props => props.theme.serif};
     }
   }
   figcaption {
@@ -67,7 +66,7 @@ const HeaderContent = styled.div`
   justify-content: flex-end;
   padding: 20px ${sidePadding};
   color: white;
-  ${textShadow};
+  text-shadow: ${props => props.theme.textShadow};
   max-width: ${maxWidth};
   margin: 0 auto;
   @media (min-width: ${sizes.medium}) {
@@ -84,7 +83,7 @@ const HeaderContent = styled.div`
 `;
 
 const DatesContainer = styled.div`
-  color: ${colors.gray};
+  color: ${props => props.theme.gray};
   font-size: 0.9em;
   margin-bottom: 20px;
 `;

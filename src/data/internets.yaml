@@ -9,7 +9,7 @@
   color: white
   bg: "#639EF0"
 - name: GitHub
-  description: Where I share and contribute my code
+  description: Where I commit my code
   link: https://github.com/lourd
   color: white
   bg: "#26292E"
@@ -24,7 +24,7 @@
   color: white
   bg: "#C0305B"
 - name: Snapchat
-  description: Where I share the funny, eclectic, ephemeral moments of my life
+  description: Where I share the funny, fleeting moments of my life
   link: https://www.snapchat.com/add/louisrd
   color: "#262626"
   bg: "#FEFD35"
@@ -39,18 +39,18 @@
   color: white
   bg: "#4468B0"
 - name: Meetup
-  description: Where I find in-person communities to geek out with
+  description: Where I geek out in-person
   link: https://www.meetup.com/members/117150522
   color: white
   bg: "#D24E63"
 - name: Spotify
-  link: https://open.spotify.com/user/ldesci?si=FYu6nGQyR1qgmtufdxRShQ
+  link: https://open.spotify.com/user/ldesci
   description: Where I listen to music
   color: black
   bg: "#70B757"
 - name: YouTube
   description: Where I upload videos now and then
-  link: https://www.youtube.com/channel/UCbDJpipMgLDWbIQKvz0b_9Q?view_as=subscriber
+  link: https://www.youtube.com/channel/UCbDJpipMgLDWbIQKvz0b_9Q
   color: white
   bg: "#D7311E"
 - name: Medium

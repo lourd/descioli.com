@@ -3,7 +3,7 @@ import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import Head from 'react-helmet';
-import { shadows, textShadow } from 'style/snippets';
+import { shadows } from 'style/snippets';
 import sizes from 'style/sizes';
 
 const meta = {
@@ -47,7 +47,7 @@ const Content = styled.div`
   justify-content: center;
   align-items: center;
   text-align: center;
-  ${textShadow};
+  text-shadow: ${props => props.theme.textShadow};
   padding: 5px 15px;
 `;
 
@@ -55,10 +55,11 @@ const ProjectLink = styled(Link)`
   display: block;
   position: relative;
   max-width: 600px;
-  margin: 50px 15px;
+  margin: 50px 0px;
   width: 100%;
   color: white;
   ${shadows()};
+  overflow: hidden;
   @media (min-width: ${sizes.large}) {
     margin: 20px 15px;
   }
@@ -78,6 +79,15 @@ const ProjectLink = styled(Link)`
   }
   .gatsby-image-outer-wrapper {
     width: 100%;
+  }
+  .gatsby-image-wrapper {
+    transition: transform 250ms;
+  }
+  &:hover,
+  &:focus {
+    .gatsby-image-wrapper {
+      transform: scale(1.05);
+    }
   }
 `;
 
@@ -102,7 +112,12 @@ const Container = styled.div`
   padding: 20px 2.5%;
   h1 {
     font-size: 3.5em;
+    margin: 20px auto;
     margin-top: 20px;
+    max-width: 600px;
+    @media (min-width: ${sizes.xxl}) {
+      max-width: 92%;
+    }
   }
 `;
 
@@ -132,7 +147,7 @@ export const pageQuery = graphql`
   query ProjectsQuery {
     allMarkdownRemark(
       filter: { frontmatter: { tags: { in: ["project"] } } }
-      sort: { order: DESC, fields: [frontmatter___creation] }
+      sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {
         node {

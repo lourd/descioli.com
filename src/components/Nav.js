@@ -8,7 +8,6 @@ import BodyClass from 'lib/components/BodyClass';
 import HamburgerToggle from 'lib/components/HamburgerToggle';
 import { shadows } from 'style/snippets';
 import { fadeIn } from 'style/animations';
-import colors from 'style/colors';
 import OnEscape from 'lib/components/OnEscape';
 
 injectGlobal`

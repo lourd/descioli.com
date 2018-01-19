@@ -6,7 +6,6 @@ import { fadeDownInCss } from 'style/snippets';
 import { fadeIn } from 'style/animations';
 import MovingImgBackground from 'components/MovingImgBackground';
 import Bylines from './Bylines';
-import headerImg from './header.jpg';
 
 const Panel = styled.div`
   height: 100vh;
@@ -73,7 +72,7 @@ const CTA = styled.div`
 
 const TopPanel = props => (
   <Panel>
-    <MovingImgBackground img={headerImg} delay={1} />
+    <MovingImgBackground img={props.img} delay={1} />
     <TextContainer>
       <Name delay={0.2}>Louis R. DeScioli</Name>
       <Bylines bylines={props.bylines} delay={1.8} interval={3} />

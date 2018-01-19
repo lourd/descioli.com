@@ -17,19 +17,6 @@ export const fadeInCss = css`
   animation: ${ifSeen(`${fadeIn} 1.2s forwards`)};
 `;
 
-export const textShadow = css`
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-`;
-
-export const serifFont = css`
-  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
-`;
-
-export const sansSerifFont = css`
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-`;
-
 /**
  * Computes a top-shadow for an elevation effect.
  * @param {Number} elevation - elevation level
@@ -85,3 +72,11 @@ export function shadows({ startingElevation = 1, transition = 200 } = {}) {
     }
   `;
 }
+
+export const stretchFull = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;

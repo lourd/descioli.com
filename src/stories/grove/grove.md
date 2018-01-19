@@ -1,6 +1,7 @@
 ---
 creation: 2018-01-15
 lastEdit: 2018-01-15
+date: 2014-01-01
 title: Grove
 description: Where it all began
 path: /grove
@@ -19,11 +20,16 @@ tags:
 ---
 
 Go check out the [Out Here](/out-here) thing
-![Grove](./grove.gif "isnt she lovely")
+![A beautiful Grove Ecosystem](./grove.gif)
 
-![The triple-tower system in my home](./kickstarter.jpg "crushing it")
+<div>
+![Screenshot I nabbed when we were the Kickstarter project of the day](./kickstarter.jpg)
+<img src="./kickstarter.jpg" alt="Screenshot I nabbed when we were the Kickstarter project of the day"/>
+<img src="./kickstarter.jpg" alt="Screenshot I nabbed when we were the Kickstarter project of the day"/>
+</div>
 
 https://www.youtube.com/watch?v=jRAK3tnJK5I
-Early adopters
 
 They're the best
+
+https://photos.app.goo.gl/AHY50WCPmKtJ1Wul1 submitting the app, round 4

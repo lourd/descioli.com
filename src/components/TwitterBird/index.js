@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import TwitterIcon from 'react-icons/lib/fa/twitter';
 
 import Seen from 'lib/components/Seen';
-import colors from 'style/colors';
 import { fadeUpInCss } from 'style/snippets';
 import birdFlyingKeyframes from './birdFlyingKeyframes';
 
@@ -13,7 +12,7 @@ const MovingBird = styled.a`
   left: 50%;
   top: 20px;
   font-size: 0.7em;
-  color: ${colors.twitter};
+  color: ${props => props.theme.twitter};
   opacity: 1;
   transition: opacity 200ms;
   animation: ${birdFlyingKeyframes} 13s infinite;

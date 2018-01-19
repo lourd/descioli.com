@@ -5,6 +5,7 @@ const Homepage = props => (
   <main>
     <TopPanel
       bylines={props.data.allBylinesYaml.edges.map(edge => edge.node.text)}
+      img={props.data.headerImage.sizes.src}
     />
   </main>
 );
@@ -18,6 +19,11 @@ export const pageQuery = graphql`
         node {
           text
         }
+      }
+    }
+    headerImage: imageSharp(id: { regex: "/header/" }) {
+      sizes(maxWidth: 1600) {
+        src
       }
     }
   }

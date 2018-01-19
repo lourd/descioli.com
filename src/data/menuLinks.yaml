@@ -1,7 +1,7 @@
 - path: /works
   copy: My life's works
   color: red
-- path: /internet
+- path: /social
   copy: My internet hangouts
   color: orange
 - path: /resume
