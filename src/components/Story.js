@@ -5,22 +5,25 @@ import Img from 'gatsby-image';
 import { shadows } from 'style/snippets';
 import sizes from 'style/sizes';
 
-const maxWidth = '800px';
+const maxWidth = 800;
 const sidePadding = '2.5%';
 
 const Page = styled.div``;
 const Content = styled.div`
-  max-width: ${maxWidth};
+  max-width: ${maxWidth}px;
   margin: 0 auto;
   padding: 20px ${sidePadding};
-  img {
+  img,
+  video,
+  figure {
     display: block;
-    margin: 1.6em auto;
+    margin: 0 auto;
     max-width: 100%;
   }
   img,
   .gatsby-resp-iframe-wrapper,
-  .gatsby-resp-image-wrapper {
+  .gatsby-resp-image-wrapper,
+  video {
     ${shadows()};
   }
   .gatsby-resp-iframe-wrapper {
@@ -39,10 +42,11 @@ const Content = styled.div`
   }
   figcaption {
     font-size: 0.9em;
-    margin-top: 10px;
+    margin: 10px auto 15px;
     color: #777;
     text-align: center;
     line-height: 1.3;
+    max-width: ${0.8 * maxWidth}px;
   }
 `;
 
@@ -67,7 +71,7 @@ const HeaderContent = styled.div`
   padding: 20px ${sidePadding};
   color: white;
   text-shadow: ${props => props.theme.textShadow};
-  max-width: ${maxWidth};
+  max-width: ${maxWidth}px;
   margin: 0 auto;
   @media (min-width: ${sizes.medium}) {
     font-size: 2em;
@@ -146,7 +150,7 @@ const Story = ({ data }) => {
 export default Story;
 
 export const pageQuery = graphql`
-  query StoryQueryByPath($path: String!) {
+  query StoryQueryByPath($path: String!, $imageFocus: ImageCropFocus) {
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
@@ -158,7 +162,7 @@ export const pageQuery = graphql`
         tags
         image {
           childImageSharp {
-            sizes(maxWidth: 1600, maxHeight: 700) {
+            sizes(maxWidth: 1600, maxHeight: 700, cropFocus: $imageFocus) {
               ...GatsbyImageSharpSizes_withWebp
             }
           }

@@ -12,6 +12,7 @@ async function createStoryPages({
           node {
             frontmatter {
               path
+              imageFocus
             }
           }
         }
@@ -25,7 +26,10 @@ async function createStoryPages({
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.path,
-      component: storyTemplate
+      component: storyTemplate,
+      context: {
+        imageFocus: node.frontmatter.imageFocus
+      }
     });
   });
 }

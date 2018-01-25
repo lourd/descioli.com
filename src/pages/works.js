@@ -1,14 +1,14 @@
-import React from 'react';
-import Link from 'gatsby-link';
-import Img from 'gatsby-image';
-import styled from 'styled-components';
-import Head from 'react-helmet';
-import { shadows } from 'style/snippets';
-import sizes from 'style/sizes';
+import React from 'react'
+import Link from 'gatsby-link'
+import Img from 'gatsby-image'
+import styled from 'styled-components'
+import Head from 'react-helmet'
+import { shadows } from 'style/snippets'
+import sizes from 'style/sizes'
 
 const meta = {
-  title: `My life's works`,
-  description: 'A listing of my major works in professional life',
+  title: `Life's works`,
+  description: 'The notable jobs and projects of my career',
   keywords: [
     'projects',
     'code',
@@ -18,9 +18,9 @@ const meta = {
     'design',
     'stories',
     'entreprenuership',
-    'innovation'
-  ]
-};
+    'innovation',
+  ],
+}
 
 const StyledImg = styled(Img)`
   display: block;
@@ -33,7 +33,7 @@ const StyledImg = styled(Img)`
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.1);
   }
-`;
+`
 
 const Content = styled.div`
   position: absolute;
@@ -49,7 +49,7 @@ const Content = styled.div`
   text-align: center;
   text-shadow: ${props => props.theme.textShadow};
   padding: 5px 15px;
-`;
+`
 
 const ProjectLink = styled(Link)`
   display: block;
@@ -81,15 +81,17 @@ const ProjectLink = styled(Link)`
     width: 100%;
   }
   .gatsby-image-wrapper {
-    transition: transform 250ms;
+    transition: transform 0.25s, filter 0.25s;
+    filter: blur(5px);
   }
   &:hover,
   &:focus {
     .gatsby-image-wrapper {
-      transform: scale(1.05);
+      transform: scale(1.03);
+      filter: blur(0px);
     }
   }
-`;
+`
 
 const Project = props => (
   <ProjectLink to={props.path}>
@@ -99,14 +101,14 @@ const Project = props => (
     </Content>
     <StyledImg sizes={props.image} />
   </ProjectLink>
-);
+)
 
 const Projects = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
-`;
+`
 
 const Container = styled.div`
   padding: 20px 2.5%;
@@ -119,7 +121,7 @@ const Container = styled.div`
       max-width: 92%;
     }
   }
-`;
+`
 
 const Works = props => (
   <Container>
@@ -141,7 +143,7 @@ const Works = props => (
       ))}
     </Projects>
   </Container>
-);
+)
 
 export const pageQuery = graphql`
   query ProjectsQuery {
@@ -157,7 +159,8 @@ export const pageQuery = graphql`
             description
             image {
               childImageSharp {
-                sizes(maxWidth: 600, maxHeight: 600) {
+                # 3% more than 600, the maxWidth set in style
+                sizes(maxWidth: 620, maxHeight: 620) {
                   ...GatsbyImageSharpSizes_withWebp
                 }
               }
@@ -167,6 +170,6 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
 
-export default Works;
+export default Works
