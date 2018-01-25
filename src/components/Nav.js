@@ -1,20 +1,20 @@
-import React from 'react';
-import styled, { injectGlobal } from 'styled-components';
-import Link from 'gatsby-link';
-import Ripple from 'react-ink';
-import color from 'color';
-import sizes from 'style/sizes';
-import BodyClass from 'lib/components/BodyClass';
-import HamburgerToggle from 'lib/components/HamburgerToggle';
-import { shadows } from 'style/snippets';
-import { fadeIn } from 'style/animations';
-import OnEscape from 'lib/components/OnEscape';
+import React from 'react'
+import styled, { injectGlobal } from 'styled-components'
+import Link from 'gatsby-link'
+import Ripple from 'react-ink'
+import color from 'color'
+import sizes from 'style/sizes'
+import BodyClass from 'lib/components/BodyClass'
+import HamburgerToggle from 'lib/components/HamburgerToggle'
+import { shadows } from 'style/snippets'
+import { fadeIn } from 'style/animations'
+import OnEscape from 'lib/components/OnEscape'
 
 injectGlobal`
   .noScroll {
     overflow: hidden;
   }
-`;
+`
 
 const Button = styled.button`
   position: fixed;
@@ -36,16 +36,25 @@ const Button = styled.button`
   opacity: 0;
   animation: ${fadeIn} 1.2s forwards;
   animation-delay: 3s;
-  background-color: ${props =>
-    props.isOpen ? 'transparent' : 'rgba(0,0,0,0.5)'};
+  background-color: rgba(0, 0, 0, 0.5);
   ${props => shadows({ startingElevation: props.isOpen ? 0 : 2 })};
   transition: box-shadow 250ms, transform 250ms, background-color 250ms;
+  &:focus {
+    background-color: ${props =>
+      props.isOpen ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.8)'};
+  }
   @media (min-width: ${sizes.medium}) {
     bottom: 24px;
     right: 24px;
     transform: scale(1.3);
   }
   @media (min-width: ${sizes.large}) {
+    background-color: ${props =>
+      props.isOpen ? 'transparent' : 'rgba(0,0,0,0.5)'};
+    &:focus {
+      background-color: ${props =>
+        props.isOpen ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.8)'};
+    }
     top: 52px;
     right: 5%;
     bottom: inherit;
@@ -55,14 +64,14 @@ const Button = styled.button`
   @media print {
     display: none;
   }
-`;
+`
 
 const Toggle = props => (
   <Button onClick={props.onClick} isOpen={props.isOpen}>
     <HamburgerToggle isOpen={props.isOpen} />
     <Ripple />
   </Button>
-);
+)
 
 const MenuContainer = styled.nav`
   position: fixed;
@@ -74,8 +83,7 @@ const MenuContainer = styled.nav`
   opacity: ${props => (props.isOpen ? 1 : 0)};
   transition: opacity 300ms;
   pointer-events: ${props => (props.isOpen ? 'inherit' : 'none')};
-  background-color: ${props => props.color};
-`;
+`
 
 const StyledMenuLink = styled.a`
   display: block;
@@ -89,7 +97,10 @@ const StyledMenuLink = styled.a`
   padding: 15px 5%;
   transition: background-color 250ms;
   &:nth-child(${props => props.i + 1}) {
-    background-color: ${props => props.bgColor};
+    background-color: ${props =>
+      color(props.bgColor)
+        .alpha(0.7)
+        .string()};
     &:hover,
     &:focus {
       background-color: ${props =>
@@ -104,17 +115,22 @@ const StyledMenuLink = styled.a`
           .string()};
     }
   }
-`;
+`
 
-const StyledIntMenuLink = StyledMenuLink.withComponent(Link);
+const StyledIntMenuLink = StyledMenuLink.withComponent(Link)
 
 const MenuLink = props => {
   if (props.url) {
     return (
-      <StyledMenuLink i={props.i} bgColor={props.color} href={props.url}>
+      <StyledMenuLink
+        i={props.i}
+        bgColor={props.color}
+        href={props.url}
+        tabIndex={props.tabIndex}
+      >
         {props.copy}
       </StyledMenuLink>
-    );
+    )
   }
   return (
     <StyledIntMenuLink
@@ -122,56 +138,58 @@ const MenuLink = props => {
       i={props.i}
       bgColor={props.color}
       onClick={props.onClick}
+      tabIndex={props.tabIndex}
     >
       {props.copy}
     </StyledIntMenuLink>
-  );
-};
+  )
+}
 
-const year = new Date().getFullYear();
+class Menu extends React.Component {
+  handleMenuClick = event => {
+    if (event.target === this.container) {
+      this.props.onClick()
+    }
+  }
 
-const Copyright = styled.div`
-  color: white;
-  text-align: center;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 20px;
-  font-weight: lighter;
-`;
-
-const Menu = props => (
-  <MenuContainer
-    isOpen={props.open}
-    aria-hidden={!props.open}
-    color={props.links[props.links.length - 1].color}
-  >
-    {props.links.map((link, i) => (
-      <MenuLink key={i} i={i} onClick={props.onClick} {...link} />
-    ))}
-    <Copyright>Louis DeScioli &copy; {year}</Copyright>
-  </MenuContainer>
-);
-
-export default class Nav extends React.Component {
-  state = {
-    open: false
-  };
-
-  toggle = () => this.setState(state => ({ open: !state.open }));
+  containerRef = el => (this.container = el)
 
   render() {
     return (
+      <MenuContainer
+        innerRef={this.containerRef}
+        isOpen={this.props.open}
+        aria-hidden={!this.props.open}
+        color={this.props.links[this.props.links.length - 1].color}
+        onClick={this.handleMenuClick}
+      >
+        {this.props.links.map((link, i) => (
+          <MenuLink
+            key={i}
+            i={i}
+            onClick={this.props.onClick}
+            tabIndex={this.props.open ? null : -1}
+            {...link}
+          />
+        ))}
+      </MenuContainer>
+    )
+  }
+}
+
+export default class Nav extends React.Component {
+  render() {
+    return (
       <span>
-        <Toggle onClick={this.toggle} isOpen={this.state.open} />
+        <Toggle onClick={this.props.toggle} isOpen={this.props.open} />
         <Menu
-          open={this.state.open}
+          open={this.props.open}
           links={this.props.links}
-          onClick={this.toggle}
+          onClick={this.props.toggle}
         />
-        {this.state.open && <BodyClass className="noScroll" />}
-        {this.state.open && <OnEscape handler={this.toggle} />}
+        {this.props.open && <BodyClass className="noScroll" />}
+        {this.props.open && <OnEscape handler={this.props.toggle} />}
       </span>
-    );
+    )
   }
 }
