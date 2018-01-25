@@ -1,16 +1,18 @@
 module.exports = {
   siteMetadata: {
-    title: `Louis R. DeScioli`,
+    title: 'Louis R. DeScioli',
     description: 'The personal site and portfolio of one Louis R DeScioli',
-    siteUrl: `descioli.design`,
     keywords: [
       'software engineer',
       'portfolio',
       'design',
+      'descioli',
       'personal site',
       'software',
       'augmented reality',
-      'indie game dev'
+      'indie game dev',
+      'MIT',
+      'resume'
     ]
   },
   plugins: [
@@ -18,28 +20,21 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-react-next`,
-    `gatsby-transformer-yaml`,
     `gatsby-plugin-catch-links`,
-    `gatsby-remark-external-links`,
+    `gatsby-transformer-yaml`,
     'gatsby-transformer-sharp',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: 'data',
-        path: `${__dirname}/src/data/`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: 'stories',
-        path: `${__dirname}/src/stories/`
+        path: `${__dirname}/data/`
       }
     },
     {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          `gatsby-remark-external-links`,
           {
             resolve: 'my-gatsby-remark-images',
             options: { maxWidth: 800, addCaptions: true }
@@ -47,7 +42,8 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'my-gatsby-remark-youtube',
           // This has to come after the youtube plugin
-          'gatsby-remark-responsive-iframe'
+          'gatsby-remark-responsive-iframe',
+          'gatsby-remark-autolink-headers'
         ]
       }
     },
