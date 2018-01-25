@@ -17,7 +17,7 @@ export default class Seen extends Component {
   innerHeight = -1;
 
   componentDidMount() {
-    this.raf = window.requestAnimationFrame(this.update);
+    this.frame = window.requestAnimationFrame(this.update);
   }
 
   update = timestamp => {
@@ -29,11 +29,11 @@ export default class Seen extends Component {
       });
     }
     if (seen) this.setState({ seen });
-    else this.raf = window.requestAnimationFrame(this.update);
+    else this.frame = window.requestAnimationFrame(this.update);
   };
 
   componentWillUnmount() {
-    cancelAnimationFrame(this.raf);
+    cancelAnimationFrame(this.frame);
   }
 
   render() {
