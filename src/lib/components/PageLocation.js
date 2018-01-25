@@ -9,7 +9,7 @@ class PageLocation extends Component {
   };
 
   componentDidMount() {
-    this.loop = requestAnimationFrame(this.update);
+    this.frame = requestAnimationFrame(this.update);
   }
 
   update = timestamp => {
@@ -21,11 +21,11 @@ class PageLocation extends Component {
       const position = clamp(middle / window.innerHeight, 0, 1);
       this.setState({ position });
     }
-    this.loop = requestAnimationFrame(this.update);
+    this.frame = requestAnimationFrame(this.update);
   };
 
   componentWillUnmount() {
-    cancelAnimationFrame(this.loop);
+    cancelAnimationFrame(this.frame);
   }
 
   render() {
