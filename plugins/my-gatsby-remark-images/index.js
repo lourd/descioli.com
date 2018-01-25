@@ -45,9 +45,18 @@ async function generateImagesAndHtml({
     return;
   }
 
+  // assuming if this property is truthy, it's a number
+  let args = options;
+  if (node.maxWidth) {
+    args = {
+      ...options,
+      maxWidth: node.maxWidth
+    };
+  }
+
   const responsiveSizesResult = await sizes({
     file: imageNode,
-    args: options
+    args
   });
 
   // Calculate the paddingBottom %
@@ -82,6 +91,7 @@ async function generateImagesAndHtml({
     max-width: ${presentationWidth}px;
     margin-left: auto;
     margin-right: auto;
+    ${node.style || ''}
   "
 >
   <span
@@ -98,14 +108,16 @@ async function generateImagesAndHtml({
   >
     <img
       class="${options.imgClass}"
-      style="width: 100%;
-      height: 100%;
-      margin: 0;
-      vertical-align: middle;
-      position: absolute;
-      top: 0;
-      left: 0;
-      box-shadow: inset 0px 0px 0px 400px ${options.backgroundColor};"
+      style="
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        vertical-align: middle;
+        position: absolute;
+        top: 0;
+        left: 0;
+        box-shadow: inset 0px 0px 0px 400px ${options.backgroundColor};
+      "
       alt="${alt}"
       title="${title}"
       src="${fallbackSrc}"
@@ -193,7 +205,8 @@ async function processHtmlNode({
     newNode.url = img.attr(`src`);
     newNode.title = img.attr(`title`);
     newNode.alt = img.attr(`alt`);
-
+    // will result in NaN if attribute isn't set
+    newNode.maxWidth = +img.data(`max-width`);
     if (!newNode.url) {
       return;
     }
