@@ -7,7 +7,13 @@ const YT_SHORT = 'youtu.be';
 module.exports = ({ markdownAST }, options) => {
   visit(markdownAST, 'link', node => {
     const url = parse(node.url, true);
-    if (![YT_LONG, YT_SHORT].includes(url.host)) return;
+    if (![YT_LONG, YT_SHORT].includes(url.host)) {
+      return;
+    }
+    // Only turn naked links into embeds
+    if (node.url !== node.children[0].value) {
+      return;
+    }
     const videoId = url.host === YT_LONG ? url.query.v : url.pathname.slice(1);
     const opts = { width: 400, height: 225, ...options };
     node.type = `html`;
@@ -16,6 +22,4 @@ module.exports = ({ markdownAST }, options) => {
       width="${opts.width}"
       height="${opts.height}"></iframe>`;
   });
-
-  return markdownAST;
 };
