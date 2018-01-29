@@ -2,7 +2,6 @@
   "name": "descioli-design",
   "version": "1.0.0",
   "private": true,
-  "license": "UNLICENSED",
   "scripts": {
     "build": "gatsby build",
     "start": "gatsby develop"
