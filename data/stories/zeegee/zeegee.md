@@ -33,15 +33,15 @@ Aside from the frisbee, all of the items in the environment were created using [
 
 The whole weekend was a crash course in the nuance and difficulty of VR interaction design. Every interaction needed thorough consideration and testing of the physics behind it. Some of the questions we found ourselves wrestling with:
 
-* How _do_ the physics of a frisbee work?
 * What should it feel like to float through empty space in low gravity?
 * How should it feel to be able to reach out, grab the air, and throw yourself around?
+* How _do_ the physics of a frisbee work?
 
 The initial version of the frisbee and locomotion physics were surprisingly quick to implement. The majority of the work was in tweaking and testing, (and reading research on frisbee physics). We made ourselves nauseous more than a couple times trying to figure out the best parameters for locomotion; spinning around in six degrees of freedom in virtual outer space will do that to you. 🤢 It all paid off though — none of the people who tried out our experience reported feeling sick! That may seem like a low bar, but for an experience with this much motion, made and tested in less than 2 days, it was a proud achievement.
 
 One of my key learnings from that weekend was that the goal when designing for virtual or augmented reality should not be to mimic reality exactly, but rather to create what _feels_ best. More often than not, an experience with 100% accurate physics simulation is difficult or uncomfortable. For instance, learning to navigate a low-gravity environment takes months of training, and even then it is still an arduous task. Making it drastically easier by adding the ability to stop dead in your tracks by squeezing the triggers was a good addition. Restricting the degrees of freedom of your motion motion so you can't accidentally start spinning yourself was necessary. I went in with the notion that realism is the ultimate goal, and came out understanding that it certainly is not.
 
-![Alan, Max, and Daniel hacking away. Daniel was our most capable Unity developer, and Max is a skilled artist and modeler. Alan is a VR enthusiast and helped do lots of the testing and providing large amounts of energy and passion ⚡️](./working.jpg)
+![Alan, Max, and Daniel hacking away. Daniel was our most capable Unity developer, and Max is a skilled artist and modeler. Alan is a VR enthusiast and entrepreneur and helped do lots of the testing, in addition to his large amounts of energy and passion ⚡️](./working.jpg)
 
 # Best Interactive Hack
 
