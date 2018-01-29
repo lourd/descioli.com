@@ -2,18 +2,19 @@ import React from 'react'
 import Link from 'gatsby-link'
 import Img from 'gatsby-image'
 import styled from 'styled-components'
-import Head from 'react-helmet'
+import PageInfo from 'lib/components/PageInfo'
 import { shadows } from 'style/snippets'
 import sizes from 'style/sizes'
 
 const meta = {
-  title: `Life's works`,
-  description: 'The notable jobs and projects of my career',
+  title: `Portfolio`,
+  description: 'Notable jobs & projects of my career',
   keywords: [
     'projects',
     'code',
     'software engineering',
     'software design',
+    'making',
     'portfolio',
     'design',
     'stories',
@@ -125,12 +126,8 @@ const Container = styled.div`
 
 const Works = props => (
   <Container>
-    <Head>
-      <title>{meta.title}</title>
-      <meta name="description" content={meta.description} />
-      <meta name="keywords" content={meta.keywords.join(',')} />
-    </Head>
-    <h1>{meta.title}</h1>
+    <PageInfo {...meta} />
+    <h1>My life's works</h1>
     <Projects>
       {props.data.allMarkdownRemark.edges.map(({ node }, i) => (
         <Project
