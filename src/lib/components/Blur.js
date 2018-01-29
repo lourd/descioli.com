@@ -9,7 +9,7 @@ const Blur = styled.div`
 `
 
 Blur.defaultProps = {
-  blur: 5,
+  blur: 10,
   transitionIn: 0.5,
   transitionOut: 0.25,
 }
