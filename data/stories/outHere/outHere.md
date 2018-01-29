@@ -72,4 +72,4 @@ The most important change that came from beta testing was redesigning the game f
 
 # Release
 
-As of this writing the game has been out a little over a month. During that time I've had about 19,000 people download Out Here Archery from over 20 countries, shooting over 1.1 million arrows and popping over 500,000 balloons. The game has been most popular in England, Russia, and Thailand (the United States isn't even in the top 10!). **100%** of sessions are crash free (🤞). I have not pursued any paid marketing, yet.
+As of this writing the game has been out a little over a month. During that time I've had about 19,000 people download Out Here Archery from over 20 countries, shooting over 1.1 million arrows and popping over 500,000 balloons. The game has been most popular in England, Russia, and Thailand (the United States isn't even in the top 10!). I have not pursued any paid marketing, yet.
