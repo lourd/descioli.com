@@ -133,13 +133,15 @@ const Title = SubTitle.extend`
 const SchoolSection = styled.div`
   padding: 10px;
   @media (min-width: ${sizes.medium}) {
-    padding: 10px 8px;
+    padding: 7px 8px;
   }
   ${TopRow} {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
   p {
-    padding-left: 8px;
+    @media (min-width: ${sizes.small}) {
+      padding-left: 8px;
+    }
     margin-top: -3px;
     margin-bottom: 0.5em;
     font-size: 0.8em;
