@@ -1,8 +1,8 @@
-- path: /works
+- path: /portfolio
   copy: My life's works
   color: red
 - path: /social
-  copy: My internet hangouts
+  copy: Where you can find me
   color: orange
 - path: /resume
   copy: My life in one page
