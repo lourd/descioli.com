@@ -4,11 +4,12 @@ import styled from 'styled-components'
 const Blur = styled.div`
   transition: filter
     ${props => (props.blurred ? props.transitionIn : props.transitionOut)}s;
-  filter: blur(${props => (props.blurred ? props.blur : 0)}px);
+  filter: ${props => (props.blurred ? `blur(${props.blur}px)` : null)};
+  will-change: filter;
 `
 
 Blur.defaultProps = {
-  blur: 10,
+  blur: 5,
   transitionIn: 0.5,
   transitionOut: 0.25,
 }
