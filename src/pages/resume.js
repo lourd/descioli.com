@@ -1,30 +1,35 @@
-import React from 'react';
-import styled from 'styled-components';
-import Link from 'gatsby-link';
-import Helmet from 'react-helmet';
-import sizes from 'style/sizes';
+import React from 'react'
+import styled from 'styled-components'
+import Link from 'gatsby-link'
+import PageInfo from 'lib/components/PageInfo'
+import sizes from 'style/sizes'
+
+const meta = {
+  title: 'Resume',
+  description: 'My life in one page',
+}
 
 /**
  * Handles the formatting for the different expected types of date range data
  * @param {Object|String} dates
  */
 const datesFormatter = dates => {
-  if (!dates) return null;
-  if (typeof dates === 'string') return dates;
-  const { start, end, recurring } = dates;
+  if (!dates) return null
+  if (typeof dates === 'string') return dates
+  const { start, end, recurring } = dates
   if (recurring) {
-    return recurring.map(obj => obj.date).join(', ');
+    return recurring.map(obj => obj.date).join(', ')
   }
-  if (!end) return `${start} - Present`;
-  return `${start} - ${end}`;
-};
+  if (!end) return `${start} - Present`
+  return `${start} - ${end}`
+}
 
-const Row = styled.div`
+const TopRow = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: baseline;
-`;
+`
 
 const Container = styled.div`
   padding: 30px 2.5%;
@@ -56,12 +61,13 @@ const Container = styled.div`
       color: inherit;
     }
   }
-`;
+`
 
 const Name = styled.h1`
   text-align: center;
   margin-bottom: 0.15em;
-`;
+  font-size: 2em;
+`
 
 const ContactData = styled.section`
   display: flex;
@@ -72,7 +78,7 @@ const ContactData = styled.section`
     margin: 0px;
   }
   justify-content: center;
-`;
+`
 
 const ContactDatum = styled.h5`
   padding: 0px 5px;
@@ -81,12 +87,12 @@ const ContactDatum = styled.h5`
   @media (min-width: ${sizes.small}) {
     margin-bottom: 0px;
   }
-`;
+`
 
 const SectionTitle = styled.h2`
   margin-bottom: 0.3em;
   margin-top: 0.6em;
-`;
+`
 
 const Contact = props => (
   <ContactData>
@@ -97,7 +103,7 @@ const Contact = props => (
       <a href={`mailto:${props.email}`}>{props.email}</a>
     </ContactDatum>
   </ContactData>
-);
+)
 
 const StyledYears = styled.div`
   color: #999;
@@ -107,42 +113,39 @@ const StyledYears = styled.div`
     flex: 1;
     text-align: right;
   }
-`;
+`
 
 const Years = ({ children }) => (
   <StyledYears>{datesFormatter(children)}</StyledYears>
-);
+)
 
-const SubTitle = styled.h3`
+const SubTitle = styled.h4`
   font-size: 0.9em;
   margin-bottom: 0px;
-`;
+`
+
+const Title = SubTitle.extend`
+  @media (max-width: ${sizes.smallMax}) {
+    font-size: 1.1em;
+  }
+`
 
 const SchoolSection = styled.div`
-  @media (min-width: ${sizes.small}) {
-    padding-left: 13px;
+  padding: 10px;
+  @media (min-width: ${sizes.medium}) {
+    padding: 10px 8px;
   }
-  margin-top: 11px;
-  ${Row} {
-    margin-bottom: 10px;
-    @media (min-width: ${sizes.medium}) {
-      margin-bottom: 5px;
-    }
+  ${TopRow} {
+    margin-bottom: 8px;
   }
   p {
-    padding-left: 15px;
-    margin-top: -5px;
+    padding-left: 8px;
+    margin-top: -3px;
     margin-bottom: 0.5em;
     font-size: 0.8em;
     line-height: 1.2;
-    &:not(:last-child) {
-      margin-bottom: 0.5em;
-    }
-  }
-  :last-child {
-    margin-bottom: 10px;
-    @media (min-width: ${sizes.small}) {
-      margin-bottom: 5px;
+    &:last-child {
+      margin-bottom: 0px;
     }
   }
   a {
@@ -150,18 +153,18 @@ const SchoolSection = styled.div`
       text-decoration: underline;
     }
   }
-`;
+`
 
 const School = props => (
   <SchoolSection>
-    <Row>
-      <SubTitle>
+    <TopRow>
+      <Title>
         <a href={props.school.link} target="_blank">
           {props.school.name}
         </a>
-      </SubTitle>
+      </Title>
       <Years>{props.years}</Years>
-    </Row>
+    </TopRow>
     {props.degree && (
       <p>
         {props.degree} {'in '}
@@ -195,29 +198,22 @@ const School = props => (
           </a>
         ) : (
           activity.name
-        );
-        return <p key={activity.name}>{content}</p>;
+        )
+        return <p key={activity.name}>{content}</p>
       })}
   </SchoolSection>
-);
+)
 
 const JobContainer = styled.div`
   align-items: baseline;
-  padding: 10px 13px;
+  padding: 10px;
   @media (min-width: ${sizes.medium}) {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     padding: 4px 8px;
-    margin: 0px;
   }
-  :last-child {
-    padding-bottom: 10px;
-    @media (min-width: ${sizes.small}) {
-      padding-bottom: 5px;
-    }
-  }
-  ${SubTitle} {
+  ${Title}, ${SubTitle} {
     display: inline-block;
   }
   a {
@@ -225,7 +221,7 @@ const JobContainer = styled.div`
       text-decoration: underline;
     }
   }
-`;
+`
 
 const StoryJobContainer = JobContainer.withComponent(Link).extend`
   display: block;
@@ -234,27 +230,27 @@ const StoryJobContainer = JobContainer.withComponent(Link).extend`
   &:hover, &:focus {
     background-color: #eee;
   }
-`;
+`
 
 const Word = styled.span`
   font-size: 0.8em;
   @media (min-width: ${sizes.medium}) {
     padding: 0px 5px;
   }
-`;
+`
 
 const For = Word.extend`
   display: none;
   @media (min-width: ${sizes.medium}) {
     display: inline-block;
   }
-`;
+`
 
 const MobileBr = styled.br`
   @media (min-width: ${sizes.medium}) {
     display: none;
   }
-`;
+`
 
 const Comma = styled.span`
   font-weight: 100;
@@ -265,22 +261,22 @@ const Comma = styled.span`
   @media (min-width: ${sizes.medium}) {
     display: inherit;
   }
-`;
+`
 
 const Job = props => {
-  let company = props.company;
+  let company = props.company
   if (!props.story && props.site) {
     company = (
       <a href={props.site} target="_blank">
         {company}
       </a>
-    );
+    )
   }
-  const Container = props.story ? StoryJobContainer : JobContainer;
-  const containerProps = props.story ? { to: props.story } : {};
+  const Container = props.story ? StoryJobContainer : JobContainer
+  const containerProps = props.story ? { to: props.story } : {}
   return (
     <Container {...containerProps}>
-      <SubTitle>{props.role}</SubTitle>
+      <Title>{props.role}</Title>
       <For>{'for'}</For>
       <MobileBr />
       <SubTitle>{company}</SubTitle>
@@ -289,14 +285,12 @@ const Job = props => {
       <Word>{props.location}</Word>
       <Years>{props.dates}</Years>
     </Container>
-  );
-};
+  )
+}
 
 const ResumePage = props => (
   <main>
-    <Helmet>
-      <title>Resume</title>
-    </Helmet>
+    <PageInfo {...meta} />
     <Container>
       <Name>{props.name}</Name>
       <Contact {...props} />
@@ -314,7 +308,7 @@ const ResumePage = props => (
       </section>
     </Container>
   </main>
-);
+)
 
 export const pageQuery = graphql`
   query ResumeQuery {
@@ -376,10 +370,10 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
 
 const Resume = props => (
   <ResumePage {...props.data.allResumeYaml.edges[0].node} />
-);
+)
 
-export default Resume;
+export default Resume
