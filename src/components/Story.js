@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from 'styled-components';
-import Head from 'react-helmet';
-import Img from 'gatsby-image';
-import { shadows } from 'style/snippets';
-import sizes from 'style/sizes';
+import React from 'react'
+import styled from 'styled-components'
+import Head from 'react-helmet'
+import Img from 'gatsby-image'
+import { shadows } from 'style/snippets'
+import sizes from 'style/sizes'
 
-const maxWidth = 800;
-const sidePadding = '2.5%';
+const maxWidth = 800
+const sidePadding = '2.5%'
 
-const Page = styled.div``;
+const Page = styled.div``
 const Content = styled.div`
   max-width: ${maxWidth}px;
   margin: 0 auto;
@@ -46,18 +46,18 @@ const Content = styled.div`
     color: #777;
     text-align: center;
     line-height: 1.3;
-    max-width: ${0.8 * maxWidth}px;
+    max-width: ${0.9 * maxWidth}px;
   }
-`;
+`
 
 const Header = styled.div`
   position: relative;
-`;
+`
 
 const HeaderImg = styled(Img)`
   min-height: 50vh;
   max-height: 700px;
-`;
+`
 
 const HeaderContent = styled.div`
   position: absolute;
@@ -84,13 +84,13 @@ const HeaderContent = styled.div`
     margin-bottom: 0;
     font-size: 3em;
   }
-`;
+`
 
 const DatesContainer = styled.div`
   color: ${props => props.theme.gray};
   font-size: 0.9em;
   margin-bottom: 20px;
-`;
+`
 
 const Description = styled.h2`
   font-weight: 300;
@@ -98,20 +98,20 @@ const Description = styled.h2`
   @media (min-width: ${sizes.medium}) {
     font-size: 2em;
   }
-`;
+`
 
 const Dates = props => {
-  const written = <div>Published {props.creation}</div>;
+  const written = <div>Published {props.creation}</div>
   const edited = props.creation !== props.lastEdit && (
     <div>Last edited {props.lastEdit}</div>
-  );
+  )
   return (
     <DatesContainer>
       {written}
       {edited}
     </DatesContainer>
-  );
-};
+  )
+}
 
 const Story = ({ data }) => {
   return (
@@ -144,10 +144,10 @@ const Story = ({ data }) => {
         <main dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </Content>
     </Page>
-  );
-};
+  )
+}
 
-export default Story;
+export default Story
 
 export const pageQuery = graphql`
   query StoryQueryByPath($path: String!, $imageFocus: ImageCropFocus) {
@@ -170,4 +170,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
