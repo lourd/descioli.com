@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { injectGlobal } from 'styled-components'
 import Link from 'gatsby-link'
 import PageInfo from 'lib/components/PageInfo'
 import sizes from 'style/sizes'
@@ -31,24 +31,23 @@ const TopRow = styled.div`
   align-items: baseline;
 `
 
+const SectionTitle = styled.h2`
+  margin-bottom: 0.3em;
+  margin-top: 0.6em;
+`
+
 const Container = styled.div`
   padding: 30px 2.5%;
-  @media print {
-    padding: 0px 2.5%;
-  }
   max-width: 800px;
   margin: 0 auto;
   color: ${props => props.theme.black};
-  h2 {
+  ${SectionTitle} {
     &:after {
       content: ' ';
       display: block;
       padding-top: 2px;
       border-bottom: 1px solid ${props => props.theme.black};
     }
-  }
-  h3 {
-    margin-bottom: 0.25em;
   }
   a {
     text-decoration: none;
@@ -87,11 +86,6 @@ const ContactDatum = styled.h5`
   @media (min-width: ${sizes.small}) {
     margin-bottom: 0px;
   }
-`
-
-const SectionTitle = styled.h2`
-  margin-bottom: 0.3em;
-  margin-top: 0.6em;
 `
 
 const Contact = props => (
@@ -289,6 +283,17 @@ const Job = props => {
     </Container>
   )
 }
+
+injectGlobal`
+@page {
+  margin: 5mm 10mm 5mm 10mm;
+}
+@media print {
+  section {
+    page-break-inside: avoid;
+  }
+}
+`
 
 const ResumePage = props => (
   <main>
