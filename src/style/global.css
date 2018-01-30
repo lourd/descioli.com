@@ -531,3 +531,6 @@ pre tt:after {
     font-size: 100%;
   }
 }
+.noScroll {
+  overflow: hidden;
+}

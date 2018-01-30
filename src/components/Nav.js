@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import Link from 'gatsby-link'
 import Ripple from 'react-ink'
 import color from 'color'
@@ -9,12 +9,6 @@ import HamburgerToggle from 'lib/components/HamburgerToggle'
 import { shadows } from 'style/snippets'
 import { fadeIn } from 'style/animations'
 import OnEscape from 'lib/components/OnEscape'
-
-injectGlobal`
-  .noScroll {
-    overflow: hidden;
-  }
-`
 
 const Button = styled.button`
   position: fixed;

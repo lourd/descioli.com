@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import sizes from 'style/sizes';
-import { fadeDownInCss } from 'style/snippets';
-import { fadeIn } from 'style/animations';
-import MovingImgBackground from 'components/MovingImgBackground';
-import Bylines from './Bylines';
+import sizes from 'style/sizes'
+import { fadeDownInCss } from 'style/snippets'
+import { fadeIn } from 'style/animations'
+import MovingImgBackground from 'components/MovingImgBackground'
+import Bylines from './Bylines'
 
 const Panel = styled.div`
   height: 100vh;
@@ -18,7 +18,7 @@ const Panel = styled.div`
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
   color: white;
   position: relative;
-`;
+`
 
 const TextContainer = styled.div`
   text-align: left;
@@ -26,9 +26,9 @@ const TextContainer = styled.div`
   padding: 10% 5% 0px 5%;
   @media (min-width: ${sizes.medium}) {
     font-size: 1em;
-    padding: 50px 0px 20px 50px;
+    padding: 50px 0px 20px 5%;
   }
-`;
+`
 
 const Name = styled.h1`
   ${fadeDownInCss};
@@ -38,7 +38,7 @@ const Name = styled.h1`
   animation-delay: 0s;
   margin-bottom: 0;
   animation-delay: ${props => props.delay}s;
-`;
+`
 
 const CTA = styled.div`
   position: absolute;
@@ -68,7 +68,7 @@ const CTA = styled.div`
       text-decoration: underline;
     }
   }
-`;
+`
 
 const TopPanel = props => (
   <Panel>
@@ -89,6 +89,6 @@ const TopPanel = props => (
       </CTA>
     </TextContainer>
   </Panel>
-);
+)
 
-export default TopPanel;
+export default TopPanel
