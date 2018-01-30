@@ -103,6 +103,7 @@ const StyledYears = styled.div`
   color: #999;
   font-size: 0.8em;
   width: 100%;
+  white-space: nowrap;
   @media (min-width: ${sizes.medium}) {
     flex: 1;
     text-align: right;
