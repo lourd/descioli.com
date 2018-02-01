@@ -6,8 +6,8 @@ import color from 'color'
 import PageInfo from 'lib/components/PageInfo'
 
 const meta = {
-  title: 'Social media',
-  description: '',
+  title: 'Social networks',
+  description: 'Where you can find me',
   keywords: [
     'social media',
     'hangouts',
@@ -16,6 +16,9 @@ const meta = {
     'linkedin',
     'facebook',
     'contact',
+    'snapchat',
+    'github',
+    'instagram',
   ],
 }
 
