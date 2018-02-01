@@ -3,7 +3,7 @@ creation: 2018-01-17
 lastEdit: 2018-01-17
 date: 2016-10-01
 title: ZeeGee
-description: My first taste of hacking in 3D & virtual reality
+description: My first taste of hacking in virtual reality
 path: /zeegee
 image: ./gameplay.png
 tags:
