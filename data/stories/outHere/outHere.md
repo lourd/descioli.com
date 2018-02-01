@@ -49,9 +49,9 @@ I [published all of the 3D models](https://poly.google.com/user/6ygncoac9fM) I c
 
 Developing the game was much slower than I would have liked. The newness of the tools and technology meant that bugs were common and thorough documentation and best practices were not. The most painful part of the process was the time between iterations. Building the project from Unity to Xcode onto a device took between four and seven minutes with my laptop. Every time I wanted to tweak something, or forgot to save a file, or forgot to uncomment a line of code, meant five minutes of waiting with a CPU pegged at 100%. In the final month of the project where I was focused solely on finer details and edge cases, 15-20% of my time working on the game was spent waiting for it to build. Coming from a web development background where iteration speed is practically instant, this was agonizing.
 
-Unity did make a tool called the ["Unity ARKit Remote"](https://blogs.unity3d.com/2017/08/03/introducing-the-unity-arkit-remote/) for updating code on your device remotely from within Unity. Unfortunately it was not usable for me. It did not support touch interactions, had a slow framerate, and displayed the virtual game objects in the editor instead of on the device, which meant that I couldn't see how the game really looked and felt on the device.
+Unity did make a tool called the ["Unity ARKit Remote"](https://blogs.unity3d.com/2017/08/03/introducing-the-unity-arkit-remote/) for streaming the data from an AR session on a device into the Unity editor on a separate machine. Unfortunately it was not usable for me. It did not support touch interactions and had too low of a frame rate. Displaying the virtual game objects in the editor also meant that I couldn't see how the experience really looked and felt on the device.
 
-The core mechanics of the game were complete by mid-September, as you can see from the two prototype gameplay videos below. Honing in on the look and feel of the physics, models, sound, calibration, and UI, getting everything to my standard for "good enough", would take three more months.
+The core interactions were complete by late September, as you can see from the two prototype gameplay videos below. The remaining three months were spent designing the game mechanics, modeling the rest of the balloon types, developing their special effects, creating and implementing sound effects, and refining the physics and intro sequence.
 
 https://www.youtube.com/watch?v=NMPbNBC0L4E
 
@@ -68,8 +68,20 @@ This was the first play video I got after putting out the beta. I could not stop
 </figcaption>
 </figure>
 
-The most important change that came from beta testing was redesigning the game for limited mobility situations. After talking with a wheelchair bound student who helped me test the game, and seeing a [truly amazing product called "Animo" at the MIT product design final presentations](http://web.mit.edu/2.009/www/interestMedia/final/final2017/purple.html) that reduces tremors for those with Parkinson's disease, I was moved to change the game to enable people to enjoy the experience from a sedentary position. I was challenged to rethink my vision of people _having_ to move to play the game, and in the end made a better game for having done so. It was another lesson for me in how constraints are a good thing in product design.
+The most important change that came from beta testing was redesigning the game for limited mobility situations. After talking with a wheelchair-bound student who helped me test the game, and seeing a [truly amazing product called "Animo" at the MIT product design final presentations that reduces tremors for people with Parkinson's disease](http://web.mit.edu/2.009/www/interestMedia/final/final2017/purple.html), I was moved to change the game to enable people to enjoy the experience from a sedentary position. I was challenged to rethink my vision of people _having_ to move to play the game, and in the end made a better game for having done so. It was another lesson for me in how constraints are a good thing in product design.
 
-# Release
+# Release and reception
 
-As of this writing the game has been out a little over a month. During that time I've had about 19,000 people download Out Here Archery from over 20 countries, shooting over 1.1 million arrows and popping over 500,000 balloons. The game has been most popular in England, Russia, and Thailand (the United States isn't even in the top 10!). I have not pursued any paid marketing, yet.
+As of this writing the game has been out a little over a month. During that time I've had about 20,000 people download Out Here Archery from over 50 countries, shooting over 1 million arrows and popping over half a million balloons. The game has been most popular in the United Kingdom, Russia, and Thailand (the United States isn't even in the top 10!). I'm glad I internationalized the pricing and distance units! I have not pursued any paid marketing, yet.
+
+![A map of the places around the world where people are playing Out Here Archery](usersMap.png)
+
+Looking at the engagement data, many people appear to be confused or overwhelmed. As I observe more and more people play the game, it's clear that many people are not intuitively understanding the spatial relationship between where they're looking and the virtual objects on screen. Most commonly, people swipe towards balloons to try and aim instead of looking at them with the camera. Most people do not look or walk around very much. People are choosing limited mobility mode 96% of the time. I am very curious whether this misunderstanding is specific to my game, if it's the social stigma of walking around with your phone in front of your face, or if it's simply from the newness of augmented reality on mobile devices.
+
+![The game completion funnel from the first month showing the data about where players are dropping off. It's not great.](firstMonthFunnel.png)
+
+## Monetization
+
+I chose to make the game free to download with an in-app purchase for $2.99. The purchase is revealed after beating the first three challenges and unlocks the remaining four. This strategy has not worked well. I plan on redesigning the game mechanics and monetization strategy. I would like to incorporate advertising within the game, but in augmented reality instead of a simple banner ad or promo video. I haven't discovered any ad networks or Unity integrations that would enable this easily. If you know of any, please get in touch.
+
+<img src="chest.png" alt="A sparkling treasure chest is revealed after beating the first three challenges, with the other four challenge balloons appearing behind it as semi-transparent." data-max-width="550"/>
