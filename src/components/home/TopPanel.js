@@ -72,11 +72,11 @@ const CTA = styled.div`
 
 const TopPanel = props => (
   <Panel>
-    <MovingImgBackground img={props.img} delay={1} />
+    <MovingImgBackground img={props.img} delay={1.5} />
     <TextContainer>
       <Name delay={0.2}>Louis R. DeScioli</Name>
-      <Bylines bylines={props.bylines} delay={1.8} interval={3} />
-      <CTA delay={2.5}>
+      <Bylines bylines={props.bylines} delay={2.2} interval={3} />
+      <CTA delay={3}>
         <h4>Play with my latest creation</h4>
         <h3>
           <a
