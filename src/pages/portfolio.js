@@ -145,7 +145,7 @@ const Works = props => (
 export const pageQuery = graphql`
   query ProjectsQuery {
     allMarkdownRemark(
-      filter: { frontmatter: { tags: { in: ["project"] } } }
+      filter: { frontmatter: { tags: { in: ["portfolio"] } } }
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {

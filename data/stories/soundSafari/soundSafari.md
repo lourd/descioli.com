@@ -7,7 +7,7 @@ description: Making music with goofy animal characters using mobile AR
 path: /soundscape-safari
 image: ./soundSafari.png
 tags:
-  - project
+  - portfolio
   - hackathon
   - augmented reality
   - arkit

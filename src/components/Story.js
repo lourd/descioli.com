@@ -41,12 +41,23 @@ const Content = styled.div`
     }
   }
   figcaption {
-    font-size: 0.9em;
+    font-size: 0.8em;
     margin: 10px auto 15px;
     color: #777;
     text-align: center;
     line-height: 1.3;
     max-width: ${0.9 * maxWidth}px;
+  }
+  blockquote {
+    border-left: 4px solid #dfe2e5;
+    color: #6a737c;
+    margin: 0px 0px 16px 0px;
+    padding: 0px 16px;
+    white-space: pre;
+    overflow: auto;
+    p {
+      margin: 0;
+    }
   }
 `
 

@@ -8,7 +8,7 @@ path: /mediated-matter
 image: ./overhead.jpg
 tags:
   - work
-  - project
+  - portfolio
   - MIT
   - MIT Media Lab
   - Research

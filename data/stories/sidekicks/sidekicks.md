@@ -8,7 +8,7 @@ path: /sidekicks
 image: ./screenshot.PNG
 tags:
   - work
-  - project
+  - portfolio
   - autistm
   - chatbot
   - startup

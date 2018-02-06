@@ -8,7 +8,7 @@ path: /out-here-archery
 image: header.png
 tags:
   - work
-  - project
+  - portfolio
   - augmented reality
   - mixed reality
   - entrepreneurship

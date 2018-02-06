@@ -7,7 +7,7 @@ description: My first taste of hacking in virtual reality
 path: /zeegee
 image: ./gameplay.png
 tags:
-  - project
+  - portfolio
   - hackathon
   - virtual reality
   - htc vive
