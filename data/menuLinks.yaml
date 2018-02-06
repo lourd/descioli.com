@@ -1,9 +1,13 @@
+- path: /spiel
+  copy: My spiel
+  color: green
 - path: /portfolio
   copy: My life's works
   color: red
 - path: /social
   copy: Where you can find me
-  color: orange
+  color: '#FA8632'
+  # color: orange
 - path: /resume
   copy: My life in one page
   color: blue
@@ -12,4 +16,4 @@
   color: purple
 - path: /
   copy: Home
-  color: green
+  color: '#777'
