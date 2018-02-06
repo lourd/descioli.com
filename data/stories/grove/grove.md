@@ -29,7 +29,7 @@ In addition to the software powering our products, I built internal dashboards, 
 
 <figure>
 <a href="grove.gif">
-<img src="grove.gif" alt="A beautiful Grove Ecosystem">
+<img src="grove.gif" alt="A beautiful Grove Ecosystem"/>
 </a>
 <figcaption>
 A beautiful Grove Ecosystem
@@ -114,7 +114,7 @@ I had my first intern that January — Steph Northway, a cool cat from Olin Coll
 
 <figure>
 <a href="softwaregroovin.gif">
-<img src="softwaregroovin.gif" alt="Charles, me, and Steph, seen here on a completely normal day in the office.">
+<img src="softwaregroovin.gif" alt="Charles, me, and Steph, seen here on a completely normal day in the office."/>
 </a>
 <figcaption>
 Charles, me, and Steph, seen here on a typical night at the office.
@@ -133,7 +133,7 @@ Before we fully finished the firmware, we **ran out of room on the Spark Core**.
 
 About a third of the way through our manufacturing, Particle started shipping their newer microcontroller, the Photon. It had 1 MB of storage, was cheaper, and had a wifi setup that actually worked. We did the work to port our system and thoroughly test it as quickly as we could in the middle of production. We went out and replaced all of the Spark Cores already in customers' homes.
 
-<img src="eamobo.jpg" alt="The motherboard for the Early Adopter Ecosystem." data-max-width="500">
+<img src="eamobo.jpg" alt="The motherboard for the Early Adopter Ecosystem." data-max-width="500"/>
 
 ## Meteor and Mongo
 
@@ -143,7 +143,7 @@ Meteor was a young framework and company. It hadn't even reached a self-proclaim
 
 <figure>
 <a href="meteor.gif">
-<img src="meteor.gif" alt="Meteor 😬 😅">
+<img src="meteor.gif" alt="Meteor 😬 😅"/>
 </a>
 <figcaption>
 Originally made for Worldwide Meteor Day 2014 😬 😅
@@ -180,9 +180,9 @@ The huge piles of snow eventually did melt. I took home a prototype and put it r
 
 We delivered our first units at the end of May. I finally shaved the beard I had been growing since November. We continued delivering throughout the summer. Everyone took part in deliveries. Jamie and Tim [went on a cross-country roadtrip](https://www.instagram.com/p/7xrcb_w1B1/) installing groves at a handful of places around the country and spreading the word along the way ([#GroveTripUSA](https://www.instagram.com/explore/tags/grovetripusa/)).
 
-<img src="eaDashboard.png" alt="The dashboard for an Early Adopter Ecosystem in the mobile web app" data-max-width="400">
+<img src="eaDashboard.png" alt="The dashboard for an Early Adopter Ecosystem in the mobile web app" data-max-width="400"/>
 
-<img src="chens.jpg" alt="Delivering Grove #15 to the Chen family." data-max-width="600">
+<img src="chens.jpg" alt="Delivering Grove #15 to the Chen family." data-max-width="600"/>
 
 We had more interns. We went on more retreats. Chad decided to leave for another startup. Steph joined full-time. Matthew Seaton and Arjun Varma came on as full-time ecologists. We hired someone just to run our social media. We had no head of marketing or sales, aside from Gabe. We had very little company structure at all. We relied on self-organization and self-accountability. Gabe and Jamie tossed around terms like "holocracy" and multi-part Venn diagrams when describing their vision for how the company should be organized. It was their nature to question and innovate everything. Neither of them had ever had jobs at a traditional company, and both believed that traditional business offered more warnings than lessons for how to run their company.
 
@@ -262,17 +262,17 @@ When I came back from my vacation I went to lunch with Gabe and Jamie and starte
 
 With some company accountability in place, me and my team got down to business. The plan was to ship the first few Ecosystems at the end of May, so we wanted to have our app submitted to the App Store by April 1st to be able to user test the full setup experience for at least six weeks. A new back-end and a new app, integrated with new hardware, with three engineers and one designer, in three months. We had our work cut out for us.
 
-<img src="noNeds.jpg" alt="No NEDs allowed!" data-max-width="520">
+<img src="noNeds.jpg" alt="No NEDs allowed!" data-max-width="520"/>
 
 There were more long nights. More 80+ hour weeks. Another shave-less winter. I was working on a clear plan on a product I believed in, for people who really wanted it, on a fun team with everyone giving their all. I loved it. I was in my flow.
 
 ![The first motherboard from the hardware team, delivered on a platter with a bottle of wine. If you're going to work yourself to the bone, you have to at least have fun with it.](pcbStork.jpg)
 
-<img src="threeTowerInsta.jpg" alt="Coming home to my own grove that was bursting with life didn't hurt" data-max-width="550">
+<img src="threeTowerInsta.jpg" alt="Coming home to my own grove that was bursting with life didn't hurt" data-max-width="550"/>
 
 On April 1st, [we submitted the app](https://photos.app.goo.gl/AHY50WCPmKtJ1Wul1). Six days after that, Grove OS was in the App Store. The app was accepted on our first submission. We had a great new UI that was simpler **and** more informative. We had much more thorough guidance. My back-end systems had 100% test coverage, with much improved application monitoring and continuous integration. I even made a web app for our team to be able to easily check-in on a grove, where we could see their data and send a customer a message, reminder, or task. I called it "Roots". We had delivered on time and under budget.
 
-<img src="appStore.png" alt="Working within walled-garden ecosystems is frustrating compared to the unrestrained world of web apps. But there's still something thrilling about seeing your app in the App Store." data-max-width="400">
+<img src="appStore.png" alt="Working within walled-garden ecosystems is frustrating compared to the unrestrained world of web apps. But there's still something thrilling about seeing your app in the App Store." data-max-width="400"/>
 
 # Downsizing
 
@@ -308,7 +308,7 @@ We figured out a rough sales plan. We tried to recruit our first salespeople. Th
 
 We scrambled to answer those questions, and to just sell some units. We had a little less than $100k in revenue left to get to our $600k goal, which came out to less than 25 more sales. We worked every existing lead we had. I cold called everywhere from nursing homes to coworking spaces. Gabe and I met with a few home contracting companies. Emily got in touch with every teacher who had ever expressed interest. Jamie called every person he'd met on his roadtrip. Elias worked his contacts and tried to get us a deal.
 
-<img src="pollan.jpg" alt="The time Elias, Steph, and I handed out fliers at an event with Michael Pollan and pitched him on getting a grove">
+<img src="pollan.jpg" alt="The time Elias, Steph, and I handed out fliers at an event with Michael Pollan and pitched him on getting a grove"/>
 
 ## Mr. Ritz and the [Green Bronx Machine](https://greenbronxmachine.org/)
 
