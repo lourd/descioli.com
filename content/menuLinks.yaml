@@ -7,7 +7,6 @@
 - path: /social
   copy: Where you can find me
   color: '#FA8632'
-  # color: orange
 - path: /resume
   copy: My life in one page
   color: blue
