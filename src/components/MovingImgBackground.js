@@ -23,13 +23,13 @@ const ImgBackground = styled.div.attrs({
     ${stretchFull};
     background-color: ${props => props.theme.black};
     animation: ${fade({ from: 1, to: 0.25 })} forwards 1.2s;
-    animation-delay ${props => props.delay}s;
+    animation-delay: ${props => props.delay}s;
   }
 `
 
 const MovingImgBackground = props => (
-  <OnMouseMove
-    render={({ x, y }) => {
+  <OnMouseMove>
+    {({ x, y }) => {
       let xDist = 0
       let yDist = 0
       if (typeof window !== 'undefined') {
@@ -49,7 +49,7 @@ const MovingImgBackground = props => (
         </ImgBackground>
       )
     }}
-  />
+  </OnMouseMove>
 )
 
 export default MovingImgBackground
