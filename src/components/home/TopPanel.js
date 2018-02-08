@@ -24,6 +24,7 @@ const TextContainer = styled.div`
   text-align: left;
   font-size: 0.8em;
   padding: 10% 5% 0px 5%;
+  width: 100%;
   @media (min-width: ${sizes.medium}) {
     font-size: 1em;
     padding: 50px 0px 20px 5%;

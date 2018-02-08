@@ -9,7 +9,6 @@ import Bag from 'lib/Bag'
 const BylinesContainer = styled.h2`
   font-size: 2.2em;
   font-weight: 300;
-  max-width: 85vw;
   ${fadeDownInCss};
   animation-delay: ${props => props.delay}s;
 `
@@ -35,10 +34,7 @@ class Bylines extends React.Component {
 
   render() {
     return (
-      <BylinesContainer
-        title="Things that I am or have been"
-        delay={this.props.delay}
-      >
+      <BylinesContainer delay={this.props.delay}>
         <OnInterval
           interval={this.props.interval}
           delay={this.props.delay + this.props.interval}
