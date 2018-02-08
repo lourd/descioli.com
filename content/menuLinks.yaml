@@ -1,6 +1,3 @@
-- path: /spiel
-  copy: My spiel
-  color: green
 - path: /portfolio
   copy: My life's works
   color: red
@@ -15,4 +12,4 @@
   color: purple
 - path: /
   copy: Home
-  color: '#777'
+  color: green
