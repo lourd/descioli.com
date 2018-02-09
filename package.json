@@ -28,6 +28,8 @@
     "gatsby-transformer-yaml": "^1.5.11",
     "knuth-shuffle": "^1.0.8",
     "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-helmet": "^5.2.0",
     "react-icons": "^2.2.7",
     "react-ink": "^6.2.0",
