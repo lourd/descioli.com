@@ -112,8 +112,8 @@ const Description = styled.h2`
 `
 
 const Dates = props => {
-  const written = <div>Published {props.creation}</div>
-  const edited = props.creation !== props.lastEdit && (
+  const written = <div>Published {props.publication}</div>
+  const edited = props.publication !== props.lastEdit && (
     <div>Last edited {props.lastEdit}</div>
   )
   return (
@@ -151,7 +151,7 @@ const Story = ({ data }) => {
       <Content>
         <Description>{data.markdownRemark.frontmatter.description}</Description>
         <Dates
-          creation={data.markdownRemark.frontmatter.creation}
+          publication={data.markdownRemark.frontmatter.publication}
           lastEdit={data.markdownRemark.frontmatter.lastEdit}
         />
         <main dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
@@ -167,8 +167,8 @@ export const pageQuery = graphql`
     markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
-        creation(formatString: "dddd MMMM DD, YYYY")
-        lastEdit(formatString: "dddd MMMM DD, YYYY")
+        publication(formatString: "dddd MMMM Do, YYYY")
+        lastEdit(formatString: "dddd MMMM Do, YYYY")
         path
         title
         description

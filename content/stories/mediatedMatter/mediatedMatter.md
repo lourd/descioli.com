@@ -1,6 +1,6 @@
 ---
-creation: 2018-01-18
-lastEdit: 2018-01-18
+publication: 2018-02-09
+lastEdit: 2018-02-09
 date: 2011-10-01
 title: 3D Printing Buildings
 description: Undergraduate research in the MIT Media Lab's Mediated Matter group

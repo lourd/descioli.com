@@ -1,6 +1,6 @@
 ---
-creation: 2018-01-21
-lastEdit: 2018-01-21
+publication: 2018-02-09
+lastEdit: 2018-02-09
 date: 2017-10-01
 title: Soundscape Safari
 description: Making music with goofy animal characters using mobile AR

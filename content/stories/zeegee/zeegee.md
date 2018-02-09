@@ -1,6 +1,6 @@
 ---
-creation: 2018-01-17
-lastEdit: 2018-01-17
+publication: 2018-02-09
+lastEdit: 2018-02-09
 date: 2016-10-01
 title: ZeeGee
 description: My first taste of hacking in virtual reality

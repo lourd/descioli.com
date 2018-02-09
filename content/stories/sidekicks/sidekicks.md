@@ -1,6 +1,6 @@
 ---
-creation: 2018-01-16
-lastEdit: 2018-01-16
+publication: 2018-02-09
+lastEdit: 2018-02-09
 date: 2016-10-02
 title: Sidekicks
 description: Building an affinity therapy platform for autistic children

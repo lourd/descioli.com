@@ -1,7 +1,7 @@
 ---
 title: Out Here Archery
-creation: 2018-01-29
-lastEdit: 2018-01-29
+publication: 2018-02-09
+lastEdit: 2018-02-09
 date: 2017-12-01
 description: My venture into software beyond surfaces
 path: /out-here-archery

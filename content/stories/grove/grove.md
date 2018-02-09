@@ -1,6 +1,6 @@
 ---
-creation: 2018-01-15
-lastEdit: 2018-01-15
+publication: 2018-02-09
+lastEdit: 2018-02-09
 date: 2014-01-01
 title: Grove
 description: Reconnecting people to Nature with indoor gardens
