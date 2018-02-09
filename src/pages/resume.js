@@ -369,9 +369,9 @@ export const pageQuery = graphql`
             dates {
               start(formatString: "MMM YYYY")
               end(formatString: "MMM YYYY")
-              # recurring {
-              #   date(formatString: "MMM YYYY")
-              # }
+              recurring {
+                date(formatString: "MMM YYYY")
+              }
             }
           }
         }
