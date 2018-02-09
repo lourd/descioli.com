@@ -125,6 +125,10 @@ const Dates = props => {
 }
 
 const Story = ({ data }) => {
+  // default to the header, fallback to the image
+  const image =
+    data.markdownRemark.frontmatter.header ||
+    data.markdownRemark.frontmatter.image
   return (
     <Page>
       <Head>
@@ -139,9 +143,7 @@ const Story = ({ data }) => {
         />
       </Head>
       <Header>
-        <HeaderImg
-          sizes={data.markdownRemark.frontmatter.image.childImageSharp.sizes}
-        />
+        <HeaderImg sizes={image.childImageSharp.sizes} />
         <HeaderContent>
           <h1>{data.markdownRemark.frontmatter.title}</h1>
         </HeaderContent>
@@ -172,6 +174,13 @@ export const pageQuery = graphql`
         description
         tags
         image {
+          childImageSharp {
+            sizes(maxWidth: 1600, maxHeight: 700, cropFocus: $imageFocus) {
+              ...GatsbyImageSharpSizes_withWebp
+            }
+          }
+        }
+        header {
           childImageSharp {
             sizes(maxWidth: 1600, maxHeight: 700, cropFocus: $imageFocus) {
               ...GatsbyImageSharpSizes_withWebp
