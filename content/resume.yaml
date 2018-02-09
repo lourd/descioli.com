@@ -136,10 +136,9 @@
       location: Cambridge, MA
       role: Mentor
       dates:
-        todo: Sep 2015, Sep 2016
-        # recurring:
-        #   - date: 2015-09-01
-        #   - date: 2016-09-01
+        recurring:
+          - 2015-09-01
+          - 2016-09-01
     - company: Boston Urban Agriculture Meetup
       site: https://www.meetup.com/Boston-Area-Urban-Agriculture/
       location: Boston, MA
