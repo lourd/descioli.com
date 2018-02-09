@@ -16,10 +16,11 @@ const meta = {
 const datesFormatter = dates => {
   if (!dates) return null
   if (typeof dates === 'string') return dates
-  const { start, end, recurring } = dates
-  if (recurring) {
-    return recurring.map(obj => obj.date).join(', ')
-  }
+  const { start, end, recurring, todo } = dates
+  if (todo) return todo
+  // if (recurring) {
+  //   return recurring.map(obj => obj.date).join(', ')
+  // }
   if (!end) return `${start} - Present`
   return `${start} - ${end}`
 }
@@ -369,9 +370,10 @@ export const pageQuery = graphql`
             dates {
               start(formatString: "MMM YYYY")
               end(formatString: "MMM YYYY")
-              recurring {
-                date(formatString: "MMM YYYY")
-              }
+              todo
+              #recurring {
+              #  date(formatString: "MMM YYYY")
+              #}
             }
           }
         }
