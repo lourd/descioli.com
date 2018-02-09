@@ -124,7 +124,7 @@ const Container = styled.div`
   }
 `
 
-const Works = props => (
+const Portfolio = props => (
   <Container>
     <PageInfo {...meta} />
     <h1>My life's works</h1>
@@ -169,4 +169,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default Works
+export default Portfolio
