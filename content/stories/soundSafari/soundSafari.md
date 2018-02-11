@@ -6,6 +6,7 @@ title: Soundscape Safari
 description: Making music with goofy animal characters using mobile AR
 path: /soundscape-safari
 image: ./soundSafari.png
+header: manatee.png
 tags:
   - portfolio
   - hackathon
@@ -15,7 +16,7 @@ tags:
   - teamwork
 ---
 
-At the 2017 [Reality, Virtually, Hackathon](realityvirtuallyhack.com) I was a part of team Augmented Fifth that made a playful music composition experience using mobile augmented reality. In the experience you create music by placing and interacting with animal characters in the physical space around you.
+At the 2017 [Reality, Virtually, Hackathon](https://realityvirtuallyhack.com) I was a part of team Augmented Fifth that made a playful music composition experience using mobile augmented reality. In the experience you create music by placing and interacting with animal characters in the physical space around you.
 
 https://www.youtube.com/watch?v=gx8RDOu5F1k
 
