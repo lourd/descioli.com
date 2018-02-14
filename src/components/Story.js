@@ -98,9 +98,12 @@ const HeaderContent = styled.div`
 `
 
 const DatesContainer = styled.div`
-  color: ${props => props.theme.gray};
   font-size: 0.9em;
   margin-bottom: 20px;
+  &,
+  a {
+    color: ${props => props.theme.gray};
+  }
 `
 
 const Description = styled.h2`
@@ -114,7 +117,11 @@ const Description = styled.h2`
 const Dates = props => {
   const written = <div>Published {props.publication}</div>
   const edited = props.publication !== props.lastEdit && (
-    <div>Last edited {props.lastEdit}</div>
+    <div>
+      <a href={props.lastEditUrl} target="_blank">
+        Last edited {props.lastEdit}
+      </a>
+    </div>
   )
   return (
     <DatesContainer>
@@ -129,6 +136,10 @@ const Story = ({ data }) => {
   const image =
     data.markdownRemark.frontmatter.header ||
     data.markdownRemark.frontmatter.image
+  const lastEditUrl =
+    data.site.siteMetadata.repo +
+    '/commits/master/content/' +
+    data.markdownRemark.parent.relativePath
   return (
     <Page>
       <Head>
@@ -153,6 +164,7 @@ const Story = ({ data }) => {
         <Dates
           publication={data.markdownRemark.frontmatter.publication}
           lastEdit={data.markdownRemark.frontmatter.lastEdit}
+          lastEditUrl={lastEditUrl}
         />
         <main dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </Content>
@@ -164,7 +176,17 @@ export default Story
 
 export const pageQuery = graphql`
   query StoryQueryByPath($path: String!, $imageFocus: ImageCropFocus) {
+    site {
+      siteMetadata {
+        repo
+      }
+    }
     markdownRemark(frontmatter: { path: { eq: $path } }) {
+      parent {
+        ... on File {
+          relativePath
+        }
+      }
       html
       frontmatter {
         publication(formatString: "dddd MMMM Do, YYYY")
