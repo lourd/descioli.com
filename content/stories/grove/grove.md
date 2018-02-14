@@ -1,6 +1,6 @@
 ---
 publication: 2018-02-09
-lastEdit: 2018-02-09
+lastEdit: 2018-02-14
 date: 2014-01-01
 title: Grove
 description: Reconnecting people to Nature with indoor gardens
@@ -102,11 +102,11 @@ That winter we threw ourselves into our work. And the winter threw itself onto u
 
 ![Oh, the joy of shoveling out the car from huge mounds of snow every morning.](carsnow.jpg)
 
-Work was like an oasis. The GURF — the **G**rove **U**rban **R**esearch **F**arm — was filled with life and light. My breaks consisted of walks back to the farm to help out, and to harvest. One of my favorite activities was making lunch with fresh food harvested from the GURF, usually with someone else on the team. The act of deciding and executing on something as simple as lunch helps strengthen trust and relationships. Sharing in the of growing, preparation, and eating of good food was one of my favorite parts of Grove's culture.
+Work was like an oasis. The GURF — the **G**rove **U**rban **R**esearch **F**arm — was filled with life and light. My breaks consisted of walks back to the farm to help out, and to harvest. One of my favorite activities was making lunch with fresh food harvested from the GURF, usually with someone else on the team. The act of deciding and executing on something as simple as lunch helps strengthen trust and relationships. Sharing in the growing, preparation, and eating of good food was one of my favorite parts of Grove's culture.
 
 ![Our largest aquaponics system in the GURF, bursting with all kinds of basil, mustard greens, tomatoes, kale and more](gurf.jpg)
 
-Those winter months saw more solid growth. We had accomplished interns from MIT's business school. Nick came on full-time after graduating. We hired Mike Zartarian, a veteran electrical engineer, whom Chad and I met after I gave a one minute pitch I gave at the end of a Boston Hardware Startup Meetup event. Mike brought along Mike Siegel and Karl Henricksen, an excellent embedded systems engineer and test engineer, respectively. The three of them had far more experience in shipping a consumer electronics product to paying customers than anyone within the company. They brought a new level of quality and stability to the team.
+Those winter months saw more solid growth. We had accomplished interns from MIT's business school. Nick came on full-time after graduating. We hired Mike Zartarian, a veteran electrical engineer, whom Chad and I met after I gave a one minute pitch at the end of a Boston Hardware Startup Meetup event. Mike brought along Mike Siegel and Karl Henricksen, an excellent embedded systems engineer and test engineer, respectively. The three of them had far more experience in shipping a consumer electronics product to paying customers than anyone within the company. They brought a new level of quality and stability to the team.
 
 ![The Grove team circa March 2015](teampic.jpg)
 
