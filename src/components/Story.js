@@ -119,8 +119,9 @@ const Dates = props => {
   const edited = props.publication !== props.lastEdit && (
     <div>
       <a href={props.lastEditUrl} target="_blank">
-        Last edited {props.lastEdit}
-      </a>
+        Last edited
+      </a>{' '}
+      {props.lastEdit}
     </div>
   )
   return (
@@ -136,10 +137,6 @@ const Story = ({ data }) => {
   const image =
     data.markdownRemark.frontmatter.header ||
     data.markdownRemark.frontmatter.image
-  const lastEditUrl =
-    data.site.siteMetadata.repo +
-    '/commits/master/content/' +
-    data.markdownRemark.parent.relativePath
   return (
     <Page>
       <Head>
@@ -164,7 +161,7 @@ const Story = ({ data }) => {
         <Dates
           publication={data.markdownRemark.frontmatter.publication}
           lastEdit={data.markdownRemark.frontmatter.lastEdit}
-          lastEditUrl={lastEditUrl}
+          lastEditUrl={data.markdownRemark.fields.lastEditUrl}
         />
         <main dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
       </Content>
@@ -188,6 +185,9 @@ export const pageQuery = graphql`
         }
       }
       html
+      fields {
+        lastEditUrl
+      }
       frontmatter {
         publication(formatString: "dddd MMMM Do, YYYY")
         lastEdit(formatString: "dddd MMMM Do, YYYY")
