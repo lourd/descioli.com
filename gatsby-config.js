@@ -53,5 +53,13 @@ module.exports = {
         trackingId: 'UA-53420391-3',
       },
     },
+    'gatsby-plugin-remove-trailing-slashes',
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        showSpinner: false,
+        color: 'green',
+      }
+    }
   ],
 }
