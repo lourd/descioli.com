@@ -28,6 +28,7 @@ class TemplateWrapper extends React.Component {
           >
             <meta name="description" content={meta.description} />
             <meta name="keywords" content={meta.keywords.join(',')} />
+            <html lang="en" />
           </Helmet>
           <Nav links={links} toggle={this.toggle} open={this.state.open} />
           <Blur blurred={this.state.open}>{this.props.children()}</Blur>
