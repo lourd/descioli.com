@@ -154,7 +154,7 @@ const School = props => (
   <SchoolSection>
     <TopRow>
       <Title>
-        <a href={props.school.link} target="_blank">
+        <a href={props.school.link} target="_blank" rel="noopener">
           {props.school.name}
         </a>
       </Title>
@@ -163,7 +163,7 @@ const School = props => (
     {props.degree && (
       <p>
         {props.degree} {'in '}
-        <a href={props.major.link} target="_blank">
+        <a href={props.major.link} target="_blank" rel="noopener">
           {props.major.name}
         </a>
       </p>
@@ -171,7 +171,7 @@ const School = props => (
     {props.concentration && (
       <p>
         {'Concentration in '}
-        <a href={props.concentration.link} target="_blank">
+        <a href={props.concentration.link} target="_blank" rel="noopener">
           {props.concentration.name}
         </a>
       </p>
@@ -180,7 +180,7 @@ const School = props => (
     {props.transfer && (
       <p>
         {'Studied '}
-        <a href={props.major.link} target="_blank">
+        <a href={props.major.link} target="_blank" rel="noopener">
           {props.major.name}
         </a>
       </p>
@@ -262,7 +262,7 @@ const Job = props => {
   let company = props.company
   if (!props.story && props.site) {
     company = (
-      <a href={props.site} target="_blank">
+      <a href={props.site} target="_blank" rel="noopener">
         {company}
       </a>
     )

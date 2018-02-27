@@ -83,6 +83,7 @@ const TopPanel = props => (
           <a
             href="https://itunes.apple.com/us/app/out-here-archery/id1309822636?mt=8"
             target="_blank"
+            rel="noopener"
           >
             Out Here Archery
           </a>

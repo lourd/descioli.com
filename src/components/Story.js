@@ -118,7 +118,7 @@ const Dates = props => {
   const written = <div>Published {props.publication}</div>
   const edited = props.publication !== props.lastEdit && (
     <div>
-      <a href={props.lastEditUrl} target="_blank">
+      <a href={props.lastEditUrl} target="_blank" rel="noopener">
         Last edited
       </a>{' '}
       {props.lastEdit}
