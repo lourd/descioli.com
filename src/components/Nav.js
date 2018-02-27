@@ -61,7 +61,11 @@ const Button = styled.button`
 `
 
 const Toggle = props => (
-  <Button onClick={props.onClick} isOpen={props.isOpen}>
+  <Button
+    onClick={props.onClick}
+    isOpen={props.isOpen}
+    aria-label="Navigation menu toggle"
+  >
     <HamburgerToggle isOpen={props.isOpen} />
     <Ripple />
   </Button>
