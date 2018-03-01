@@ -11,8 +11,6 @@ const Meta = props => (
     {props.keywords.length > 0 && (
       <meta name="keywords" content={props.keywords.join(',')} />
     )}
-    {/* Open graph & twitter */}
-    <meta name="twitter:card" content="summary" />
     <meta name="twitter:creator" content={props.authorHandle} />
     {props.image && <meta property="og:image" content={props.url + props.image} />}
   </Head>

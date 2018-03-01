@@ -29,6 +29,10 @@ class TemplateWrapper extends React.Component {
             <meta name="description" content={meta.description} />
             <meta name="keywords" content={meta.keywords.join(',')} />
             <html lang="en" />
+            {/* sets up twitter to display every page as a card with default info */}
+            <meta name="twitter:card" content="summary" />
+            <meta property="og:title" content={meta.title} />
+            <meta property="og:description" content={meta.description} />
           </Helmet>
           <Nav links={links} toggle={this.toggle} open={this.state.open} />
           <Blur blurred={this.state.open}>{this.props.children()}</Blur>
