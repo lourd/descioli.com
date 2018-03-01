@@ -48,16 +48,19 @@ const Content = styled.div`
     line-height: 1.3;
     max-width: ${0.9 * maxWidth}px;
   }
-  blockquote {
+  blockquote, .quote {
+    font-family: ${props => props.theme.serif};
+    font-size: 1em;
     border-left: 4px solid #dfe2e5;
     color: #6a737c;
     margin: 0px 0px 16px 0px;
     padding: 0px 16px;
     white-space: pre;
     overflow: auto;
-    p {
-      margin: 0;
-    }
+    -webkit-overflow-scrolling: touch;
+  }
+  h1, h2, h3, h4 {
+    margin-top: 0.75rem;
   }
 `
 

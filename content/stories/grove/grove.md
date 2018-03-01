@@ -1,6 +1,6 @@
 ---
 publication: 2018-02-09
-lastEdit: 2018-02-14
+lastEdit: 2018-03-01
 date: 2014-01-01
 title: Grove
 description: Reconnecting people to Nature with indoor gardens
@@ -248,7 +248,7 @@ Even before Michael left, I had decided to take a different approach to the soft
 
 ## Leadership struggles
 
-We spent a good amount of time that fall trying to recruit a senior software engineer and meeting with potential agencies. I was very open about wanting more mentorship and experience on the team. Having no senior leadership was the worst part of Grove for me. Mike Zartarian, who was effectively our CTO, had very little faith that me, Charles, and Steph could build a new and improved app and back-end in time. At one point he tried to get Gabe to replace me (a detail I didn't learn until months later). Gabe's direction on the issue swung drastically from week to week. One week Mike was head of the software team and I needed to run everything I did by him. The next week Gabe was the head of the software team, and Mike was not to have any participation. At one point I openly challenged Gabe to either trust me or fire me after he questioned my basic competence in a meeting with Liz and Siegel. He decided to trust me.
+We spent a good amount of time that fall trying to recruit a senior software engineer and meeting with potential agencies. I was very open about wanting more mentorship and experience on the team. Having no senior leadership was the worst part of Grove for me. Mike Zartarian, who was effectively our CTO, had very little faith that Charles, Steph, and I could build a new and improved app and back-end in time. At one point he tried to get Gabe to replace me (a detail I didn't learn until months later). Gabe's direction on the issue swung drastically from week to week. One week Mike was head of the software team and I needed to run everything I did by him. The next week Gabe was the head of the software team, and Mike was not to have any participation. At one point I openly challenged Gabe to either trust me or fire me after he questioned my basic competence in a meeting with Liz and Siegel. He decided to trust me.
 
 The ordeal was painful. It emphasized how essential clear communication is on a multidisciplinary team. I had scarce oversight during the first product cycle. This time I had been forced to rigorously justify and prove my system design. It is not easy to do that for people who aren't versed in the technical minutiae of your skill, no more so than in software. It underscored the value of having advisors and mentors who can vouch for you, especially as a young engineer. During this time I started a relationship with Jesse and Ashley Streb, two respected engineers and entrepreneurs in the Boston area whom I'd met through the Boston Node.js Meetup. Over the course of building the new app and back-end, they came into the office a few times to listen to my team's design decisions, provide feedback, and answer questions. Their advice and encouragement was helpful for me and my team, and helped ease Gabe and Mike's anxiety over the soundness of the system.
 
@@ -260,7 +260,7 @@ When I came back from my vacation I went to lunch with Gabe and Jamie and starte
 
 # Getting into the App Store
 
-With some company accountability in place, me and my team got down to business. The plan was to ship the first few Ecosystems at the end of May, so we wanted to have our app submitted to the App Store by April 1st to be able to user test the full setup experience for at least six weeks. A new back-end and a new app, integrated with new hardware, with three engineers and one designer, in three months. We had our work cut out for us.
+With some company accountability in place, my team and I got down to business. The plan was to ship the first few Ecosystems at the end of May, so we wanted to have our app submitted to the App Store by April 1st to be able to user test the full setup experience for at least six weeks. A new back-end and a new app, integrated with new hardware, with three engineers and one designer, in three months. We had our work cut out for us.
 
 <img src="noNeds.jpg" alt="No NEDs allowed!" data-max-width="520"/>
 
@@ -378,61 +378,65 @@ Instead of checking out for my last two weeks, I went back to the software team.
 
 After my final meeting with Gabe, Dave, and Mike, I had a little over an hour to figure out how to say goodbye. I walked out into the Greentown courtyard, sat down, and wrote down this poem. I didn't last a minute reading it to the team before I choked up.
 
-> **A Resignation Letter**
->
-> Eight hundred and eighty nine days since I first stepped into this office
-> And after 2 products, 2 apps, & 5 million dollars, the time has come for me to cut my losses
->
-> I took some time last night to look back to the past
-> To remind myself that regardless of what's happened, it has been a blast.
->
-> I saw the first email, the first "fuck yeah, let's do this"
-> Let's build Grove OS, in 4 weeks! Ah, such ignorant bliss.
->
-> I found the first commits, good 'ol Ruby on Rails
-> I found the first time we Hipchatted about snails.
->
-> I found your applications, the days we met each of you
-> It's hard to understand exactly how much we've been through.
->
-> I looked at old sketches, the systems Nate first designed
-> I smiled and laughed, seeing the Ecosystem's always been in his mind.
->
-> I thought back and counted the good people who have come and gone.
-> I even went back and listened to Arjun's rap songs.
->
-> I know there are reasons why each one of them had to go
-> This is a startup, a revolution — I just wish it wasn't so.
->
-> It's no secret that we're all a little more than colleagues
-> The long hours, the late nights; a team band led by Siegs
->
-> I want you to know how much I respect and love you all
-> The friendships, the memories — I'll cherish them all
->
-> But as of late, I've grown angry. Frustrated. Tired.
-> Seeing so many problems, repeated. Not feeling inspired.
->
-> I haven't been bashful, in fact nothing of the sort.
-> I've said we need leadership, we need structure, through which we report.
->
-> We need a mission, we need research, we need product-market fit.
-> We need a lot more than we're willing to really admit.
->
-> So as we turn towards the tarmac, another runway to try and take off
-> I've realized that for me, it's my time to get off.
->
-> I've got aspirations, lots of skills I've accrued
-> I must test myself, get out there, see how much I really care about food
->
-> No longer a teammate, now just a fan
-> My options, probably worthless. Can't afford to buy them. Damn man.
->
-> But regardless the circumstances, I believe in y'all no less
-> You have it in you, I know it, but there are major problems to address
->
-> I'd talk about them now, but see, I've run out of time
-> Off to Taste of Somerville to sell groves, although it's no longer mine
->
-> My final words are simple, as I look around at each of you
-> From the bottom of my heart, it's been an honor. For everything — thank you.
+<pre class="quote">
+
+<b>A Resignation Letter</b>
+
+Eight hundred and eighty nine days since I first stepped into this office
+And after 2 products, 2 apps, & 5 million dollars, the time has come for me to cut my losses
+
+I took some time last night to look back to the past
+To remind myself that regardless of what's happened, it has been a blast.
+
+I saw the first email, the first "fuck yeah, let's do this"
+Let's build Grove OS, in 4 weeks! Ah, such ignorant bliss.
+
+I found the first commits, good 'ol Ruby on Rails
+I found the first time we Hipchatted about snails.
+
+I found your applications, the days we met each of you
+It's hard to understand exactly how much we've been through.
+
+I looked at old sketches, the systems Nate first designed
+I smiled and laughed, seeing the Ecosystem's always been in his mind.
+
+I thought back and counted the good people who have come and gone.
+I even went back and listened to Arjun's rap songs.
+
+I know there are reasons why each one of them had to go
+This is a startup, a revolution — I just wish it wasn't so.
+
+It's no secret that we're all a little more than colleagues
+The long hours, the late nights; a team band led by Siegs
+
+I want you to know how much I respect and love you all
+The friendships, the memories — I'll cherish them all
+
+But as of late, I've grown angry. Frustrated. Tired.
+Seeing so many problems, repeated. Not feeling inspired.
+
+I haven't been bashful, in fact nothing of the sort.
+I've said we need leadership, we need structure, through which we report.
+
+We need a mission, we need research, we need product-market fit.
+We need a lot more than we're willing to really admit.
+
+So as we turn towards the tarmac, another runway to try and take off
+I've realized that for me, it's my time to get off.
+
+I've got aspirations, lots of skills I've accrued
+I must test myself, get out there, see how much I really care about food
+
+No longer a teammate, now just a fan
+My options, probably worthless. Can't afford to buy them. Damn man.
+
+But regardless the circumstances, I believe in y'all no less
+You have it in you, I know it, but there are major problems to address
+
+I'd talk about them now, but see, I've run out of time
+Off to Taste of Somerville to sell groves, although it's no longer mine
+
+My final words are simple, as I look around at each of you
+From the bottom of my heart, it's been an honor. For everything — thank you.
+
+</pre>
