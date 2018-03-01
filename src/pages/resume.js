@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { injectGlobal } from 'styled-components'
 import Link from 'gatsby-link'
-import PageInfo from 'lib/components/PageInfo'
+import Meta from 'lib/components/Meta'
 import sizes from 'style/sizes'
 
 const meta = {
@@ -296,7 +296,7 @@ injectGlobal`
 
 const ResumePage = props => (
   <main>
-    <PageInfo {...meta} />
+    <Meta {...meta} />
     <Container>
       <Name>{props.name}</Name>
       <Contact {...props} />

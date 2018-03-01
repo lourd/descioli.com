@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { elevate } from 'style/snippets'
 import sizes from 'style/sizes'
 import color from 'color'
-import PageInfo from 'lib/components/PageInfo'
+import Meta from 'lib/components/Meta'
 
 const meta = {
   title: 'Social networks',
@@ -81,7 +81,7 @@ const Page = styled.main`
 
 const SocialPage = props => (
   <Page>
-    <PageInfo {...meta} />
+    <Meta {...meta} />
     {props.data.allInternetsYaml.edges.map((edge, i) => (
       <SocialSquare key={i} {...edge.node} />
     ))}

@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Head from 'react-helmet'
 import Img from 'gatsby-image'
 import { shadows } from 'style/snippets'
 import sizes from 'style/sizes'
+import Meta from 'lib/components/Meta';
 
 const maxWidth = 800
 const sidePadding = '2.5%'
@@ -142,17 +142,12 @@ const Story = ({ data }) => {
     data.markdownRemark.frontmatter.image
   return (
     <Page>
-      <Head>
-        <title>{data.markdownRemark.frontmatter.title}</title>
-        <meta
-          name="description"
-          content={data.markdownRemark.frontmatter.description}
-        />
-        <meta
-          name="keywords"
-          content={data.markdownRemark.frontmatter.tags.join(',')}
-        />
-      </Head>
+      <Meta
+        title={data.markdownRemark.frontmatter.title}
+        keywords={data.markdownRemark.frontmatter.tags}
+        description={data.markdownRemark.frontmatter.description}
+        image={image.childImageSharp.sizes.src}
+      />
       <Header>
         <HeaderImg sizes={image.childImageSharp.sizes} />
         <HeaderContent>

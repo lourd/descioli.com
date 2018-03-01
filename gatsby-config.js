@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Louis R. DeScioli',
     description: 'The personal site and portfolio of Louis R. DeScioli',
+    url: 'https://www.descioli.design',
     repo: 'https://github.com/lourd/descioli-design',
     keywords: [
       'software engineer',
