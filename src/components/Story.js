@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Img from 'gatsby-image'
 import { shadows } from 'style/snippets'
 import sizes from 'style/sizes'
-import Meta from 'lib/components/Meta';
+import Meta from 'lib/components/Meta'
 
 const maxWidth = 800
 const sidePadding = '2.5%'
@@ -13,54 +13,58 @@ const Content = styled.div`
   max-width: ${maxWidth}px;
   margin: 0 auto;
   padding: 20px ${sidePadding};
-  img,
-  video,
-  figure {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-  }
-  img,
-  .gatsby-resp-iframe-wrapper,
-  .gatsby-resp-image-wrapper,
-  video {
-    ${shadows()};
-  }
-  .gatsby-resp-iframe-wrapper {
-    margin-bottom: 10px;
-  }
-  @media (min-width: ${sizes.large}) {
-    padding-left: 0;
-    padding-right: 0;
-  }
   main {
     padding-top: 10px;
     p,
     li {
       font-family: ${props => props.theme.serif};
     }
-  }
-  figcaption {
-    font-size: 0.8em;
-    margin: 10px auto 15px;
-    color: #777;
-    text-align: center;
-    line-height: 1.3;
-    max-width: ${0.9 * maxWidth}px;
-  }
-  blockquote, .quote {
-    font-family: ${props => props.theme.serif};
-    font-size: 1em;
-    border-left: 4px solid #dfe2e5;
-    color: #6a737c;
-    margin: 0px 0px 16px 0px;
-    padding: 0px 16px;
-    white-space: pre;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  h1, h2, h3, h4 {
-    margin-top: 0.75rem;
+    img,
+    video,
+    figure {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+    img,
+    .gatsby-resp-iframe-wrapper,
+    .gatsby-resp-image-wrapper,
+    video {
+      ${shadows()};
+    }
+    .gatsby-resp-iframe-wrapper {
+      margin-bottom: 10px;
+    }
+    @media (min-width: ${sizes.large}) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    figcaption {
+      font-size: 0.8em;
+      margin: 10px auto 15px;
+      color: ${props => props.theme.comment};
+      text-align: center;
+      line-height: 1.3;
+      max-width: ${0.9 * maxWidth}px;
+    }
+    blockquote,
+    .quote {
+      font-family: ${props => props.theme.serif};
+      font-size: 1em;
+      border-left: 4px solid #dfe2e5;
+      color: {props => props.theme.quote};
+      margin: 0px 0px 16px 0px;
+      padding: 0px 16px;
+      white-space: pre;
+      overflow: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin-top: 0.75rem;
+    }
   }
 `
 
@@ -111,9 +115,11 @@ const DatesContainer = styled.div`
 
 const Description = styled.h2`
   font-weight: 300;
+  margin-top: 0;
   margin-bottom: 15px;
+  font-size: 1.6em;
   @media (min-width: ${sizes.medium}) {
-    font-size: 2em;
+    font-size: 1.8em;
   }
 `
 
