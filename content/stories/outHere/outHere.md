@@ -62,7 +62,9 @@ https://www.youtube.com/watch?v=q9oYHUkPWzc
 I beta tested the game for about five weeks, recruiting family, friends, and strangers to try it out and let me know what they think. I encouraged testers to record themselves playing so I could see what they were experiencing (the new screen recording ability built into iOS 11 was very helpful). The kids who were testers would prove to be the most critical and helpful.
 
 <figure style="max-width: 400px;">
-<video src="playtest.mp4" controls width="100%"></video>
+<video controls width="100%">
+  <source src="playtest.mp4" type="video/mp4">
+</video>
 <figcaption>
 This was the first play video I got after putting out the beta. I could not stop smiling the first time I saw it, I watched it at least three times in a row 😄 Kids are the absolute best.
 </figcaption>

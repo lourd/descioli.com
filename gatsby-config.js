@@ -40,7 +40,12 @@ module.exports = {
             resolve: 'my-gatsby-remark-images',
             options: { maxWidth: 800, addCaptions: true },
           },
-          'gatsby-remark-copy-linked-files',
+          {
+            resolve:'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static/',
+            }
+          },
           'my-gatsby-remark-youtube',
           // This has to come after the youtube plugin
           'gatsby-remark-responsive-iframe',
