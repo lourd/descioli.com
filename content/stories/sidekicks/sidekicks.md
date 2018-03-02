@@ -1,6 +1,6 @@
 ---
 publication: 2018-02-09
-lastEdit: 2018-02-10
+lastEdit: 2018-03-02
 date: 2016-10-02
 title: Sidekicks
 description: Building an affinity therapy platform for autistic children
@@ -63,7 +63,7 @@ https://www.youtube.com/watch?v=gk1PPYImFB4
 
 The application was not reliable. It had many bugs and often crashed in the middle of a session. It had lots of non-deterministic behavior. It didn't work on Firefox due to a memory overflow. I began my work by auditing the application in its entirety, measuring response times, application size, and documenting all of the issues encountered.
 
-The application had no tests or documentation. There was loads of shared mutable state. Files were massive, with all kinds of . I quickly discovered fundamental architecture issues when my first task — adding a loading indicator for some data when the user changes a child's affinity — turned out to not be possible without huge changes to the code. AngularFire — the official library for integrating AngularJS and Firebase that we were using — made implicit, opaque bindings between our data model and front-end templates that prevented access to the moment of state change that triggered new data being loaded.
+The application had no tests or documentation. There was loads of shared mutable state. I quickly discovered fundamental architecture issues when my first task — adding a loading indicator for some data when the user changes a child's affinity — turned out to not be possible without huge changes to the code. AngularFire — the official library for integrating AngularJS and Firebase that we were using — made implicit, opaque bindings between our data model and front-end templates that prevented access to the moment of state change that triggered new data being loaded.
 
 In addition to the web application's technical issues, early customers and user tests revealed that it had significant design issues as well. People reported feeling confused and overwhelmed by the interface, unsure of what they could or should do.
 
