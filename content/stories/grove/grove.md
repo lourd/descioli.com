@@ -1,6 +1,6 @@
 ---
 publication: 2018-02-09
-lastEdit: 2018-03-01
+lastEdit: 2018-05-20
 date: 2014-01-01
 title: Grove
 description: Reconnecting people to Nature with indoor gardens
@@ -254,7 +254,7 @@ The ordeal was painful. It emphasized how essential clear communication is on a 
 
 # The E-team
 
-Gabe and Mike's scheming and passive aggression were fresh in my mind when the company went home for the holidays. Our struggles over the software team's leadership was one of several issues the company was having with communication and cross-team decision making. I discussed all of this with my family. My Uncle Tom pointed out the fact that the company did not have an executive team, or even really a board. Aside from Gabe and Jamie, the board had only one other member — a junior partner from our lead investor that had never run a company. He gave me a book, _The Five Dysfunctions of a Team_, that he used as a framework for understanding leadership issues in his management consulting.
+Gabe and Mike's scheming and passive aggression were fresh in my mind when the company went home for the holidays. Our struggle over the software team's leadership was one of several issues the company was having with communication and cross-team decision making. I discussed all of this with my family. My Uncle Tom pointed out the fact that the company did not have an executive team, or even really a board. Aside from Gabe and Jamie, the board had only one other member — a junior partner from our lead investor that had never run a company. He gave me a book, _The Five Dysfunctions of a Team_, that he used as a framework for understanding leadership issues in his management consulting.
 
 When I came back from my vacation I went to lunch with Gabe and Jamie and started a discussion around maturing the company's leadership structures. We discussed the egalitarian, self-organizing approach we had used so far and how it was beginning to fall apart as we grew in size. I gave Gabe the book and [this talk from the author](https://www.youtube.com/watch?v=inftqUOLFaM). After skimming the book and having a couple more discussions about it, both of them agreed. That January the executive team was created (quickly shortened to just the "E-team"). On it were were Gabe, Jamie, Mike, Liz, Emily, Marcos, and Dave.
 
