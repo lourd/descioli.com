@@ -52,8 +52,14 @@
         - name: Orchestra
         - name: Beta Club
   work:
+    - company: Google
+      site: https://vr.google.com
+      location: New York, NY
+      role: AR UX Engineer
+      dates:
+        start: 2018-04-30
     - company: Out Here Studio
-      site: http://outhere.studio
+      site: https://outhere.studio
       location: Cambridge, MA
       role: Founder, Designer, & Developer
       story: /out-here-archery
@@ -118,6 +124,7 @@
       role: Mentor
       dates:
         start: 2017-07-01
+        end: 2018-01-30
     - company: NodeSchool Boston
       site: https://nodeschool.io/
       location: Boston, MA
