@@ -8,7 +8,7 @@ const Homepage = props => (
       image={props.data.headerImage.sizes.src}
     />
     <TopPanel
-      bylines={props.data.allBylinesYaml.edges.map(edge => edge.node.text)}
+      bylines={props.data.bylinesYaml.bylines}
       img={props.data.headerImage.sizes.src}
     />
   </main>
@@ -18,12 +18,8 @@ export default Homepage;
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allBylinesYaml {
-      edges {
-        node {
-          text
-        }
-      }
+    bylinesYaml {
+      bylines
     }
     headerImage: imageSharp(id: { regex: "/header/" }) {
       sizes(maxWidth: 1600) {

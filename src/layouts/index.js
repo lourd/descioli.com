@@ -18,7 +18,7 @@ class TemplateWrapper extends React.Component {
 
   render() {
     const meta = this.props.data.site.siteMetadata
-    const links = this.props.data.allMenuLinksYaml.edges.map(edge => edge.node)
+    const links = this.props.data.menuLinksYaml.links;
     return (
       <ThemeProvider theme={theme}>
         <div>
@@ -55,14 +55,12 @@ export const pageQuery = graphql`
         description
       }
     }
-    allMenuLinksYaml {
-      edges {
-        node {
-          path
-          copy
-          url
-          color
-        }
+    menuLinksYaml {
+      links {
+        path
+        copy
+        url
+        color
       }
     }
   }

@@ -118,6 +118,13 @@
         start: 2011-10-01
         end: 2011-12-15
   volunteer:
+    - company: Reality Virtually Hackathon
+      site: https://realityvirtuallyhack.com
+      location: Cambridge, MA
+      role: Mentor
+      dates:
+        recurring:
+          - 2019-01-18
     - company: Resilient Coders
       site: https://www.resilientcoders.org/
       location: Boston, MA

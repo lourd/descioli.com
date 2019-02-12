@@ -318,58 +318,54 @@ const ResumePage = props => (
 
 export const pageQuery = graphql`
   query ResumeQuery {
-    allResumeYaml {
-      edges {
-        node {
+    resumeYaml {
+      name
+      email
+      site
+      education {
+        school {
           name
-          email
-          site
-          education {
-            school {
-              name
-              link
-            }
-            degree
-            major {
-              name
-              link
-            }
-            concentration {
-              name
-              link
-            }
-            years {
-              start(formatString: "MMM YYYY")
-              end(formatString: "MMM YYYY")
-            }
-            transfer
-            extracurriculars {
-              name
-              link
-            }
-          }
-          work {
-            company
-            location
-            site
-            role
-            story
-            dates {
-              start(formatString: "MMM YYYY")
-              end(formatString: "MMM YYYY")
-            }
-          }
-          volunteer {
-            company
-            location
-            site
-            role
-            dates {
-              start(formatString: "MMM YYYY")
-              end(formatString: "MMM YYYY")
-              recurring(formatString: "MMM YYYY")
-            }
-          }
+          link
+        }
+        degree
+        major {
+          name
+          link
+        }
+        concentration {
+          name
+          link
+        }
+        years {
+          start(formatString: "MMM YYYY")
+          end(formatString: "MMM YYYY")
+        }
+        transfer
+        extracurriculars {
+          name
+          link
+        }
+      }
+      work {
+        company
+        location
+        site
+        role
+        story
+        dates {
+          start(formatString: "MMM YYYY")
+          end(formatString: "MMM YYYY")
+        }
+      }
+      volunteer {
+        company
+        location
+        site
+        role
+        dates {
+          start(formatString: "MMM YYYY")
+          end(formatString: "MMM YYYY")
+          recurring(formatString: "MMM YYYY")
         }
       }
     }
@@ -377,7 +373,7 @@ export const pageQuery = graphql`
 `
 
 const Resume = props => (
-  <ResumePage {...props.data.allResumeYaml.edges[0].node} />
+  <ResumePage {...props.data.resumeYaml} />
 )
 
 export default Resume
