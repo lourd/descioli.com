@@ -39,11 +39,10 @@ class Bylines extends React.Component {
           interval={this.props.interval}
           delay={this.props.delay + this.props.interval}
           tick={this.change}
-        >
-          <TextCarousel childKey={this.state.byline}>
-            {this.state.byline}
-          </TextCarousel>
-        </OnInterval>
+        />
+        <TextCarousel childKey={this.state.byline}>
+          {this.state.byline}
+        </TextCarousel>
       </BylinesContainer>
     )
   }
