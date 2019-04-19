@@ -19,12 +19,12 @@
   color: white
   bg: "#1178B3"
 - name: Instagram
-  description: Where I put filters on my photos before sharing them
+  description: Where I share the funny, fleeting moments of my life
   link: https://www.instagram.com/louisrd/
   color: white
   bg: "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%)"
 - name: Snapchat
-  description: Where I share the funny, fleeting moments of my life
+  description: Where I used to share the funny, fleeting moments of my life
   link: https://www.snapchat.com/add/louisrd
   color: "#262626"
   bg: "#FEFA37"
