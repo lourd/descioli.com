@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import sizes from 'style/sizes';
 import { fadeDownInCss } from 'style/snippets';
@@ -38,7 +38,7 @@ const Name = styled.h1<{ delay: number }>`
   letter-spacing: -1px;
   animation-delay: 0s;
   margin-bottom: 0;
-  animation-delay: ${props => props.delay}s;
+  animation-delay: ${props => props.delay}ms;
 `;
 
 const CTA = styled.div<{ delay: number }>`
@@ -48,7 +48,7 @@ const CTA = styled.div<{ delay: number }>`
   font-size: 1.5em;
   opacity: 0;
   animation: ${fadeIn} 1.2s forwards;
-  animation-delay: ${props => props.delay}s;
+  animation-delay: ${props => props.delay}ms;
   @media (max-width: ${sizes.smallMax}) {
     max-width: 70vw;
   }
@@ -80,9 +80,9 @@ const TopPanel = (props: Props) => (
   <Panel>
     <MovingImgBackground img={props.img} delay={1500} />
     <TextContainer>
-      <Name delay={0.2}>Louis R. DeScioli</Name>
+      <Name delay={200}>Louis R. DeScioli</Name>
       <Bylines bylines={props.bylines} delay={2200} interval={3000} />
-      <CTA delay={3}>
+      <CTA delay={3000}>
         <h4>Play with my latest creation</h4>
         <h3>
           <a

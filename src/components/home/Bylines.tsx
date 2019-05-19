@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import TextCarousel from 'components/TextCarousel';
 import { Bag } from 'lib/Bag';
 import useInterval from 'hooks/useInterval';

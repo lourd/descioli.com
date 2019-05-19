@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Meta from 'components/Meta';
 import { shadows } from 'style/snippets';
 import sizes from 'style/sizes';

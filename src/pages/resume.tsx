@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled, { createGlobalStyle } from 'styled-components';
+import { Global, css } from '@emotion/core';
+import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import Meta from 'components/Meta';
 import sizes from 'style/sizes';
@@ -296,17 +297,6 @@ const Job = props => {
   return <JobContainer>{content}</JobContainer>;
 };
 
-const GlobalStyle = createGlobalStyle`
-  @page {
-    margin: 5mm 10mm 5mm 10mm;
-  }
-  @media print {
-    section {
-      page-break-inside: avoid;
-    }
-  }
-`;
-
 const ResumePage = props => (
   <main>
     <Meta {...meta} />
@@ -332,7 +322,18 @@ const ResumePage = props => (
         ))}
       </section>
     </Container>
-    <GlobalStyle />
+    <Global
+      styles={css`
+        @page {
+          margin: 5mm 10mm 5mm 10mm;
+        }
+        @media print {
+          section {
+            page-break-inside: avoid;
+          }
+        }
+      `}
+    />
   </main>
 );
 

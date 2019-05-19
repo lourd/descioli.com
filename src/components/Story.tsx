@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import Img from 'gatsby-image';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import { shadows } from 'style/snippets';

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, ReactElement } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Helmet from 'react-helmet';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'emotion-theming';
 import Nav from 'components/Nav';
 import theme from 'style/theme';
 import Blur from 'components/Blur';

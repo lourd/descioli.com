@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { elevate } from 'style/snippets';
 import sizes from 'style/sizes';
 import Meta from 'components/Meta';

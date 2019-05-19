@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
   siteMetadata: {
     title: 'Louis R. DeScioli',
@@ -21,7 +19,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-yaml`,

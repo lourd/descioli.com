@@ -1,40 +1,36 @@
 import { fadeIn, fadeUpIn, fadeDownIn } from 'style/animations';
-import { ifSeen } from 'style/helpers';
-import { css } from 'styled-components';
+import { css } from '@emotion/core';
+import isPropValid from '@emotion/is-prop-valid'
 
 export const fadeUpInCss = css`
   opacity: 0;
-  animation: ${ifSeen(
-    css`
-      ${fadeUpIn} 1.2s forwards
-    `
-  )};
+  animation: ${fadeUpIn} 1.2s forwards;
 `;
 
 export const fadeDownInCss = css`
   opacity: 0;
-  animation: ${ifSeen(
-    css`
-      ${fadeDownIn} 1.2s forwards
-    `
-  )};
+  animation: ${fadeDownIn} 1.2s forwards;
 `;
 
 export const fadeInCss = css`
   opacity: 0;
-  animation: ${ifSeen(
-    css`
-      ${fadeIn} 1.2s forwards
-    `
-  )};
+  animation: ${fadeIn} 1.2s forwards;
+`;
+
+export const stretchFull = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `;
 
 /**
  * Computes a top-shadow for an elevation effect.
- * @param {Number} elevation - elevation level
+ * @param elevation - elevation level
  * @return {String}
  */
-function topShadow(elevation) {
+function topShadow(elevation: number) {
   const offset = [1.5, 3, 10, 14, 19][elevation];
   const blur = [1.5, 3, 10, 14, 19][elevation] * 4;
   const color = [0.12, 0.16, 0.19, 0.25, 0.3][elevation];
@@ -43,10 +39,10 @@ function topShadow(elevation) {
 
 /**
  * Computes a bottom-shadow for an elevation effect.
- * @param  {Number} elevation - elevation level
+ * @param  elevation - elevation level
  * @return {String}
  */
-function bottomShadow(elevation) {
+function bottomShadow(elevation: number) {
   const offset = [1.5, 3, 6, 10, 15][elevation] * 1;
   const blur = [1, 3, 3, 5, 6][elevation] * 4;
   const color = [0.24, 0.23, 0.23, 0.22, 0.22][elevation];
@@ -55,19 +51,19 @@ function bottomShadow(elevation) {
 
 /**
  * Gives a elevation effect.
- * @param {Number} $elevation - elevation level (between 1 and 5)
+ * @param elevation - elevation level (between 1 and 5)
  * @link http://www.google.com/design/spec/layout/layout-principles.html#layout-principles-dimensionality Google Design
  */
-export function elevate($elevation) {
-  if ($elevation < 1) {
+export function elevate(elevation: number) {
+  if (elevation < 1) {
     return css`
       box-shadow: none;
     `;
-  } else if ($elevation > 5) {
-    console.warn(`Invalid $elevation ${$elevation}`);
+  } else if (elevation > 5) {
+    console.warn(`Invalid elevation ${elevation}`);
   } else {
-    return `
-      box-shadow: ${bottomShadow($elevation)}, ${topShadow($elevation)};
+    return css`
+      box-shadow: ${bottomShadow(elevation)}, ${topShadow(elevation)};
     `;
   }
 }
@@ -86,10 +82,6 @@ export function shadows({ startingElevation = 1, transition = 200 } = {}) {
   `;
 }
 
-export const stretchFull = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-`;
+export const ignoreProps = (list: string[]) => (prop: string) => {
+  return isPropValid(prop) && !list.includes(prop);
+}

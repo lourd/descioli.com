@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const Parent = styled.div<{ ratio: number }>`
   padding-bottom: ${props => props.ratio * 100}%;
