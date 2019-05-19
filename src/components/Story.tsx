@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import styled from '@emotion/styled';
 import Img from 'gatsby-image';
+import styled from '@emotion/styled';
 import MDXRenderer from 'gatsby-mdx/mdx-renderer';
 import { shadows } from 'style/snippets';
 import sizes from 'style/sizes';
@@ -10,7 +10,6 @@ import Meta from 'components/Meta';
 const maxWidth = 800;
 const sidePadding = '2.5%';
 
-const Page = styled.div``;
 const Content = styled.div`
   max-width: ${maxWidth}px;
   margin: 0 auto;
@@ -50,7 +49,6 @@ const Content = styled.div`
       font-family: ${props => props.theme.serif};
       font-size: 1em;
       border-left: 4px solid #dfe2e5;
-      color: {props => props.theme.quote};
       margin: 0px 0px 16px 0px;
       padding: 0px 16px;
       white-space: pre;
@@ -64,9 +62,20 @@ const Content = styled.div`
       margin-top: 0.75rem;
     }
     .anchor {
+      display: none;
+      @media(min-width: ${sizes.medium}) {
+        display: block;
+      }
       float: left;
       padding-right: 4px;
       margin-left: -20px;
+      opacity: 0;
+      transition: opacity 200ms;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      &:hover .anchor {
+        opacity: 1;
+      }
     }
   }
 `;
@@ -148,7 +157,7 @@ function Story({ data }) {
   // default to the header, fallback to the image
   const image = data.mdx.frontmatter.header || data.mdx.frontmatter.image;
   return (
-    <Page>
+    <>
       <Meta
         title={data.mdx.frontmatter.title}
         keywords={data.mdx.frontmatter.tags}
@@ -172,7 +181,7 @@ function Story({ data }) {
           <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
         </main>
       </Content>
-    </Page>
+    </>
   );
 }
 
