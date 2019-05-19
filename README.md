@@ -5,7 +5,7 @@
 * A whole lot of ~~JavaScript~~ [TypeScript](https://www.typescriptlang.org/)
 * HTML and CSS, described in JavaScript
 * [React](https://github.com/facebook/react) to declare the UI
-* [emotion](https://github.com/emotion-js/emotion) to define styles in JavaScript
+* [Emotion](https://github.com/emotion-js/emotion) to define styles in JavaScript
 * [Gatsby](https://github.com/gatsbyjs/gatsby) for the tooling and providing a sweet [GraphQL](http://graphql.org/) data layer
 * Deployed on [Netlify](https://www.netlify.com/) because it's simple, implements a lot of best practices by default that make serving your site super fast, and includes SSL and custom domains for free
 
