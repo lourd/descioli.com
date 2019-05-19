@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 interface BarProps {
   length: number;
@@ -86,7 +86,7 @@ const HamburgerToggle = (props: ToggleProps) => {
     length: props.length,
     barGap: props.barGap,
     thickness: props.thickness,
-    isOpen: props.isOpen
+    isOpen: props.isOpen,
   };
   return (
     <HamburgerContainer>
@@ -100,7 +100,7 @@ const HamburgerToggle = (props: ToggleProps) => {
 HamburgerToggle.defaultProps = {
   length: 24,
   barGap: 8,
-  thickness: 3
+  thickness: 3,
 };
 
 export default HamburgerToggle;

@@ -1,25 +1,25 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import styled from "styled-components";
-import { elevate } from "style/snippets";
-import sizes from "style/sizes";
-import Meta from "components/Meta";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import styled from 'styled-components';
+import { elevate } from 'style/snippets';
+import sizes from 'style/sizes';
+import Meta from 'components/Meta';
 
 const meta = {
-  title: "Social networks",
-  description: "Where you can find me",
+  title: 'Social networks',
+  description: 'Where you can find me',
   keywords: [
-    "social media",
-    "hangouts",
-    "email",
-    "twitter",
-    "linkedin",
-    "facebook",
-    "contact",
-    "snapchat",
-    "github",
-    "instagram"
-  ]
+    'social media',
+    'hangouts',
+    'email',
+    'twitter',
+    'linkedin',
+    'facebook',
+    'contact',
+    'snapchat',
+    'github',
+    'instagram',
+  ],
 };
 
 const SocialContainer = styled.a`

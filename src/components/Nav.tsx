@@ -1,14 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "gatsby";
-import Ripple from "react-ink";
-import color from "color";
-import sizes from "style/sizes";
-import BodyClass from "components/BodyClass";
-import HamburgerToggle from "components/HamburgerToggle";
-import { shadows } from "style/snippets";
-import { fadeIn } from "style/animations";
-import OnEscape from "components/OnEscape";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import Ripple from 'react-ink';
+import color from 'color';
+import sizes from 'style/sizes';
+import BodyClass from 'components/BodyClass';
+import HamburgerToggle from 'components/HamburgerToggle';
+import { shadows } from 'style/snippets';
+import { fadeIn } from 'style/animations';
+import OnEscape from 'components/OnEscape';
 
 type TLink = {
   path: string;
@@ -58,7 +58,7 @@ const Button = styled.button`
   transition: box-shadow 250ms, transform 250ms, background-color 250ms;
   &:focus {
     background-color: ${props =>
-      props.isOpen ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0.8)"};
+      props.isOpen ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.8)'};
   }
   @media (min-width: ${sizes.medium}) {
     bottom: 24px;
@@ -67,16 +67,16 @@ const Button = styled.button`
   }
   @media (min-width: ${sizes.large}) {
     background-color: ${props =>
-      props.isOpen ? "transparent" : "rgba(0,0,0,0.5)"};
+      props.isOpen ? 'transparent' : 'rgba(0,0,0,0.5)'};
     &:focus {
       background-color: ${props =>
-        props.isOpen ? "rgba(0,0,0,0.3)" : "rgba(0,0,0,0.8)"};
+        props.isOpen ? 'rgba(0,0,0,0.3)' : 'rgba(0,0,0,0.8)'};
     }
     top: 52px;
     right: 5%;
     bottom: inherit;
     transform: ${props =>
-      props.isOpen ? `scale(1.5) translateY(-24px)` : "scale(1.2)"};
+      props.isOpen ? `scale(1.5) translateY(-24px)` : 'scale(1.2)'};
   }
   @media print {
     display: none;
@@ -103,7 +103,7 @@ const MenuContainer = styled.nav`
   z-index: 2;
   opacity: ${props => (props.isOpen ? 1 : 0)};
   transition: opacity 300ms;
-  pointer-events: ${props => (props.isOpen ? "inherit" : "none")};
+  pointer-events: ${props => (props.isOpen ? 'inherit' : 'none')};
 `;
 
 const StyledMenuLink = styled.a`

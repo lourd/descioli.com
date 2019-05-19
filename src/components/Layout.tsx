@@ -1,12 +1,12 @@
-import React, { useState, useCallback, ReactElement } from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import Helmet from "react-helmet";
-import { ThemeProvider } from "styled-components";
-import Nav from "components/Nav";
-import theme from "style/theme";
-import Blur from "components/Blur";
+import React, { useState, useCallback, ReactElement } from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import Helmet from 'react-helmet';
+import { ThemeProvider } from 'styled-components';
+import Nav from 'components/Nav';
+import theme from 'style/theme';
+import Blur from 'components/Blur';
 
-import "style/global.css";
+import 'style/global.css';
 
 interface LayoutProps {
   children: ReactElement;
@@ -43,7 +43,7 @@ export default function Layout({ children }: LayoutProps) {
       <div>
         <Helmet titleTemplate={`%s | ${meta.title}`} defaultTitle={meta.title}>
           <meta name="description" content={meta.description} />
-          <meta name="keywords" content={meta.keywords.join(",")} />
+          <meta name="keywords" content={meta.keywords.join(',')} />
           <html lang="en" />
           {/* sets up twitter to display every page as a card with default info */}
           <meta name="twitter:card" content="summary" />

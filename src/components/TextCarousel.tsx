@@ -1,7 +1,7 @@
-import React, { ReactNode } from "react";
-import { Transition, TransitionGroup } from "react-transition-group";
-import { fadeInFrom, fadeOutTo } from "style/animations";
-import styled from "styled-components";
+import React, { ReactNode } from 'react';
+import { Transition, TransitionGroup } from 'react-transition-group';
+import { fadeInFrom, fadeOutTo } from 'style/animations';
+import styled from 'styled-components';
 
 const CarouselContainer = styled.div`
   position: relative;

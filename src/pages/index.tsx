@@ -1,7 +1,7 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import TopPanel from "components/home/TopPanel";
-import Meta from "components/Meta";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import TopPanel from 'components/home/TopPanel';
+import Meta from 'components/Meta';
 
 const Homepage = () => {
   const data = useStaticQuery(graphql`

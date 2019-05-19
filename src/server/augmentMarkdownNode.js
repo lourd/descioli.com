@@ -6,7 +6,7 @@ function augmentMarkdownNodes({
   node,
   actions: { createNodeField },
   getNode,
-  store
+  store,
 }) {
   if (node.internal.type === `Mdx`) {
     const { relativePath } = getNode(node.parent);
@@ -16,9 +16,9 @@ function augmentMarkdownNodes({
     const { repo } = store.getState().config.siteMetadata;
     const lastEditUrl = `${repo}/commits/master/${path}`;
     createNodeField({
-      name: "lastEditUrl",
+      name: 'lastEditUrl',
       node,
-      value: lastEditUrl
+      value: lastEditUrl,
     });
   }
 }

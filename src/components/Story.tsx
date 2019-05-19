@@ -1,14 +1,14 @@
-import React from "react";
-import { graphql } from "gatsby";
-import styled from "styled-components";
-import Img from "gatsby-image";
-import MDXRenderer from "gatsby-mdx/mdx-renderer";
-import { shadows } from "style/snippets";
-import sizes from "style/sizes";
-import Meta from "components/Meta";
+import React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { shadows } from 'style/snippets';
+import sizes from 'style/sizes';
+import Meta from 'components/Meta';
 
 const maxWidth = 800;
-const sidePadding = "2.5%";
+const sidePadding = '2.5%';
 
 const Page = styled.div``;
 const Content = styled.div`
@@ -132,7 +132,7 @@ const Dates = props => {
     <div>
       <a href={props.lastEditUrl} target="_blank" rel="noopener noreferrer">
         Last edited
-      </a>{" "}
+      </a>{' '}
       {props.lastEdit}
     </div>
   );

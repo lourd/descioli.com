@@ -1,5 +1,5 @@
-import React from "react";
-import Head from "react-helmet";
+import React from 'react';
+import Head from 'react-helmet';
 
 interface Props {
   title?: string;
@@ -20,7 +20,7 @@ const Meta = (props: Props) => (
       <meta property="og:description" content={props.description} />
     )}
     {props.keywords.length > 0 && (
-      <meta name="keywords" content={props.keywords.join(",")} />
+      <meta name="keywords" content={props.keywords.join(',')} />
     )}
     <meta name="twitter:creator" content={props.authorHandle} />
     {props.image && (
@@ -32,8 +32,8 @@ const Meta = (props: Props) => (
 Meta.defaultProps = {
   keywords: [],
   // not hard coding these would be nice
-  authorHandle: "@louisdescioli",
-  url: "https://www.descioli.design"
+  authorHandle: '@louisdescioli',
+  url: 'https://www.descioli.design',
 };
 
 export default Meta;

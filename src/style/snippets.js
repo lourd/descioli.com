@@ -1,6 +1,6 @@
-import { fadeIn, fadeUpIn, fadeDownIn } from "style/animations";
-import { ifSeen } from "style/helpers";
-import { css } from "styled-components";
+import { fadeIn, fadeUpIn, fadeDownIn } from 'style/animations';
+import { ifSeen } from 'style/helpers';
+import { css } from 'styled-components';
 
 export const fadeUpInCss = css`
   opacity: 0;

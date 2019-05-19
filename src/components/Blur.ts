@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 interface Props {
   blur: number;
@@ -17,7 +17,7 @@ const Blur = styled.div<Props>`
 Blur.defaultProps = {
   blur: 10,
   transitionIn: 0.5,
-  transitionOut: 0.25
+  transitionOut: 0.25,
 };
 
 export default Blur;

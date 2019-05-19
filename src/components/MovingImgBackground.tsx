@@ -1,10 +1,10 @@
-import React, { ReactNode } from "react";
-import styled from "styled-components";
+import React, { ReactNode } from 'react';
+import styled from 'styled-components';
 
-import OnMouseMove from "components/OnMouseMove";
-import { fade } from "style/animations";
-import { stretchFull } from "style/snippets";
-import BodyClass from "components/BodyClass";
+import OnMouseMove from 'components/OnMouseMove';
+import { fade } from 'style/animations';
+import { stretchFull } from 'style/snippets';
+import BodyClass from 'components/BodyClass';
 
 interface MovingImgBackgroundProps {
   img: string;
@@ -18,8 +18,8 @@ interface MovingImageProps extends MovingImgBackgroundProps {
 
 const MovingImage = styled.div.attrs<MovingImageProps>(props => ({
   style: {
-    transform: `translate3d(${props.dX}, ${props.dY}, 0) scale(1.1)`
-  }
+    transform: `translate3d(${props.dX}, ${props.dY}, 0) scale(1.1)`,
+  },
 }))`
   ${stretchFull};
   background-size: cover;
@@ -28,7 +28,7 @@ const MovingImage = styled.div.attrs<MovingImageProps>(props => ({
   z-index: -1;
   position: fixed;
   &:after {
-    content: "";
+    content: '';
     z-index: 1;
     ${stretchFull};
     background-color: ${props => props.theme.black};
@@ -43,7 +43,7 @@ const MovingImgBackground = (props: MovingImgBackgroundProps) => (
       {({ x, y }) => {
         let xDist = 0;
         let yDist = 0;
-        if (typeof window !== "undefined") {
+        if (typeof window !== 'undefined') {
           const xd = x / window.innerWidth;
           const yd = y / window.innerHeight;
           [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);

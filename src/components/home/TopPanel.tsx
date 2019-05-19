@@ -1,11 +1,11 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
-import sizes from "style/sizes";
-import { fadeDownInCss } from "style/snippets";
-import { fadeIn } from "style/animations";
-import MovingImgBackground from "components/MovingImgBackground";
-import Bylines from "./Bylines";
+import sizes from 'style/sizes';
+import { fadeDownInCss } from 'style/snippets';
+import { fadeIn } from 'style/animations';
+import MovingImgBackground from 'components/MovingImgBackground';
+import Bylines from './Bylines';
 
 const Panel = styled.div`
   height: 100vh;

@@ -1,9 +1,9 @@
-import React, { useState, useRef, useCallback } from "react";
-import styled from "styled-components";
-import TextCarousel from "components/TextCarousel";
-import { Bag } from "lib/Bag";
-import useInterval from "hooks/useInterval";
-import { fadeDownInCss } from "style/snippets";
+import React, { useState, useRef, useCallback } from 'react';
+import styled from 'styled-components';
+import TextCarousel from 'components/TextCarousel';
+import { Bag } from 'lib/Bag';
+import useInterval from 'hooks/useInterval';
+import { fadeDownInCss } from 'style/snippets';
 
 const BylinesContainer = styled.h2<{
   delay: number;
@@ -29,9 +29,7 @@ function Bylines(props: Props) {
   useInterval({ delay: props.delay, interval: props.interval, tick: change });
   return (
     <BylinesContainer delay={props.delay}>
-      <TextCarousel childKey={byline}>
-        {byline}
-      </TextCarousel>
+      <TextCarousel childKey={byline}>{byline}</TextCarousel>
     </BylinesContainer>
   );
 }

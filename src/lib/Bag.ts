@@ -1,4 +1,4 @@
-import { knuthShuffle as shuffle } from "knuth-shuffle";
+import { knuthShuffle as shuffle } from 'knuth-shuffle';
 
 /**
  * Creates an array where the values correspond to their index

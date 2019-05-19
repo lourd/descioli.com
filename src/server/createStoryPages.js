@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 
 async function createStoryPages({ actions: { createPage }, graphql }) {
   const component = path.resolve(`src/components/Story.tsx`);
@@ -25,8 +25,8 @@ async function createStoryPages({ actions: { createPage }, graphql }) {
       path: node.frontmatter.path,
       component,
       context: {
-        imageFocus: node.frontmatter.imageFocus
-      }
+        imageFocus: node.frontmatter.imageFocus,
+      },
     });
   });
 }

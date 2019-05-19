@@ -1,4 +1,4 @@
-import { Component, ReactNode } from "react";
+import { Component, ReactNode } from 'react';
 
 interface State {
   x: number;
@@ -12,22 +12,22 @@ interface Props {
 class OnMouseMove extends Component<Props, State> {
   state = {
     x: 0,
-    y: 0
+    y: 0,
   };
 
   componentDidMount() {
-    document.addEventListener("mousemove", this.listener);
+    document.addEventListener('mousemove', this.listener);
   }
 
   listener = (evt: MouseEvent) => {
     this.setState({
       x: evt.clientX,
-      y: evt.clientY
+      y: evt.clientY,
     });
   };
 
   componentWillUnmount() {
-    document.removeEventListener("mousemove", this.listener);
+    document.removeEventListener('mousemove', this.listener);
   }
 
   render() {

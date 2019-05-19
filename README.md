@@ -2,7 +2,7 @@
 
 ## What it's made with
 
-* A whole lot of JavaScript
+* A whole lot of ~~JavaScript~~ [TypeScript](https://www.typescriptlang.org/)
 * HTML and CSS, described in JavaScript
 * [React](https://github.com/facebook/react) to declare the UI
 * [styled-components](https://github.com/styled-components/styled-components) to define styles in JavaScript

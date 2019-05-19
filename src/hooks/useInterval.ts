@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback } from 'react';
 
 interface Props {
   /** Amount of time in milliseconds until `tick` is called for the first time */
@@ -13,7 +13,7 @@ export default function useInterval(props: Props) {
   useEffect(() => {
     let i = setTimeout(() => {
       i = setInterval(props.tick, props.interval);
-    }, props.delay + props.interval)
+    }, props.delay + props.interval);
     return () => clearTimeout(i);
-  }, [props.tick, props.delay])
+  }, [props.tick, props.delay]);
 }

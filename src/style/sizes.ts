@@ -4,7 +4,7 @@ const breakpoints = {
   large: 1025,
   xl: 1281,
   xxl: 1440,
-  xxxl: 1601
+  xxxl: 1601,
 };
 
 const sizes = {
@@ -18,8 +18,8 @@ const sizes = {
   xlMax: `${(breakpoints.xxl - 1) / 16}rem`,
   xxl: `${breakpoints.xxl / 16}rem`,
   xxlMax: `${(breakpoints.xxxl - 1) / 16}rem`,
-  xxxl: `${breakpoints.xxxl / 16}rem`
+  xxxl: `${breakpoints.xxxl / 16}rem`,
 };
 
-export { breakpoints, sizes }
+export { breakpoints, sizes };
 export default sizes;

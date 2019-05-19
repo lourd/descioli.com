@@ -1,13 +1,13 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import styled, { createGlobalStyle } from "styled-components";
-import { Link } from "gatsby";
-import Meta from "components/Meta";
-import sizes from "style/sizes";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import styled, { createGlobalStyle } from 'styled-components';
+import { Link } from 'gatsby';
+import Meta from 'components/Meta';
+import sizes from 'style/sizes';
 
 const meta = {
-  title: "Resume",
-  description: "My life in one page"
+  title: 'Resume',
+  description: 'My life in one page',
 };
 
 /**
@@ -16,9 +16,9 @@ const meta = {
  */
 const datesFormatter = dates => {
   if (!dates) return null;
-  if (typeof dates === "string") return dates;
+  if (typeof dates === 'string') return dates;
   const { start, end, recurring } = dates;
-  if (recurring) return recurring.join(", ");
+  if (recurring) return recurring.join(', ');
   if (!end) return `${start} - Present`;
   return `${start} - ${end}`;
 };
@@ -42,7 +42,7 @@ const Container = styled.div`
   color: ${props => props.theme.black};
   ${SectionTitle} {
     &:after {
-      content: " ";
+      content: ' ';
       display: block;
       padding-top: 2px;
       border-bottom: 1px solid ${props => props.theme.black};
@@ -163,7 +163,7 @@ const School = props => (
     </TopRow>
     {props.degree && (
       <p>
-        {props.degree} {"in "}
+        {props.degree} {'in '}
         <a href={props.major.link} target="_blank" rel="noopener noreferrer">
           {props.major.name}
         </a>
@@ -171,7 +171,7 @@ const School = props => (
     )}
     {props.concentration && (
       <p>
-        {"Concentration in "}
+        {'Concentration in '}
         <a
           href={props.concentration.link}
           target="_blank"
@@ -184,7 +184,7 @@ const School = props => (
     {props.transfer && <p>{props.transfer}</p>}
     {props.transfer && (
       <p>
-        {"Studied "}
+        {'Studied '}
         <a href={props.major.link} target="_blank" rel="noopener noreferrer">
           {props.major.name}
         </a>
@@ -257,7 +257,7 @@ const Comma = styled.span`
   font-weight: 100;
   display: none;
   :after {
-    content: ",";
+    content: ',';
   }
   @media (min-width: ${sizes.medium}) {
     display: inherit;
@@ -277,7 +277,7 @@ const Job = props => {
   const content = (
     <>
       <Title>{props.role}</Title>
-      <For>{"for"}</For>
+      <For>{'for'}</For>
       <MobileBr />
       <SubTitle>{company}</SubTitle>
       <Comma />

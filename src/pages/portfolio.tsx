@@ -1,33 +1,33 @@
-import React from "react";
-import { graphql, useStaticQuery } from "gatsby";
-import { Link } from "gatsby";
-import Img from "gatsby-image";
-import styled from "styled-components";
-import Meta from "components/Meta";
-import { shadows } from "style/snippets";
-import sizes from "style/sizes";
+import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
+import styled from 'styled-components';
+import Meta from 'components/Meta';
+import { shadows } from 'style/snippets';
+import sizes from 'style/sizes';
 
 const meta = {
   title: `Portfolio`,
-  description: "Notable jobs & projects of my career",
+  description: 'Notable jobs & projects of my career',
   keywords: [
-    "projects",
-    "code",
-    "software engineering",
-    "software design",
-    "making",
-    "portfolio",
-    "design",
-    "stories",
-    "entreprenuership",
-    "innovation"
-  ]
+    'projects',
+    'code',
+    'software engineering',
+    'software design',
+    'making',
+    'portfolio',
+    'design',
+    'stories',
+    'entreprenuership',
+    'innovation',
+  ],
 };
 
 const StyledImg = styled(Img)`
   display: block;
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;

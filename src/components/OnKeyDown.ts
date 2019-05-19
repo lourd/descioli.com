@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component } from 'react';
 
 interface Props {
   keyCode: number;
@@ -13,11 +13,11 @@ interface Props {
  */
 export default class OnKeyDown extends Component<Props> {
   componentDidMount() {
-    document.addEventListener("keydown", this.handleKeydown);
+    document.addEventListener('keydown', this.handleKeydown);
   }
 
   componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeydown);
+    document.removeEventListener('keydown', this.handleKeydown);
   }
 
   handleKeydown = (evt: KeyboardEvent) => {
