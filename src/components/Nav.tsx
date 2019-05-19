@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
@@ -169,37 +169,34 @@ const MenuLink = (props: MenuLinkProps) => {
   );
 };
 
-class Menu extends React.Component<MenuProps> {
-  container?: HTMLElement;
-
-  handleMenuClick = (event: MouseEvent) => {
-    if (event.target === this.container) {
-      this.props.onClick();
-    }
-  };
-
-  containerRef = (el: HTMLElement) => (this.container = el);
-
-  render() {
-    return (
-      <MenuContainer
-        ref={this.containerRef}
-        open={this.props.open}
-        aria-hidden={!this.props.open}
-        color={this.props.links[this.props.links.length - 1].color}
-        onClick={this.handleMenuClick}
-      >
-        {this.props.links.map((link, i) => (
-          <MenuLink
-            key={i}
-            onClick={this.props.onClick}
-            tabIndex={this.props.open ? null : -1}
-            {...link}
-          />
-        ))}
-      </MenuContainer>
-    );
-  }
+function Menu(props: MenuProps) {
+  const container = useRef<HTMLElement>(null);
+  const handleMenuClick = useCallback(
+    (event: MouseEvent) => {
+      if (event.target === container.current) {
+        props.onClick();
+      }
+    },
+    [props.onClick]
+  );
+  return (
+    <MenuContainer
+      ref={container}
+      open={props.open}
+      aria-hidden={!props.open}
+      color={props.links[props.links.length - 1].color}
+      onClick={handleMenuClick}
+    >
+      {props.links.map((link, i) => (
+        <MenuLink
+          key={i}
+          onClick={props.onClick}
+          tabIndex={props.open ? null : -1}
+          {...link}
+        />
+      ))}
+    </MenuContainer>
+  );
 }
 
 export default function Nav(props: NavProps) {
