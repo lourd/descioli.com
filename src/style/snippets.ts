@@ -1,6 +1,5 @@
 import { fadeIn, fadeUpIn, fadeDownIn } from 'style/animations';
 import { css } from '@emotion/core';
-import isPropValid from '@emotion/is-prop-valid'
 
 export const fadeUpInCss = css`
   opacity: 0;
@@ -80,8 +79,4 @@ export function shadows({ startingElevation = 1, transition = 200 } = {}) {
       ${elevate(startingElevation + 2)};
     }
   `;
-}
-
-export const ignoreProps = (list: string[]) => (prop: string) => {
-  return isPropValid(prop) && !list.includes(prop);
 }

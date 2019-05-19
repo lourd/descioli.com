@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 
 interface Props {
   /** Amount of time in milliseconds until `tick` is called for the first time */

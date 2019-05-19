@@ -7,9 +7,9 @@ import color from 'color';
 import sizes from 'style/sizes';
 import BodyClass from 'components/BodyClass';
 import HamburgerToggle from 'components/HamburgerToggle';
-import { shadows, ignoreProps } from 'style/snippets';
+import { shadows } from 'style/snippets';
 import { fadeIn } from 'style/animations';
-import OnEscape from 'components/OnEscape';
+import { OnEscape } from 'hooks/useOnEscape';
 
 type TLink = {
   path: string;
