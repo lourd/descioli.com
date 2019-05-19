@@ -534,3 +534,6 @@ pre tt:after {
 .noScroll {
   overflow: hidden;
 }
+.responsive-parent {
+  margin-bottom: 1.45rem;
+}

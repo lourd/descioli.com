@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   siteMetadata: {
     title: 'Louis R. DeScioli',
@@ -21,7 +23,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-resolve-src`,
-    `gatsby-plugin-react-next`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-yaml`,
     'gatsby-transformer-sharp',
@@ -29,28 +30,6 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/`,
-      },
-    },
-    {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          `gatsby-remark-external-links`,
-          {
-            resolve: 'my-gatsby-remark-images',
-            options: { maxWidth: 800, addCaptions: true },
-          },
-          {
-            resolve:'gatsby-remark-copy-linked-files',
-            options: {
-              destinationDir: 'static/',
-            }
-          },
-          'my-gatsby-remark-youtube',
-          // This has to come after the youtube plugin
-          'gatsby-remark-responsive-iframe',
-          'gatsby-remark-autolink-headers',
-        ],
       },
     },
     {
@@ -65,7 +44,30 @@ module.exports = {
       options: {
         showSpinner: false,
         color: 'green',
-      }
-    }
+      },
+    },
+    `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Layout.tsx`),
+      },
+    },
+    {
+      resolve: 'gatsby-mdx',
+      options: {
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-external-links`,
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: 'static/',
+            },
+          },
+          'gatsby-remark-responsive-iframe',
+          'gatsby-remark-autolink-headers',
+        ],
+      },
+    },
   ],
-}
+};

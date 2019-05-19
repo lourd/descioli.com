@@ -1,20 +1,32 @@
-import { fadeIn, fadeUpIn, fadeDownIn } from 'style/animations';
-import { ifSeen } from 'style/helpers';
-import { css } from 'styled-components';
+import { fadeIn, fadeUpIn, fadeDownIn } from "style/animations";
+import { ifSeen } from "style/helpers";
+import { css } from "styled-components";
 
 export const fadeUpInCss = css`
   opacity: 0;
-  animation: ${ifSeen(`${fadeUpIn} 1.2s forwards`)};
+  animation: ${ifSeen(
+    css`
+      ${fadeUpIn} 1.2s forwards
+    `
+  )};
 `;
 
 export const fadeDownInCss = css`
   opacity: 0;
-  animation: ${ifSeen(`${fadeDownIn} 1.2s forwards`)};
+  animation: ${ifSeen(
+    css`
+      ${fadeDownIn} 1.2s forwards
+    `
+  )};
 `;
 
 export const fadeInCss = css`
   opacity: 0;
-  animation: ${ifSeen(`${fadeIn} 1.2s forwards`)};
+  animation: ${ifSeen(
+    css`
+      ${fadeIn} 1.2s forwards
+    `
+  )};
 `;
 
 /**
@@ -61,10 +73,11 @@ export function elevate($elevation) {
 }
 
 export function shadows({ startingElevation = 1, transition = 200 } = {}) {
-  return `
+  return css`
     transition: box-shadow ${transition}ms;
     ${elevate(startingElevation)};
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       ${elevate(startingElevation + 1)};
     }
     &:active {

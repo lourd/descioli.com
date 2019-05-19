@@ -1,24 +1,37 @@
-import { knuthShuffle as shuffle } from 'knuth-shuffle'
+import { knuthShuffle as shuffle } from "knuth-shuffle";
+
+/**
+ * Creates an array where the values correspond to their index
+ */
+function range(size: number) {
+  //return Array(n)].fill((_, i) => i);  // not working cause of some transpilation bug
+  const indices = Array(size);
+  for (let i = 0; i < indices.length; i++) {
+    indices[i] = i;
+  }
+  return indices;
+}
 
 export class Bag {
   private indices: number[];
   private index = 0;
 
-  constructor(numKeys: number) {
-    // creates an array where the values correspond to their index
-    this.indices = Array(length).fill(true).map((_, i) => i);
+  /**
+   * @param size number of possibilities in the bag. must be a positive integer
+   */
+  constructor(size: number) {
+    this.indices = range(size);
     shuffle(this.indices);
   }
 
   grab() {
-    if (this.indices.length === 0) return
     // once end is reached, re-sort and start from the beginning
     if (this.index === this.indices.length) {
-      shuffle(this.indices)
+      shuffle(this.indices);
       this.index = 0;
     }
-    const result = this.indices[this.index]
-    this.index++
-    return result
+    const result = this.indices[this.index];
+    this.index++;
+    return result;
   }
 }

@@ -4,28 +4,23 @@
  */
 function augmentMarkdownNodes({
   node,
-  boundActionCreators: { createNodeField },
+  actions: { createNodeField },
   getNode,
-  store,
+  store
 }) {
-  if (node.internal.type === `MarkdownRemark`) {
-    createNodeField({
-      name: 'slug',
-      node,
-      value: node.frontmatter.path,
-    })
-    const { relativePath } = getNode(node.parent)
+  if (node.internal.type === `Mdx`) {
+    const { relativePath } = getNode(node.parent);
     // it's relative to the root file that the source plugin was configured for
     // have to add back on where we configured it
-    const path = `content/${relativePath}`
-    const { repo } = store.getState().config.siteMetadata
-    const lastEditUrl = `${repo}/commits/master/${path}`
+    const path = `content/${relativePath}`;
+    const { repo } = store.getState().config.siteMetadata;
+    const lastEditUrl = `${repo}/commits/master/${path}`;
     createNodeField({
-      name: 'lastEditUrl',
+      name: "lastEditUrl",
       node,
-      value: lastEditUrl,
-    })
+      value: lastEditUrl
+    });
   }
 }
 
-module.exports = augmentMarkdownNodes
+module.exports = augmentMarkdownNodes;
