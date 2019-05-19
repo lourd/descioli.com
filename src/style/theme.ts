@@ -15,3 +15,5 @@ const theme = {
 theme.primary = theme.green;
 
 export default theme;
+
+export type Theme = typeof theme;

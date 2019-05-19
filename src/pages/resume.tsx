@@ -224,7 +224,9 @@ const JobContainer = styled.div`
   }
 `;
 
-const StoryJobContainer = styled(JobContainer)`
+const StoryLink = JobContainer.withComponent(Link);
+
+const jobWithStoryCss = css`
   display: block;
   text-decoration: none;
   transition: background-color 250ms;
@@ -289,9 +291,9 @@ const Job = props => {
   );
   if (props.story) {
     return (
-      <StoryJobContainer as={Link} to={props.story}>
+      <StoryLink to={props.story} css={jobWithStoryCss}>
         {content}
-      </StoryJobContainer>
+      </StoryLink>
     );
   }
   return <JobContainer>{content}</JobContainer>;

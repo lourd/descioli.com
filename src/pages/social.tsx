@@ -22,7 +22,7 @@ const meta = {
   ],
 };
 
-const SocialContainer = styled.a`
+const SocialContainer = styled.a<{ color: string; bg: string }>`
   color: ${props => props.color};
   background: ${props => props.bg};
   display: flex;
@@ -67,7 +67,6 @@ const SocialSquare = props => (
     bg={props.bg}
     color={props.color}
     title={props.name}
-    border={props.border}
   >
     <Description>{props.description}</Description>
   </SocialContainer>

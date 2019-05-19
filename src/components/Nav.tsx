@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, MouseEvent } from 'react';
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
@@ -27,10 +27,10 @@ interface ToggleProps extends Openable {
 
 interface MenuProps extends ToggleProps {
   links: TLink[];
-  onClick: () => void;
 }
 
-interface NavProps extends MenuProps {
+interface NavProps extends Openable {
+  links: TLink[];
   toggle: () => void;
 }
 
@@ -107,7 +107,7 @@ const MenuContainer = styled.nav<Openable>`
   pointer-events: ${props => (props.open ? 'inherit' : 'none')};
 `;
 
-const StyledLink = styled(Link)`
+const StyledA = styled.a`
   display: block;
   color: white;
   font-size: 2em;
@@ -120,7 +120,7 @@ const StyledLink = styled(Link)`
   transition: background-color 250ms;
 `;
 
-const StyledA = StyledLink.withComponent('a');
+const StyledLink = StyledA.withComponent(Link);
 
 interface MenuLinkProps {
   onClick: () => void;
@@ -132,40 +132,38 @@ interface MenuLinkProps {
 }
 
 const MenuLink = (props: MenuLinkProps) => {
-  const LinkComponent = props.url ? StyledA : StyledLink;
-  const linkProps = {
-    tabIndex: props.tabIndex,
-  };
+  const colorCss = css`
+    background-color: ${color(props.color)
+      .alpha(0.7)
+      .string()};
+    &:hover,
+    &:focus {
+      background-color: ${color(props.color)
+        .darken(0.15)
+        .string()};
+    }
+    &:active {
+      background-color: ${color(props.color)
+        .darken(0.3)
+        .string()};
+    }
+  `;
   if (props.url) {
-    Object.assign(linkProps, { href: props.url });
-  } else {
-    Object.assign(linkProps, {
-      to: props.path,
-      onClick: props.onClick,
-    });
+    return (
+      <StyledA tabIndex={props.tabIndex} href={props.url} css={colorCss}>
+        {props.copy}
+      </StyledA>
+    );
   }
   return (
-    <LinkComponent
-      {...linkProps}
-      css={css`
-        background-color: ${color(props.color)
-          .alpha(0.7)
-          .string()};
-        &:hover,
-        &:focus {
-          background-color: ${color(props.color)
-            .darken(0.15)
-            .string()};
-        }
-        &:active {
-          background-color: ${color(props.color)
-            .darken(0.3)
-            .string()};
-        }
-      `}
+    <StyledLink
+      tabIndex={props.tabIndex}
+      to={props.path}
+      onClick={props.onClick}
+      css={colorCss}
     >
       {props.copy}
-    </LinkComponent>
+    </StyledLink>
   );
 };
 
