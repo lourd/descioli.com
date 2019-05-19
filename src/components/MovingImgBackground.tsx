@@ -27,7 +27,6 @@ const MovingImage = (props: MovingImageProps) => {
         background-image: url(${props.img});
         background-position: 75% center;
         z-index: -1;
-        position: fixed;
         &:after {
           content: '';
           z-index: 1;
