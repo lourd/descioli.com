@@ -17,13 +17,13 @@ const Homepage = () => {
     }
   `);
   return (
-    <main>
+    <>
       <Meta image={data.headerImage.fluid.src} />
       <TopPanel
         bylines={data.bylinesYaml.bylines}
         img={data.headerImage.fluid.src}
       />
-    </main>
+    </>
   );
 };
 

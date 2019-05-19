@@ -8,7 +8,7 @@ import MovingImgBackground from 'components/MovingImgBackground';
 import Bylines from './Bylines';
 
 const Panel = styled.div`
-  height: 100vh;
+  height: var(--window-height);
   width: 100%;
   position: relative;
   display: flex;
@@ -18,6 +18,7 @@ const Panel = styled.div`
   text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
   color: white;
   position: relative;
+  overflow: hidden;
 `;
 
 const TextContainer = styled.div`

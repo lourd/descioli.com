@@ -5,6 +5,7 @@ import { ThemeProvider } from 'emotion-theming';
 import Nav from 'components/Nav';
 import theme from 'style/theme';
 import Blur from 'components/Blur';
+import useWindowHeight from 'hooks/useWindowHeight';
 
 import 'style/global.css';
 
@@ -38,6 +39,7 @@ export default function Layout({ children }: LayoutProps) {
   const toggle = useCallback(() => {
     setOpen(!open);
   }, [open]);
+  useWindowHeight();
   return (
     <ThemeProvider theme={theme}>
       <div>

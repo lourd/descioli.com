@@ -75,7 +75,7 @@ const SocialSquare = props => (
 const Page = styled.main`
   display: flex;
   flex-flow: row wrap;
-  min-height: 100vh;
+  min-height: var(--window-height);
 `;
 
 export default function SocialPage() {
