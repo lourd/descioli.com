@@ -5,7 +5,7 @@ interface Props {
 }
 
 export function useOnEscape(props: Props) {
-  useOnKeyDown({ keyCode: 27, handler: props.handler})
+  useOnKeyDown({ keyCode: 27, handler: props.handler });
 }
 
 export function OnEscape(props: Props) {

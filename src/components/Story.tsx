@@ -63,7 +63,7 @@ const Content = styled.div`
     }
     .anchor {
       display: none;
-      @media(min-width: ${sizes.medium}) {
+      @media (min-width: ${sizes.medium}) {
         display: block;
       }
       float: left;
@@ -72,7 +72,12 @@ const Content = styled.div`
       opacity: 0;
       transition: opacity 200ms;
     }
-    h1,h2,h3,h4,h5,h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       &:hover .anchor {
         opacity: 1;
       }
