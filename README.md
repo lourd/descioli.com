@@ -2,12 +2,12 @@
 
 ## What it's made with
 
-* A whole lot of JavaScript
-* HTML and CSS, described in JavaScript
+* A whole lot of ~~JavaScript~~ [TypeScript](https://www.typescriptlang.org/)
 * [React](https://github.com/facebook/react) to declare the UI
-* [styled-components](https://github.com/styled-components/styled-components) to define styles in JavaScript
-* [Gatsby](https://github.com/gatsbyjs/gatsby) for the tooling and providing a sweet [GraphQL](http://graphql.org/) data layer
-* Deployed on [Netlify](https://www.netlify.com/) because it's simple, implements a lot of best practices by default that make serving your site super fast, and includes SSL and custom domains for free
+* [Emotion](https://github.com/emotion-js/emotion) to define the styles
+* [MDX](https://github.com/mdx-js/mdx) to author the content
+* [Gatsby](https://github.com/gatsbyjs/gatsby) for the tooling, including a wonderful [GraphQL](http://graphql.org/) data layer
+* [Netlify](https://www.netlify.com/) for hosting because it's simple, implements a lot of best practices by default that make serving your site super fast, and includes SSL and custom domains for free
 
 ## How it works
 

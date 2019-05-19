@@ -1,15 +1,10 @@
-const path = require('path')
+const path = require('path');
 
-async function createStoryPages({
-  boundActionCreators: { createPage },
-  graphql,
-}) {
-  const storyTemplate = path.resolve(`src/components/Story.js`)
+async function createStoryPages({ actions: { createPage }, graphql }) {
+  const component = path.resolve(`src/components/Story.tsx`);
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        filter: { frontmatter: { tags: { in: ["portfolio"] } } }
-      ) {
+      allMdx(filter: { frontmatter: { tags: { in: ["portfolio"] } } }) {
         edges {
           node {
             frontmatter {
@@ -20,20 +15,20 @@ async function createStoryPages({
         }
       }
     }
-  `)
+  `);
   if (result.errors) {
-    throw result.errors
+    throw result.errors;
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allMdx.edges.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.path,
-      component: storyTemplate,
+      component,
       context: {
         imageFocus: node.frontmatter.imageFocus,
       },
-    })
-  })
+    });
+  });
 }
 
-module.exports = createStoryPages
+module.exports = createStoryPages;

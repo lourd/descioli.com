@@ -1,4 +1,4 @@
-Copyright 2018 Louis R. DeScioli
+Copyright (c) Louis R. DeScioli
 
 Everything in this repository except the contents of the `content` directory are published under the [MIT License](https://opensource.org/licenses/MIT).
 
