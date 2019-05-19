@@ -5,6 +5,15 @@ html {
 }
 body {
   margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
 }
 article,
 aside,
@@ -191,17 +200,6 @@ html {
 }
 *:after {
   box-sizing: inherit;
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: normal;
-  word-wrap: break-word;
-  font-kerning: normal;
-  -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-  -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-  -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
 }
 img,
 h1,
@@ -530,10 +528,4 @@ pre tt:after {
   html {
     font-size: 100%;
   }
-}
-.noScroll {
-  overflow: hidden;
-}
-.responsive-parent {
-  margin-bottom: 1.45rem;
 }

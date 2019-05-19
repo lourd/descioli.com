@@ -4,7 +4,6 @@ import { css } from '@emotion/core';
 import useMouseCoords from 'hooks/useMouseCoords';
 import { fade } from 'style/animations';
 import { stretchFull } from 'style/snippets';
-import BodyClass from 'components/BodyClass';
 import { useTheme } from 'lib/useTheme';
 
 interface MovingImgBackgroundProps {
@@ -53,16 +52,12 @@ const MovingImgBackground = (props: MovingImgBackgroundProps) => {
     [xDist, yDist] = [xd, yd].map(delta => 2.5 - delta * 5);
   }
   return (
-    <>
-      <MovingImage
-        dX={`${xDist}%`}
-        dY={`${yDist}%`}
-        img={props.img}
-        delay={props.delay}
-      />
-      {/* Firefox scroll bug workaround */}
-      <BodyClass className="noScroll" />
-    </>
+    <MovingImage
+      dX={`${xDist}%`}
+      dY={`${yDist}%`}
+      img={props.img}
+      delay={props.delay}
+    />
   );
 };
 

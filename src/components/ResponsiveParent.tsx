@@ -5,6 +5,7 @@ const Parent = styled.div<{ ratio: number }>`
   padding-bottom: ${props => props.ratio * 100}%;
   position: relative;
   height: 0;
+  margin-bottom: 1.45rem;
 `;
 
 const Responsive = styled.div`
@@ -23,7 +24,7 @@ interface ResponsiveParentProps {
 
 function ResponsiveParent({ height, width, children }: ResponsiveParentProps) {
   return (
-    <Parent ratio={height / width} className="responsive-parent">
+    <Parent ratio={height / width}>
       <Responsive>{children}</Responsive>
     </Parent>
   );

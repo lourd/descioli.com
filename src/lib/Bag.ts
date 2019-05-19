@@ -1,16 +1,5 @@
 import { knuthShuffle as shuffle } from 'knuth-shuffle';
-
-/**
- * Creates an array where the values correspond to their index
- */
-function range(size: number) {
-  //return Array(n)].fill((_, i) => i);  // not working cause of some transpilation bug
-  const indices = Array(size);
-  for (let i = 0; i < indices.length; i++) {
-    indices[i] = i;
-  }
-  return indices;
-}
+import range from './range';
 
 export class Bag {
   private indices: number[];

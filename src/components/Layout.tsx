@@ -7,7 +7,7 @@ import theme from 'style/theme';
 import Blur from 'components/Blur';
 import useWindowHeight from 'hooks/useWindowHeight';
 
-import 'style/global.css';
+import 'style/base.css';
 
 interface LayoutProps {
   children: ReactElement;

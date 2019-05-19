@@ -5,7 +5,7 @@ import { Link } from 'gatsby';
 import Ripple from 'react-ink';
 import color from 'color';
 import sizes from 'style/sizes';
-import BodyClass from 'components/BodyClass';
+import NoScrollBody from 'components/NoScrollBody';
 import HamburgerToggle from 'components/HamburgerToggle';
 import { shadows } from 'style/snippets';
 import { fadeIn } from 'style/animations';
@@ -202,7 +202,7 @@ export default function Nav(props: NavProps) {
     <span>
       <Toggle onClick={props.toggle} open={props.open} />
       <Menu open={props.open} links={props.links} onClick={props.toggle} />
-      {props.open && <BodyClass className="noScroll" />}
+      {props.open && <NoScrollBody />}
       {props.open && <OnEscape handler={props.toggle} />}
     </span>
   );
