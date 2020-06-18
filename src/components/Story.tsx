@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { shadows } from 'style/snippets';
 import sizes from 'style/sizes';
 import Meta from 'components/Meta';
@@ -183,7 +183,7 @@ function Story({ data }) {
           lastEditUrl={data.mdx.fields.lastEditUrl}
         />
         <main>
-          <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+          <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </main>
       </Content>
     </>
@@ -200,9 +200,7 @@ export const pageQuery = graphql`
       }
     }
     mdx(frontmatter: { path: { eq: $path } }) {
-      code {
-        body
-      }
+      body
       fields {
         lastEditUrl
       }

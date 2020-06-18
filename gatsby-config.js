@@ -23,6 +23,7 @@ module.exports = {
     `gatsby-plugin-resolve-src`,
     `gatsby-plugin-catch-links`,
     `gatsby-transformer-yaml`,
+    'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       resolve: `gatsby-source-filesystem`,
@@ -52,7 +53,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-mdx',
+      resolve: 'gatsby-plugin-mdx',
       options: {
         gatsbyRemarkPlugins: [
           `gatsby-remark-external-links`,
