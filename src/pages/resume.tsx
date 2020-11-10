@@ -1,9 +1,8 @@
-import React from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Global, css } from '@emotion/core';
+import { css } from '@emotion/core';
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
 import Meta from 'components/Meta';
+import { graphql, Link, useStaticQuery } from 'gatsby';
+import React from 'react';
 import sizes from 'style/sizes';
 
 const meta = {
@@ -104,7 +103,7 @@ const StyledYears = styled.div`
   font-size: 0.8em;
   width: 100%;
   white-space: nowrap;
-  @media (min-width: ${sizes.medium}) {
+  @media print, (min-width: ${sizes.medium}) {
     flex: 1;
     text-align: right;
   }
@@ -114,8 +113,9 @@ const Years = ({ children }) => (
   <StyledYears>{datesFormatter(children)}</StyledYears>
 );
 
-const SubTitle = styled.h4`
+const SubTitle = styled.span`
   font-size: 0.9em;
+  font-weight: bold;
   margin-bottom: 0px;
 `;
 
@@ -205,15 +205,17 @@ const School = props => (
   </SchoolSection>
 );
 
+const JobRow = styled.div`
+align-items: baseline;
+@media print, (min-width: ${sizes.medium}) {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+`;
+
 const JobContainer = styled.div`
-  align-items: baseline;
   padding: 10px;
-  @media (min-width: ${sizes.medium}) {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    padding: 4px 8px;
-  }
+  width: 100%;
   ${Title}, ${SubTitle} {
     display: inline-block;
   }
@@ -222,9 +224,31 @@ const JobContainer = styled.div`
       text-decoration: underline;
     }
   }
+  ul {
+    margin-top: 4px;
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+  li {
+    margin-bottom: 0;
+    margin-top: 4px;
+    // margin-left: -8px;
+    font-size: 0.8rem;
+    line-height: 0.875rem;
+    list-style: none;
+  }
+  @media print, (min-width: ${sizes.medium}) {
+    padding: 4px 8px;
+    ul {
+      margin-left: 20px;
+    }
+    li {
+      list-style: unset;
+    }
+  }
 `;
 
-const StoryLink = JobContainer.withComponent(Link);
+const JobWithStory = JobContainer.withComponent(Link);
 
 const jobWithStoryCss = css`
   display: block;
@@ -236,21 +260,27 @@ const jobWithStoryCss = css`
   }
 `;
 
-const Word = styled.span`
+const fontSizeAndPadding = css`
   font-size: 0.8em;
-  @media (min-width: ${sizes.medium}) {
+  @media print, (min-width: ${sizes.medium}) {
     padding: 0px 5px;
   }
 `;
 
-const For = styled(Word)`
-  display: none;
-  @media (min-width: ${sizes.medium}) {
-    display: inline-block;
+const Location = styled.span`
+  ${fontSizeAndPadding}
+  @media (max-width: ${sizes.smallMax}) {
+    padding-left: 8px;
   }
 `;
 
-const MobileBr = styled.br`
+const hiddenOnSmall = css`
+  @media screen and (max-width: ${sizes.smallMax}) {
+    display: none;
+  }
+`;
+
+const onlyOnSmall = css`
   @media (min-width: ${sizes.medium}) {
     display: none;
   }
@@ -279,21 +309,31 @@ const Job = props => {
 
   const content = (
     <>
-      <Title>{props.role}</Title>
-      <For>{'for'}</For>
-      <MobileBr />
-      <SubTitle>{company}</SubTitle>
-      <Comma />
-      <MobileBr />
-      <Word>{props.location}</Word>
-      <Years>{props.dates}</Years>
+      <JobRow>
+        <Title>{props.role}</Title>
+        <span css={[fontSizeAndPadding, hiddenOnSmall]}>for</span>
+        <br css={onlyOnSmall} />
+        <SubTitle>{company}</SubTitle>
+        <Comma />
+        <Location>{props.location}</Location>
+        <Years>{props.dates}</Years>
+      </JobRow>
+      {props.bullets && (
+        <ul>
+          {props.bullets.map((b, i) => (
+            <li key={i}>
+              <span dangerouslySetInnerHTML={{ __html: b }} />
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
   if (props.story) {
     return (
-      <StoryLink to={props.story} css={jobWithStoryCss}>
+      <JobWithStory to={props.story} css={jobWithStoryCss}>
         {content}
-      </StoryLink>
+      </JobWithStory>
     );
   }
   return <JobContainer>{content}</JobContainer>;
@@ -324,18 +364,6 @@ const ResumePage = props => (
         ))}
       </section>
     </Container>
-    <Global
-      styles={css`
-        @page {
-          margin: 5mm 10mm 5mm 10mm;
-        }
-        @media print {
-          section {
-            page-break-inside: avoid;
-          }
-        }
-      `}
-    />
   </main>
 );
 
@@ -376,6 +404,7 @@ export default function Resume() {
           site
           role
           story
+          bullets
           dates {
             start(formatString: "MMM YYYY")
             end(formatString: "MMM YYYY")

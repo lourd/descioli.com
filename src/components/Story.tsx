@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from '@emotion/styled';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { shadows } from 'style/snippets';
 import sizes from 'style/sizes';
 import Meta from 'components/Meta';
@@ -19,6 +19,10 @@ const Content = styled.div`
     p,
     li {
       font-family: ${props => props.theme.serif};
+    }
+    figure {
+      padding-top: 4px;
+      padding-bottom: 1.45rem;
     }
     img,
     video,
@@ -38,7 +42,9 @@ const Content = styled.div`
     }
     figcaption {
       font-size: 0.8em;
-      margin: 10px auto 15px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 16px;
       color: ${props => props.theme.comment};
       text-align: center;
       line-height: 1.3;
@@ -59,7 +65,7 @@ const Content = styled.div`
     h2,
     h3,
     h4 {
-      margin-top: 0.75rem;
+      padding-top: 0.75rem;
     }
     .anchor {
       display: none;
@@ -183,7 +189,7 @@ function Story({ data }) {
           lastEditUrl={data.mdx.fields.lastEditUrl}
         />
         <main>
-          <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
+          <MDXRenderer>{data.mdx.body}</MDXRenderer>
         </main>
       </Content>
     </>
@@ -200,9 +206,7 @@ export const pageQuery = graphql`
       }
     }
     mdx(frontmatter: { path: { eq: $path } }) {
-      code {
-        body
-      }
+      body
       fields {
         lastEditUrl
       }

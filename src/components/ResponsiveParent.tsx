@@ -20,11 +20,17 @@ interface ResponsiveParentProps {
   height: number;
   width: number;
   children: React.ReactElement;
+  className?: string;
 }
 
-function ResponsiveParent({ height, width, children }: ResponsiveParentProps) {
+function ResponsiveParent({
+  height,
+  width,
+  children,
+  className,
+}: ResponsiveParentProps) {
   return (
-    <Parent ratio={height / width}>
+    <Parent ratio={height / width} className={className}>
       <Responsive>{children}</Responsive>
     </Parent>
   );
