@@ -6,6 +6,8 @@ interface ImageProps {
   alt?: string;
   linkToOriginal: boolean;
   maxWidth?: number;
+  height: number;
+  width: number;
 }
 
 function Image({
@@ -13,9 +15,13 @@ function Image({
   caption,
   alt = caption,
   linkToOriginal = true,
-  maxWidth = 800,
+  maxWidth,
+  height,
+  width,
 }: ImageProps) {
-  let content = <img src={src} alt={alt} />;
+  let content = (
+    <img src={src} alt={alt} loading="lazy" height={height} width={width} />
+  );
   if (linkToOriginal) {
     content = (
       <a href={src} style={{ display: 'block' }} target="_blank" rel="noopener">
@@ -25,24 +31,20 @@ function Image({
   }
   if (caption) {
     content = (
-      <figure>
+      <>
         {content}
         <figcaption>{caption}</figcaption>
-      </figure>
+      </>
     );
   }
   return (
-    <span
+    <figure
       style={{
-        position: 'relative',
-        display: 'block',
         maxWidth,
-        marginLeft: 'auto',
-        marginRight: 'auto',
       }}
     >
       {content}
-    </span>
+    </figure>
   );
 }
 

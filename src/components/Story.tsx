@@ -20,6 +20,10 @@ const Content = styled.div`
     li {
       font-family: ${props => props.theme.serif};
     }
+    figure {
+      padding-top: 4px;
+      padding-bottom: 1.45rem;
+    }
     img,
     video,
     figure {
@@ -38,7 +42,9 @@ const Content = styled.div`
     }
     figcaption {
       font-size: 0.8em;
-      margin: 10px auto 15px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-top: 16px;
       color: ${props => props.theme.comment};
       text-align: center;
       line-height: 1.3;
@@ -59,7 +65,7 @@ const Content = styled.div`
     h2,
     h3,
     h4 {
-      margin-top: 0.75rem;
+      padding-top: 0.75rem;
     }
     .anchor {
       display: none;

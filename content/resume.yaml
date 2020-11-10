@@ -1,4 +1,3 @@
-
 - name: Louis Robert DeScioli
   email: louis.descioli@gmail.com
   site: www.descioli.design
@@ -53,11 +52,17 @@
         - name: Beta Club
   work:
     - company: Google
-      site: https://vr.google.com
+      site: https://arvr.google.com
       location: New York, NY
       role: AR UX Engineer
       dates:
         start: 2018-04-30
+      bullets:
+        - Designed and built the first augmented reality experiences on YouTube.
+        - !markdown Led UX engineering for [v1 of the AR Beauty Try-on format](https://techcrunch.com/2019/06/18/youtubes-new-ar-beauty-try-on-lets-viewers-virtually-try-on-makeup-while-watching-video-reviews/).
+        - Built the production implementation of the UI for the AR Beauty Try-on format.
+        - Led UX engineering on an internal AR authoring tool.
+        - Led UX engineering on Google Lens for Web, integrating visual search capabilities across Google's web services.
     - company: Out Here Studio
       site: https://outhere.studio
       location: Cambridge, MA
@@ -65,6 +70,9 @@
       story: /out-here-archery
       dates:
         start: 2017-07-01
+      bullets:
+        - Designed and developed a 5-star iPhone and iPad augmented reality game using ARKit and Unity.
+        - Pioneered novel mobile mixed reality environment interaction design.
     - company: Sidekicks
       site: https://sidekicks.com/
       location: Cambridge, MA
@@ -73,6 +81,9 @@
       dates:
         start: 2016-10-01
         end: 2017-06-30
+      bullets:
+        - Designed, developed, and shipped a new, vastly improved version of the Sidekicks autism therapy desktop web application, written in JavaScript using React and Firebase.
+        - Overhauled the company's user interface design system.
     - company: Grove
       site: https://grovegrown.com
       location: Somerville, MA
@@ -81,6 +92,9 @@
       dates:
         start: 2016-04-01
         end: 2016-06-30
+      bullets:
+        - Led the sales & marketing team to reach a $600K revenue goal that unlocked an investment tranche of $1.2M.
+        - Led fundamental customer discovery and market research.
     - company: Grove
       site: https://grovegrown.com
       location: Somerville, MA
@@ -89,6 +103,15 @@
       dates:
         start: 2014-01-03
         end: 2016-06-30
+      bullets:
+        - Built the software design and engineering teams from the ground up; managed as many as 10 people when the teams were at their largest.
+        - Architected and implemented two generations of real-time Internet of Things systems, spanning embedded and server platforms, written in C++ and Node.js, respectively.
+        - Developed and shipped a native iOS application written in Swift for v2 of the Grove Ecosystem.
+        - Ran a successful Kickstarter campaign, selling 125+ units at over $3.3K each, securing over $410K in revenue.
+        - Designed, developed, and shipped a mobile web application written in JavaScript with React for v1 of the Grove Ecosystem.
+        - Developed and operated internal dashboards for tracking engagement metrics and communicating with customers.
+        - Designed the company's internal leadership and decision making framework.
+        - Designed and developed three generations of the company website.
     - company: Vecna
       site: https://www.vecna.com
       location: Cambridge, MA
@@ -118,6 +141,18 @@
         start: 2011-10-01
         end: 2011-12-15
   volunteer:
+    - company: America on Tech
+      site: https://www.americaontech.org/
+      location: New York, NY
+      role: Lead Instructor
+      dates:
+        start: 2020-09-01
+    - company: Pursuit
+      site: https://www.pursuit.org/
+      location: New York, NY
+      role: Mentor
+      dates:
+        start: 2020-07-01
     - company: Reality Virtually Hackathon
       site: https://realityvirtuallyhack.com
       location: Cambridge, MA

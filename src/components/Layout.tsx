@@ -23,7 +23,7 @@ export default function Layout({ children }: LayoutProps) {
           description
         }
       }
-      menuLinksYaml {
+      menulinksYaml {
         links {
           path
           copy
@@ -34,7 +34,7 @@ export default function Layout({ children }: LayoutProps) {
     }
   `);
   const meta = data.site.siteMetadata;
-  const links = data.menuLinksYaml.links;
+  const links = data.menulinksYaml.links;
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => {
     setOpen(!open);
