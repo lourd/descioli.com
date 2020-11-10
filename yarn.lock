@@ -6993,16 +6993,6 @@ gatsby-transformer-yaml-full@^0.3.4:
     is-plain-object "^3.0.1"
     js-yaml "^3.14.0"
 
-gatsby-transformer-yaml@^2.1.8:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-yaml/-/gatsby-transformer-yaml-2.4.4.tgz#485c1fe8abef51faf13b142b1a31194fdf32d463"
-  integrity sha512-SjKdHJk+PM/rKwgrBElJrIw82U2mpOO34ft9nX7TwMg5T6qLV0qSKjoKNVvHuRfy4xQxSTEixjjfwfz/Z3wgVg==
-  dependencies:
-    "@babel/runtime" "^7.10.2"
-    js-yaml "^3.14.0"
-    lodash "^4.17.15"
-    unist-util-select "^1.5.0"
-
 gatsby-yaml-full-markdown@^0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/gatsby-yaml-full-markdown/-/gatsby-yaml-full-markdown-0.3.4.tgz#fb657acf9aa59e79c1741ed4cf47b4a5b98df9ab"
@@ -10629,9 +10619,9 @@ object-keys@^1.0.11, object-keys@^1.0.12, object-keys@^1.1.1:
   integrity sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==
 
 object-path@^0.11.2, object-path@^0.11.4:
-  version "0.11.4"
-  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.4.tgz#370ae752fbf37de3ea70a861c23bba8915691949"
-  integrity sha1-NwrnUvvzfePqcKhhwju6iRVpGUk=
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.5.tgz#d4e3cf19601a5140a55a16ad712019a9c50b577a"
+  integrity sha512-jgSbThcoR/s+XumvGMTMf81QVBmah+/Q7K7YduKeKVWL7N111unR2d6pZZarSk6kY/caeNxUDyxOvMWyzoU2eg==
 
 object-visit@^1.0.0:
   version "1.0.1"
