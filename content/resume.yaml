@@ -1,6 +1,7 @@
 - name: Louis Robert DeScioli
   email: louis.descioli@gmail.com
   site: www.descioli.design
+  pdfFilename: Louis DeScioli Resume.pdf
   education:
     - school:
         name: Massachusetts Institute of Technology

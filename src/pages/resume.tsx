@@ -87,6 +87,13 @@ const ContactDatum = styled.h5`
   }
 `;
 
+const PDFLink = styled.a`
+  font-size: 0.75rem;
+  @media print {
+    display: none;
+  }
+`;
+
 const Contact = props => (
   <ContactData>
     <ContactDatum>
@@ -94,6 +101,9 @@ const Contact = props => (
     </ContactDatum>
     <ContactDatum>
       <a href={`mailto:${props.email}`}>{props.email}</a>
+    </ContactDatum>
+    <ContactDatum>
+      <PDFLink href={`/${props.pdfFilename}`}>(PDF Version)</PDFLink>
     </ContactDatum>
   </ContactData>
 );
@@ -374,6 +384,7 @@ export default function Resume() {
         name
         email
         site
+        pdfFilename
         education {
           school {
             name
