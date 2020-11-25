@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "gatsby build",
+    "build:pdf": "GENERATE_RESUME_PDF=true gatsby build",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
     "start": "gatsby develop",
     "serve": "serve public",

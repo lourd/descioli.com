@@ -19,13 +19,6 @@ async function generatePdf(input, output) {
   });
   const contentHtml = fs.readFileSync(input, 'utf8');
   await page.setContent(contentHtml);
-  await page.addStyleTag({
-    content: `
-    body {
-      font-family: Helvetica Neue, Helvetica, sans-serif;
-    }
-  `,
-  });
   const height = await page.evaluate(pxToInch => {
     return document.body.clientHeight / pxToInch;
   }, PIXELS_TO_INCH);

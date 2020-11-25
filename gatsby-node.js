@@ -12,9 +12,13 @@ exports.onCreateNode = props => {
 };
 
 // Only runs during Gatsby build process, not during dev
-exports.onPostBuild = async ({ graphql }) => {
-  const outputPath = path.join(__dirname, 'public');
-  const generatedPagePath = path.join(outputPath, 'resume', 'index.html');
+exports.onPostBuild = async props => {
+  if (process.env.GENERATE_RESUME_PDF) {
+    await generateResumePdf(props);
+  }
+};
+
+async function generateResumePdf({ graphql }) {
   const {
     data: {
       resumeYaml: { pdfFilename },
@@ -26,6 +30,12 @@ exports.onPostBuild = async ({ graphql }) => {
       }
     }
   `);
-  const pdfPath = path.join(outputPath, pdfFilename);
+  const generatedPagePath = path.join(
+    __dirname,
+    'public',
+    'resume',
+    'index.html'
+  );
+  const pdfPath = path.join(__dirname, 'static', pdfFilename);
   await generatePdf(generatedPagePath, pdfPath);
-};
+}
