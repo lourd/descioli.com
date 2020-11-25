@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 const puppeteer = require('puppeteer');
 
 const PIXELS_TO_INCH = 96;
@@ -11,7 +10,7 @@ const PAGE_WIDTH_INCHES = 8.5;
  * @param {String} output filepath to write the PDF to
  */
 async function generatePdf(input, output) {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setViewport({
     // calculating the rendered height at a fixed width
@@ -20,6 +19,13 @@ async function generatePdf(input, output) {
   });
   const contentHtml = fs.readFileSync(input, 'utf8');
   await page.setContent(contentHtml);
+  await page.addStyleTag({
+    content: `
+    body {
+      font-family: Helvetica Neue, Helvetica, sans-serif;
+    }
+  `,
+  });
   const height = await page.evaluate(pxToInch => {
     return document.body.clientHeight / pxToInch;
   }, PIXELS_TO_INCH);
