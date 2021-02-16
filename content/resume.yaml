@@ -52,18 +52,26 @@
         - name: Orchestra
         - name: Beta Club
   work:
-    - company: Google
+    - company: Google Lens
+      site: https://lens.google.com
+      location: New York, NY
+      role: UX Engineer
+      dates:
+        start: 2020-02-01
+      bullets:
+        - Leading UX engineering on Google Lens for Web, integrating visual search capabilities across Google's web services.
+    - company: Google Daydream
       site: https://arvr.google.com
       location: New York, NY
-      role: AR UX Engineer
+      role: Augmented Reality UX Engineer
       dates:
         start: 2018-04-30
+        end: 2020-01-31
       bullets:
-        - Designed and built the first augmented reality experiences on YouTube.
+        - Designed and engineered the first augmented reality experiences in the YouTube mobile app as part of pilot projects with a major movie studio and mobile gaming brand in the summer of 2018.
         - !markdown Led UX engineering for [v1 of the AR Beauty Try-on format](https://techcrunch.com/2019/06/18/youtubes-new-ar-beauty-try-on-lets-viewers-virtually-try-on-makeup-while-watching-video-reviews/).
         - Built the production implementation of the UI for the AR Beauty Try-on format.
         - Led UX engineering on an internal AR authoring tool.
-        - Led UX engineering on Google Lens for Web, integrating visual search capabilities across Google's web services.
     - company: Out Here Studio
       site: https://outhere.studio
       location: Cambridge, MA
