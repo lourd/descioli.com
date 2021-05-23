@@ -58,6 +58,7 @@
       role: UX Engineer
       dates:
         start: 2020-02-01
+        end: 2021-05-31
       bullets:
         - Leading UX engineering on Google Lens for Web, integrating visual search capabilities across Google's web services.
     - company: Google Daydream
@@ -156,12 +157,14 @@
       role: Lead Instructor
       dates:
         start: 2020-09-01
+        end: 2021-05-31
     - company: Pursuit
       site: https://www.pursuit.org/
       location: New York, NY
       role: Mentor
       dates:
         start: 2020-07-01
+        end: 2021-05-31
     - company: Reality Virtually Hackathon
       site: https://realityvirtuallyhack.com
       location: Cambridge, MA
