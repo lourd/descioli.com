@@ -1,4 +1,0 @@
-[build.environment]
-  YARN_VERSION = "1.22.5"
-  YARN_FLAGS = "--no-ignore-optional --frozen-lockfile"
-  NODE_VERSION = "v14.15.0"

@@ -1,0 +1,45 @@
+.slider {
+  appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+  background: transparent; /* Otherwise white in Chrome */
+  &:not(:disabled) {
+    cursor: pointer;
+    &:hover::-webkit-slider-thumb,
+    &:focus::-webkit-slider-thumb {
+      border-color: theme(colors.accent);
+    }
+  }
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+  }
+
+  &:focus {
+    outline: none; /* Removes the blue border. */
+  }
+
+  &::-ms-track {
+    width: 100%;
+    cursor: pointer;
+
+    /* Hides the slider so custom styles can be added */
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  &::-webkit-slider-runnable-track {
+    @apply rounded-full;
+    height: 12px;
+  }
+
+  &::-webkit-slider-thumb {
+    @apply h-full aspect-square rounded-full shadow;
+    border: 1px solid var(--foreground-color);
+    scale: 1.2;
+    @media (prefers-color-scheme: dark) {
+      border-width: 2px;
+      scale: 1.5;
+    }
+  }
+}

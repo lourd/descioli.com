@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-color: 0deg 0% 0%;
+  --foreground-gray: 217deg 19% 27%;
+  --gray-3: 217deg 19% 40%;
+  --accent: 217deg 91% 55%;
+  --muted: 220deg 13% 91%;
+  --background-color: 0deg 0% 100%;
+  --link-color: 240deg 100% 47.1%;
+  --link-visited-color: 271deg 68.5% 32.4%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: 0deg 0% 100%;
+    --foreground-gray: 220deg 13% 90%;
+    --gray-3: 220deg 13% 75%;
+    --accent: 217deg 91% 66%;
+    --muted: 217deg 19% 27%;
+    --background-color: 225deg 5.9% 13.3%;
+    --link-color: 217deg 88.7% 75.7%;
+    --link-visited-color: 270deg 95.2% 75.3%;
+  }
+}
+
+body {
+  color: hsl(var(--foreground-color));
+  background-color: hsl(var(--background-color));
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+  font-weight: normal;
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
+}

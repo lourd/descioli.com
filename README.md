@@ -1,33 +1,26 @@
-# [descioli.design](https://descioli.design)
+# [descioli.com](https://descioli.com)
 
-## What it's made with
+## Made with
 
-* A whole lot of ~~JavaScript~~ [TypeScript](https://www.typescriptlang.org/)
-* [React](https://github.com/facebook/react) to declare the UI
-* [Emotion](https://github.com/emotion-js/emotion) to define the styles
-* [MDX](https://github.com/mdx-js/mdx) to author the content
-* [Gatsby](https://github.com/gatsbyjs/gatsby) for the tooling, including a wonderful [GraphQL](http://graphql.org/) data layer
-* [Netlify](https://www.netlify.com/) for hosting because it's simple, implements a lot of best practices by default that make serving your site super fast, and includes SSL and custom domains for free
+TypeScript, React, Next.js, and love. Content written in [MDX](https://github.com/mdx-js/mdx) via [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote).
 
-## How it works
+## Development
 
-Gatsby pulls in data from the [`content`](./content) directory, as specified in the [`gatsby-config.js`](./gatsby-config.js) file. It builds a data graph with a defined GraphQL schema. It then renders the application as configured by `.js` files it finds in [`src/pages`](./src/pages), and calls to the `createPage` function as specified in [`gatsby-node.js`](./gatsby-node.js).
+Requires [Node.js](https://github.com/nodejs/node) and [pnpm](https://github.com/pnpm/pnpm).
 
-Pages are React components. A Page file's default export is a React component. Pages describe their needed data with a GraphQL query exported under the name `pageQuery`. Gatsby handles providing that data as the prop `data` to the component.
+```sh
+# dev server
+pnpm dev
 
-Gatsby is exellent because it makes it very easy to develop using a model-driven approach without needing more than simple files. (Not to mention how much messy configuration it simplifies for getting a super fast website and a sweet hot reloading development experience.)
+# make a prod build
+pnpm build
 
-## Installation
+# analyze the bundle
+ANALYZE=true pnpm build
 
-1. Get a working knowledge of computers and the command line
-1. [Install git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-1. [Install Node.js](https://nodejs.org/en/download/)
-1. [Install Yarn](https://yarnpkg.com/en/docs/install) (or just use npm if you know what you're doing)
-1. And then:
+# check linting and formatting
+pnpm lint
 
-   ```sh
-   git clone https://github.com/lourd/descioli-design
-   cd descioli-design
-   yarn install
-   yarn start
-   ```
+# autofix formatting
+pnpm format
+```
