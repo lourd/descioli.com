@@ -14,6 +14,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@vercel/analytics": "^1.2.2",
     "color": "^4.2.3",
     "d3": "^7.8.5",
     "date-fns": "^2.30.0",
@@ -25,7 +26,7 @@
     "immer": "^10.0.3",
     "jose": "^5.2.2",
     "lodash": "^4.17.21",
-    "next": "14.1.0",
+    "next": "14.1.2",
     "next-mdx-remote": "^4.4.1",
     "postcss": "^8.4.35",
     "react": "18.2.0",
@@ -52,6 +53,7 @@
     "@types/react-transition-group": "^4.4.10",
     "autoprefixer": "10.4.15",
     "chokidar": "^3.6.0",
+    "eslint-config-next": "^14.1.2",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
     "puppeteer": "^22.3.0",

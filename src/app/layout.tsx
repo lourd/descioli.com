@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react"
 import type { Metadata } from "next"
 import { ReactNode, Suspense } from "react"
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {children}
           </AppProvider>
         </AutoRefresh>
+        <Analytics />
       </body>
     </html>
   )
