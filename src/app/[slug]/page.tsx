@@ -20,6 +20,8 @@ type PageProps = {
   }
 }
 
+export const dynamicParams = false
+
 export async function generateStaticParams(): Promise<
   Array<PageProps["params"]>
 > {
