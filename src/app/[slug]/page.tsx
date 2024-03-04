@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { onlyText } from "react-children-utilities"
 import remarkGfm from "remark-gfm"
 
 import { BackLinkWithHand } from "@/components/back-link"
@@ -115,12 +116,12 @@ export default async function StoryPage({ params }: PageProps) {
                 Poem,
                 YouTube,
                 Video,
-                h1: createHeading("1"),
-                h2: createHeading("2"),
-                h3: createHeading("3"),
-                h4: createHeading("4"),
-                h5: createHeading("5"),
-                h6: createHeading("6"),
+                h1: createLinkedHeading("1"),
+                h2: createLinkedHeading("2"),
+                h3: createLinkedHeading("3"),
+                h4: createLinkedHeading("4"),
+                h5: createLinkedHeading("5"),
+                h6: createLinkedHeading("6"),
                 p: (props) => (
                   <p className="font-serif mb-6 text-lg" {...props} />
                 ),
@@ -177,15 +178,16 @@ export default async function StoryPage({ params }: PageProps) {
   )
 }
 
-function createHeading(level: string) {
-  return function Heading(props: any) {
-    const slug = slugify(props.children as string)
+function createLinkedHeading(level: string) {
+  return function Heading(props: { children?: React.ReactNode }) {
+    const textContent = onlyText(props.children)
+    const slug = slugify(textContent)
     const Heading = `h${level}` as keyof JSX.IntrinsicElements
     return (
       <Heading
         {...props}
         id={slug}
-        className={`relative group ${Heading === "h2" ? "text-2xl font-bold pt-6 pb-3" : ""} ${Heading === "h3" ? "text-xl font-bold pt-2 pb-3" : ""}`}
+        className={`relative group ${level === "2" ? "text-2xl font-bold pt-6 pb-3" : ""} ${level === "3" ? "text-xl font-bold pt-2 pb-3" : ""}`}
       >
         <a
           href={`#${slug}`}
