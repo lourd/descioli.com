@@ -5,6 +5,20 @@ let nextConfig = {
   experimental: {
     optimizePackageImports: ["d3"],
   },
+  redirects() {
+    return [
+      {
+        source: "/portfolio",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/social",
+        destination: "/links",
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default createBundleAnalyzer({
