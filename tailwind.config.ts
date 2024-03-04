@@ -44,9 +44,25 @@ const config: Config = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        // keep values in sync with profile-card.tsx
+        pressBtn: {
+          "0%, 50%, 100%": {
+            borderBottomWidth: "4px",
+            boxShadow:
+              "0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
+            transform: `scaleX(1) scaleY(1) translateY(0px)`,
+          },
+          "20%, 70%": {
+            borderBottomWidth: "0",
+            boxShadow:
+              "0px 5px 8px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0)",
+            transform: `scaleX(1.05) scaleY(0.95) translateY(2px)`,
+          },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.2s ease-in-out forwards",
+        pressBtn: "pressBtn 0.8s ease-in-out",
       },
     },
   },

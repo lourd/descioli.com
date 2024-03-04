@@ -131,12 +131,15 @@ export function ProfileCard() {
       </div>
       <div className="text-black font-bold text-center text-3xl mt-3 w-full h-12">
         The art of{" "}
-        <button
-          onClick={onClick}
-          className="px-4 py-1 transform border-b-4 border-rose-300 hocus:border-b-2 active:!border-b-0 bg-gradient-to-t from-rose-300/50  via-rose-300 via-40% to-rose-300/20 rounded-2xl hocus:translate-y-px active:!translate-y-[2px] shadow-[0px_10px_13px_-7px_#000000,_5px_5px_15px_5px_rgba(0,0,0,0)] active:shadow-[0px_5px_8px_-7px_#000000,_5px_5px_15px_5px_rgba(0,0,0,0)] active:to-rose-300/25 active:from-rose-300/55 active:via-rose-300 transition-all"
-        >
-          play
-        </button>
+        <span className="animate-fadeIn opacity-0 animation-delay-[1.7s]">
+          <button
+            onClick={onClick}
+            // keep transition values in sync with animation in the tailwind config
+            className="px-4 py-1 transform border-b-4 border-rose-300 hocus:border-b-2 active:!border-b-0 bg-gradient-to-t from-rose-300/50  via-rose-300 via-40% to-rose-300/20 rounded-2xl hocus:translate-y-px active:!translate-y-[2px] shadow-[0px_10px_13px_-7px_#000000,_5px_5px_15px_5px_rgba(0,0,0,0)] active:shadow-[0px_3px_8px_-7px_#000000] active:to-rose-300/25 active:from-rose-300/55 active:via-rose-300 transition-all animate-pressBtn animation-delay-[2.5s] active:scale-x-[1.05] active:scale-y-[0.95]"
+          >
+            play
+          </button>
+        </span>
       </div>
     </div>
   )
