@@ -73,7 +73,11 @@ export default async function StoryPage({ params }: PageProps) {
 
       <div className="relative">
         <nav className="lg:sticky top-0">
-          <BackLinkWithHand href="/blog" className="fixed lg:absolute" />
+          <BackLinkWithHand
+            href="/blog"
+            useBack={false}
+            className="fixed lg:absolute"
+          />
         </nav>
 
         <main className="mx-auto max-w-[680px] box-content px-5 md:px-6 py-5 relative">

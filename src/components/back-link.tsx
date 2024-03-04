@@ -6,36 +6,15 @@ import React, { ForwardedRef, forwardRef, MouseEvent, use } from "react"
 
 import { AppContext } from "./app-context"
 
-export const BackLink = forwardRef(function BackLink(
-  { onClick, ...props }: React.ComponentProps<typeof Link>,
-  ref: ForwardedRef<HTMLAnchorElement>
-) {
-  const { state, setState } = use(AppContext)
-  const router = useRouter()
-
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    // if the second to last path in history matches the new destination,
-    // remove the current entry and call back on the router.
-    if (
-      state.history.length > 1 &&
-      state.history[state.history.length - 2] === props.href
-    ) {
-      setState((draft) => {
-        draft.history.pop()
-      })
-      e.preventDefault()
-      router.back()
-    }
-    onClick?.(e)
-  }
-
-  return <Link onClick={handleClick} {...props} ref={ref} />
-})
+type BackLinkProps = React.ComponentProps<typeof Link> & {
+  useBack?: boolean
+}
 
 export const BackLinkWithHand = forwardRef(function BackLinkWithHand(
-  { onClick, className, ...props }: React.ComponentProps<typeof Link>,
+  { onClick, className, useBack = true, ...props }: BackLinkProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
+  const BackLink = useBack ? MaybeGoBackLink : Link
   return (
     <div
       ref={ref}
@@ -50,4 +29,23 @@ export const BackLinkWithHand = forwardRef(function BackLinkWithHand(
       </BackLink>
     </div>
   )
+})
+
+const MaybeGoBackLink = forwardRef(function BackLink(
+  { onClick, ...props }: React.ComponentProps<typeof Link>,
+  ref: ForwardedRef<HTMLAnchorElement>
+) {
+  const { state } = use(AppContext)
+  const router = useRouter()
+
+  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    // if there is a prior history, go back
+    if (state.history.length > 1) {
+      e.preventDefault()
+      router.back()
+    }
+    onClick?.(e)
+  }
+
+  return <Link onClick={handleClick} {...props} ref={ref} />
 })
