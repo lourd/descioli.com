@@ -506,7 +506,11 @@ export function SetLight(props: SetLightProps) {
             <rect
               width={WIDTH}
               height={HEIGHT}
-              fill="url(#paint2_linear_1_3)"
+              fill={
+                props.id === EcosystemLightId.Aquarium
+                  ? "url(#paint4_linear_1_3)"
+                  : "url(#paint2_linear_1_3)"
+              }
             />
             <rect
               width={WIDTH}
@@ -536,6 +540,16 @@ export function SetLight(props: SetLightProps) {
               >
                 <stop stopColor="black" stopOpacity="0" offset="0" />
                 <stop stopOpacity="0.85" offset="1" />
+              </linearGradient>
+              <linearGradient
+                id="paint4_linear_1_3"
+                x1={WIDTH / 2}
+                y1="0"
+                x2={WIDTH / 2}
+                y2={HEIGHT}
+              >
+                <stop stopColor="white" stopOpacity="1" offset="0" />
+                {/* <stop stopOpacity="0.85" offset="1" /> */}
               </linearGradient>
             </defs>
           </svg>

@@ -7,7 +7,7 @@ export default function SketchesPageLayout({
 }) {
   return (
     <>
-      <BackLinkWithHand href="/sketches" className="sticky" />
+      <BackLinkWithHand href="/sketches" useBack={false} className="sticky" />
       {children}
     </>
   )

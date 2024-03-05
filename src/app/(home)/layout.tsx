@@ -30,8 +30,8 @@ export default function HomeLayout({
       >
         <BackLinkWithHand
           href="/"
-          // On blog index page, always go to / on back.
-          useBack={segment !== "blog"}
+          // On other index pages, always go to / on back.
+          useBack={!(segment === "blog" || segment === "sketches")}
           ref={linkNode}
           className="fixed"
         />
