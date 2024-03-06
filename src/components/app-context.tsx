@@ -1,7 +1,7 @@
 "use client"
 
 import { Draft, produce, setAutoFreeze } from "immer"
-import { createContext, ReactNode, useContext, useReducer } from "react"
+import { createContext, ReactNode, useReducer } from "react"
 
 // Need the mutability for rapidly updating motion data
 setAutoFreeze(false)

@@ -127,7 +127,6 @@ export async function Light(props: EcosystemLamp) {
         <SetLightSchedule
           id={props.id}
           data={setting.sched}
-          currentTime={systemResponse.body.result.time.secOfDay}
           setLightSchedule={handleSetSchedule}
           authenticated={authenticated}
         />

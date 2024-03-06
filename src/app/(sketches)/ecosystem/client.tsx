@@ -8,6 +8,7 @@ import {
   ButtonHTMLAttributes,
   Dispatch,
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useReducer,
@@ -15,6 +16,7 @@ import {
   useTransition,
 } from "react"
 
+import { EcosystemContext } from "./ecosystem-context"
 import { EcosystemLightId } from "./ecosystem-enums"
 import type {
   LightInterruption,
@@ -28,7 +30,6 @@ export const SECS_IN_DAY = 86400
 type LightScheduleProps = {
   id: EcosystemLightId
   data: LightScheduleInfo
-  currentTime: number
   setLightSchedule: (schedule: LightScheduleInfo) => Promise<boolean>
   authenticated: boolean
 }
@@ -81,6 +82,9 @@ const MAX_TRANSITION_DURATION_SECS = 359 * 60
 export function SetLightSchedule(props: LightScheduleProps) {
   const [state, setState] = useReducer(reducer, props.data, getInitialState)
   const [isPending, startTransition] = useTransition()
+  const ecoNow = useContext(EcosystemContext)
+  const currentTimeInSecs =
+    (ecoNow.getHours() * 60 + ecoNow.getMinutes()) * 60 + ecoNow.getSeconds()
   const WIDTH = 350
   const offsets = state.schedule.times.map((secs) => secs / SECS_IN_DAY)
   const canvasRef = useRef<SVGSVGElement>(null)
@@ -198,7 +202,7 @@ export function SetLightSchedule(props: LightScheduleProps) {
             <div
               style={{
                 transform: `translateX(${
-                  (props.currentTime / SECS_IN_DAY) * WIDTH
+                  (currentTimeInSecs / SECS_IN_DAY) * WIDTH
                 }px) scaleY(1.05)`,
               }}
               className="h-full w-[2px] bg-white shadow-md absolute top-0 left-0"

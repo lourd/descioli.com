@@ -2,14 +2,17 @@ import { ok } from "assert"
 
 import { SignJWT } from "jose"
 import { Metadata } from "next"
+import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
 
 import { protect } from "./auth"
+import { EcoTime } from "./eco-time"
+import { EcosystemProvider } from "./ecosystem-context"
 import {
   MY_ECOSYSTEM_DEVICE_ID,
   reactCachedGetSystemStatus,
+  setTimezone,
 } from "./ecosystem-methods"
-import { timeToDate } from "./ecosystem-models"
 import { LightTabs } from "./light-tabs"
 import { PasswordForm } from "./password-form"
 
@@ -54,40 +57,59 @@ export default async function EcosystemLayout(props: {
 
   const authenticated = await protect()
 
+  const response = await reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID)
+
   return (
-    <div className="max-w-lg mx-auto pt-2 pb-8 px-[2.5%]">
-      <div className="flex flex-row items-center gap-4 justify-between md:mt-6">
-        <h1 className="text-3xl">{"Lou's Ecosystem"}</h1>
-        {authenticated && (
-          <form action={logout}>
-            <button
-              type="submit"
-              className="bg-muted px-2 py-1 rounded text-sm"
-            >
-              Logout
-            </button>
-          </form>
-        )}
+    <EcosystemProvider
+      time={response.body.result.time}
+      timeZone={response.body.result.timeZone}
+    >
+      <div className="max-w-lg mx-auto pt-2 pb-8 px-[2.5%]">
+        <div className="flex flex-row items-center gap-4 justify-between md:mt-6">
+          <h1 className="text-3xl">{"Lou's Ecosystem"}</h1>
+          {authenticated && (
+            <form action={logout}>
+              <button
+                type="submit"
+                className="bg-muted px-2 py-1 rounded text-sm"
+              >
+                Logout
+              </button>
+            </form>
+          )}
+        </div>
+        <Info />
+        {!authenticated && <PasswordForm login={enterPassword} />}
+        <LightTabs />
+        {props.children}
       </div>
-      <Info />
-      {!authenticated && <PasswordForm login={enterPassword} />}
-      <LightTabs />
-      {props.children}
-    </div>
+    </EcosystemProvider>
   )
 }
 
 async function Info() {
+  async function updateTimezone(offset: number) {
+    "use server"
+    const authenticated = await protect()
+    if (!authenticated) {
+      return -1
+    }
+
+    console.log("updating timezone to", offset)
+    const response = await setTimezone(MY_ECOSYSTEM_DEVICE_ID, offset)
+    revalidatePath("/ecosystem/[light]", "layout")
+    console.log("timezone response", response)
+    return response.body.return_value
+  }
+
   const response = await reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID)
-  const date = timeToDate(
-    response.body.result.time,
-    response.body.result.timeZone
-  )
-  date.getTimezoneOffset()
   return (
     <pre className="mt-2 mb-2 text-foregroundGray text-sm">
-      {response.body.result.sn} • {date.toLocaleTimeString()}{" "}
-      {response.body.result.timeZone} -{date.getTimezoneOffset() / 60}
+      {response.body.result.sn}
+      <EcoTime
+        changeTimezone={updateTimezone}
+        timeZone={response.body.result.timeZone}
+      />
     </pre>
   )
 }
