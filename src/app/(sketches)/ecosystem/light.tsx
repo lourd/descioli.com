@@ -25,7 +25,9 @@ const PATH = "/ecosystem"
 export async function Light(props: EcosystemLamp) {
   async function handleResumeSchedule() {
     "use server"
-    await protect()
+    const isAuthenticated = await protect()
+    if (!isAuthenticated) return false
+
     const response = await resumeLightSchedule(MY_ECOSYSTEM_DEVICE_ID, props.id)
     revalidatePath(PATH, "layout")
     return response.statusCode === 200 && response.body.return_value === 1
@@ -33,7 +35,9 @@ export async function Light(props: EcosystemLamp) {
 
   async function handleSetSchedule(schedule: LightScheduleInfo) {
     "use server"
-    await protect()
+    const isAuthenticated = await protect()
+    if (!isAuthenticated) return false
+
     const response = await setLightSchedule(MY_ECOSYSTEM_DEVICE_ID, {
       fadeType: FadeType.QUINTIC_EASE_IN_OUT,
       light: props.id,
@@ -52,7 +56,9 @@ export async function Light(props: EcosystemLamp) {
 
   async function handleLightInterrupt(data: Omit<LightInterruption, "light">) {
     "use server"
-    await protect()
+    const isAuthenticated = await protect()
+    if (!isAuthenticated) return
+
     const setting = LightInterruption.parse({
       ...data,
       light: props.id,
