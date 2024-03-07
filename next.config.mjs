@@ -4,6 +4,7 @@ import createBundleAnalyzer from "@next/bundle-analyzer"
 let nextConfig = {
   experimental: {
     optimizePackageImports: ["d3"],
+    ppr: true,
   },
   redirects() {
     return [

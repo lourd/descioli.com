@@ -1,7 +1,9 @@
 import { formatInTimeZone } from "date-fns-tz"
 import Image from "next/image"
 import Link from "next/link"
+import { Suspense } from "react"
 
+import { ViewCount } from "@/components/view-count"
 import { getStories } from "@/lib/get-stories"
 
 export const metadata = {
@@ -39,6 +41,13 @@ export default async function Blog() {
                   "MMMM do, yyyy"
                 )}{" "}
                 • {story.readLength} min read
+                <Suspense fallback={null}>
+                  <span className="animate-fadeIn">
+                    {" • "}
+                    <ViewCount slug={story.slug} fetchAll />
+                    {" views"}
+                  </span>
+                </Suspense>
               </p>
             </div>
             <Image
