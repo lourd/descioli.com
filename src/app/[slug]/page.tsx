@@ -3,7 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { createElement } from "react"
+import { createElement, Suspense } from "react"
 import { onlyText } from "react-children-utilities"
 import remarkGfm from "remark-gfm"
 
@@ -11,6 +11,7 @@ import { BackLinkWithHand } from "@/components/back-link"
 import { Image as MyImage } from "@/components/image"
 import { Poem } from "@/components/poem"
 import { Video } from "@/components/video"
+import { ViewCount } from "@/components/view-count"
 import { YouTube } from "@/components/youtube"
 import { getSlugs, getStory, Story } from "@/lib/get-stories"
 import { slugify } from "@/lib/slugify"
@@ -54,6 +55,7 @@ export default async function StoryPage({ params }: PageProps) {
   }
 
   const { content, data, lastEditUrl, components } = story
+  console.log("rendering story", params.slug)
 
   return (
     <article className="max-md:mt-12">
@@ -88,8 +90,7 @@ export default async function StoryPage({ params }: PageProps) {
             {data.description}
           </h2>
           <div className="pt-3 pb-5">
-            <p className="text-gray-400 whitespace-pre">
-              Published{" "}
+            <div className="text-gray-400 flex flex-row whitespace-pre">
               <time>
                 {formatInTimeZone(
                   data.publication,
@@ -97,22 +98,34 @@ export default async function StoryPage({ params }: PageProps) {
                   "eeee LLLL do, yyyy"
                 )}
               </time>
-            </p>
-            {data.lastEdit && data.publication !== data.lastEdit && (
-              <p className="text-gray-400 whitespace-pre">
-                <a
-                  href={lastEditUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  Last edited
-                </a>{" "}
-                <time>
-                  {formatInTimeZone(data.lastEdit, "UTC", "eeee LLLL do, yyyy")}
-                </time>
-              </p>
-            )}
+              <Suspense fallback={null}>
+                <span className="animate-fadeIn">
+                  {" • "}
+                  <ViewCount slug={params.slug} increment />
+                  {" views"}
+                </span>
+              </Suspense>
+            </div>
+            {data.lastEdit &&
+              data.publication.getTime() !== data.lastEdit.getTime() && (
+                <div className="text-gray-400">
+                  <a
+                    href={lastEditUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    Last edited
+                  </a>{" "}
+                  <time>
+                    {formatInTimeZone(
+                      data.lastEdit,
+                      "UTC",
+                      "eeee LLLL do, yyyy"
+                    )}
+                  </time>
+                </div>
+              )}
           </div>
 
           <div>
