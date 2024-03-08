@@ -11,11 +11,19 @@ const links = [
     description:
       "A new take on setting the lights on my still-living Grove Ecosystem",
     link: "/ecosystem",
+    date: new Date("2023-12-17"),
   },
   {
     name: "Generative Circles",
-    description: "A quick study exploring a nested circle design generatively",
+    description: "Exploring a nested circle design generatively",
     link: "/generative-circles",
+    date: new Date("2021-02-11"),
+  },
+  {
+    name: "Cursor Follow Motion Study",
+    description: "Learning Framer Motion by following a mouse cursor",
+    link: "/cursor-follow",
+    date: new Date("2021-01-31"),
   },
 ]
 
@@ -36,6 +44,9 @@ export default function ExperimentsPage() {
               <div className="text-base font-extralight text-foregroundGray">
                 {link.description}
               </div>
+              <time className="text-xs font-extralight text-foregroundGray leading-normal">
+                {link.date.toDateString()}
+              </time>
             </Link>
           )
         })}
