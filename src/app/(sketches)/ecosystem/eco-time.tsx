@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useContext, useEffect } from "react"
 import { useFormState, useFormStatus } from "react-dom"
 
-import { useMounted } from "@/lib/use-mounted"
+import { ClientOnly } from "@/components/client-only"
 
 import { EcosystemContext } from "./ecosystem-context"
 
@@ -12,7 +12,6 @@ export function EcoTime(props: {
   changeTimezone: (offset: number) => Promise<number>
   timeZone: number
 }) {
-  const isClient = useMounted()
   const router = useRouter()
   const ecoNow = useContext(EcosystemContext)
 
@@ -39,10 +38,8 @@ export function EcoTime(props: {
     }
   }, [response, router, stillMismatching])
 
-  if (!isClient) return null
-
   return (
-    <>
+    <ClientOnly>
       {" • "}
       <span
         className={response === 1 && matchingTimezones ? "text-accent" : ""}
@@ -54,7 +51,7 @@ export function EcoTime(props: {
           <EcoTimeButton refetching={stillMismatching} />
         </form>
       )}
-    </>
+    </ClientOnly>
   )
 }
 

@@ -21,7 +21,7 @@ import {
 import { useMedia } from "react-use"
 
 import { AppContext, AppState } from "@/components/app-context"
-import { useMounted } from "@/lib/use-mounted"
+import { ClientOnly } from "@/components/client-only"
 
 /**
  * @fileoverview A card with a picture of some googly eyes placed over. The eyes
@@ -106,28 +106,30 @@ export function ProfileCard() {
 
         {readyForMotion && <MotionData />}
 
-        <GooglyEye
-          className={leftClasses}
-          pupilRadius={pupilRadius}
-          eyeRadius={eyeRadius}
-          initialX={initialX}
-          initialY={initialY}
-          ref={leftEye}
-          acceleration={state.mutableAcceleration}
-          motion={state.motion}
-          reducedMotion={reducedMotion}
-        />
-        <GooglyEye
-          className={rightClasses}
-          pupilRadius={pupilRadius}
-          eyeRadius={eyeRadius}
-          initialX={initialX}
-          initialY={initialY}
-          ref={rightEye}
-          acceleration={state.mutableAcceleration}
-          motion={state.motion}
-          reducedMotion={reducedMotion}
-        />
+        <ClientOnly>
+          <GooglyEye
+            className={leftClasses}
+            pupilRadius={pupilRadius}
+            eyeRadius={eyeRadius}
+            initialX={initialX}
+            initialY={initialY}
+            ref={leftEye}
+            acceleration={state.mutableAcceleration}
+            motion={state.motion}
+            reducedMotion={reducedMotion}
+          />
+          <GooglyEye
+            className={rightClasses}
+            pupilRadius={pupilRadius}
+            eyeRadius={eyeRadius}
+            initialX={initialX}
+            initialY={initialY}
+            ref={rightEye}
+            acceleration={state.mutableAcceleration}
+            motion={state.motion}
+            reducedMotion={reducedMotion}
+          />
+        </ClientOnly>
       </div>
       <div className="text-black font-bold text-center text-3xl mt-3 w-full h-12">
         The art of{" "}
@@ -234,9 +236,6 @@ const GooglyEye = forwardRef<GooglyEyeRef, GooglyEyeProps>(
       },
       [props.eyeRadius, props.pupilRadius, x, y]
     )
-    const isClient = useMounted()
-
-    if (!isClient) return null
 
     return (
       <div
