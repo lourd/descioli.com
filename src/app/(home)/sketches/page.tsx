@@ -7,11 +7,16 @@ export const metadata = {
 
 const links = [
   {
-    name: "A better Ecosystem lights interface",
-    description:
-      "A new take on setting the lights on my still-living Grove Ecosystem",
+    name: "A New Ecosystem Interface",
+    description: "A new take on controlling my still-living Ecosystem",
     link: "/ecosystem",
     date: new Date("2023-12-17"),
+  },
+  {
+    name: "Generative 3D Lines",
+    description: "Generative line fun in 3D",
+    link: "/3d-lines",
+    date: new Date("2021-02-26"),
   },
   {
     name: "Generative Circles",

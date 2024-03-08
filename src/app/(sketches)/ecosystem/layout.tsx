@@ -24,7 +24,7 @@ const key = new TextEncoder().encode(ECOSYSTEM_PASSWORD)
 
 export const metadata: Metadata = {
   title: "Lou's Ecosystem",
-  description: "A new take on setting the lights on my still-living Ecosystem",
+  description: "A new take on controlling my still-living Ecosystem",
 }
 
 export const runtime = "edge"
