@@ -12,14 +12,19 @@ const links = [
       "A new take on setting the lights on my still-living Grove Ecosystem",
     link: "/ecosystem",
   },
+  {
+    name: "Generative Circles",
+    description: "A quick study exploring a nested circle design generatively",
+    link: "/generative-circles",
+  },
 ]
 
 export default function ExperimentsPage() {
   return (
     <div className="h-full flex flex-col sm:max-w-xl lg:pt-8">
       <p className="text-2xl text-balance">{"Explorations and tools"}</p>
-      <hr className="border-muted mt-2 mb-6" />
-      <nav className="flex flex-col gap-1 w-fit">
+      <hr className="border-muted mt-2 mb-4" />
+      <nav className="flex flex-col gap-3 w-fit">
         {links.map((link) => {
           return (
             <Link
