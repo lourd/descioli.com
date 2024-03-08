@@ -3,6 +3,7 @@ import { MDXRemote } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { createElement } from "react"
 import { onlyText } from "react-children-utilities"
 import remarkGfm from "remark-gfm"
 
@@ -185,22 +186,26 @@ export default async function StoryPage({ params }: PageProps) {
 }
 
 function createLinkedHeading(level: string) {
-  return function Heading(props: { children?: React.ReactNode }) {
-    const textContent = onlyText(props.children)
+  return function Heading({
+    children,
+    ...props
+  }: {
+    children?: React.ReactNode
+  }) {
+    const textContent = onlyText(children)
     const slug = slugify(textContent)
-    const Heading = `h${level}` as keyof JSX.IntrinsicElements
-    return (
-      <Heading
-        {...props}
-        id={slug}
-        className={`relative group ${level === "2" ? "text-2xl font-bold pt-6 pb-3" : ""} ${level === "3" ? "text-xl font-bold pt-2 pb-3" : ""}`}
-      >
-        <a
-          href={`#${slug}`}
-          className="absolute left-0 -translate-x-[100%] font-light !text-gray-400 !no-underline after:content-['#'] transition-opacity duration-100 pr-[3px] md:px-2 opacity-0 focus:opacity-100 group-hover:opacity-100"
-        />
-        {props.children}
-      </Heading>
+    return createElement(
+      `h${level}`,
+      {
+        ...props,
+        id: slug,
+        className: `relative group ${level === "2" ? "text-2xl font-bold pt-6 pb-3" : ""} ${level === "3" ? "text-xl font-bold pt-2 pb-3" : ""}`,
+      },
+      <a
+        href={`#${slug}`}
+        className="absolute left-0 -translate-x-[100%] font-light !text-gray-400 !no-underline after:content-['#'] transition-opacity duration-100 pr-[3px] md:px-2 opacity-0 focus:opacity-100 group-hover:opacity-100"
+      />,
+      children
     )
   }
 }
