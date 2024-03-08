@@ -27,6 +27,8 @@ export const metadata: Metadata = {
   description: "A new take on setting the lights on my still-living Ecosystem",
 }
 
+export const runtime = "edge"
+
 const ONE_YEAR = 1000 * 60 * 60 * 24 * 365
 
 export default async function EcosystemLayout(props: {
