@@ -1,4 +1,4 @@
-import { unstable_noStore } from "next/cache"
+import { revalidatePath, unstable_cache, unstable_noStore } from "next/cache"
 import { headers } from "next/headers"
 import { userAgent } from "next/server"
 import { numify } from "numify"
@@ -28,7 +28,9 @@ export async function ViewCount(props: ViewCountProps) {
   if (props.increment) {
     const agent = userAgent({ headers: headers() })
     if (!agent.isBot) {
-      void incrementViews(props.slug)
+      void incrementViews(props.slug).then(() => {
+        revalidatePath("/blog")
+      })
     }
   }
 
@@ -45,14 +47,20 @@ async function getViewsForSlug(slug: string) {
   return rows[0]?.count ?? 0
 }
 
-const getAllViews = cache(async function getAllViews() {
-  console.log("getting all blog views")
-  const rows = await sql<{ slug: string; count: number }[]>`
-    SELECT slug, count
-    FROM views
-  `
-  return rows
-})
+const getAllViews =
+  // Cache it within the same request, as it gets called for each entry on /blog
+  cache(
+    // Cache it across requests, which gets manually invalidated when a view count is incremented
+    unstable_cache(
+      async function getAllViews() {
+        console.log("getting all blog views")
+        return await sql<
+          { slug: string; count: number }[]
+        >`SELECT slug, count FROM views`
+      },
+      ["all-blog-views"]
+    )
+  )
 
 const incrementViews = cache(async function incrementViews(slug: string) {
   console.log("incrementing views for", slug)
