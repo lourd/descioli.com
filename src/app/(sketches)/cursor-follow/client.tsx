@@ -15,30 +15,22 @@ export function CursorFollowStudy() {
   return (
     <>
       <div className="absolute top-0 left-0 right-0 flex flex-row justify-center items-center mt-2 z-10 gap-1">
-        <button
-          className={`px-2 py-1 text-lg transition-colors rounded ${active === "exact" ? "bg-muted" : "hocus:bg-muted/50"}`}
-          onClick={() => setActive("exact")}
+        <select
+          name="active"
+          id="active"
+          value={active}
+          onChange={(evt) => {
+            setActive(evt.target.value as Idea)
+          }}
+          className="mt-16 border border-muted bg-transparent px-2 py-1 rounded"
         >
-          Exact Follow with React.setState
-        </button>
-        <button
-          className={`px-2 py-1 text-lg transition-colors rounded ${active === "exact-framer" ? "bg-muted" : "hocus:bg-muted/50"}`}
-          onClick={() => setActive("exact-framer")}
-        >
-          Exact Follow with framer-motion
-        </button>
-        <button
-          className={`px-2 py-1 text-lg transition-colors rounded ${active === "spring" ? "bg-muted" : "hocus:bg-muted/50"}`}
-          onClick={() => setActive("spring")}
-        >
-          Spring-based follow
-        </button>
-        <button
-          className={`px-2 py-1 text-lg transition-colors rounded ${active === "spring-and-scale" ? "bg-muted" : "hocus:bg-muted/50"}`}
-          onClick={() => setActive("spring-and-scale")}
-        >
-          Spring-based follow {"&"} scale
-        </button>
+          <option value="exact">Exact follow with React</option>
+          <option value="exact-framer">Exact follow with Framer</option>
+          <option value="spring">Spring-based follow</option>
+          <option value="spring-and-scale">
+            Spring-based follow {"&"} scale
+          </option>
+        </select>
       </div>
       {active === "exact" && <SetState />}
       {active === "exact-framer" && <FramerImmediate />}
@@ -62,8 +54,8 @@ function SetState() {
 
   return (
     <svg
-      onMouseMove={handleMouseMove}
-      className="h-screen w-screen fill-transparent"
+      onPointerMove={handleMouseMove}
+      className="absolute top-0 h-full w-full fill-transparent touch-none"
     >
       <circle cx={state.x} cy={state.y} r={24} className="stroke-foreground" />
     </svg>
@@ -81,8 +73,8 @@ function FramerImmediate() {
   }
   return (
     <svg
-      onMouseMove={handleMouseMove}
-      className="h-screen w-screen fill-transparent"
+      onPointerMove={handleMouseMove}
+      className="absolute top-0 h-full w-full fill-transparent touch-none"
     >
       <motion.circle cx={x} cy={y} r={24} className="stroke-foreground" />
     </svg>
@@ -114,8 +106,8 @@ function FramerSpring() {
   }
   return (
     <svg
-      onMouseMove={handleMouseMove}
-      className="h-screen w-screen fill-transparent"
+      onPointerMove={handleMouseMove}
+      className="absolute top-0 h-full w-full fill-transparent touch-none"
     >
       <motion.circle cx={x} cy={y} r={24} className="stroke-foreground" />
     </svg>
@@ -142,7 +134,10 @@ function FramerSpringScale() {
   const transform = useMotionTemplate`translate(${x}px, ${y}px) scale(${scaleX}, 1)`
 
   return (
-    <div className="h-screen w-screen" onMouseMove={handleMouseMove}>
+    <div
+      className="absolute top-0 h-full w-full touch-none"
+      onPointerMove={handleMouseMove}
+    >
       <motion.div style={{ transform }} className="absolute h-0 w-0">
         <svg
           className="-translate-x-[96%] -translate-y-[96%] fill-transparent"
