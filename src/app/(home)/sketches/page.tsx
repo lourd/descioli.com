@@ -13,6 +13,13 @@ const links = [
     date: new Date("2023-12-17"),
   },
   {
+    name: "Hand Tracking",
+    description: "Exploring the WebXR Hand Tracking API",
+    link: "/hand-tracking",
+    date: new Date("2021-03-08"),
+  },
+
+  {
     name: "Generative 3D Lines",
     description: "Generative line fun in 3D",
     link: "/3d-lines",
@@ -37,7 +44,7 @@ export default function ExperimentsPage() {
     <div className="h-full flex flex-col sm:max-w-xl lg:pt-8">
       <p className="text-2xl text-balance">{"Explorations and tools"}</p>
       <hr className="border-muted mt-2 mb-4" />
-      <nav className="flex flex-col gap-3 w-fit">
+      <nav className="flex flex-col gap-3">
         {links.map((link) => {
           return (
             <Link
