@@ -1,14 +1,20 @@
 "use client"
 
-import { Canvas, useThree } from "@react-three/fiber"
+import { extend, useThree } from "@react-three/fiber"
 import { Draft, produce } from "immer"
-import { Suspense, useEffect, useReducer, useState } from "react"
+import { Suspense, useEffect, useReducer } from "react"
 import { suspend } from "suspend-react"
+import * as THREE from "three"
 import { EventListener, XRHandSpace } from "three"
 
 import { ClientOnly } from "@/components/client-only"
 
+import { Canvas } from "./canvas"
 import { Hand } from "./hand"
+
+// Have to do this manually since using custom Canvas component.
+// https://docs.pmnd.rs/react-three-fiber/api/canvas#createroot
+extend(THREE)
 
 export function HandTrackingClient() {
   return (

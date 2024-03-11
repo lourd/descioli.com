@@ -13,14 +13,17 @@ export function Hand({ hand, space, handedness }: HandProps) {
   const { object, bones } = useHandModel(handedness)
 
   useFrame(() => {
+    let allVisible = true
     for (const [jointName] of hand) {
       const bone = bones.get(jointName)
       const joint = space.joints[jointName]
       if (bone && joint) {
         bone.position.copy(joint.position)
         bone.quaternion.copy(joint.quaternion)
+        allVisible = allVisible && joint.visible
       }
     }
+    object.visible = allVisible
   })
 
   return <primitive object={object} />
