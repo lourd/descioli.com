@@ -1,5 +1,5 @@
 import { addSeconds } from "date-fns"
-import { revalidatePath } from "next/cache"
+import { revalidatePath, unstable_noStore } from "next/cache"
 import { ErrorBoundary } from "react-error-boundary"
 
 import { protect } from "./auth"
@@ -67,6 +67,9 @@ export async function Light(props: EcosystemLamp) {
     console.log("response", response)
     revalidatePath(PATH, "layout")
   }
+
+  // Instructs framework not to pre-render at build time
+  unstable_noStore()
 
   const [lightResponse, systemResponse] = await Promise.all([
     getLight(MY_ECOSYSTEM_DEVICE_ID, props.variable),
