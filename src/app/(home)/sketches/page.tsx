@@ -8,7 +8,7 @@ export const metadata = {
 const links = [
   {
     name: "A New Ecosystem Interface",
-    description: "A new take on controlling my still-living Ecosystem",
+    description: "A new take on controlling my still-living Grove Ecosystem",
     link: "/ecosystem",
     date: new Date("2023-12-17"),
   },

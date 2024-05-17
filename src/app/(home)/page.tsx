@@ -8,11 +8,24 @@ export default async function HomePage() {
 
   return (
     <div className="flex flex-col justify-center h-full w-full max-w-[520px]">
-      <p className="text-5xl mb-2">Hi, {"I'm"} Louis</p>
-      <p className="font-serif">But you can call me Lou, too.</p>
-      <br />
-      <p className="font-serif">Welcome to my personal corner of the web.</p>
-      <p className="font-serif">Enjoy your time here 🖖</p>
+      <div className="flex flex-col gap-2">
+        <p className="text-5xl mb-2">Hi, {"I'm"} Louis</p>
+        <p className="font-serif">But you can call me Lou, too.</p>
+        <p className="font-serif">Welcome to my personal corner of the web.</p>
+        <p className="font-serif">
+          {"I'm"} the founder and CEO of Together, an AR communication company.
+        </p>
+        <p className="font-serif">
+          <a
+            href="https://forms.gle/fBFoxdTn9eypPYo49"
+            className="transition-colors duration-200 text-link hocus:underline"
+          >
+            Sign up to beta test
+          </a>{" "}
+          and come along for the ride.
+        </p>
+        <p className="font-serif">Enjoy your time here 🖖</p>
+      </div>
       <nav className="mt-8 flex flex-col gap-[5px]">
         <div>
           <Link
