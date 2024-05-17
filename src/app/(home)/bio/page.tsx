@@ -48,7 +48,7 @@ export default function BioPage() {
       <br />
       <p>
         {
-          "I'm currently in the midst of starting my own company. I'm the co-founder and CEO of (name coming soon), building an augmented reality telepresence application."
+          "I'm currently in the midst of starting my own company. I'm the founder and CEO of Together, building an augmented reality telepresence application."
         }
       </p>
       <br />
