@@ -272,7 +272,7 @@ export function SetLightSchedule(props: LightScheduleProps) {
             <button
               onClick={cancel}
               type="button"
-              className="px-2 py-[1px] rounded bg-muted flex-grow"
+              className="px-2 py-[1px] rounded border border-muted flex-grow"
             >
               Cancel
             </button>
@@ -354,7 +354,7 @@ function handleDrag(
 
 type SetLightProps = {
   id: EcosystemLightId
-  setLight: (setting: Omit<LightInterruption, "light">) => Promise<void>
+  setLight: (setting: Omit<LightInterruption, "light">) => Promise<boolean>
   setting: LightInterruptSetting
   authenticated: boolean
 }
@@ -366,15 +366,10 @@ type LightTempState = {
   color: number
 }
 
-type LightTempStateUpdate =
-  | ((draft: Draft<LightTempState>) => void)
-  | { type: "move" }
+type LightTempStateUpdate = (draft: Draft<LightTempState>) => void
 
 const lightReducer = (state: LightTempState, action: LightTempStateUpdate) => {
-  if (typeof action === "function") {
-    return produce(state, action)
-  }
-  return state
+  return produce(state, action)
 }
 
 const getInitialLightTempState = (
@@ -455,7 +450,8 @@ export function SetLight(props: SetLightProps) {
                   draft.hours = Number(e.target.value)
                 })
               }}
-              className="dark:bg-[--background-color] border-[1px] border-foreground pl-2 rounded"
+              className="dark:bg-[--background-color] border-[1px] border-foreground px-2 rounded"
+              name="hours"
             >
               {range(0, 24).map((i) => (
                 <option key={i} value={i}>
@@ -468,12 +464,13 @@ export function SetLight(props: SetLightProps) {
             </label>
             <select
               value={state.minutes}
+              name="minutes"
               onChange={(e) => {
                 dispatch((draft) => {
                   draft.minutes = Number(e.target.value)
                 })
               }}
-              className="ml-2 dark:bg-[--background-color] border-[1px] border-foreground pl-2 rounded"
+              className="ml-2 dark:bg-[--background-color] border-[1px] border-foreground px-2 rounded"
             >
               {range(0, 60).map((i) => (
                 <option key={i} value={i}>

@@ -3,17 +3,18 @@
 import Link from "next/link"
 import { useSelectedLayoutSegment } from "next/navigation"
 
-const lights = [
+const tabs = [
   ["Canopy", "canopy"],
   ["Aquarium", "aquarium"],
+  ["Pump", "pump"],
 ]
 
-export function LightTabs() {
+export function Tabs() {
   const segment = useSelectedLayoutSegment()
 
   return (
     <div className="border-muted border rounded-full flex flex-row w-fit">
-      {lights.map(([name, slug], i, arr) => {
+      {tabs.map(([name, slug], i, arr) => {
         return (
           <Link
             key={name}
