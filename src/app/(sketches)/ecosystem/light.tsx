@@ -59,15 +59,15 @@ export async function Light(props: LightProps) {
   async function handleLightInterrupt(data: Omit<LightInterruption, "light">) {
     "use server"
     const isAuthenticated = await protect()
-    if (!isAuthenticated) return
+    if (!isAuthenticated) return false
 
     const setting = LightInterruption.parse({
       ...data,
       light: props.id,
     })
     const response = await interruptLight(MY_ECOSYSTEM_DEVICE_ID, setting)
-    console.log("response", response)
     revalidatePath(props.path)
+    return response.statusCode === 200 && response.body.return_value === 1
   }
 
   const [lightResponse, systemResponse] = await Promise.all([
