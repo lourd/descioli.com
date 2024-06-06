@@ -366,15 +366,10 @@ type LightTempState = {
   color: number
 }
 
-type LightTempStateUpdate =
-  | ((draft: Draft<LightTempState>) => void)
-  | { type: "move" }
+type LightTempStateUpdate = (draft: Draft<LightTempState>) => void
 
 const lightReducer = (state: LightTempState, action: LightTempStateUpdate) => {
-  if (typeof action === "function") {
-    return produce(state, action)
-  }
-  return state
+  return produce(state, action)
 }
 
 const getInitialLightTempState = (
