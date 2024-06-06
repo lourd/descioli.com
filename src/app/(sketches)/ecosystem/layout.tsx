@@ -13,8 +13,8 @@ import {
   reactCachedGetSystemStatus,
   setTimezone,
 } from "./ecosystem-methods"
-import { LightTabs } from "./light-tabs"
 import { PasswordForm } from "./password-form"
+import { Tabs } from "./tabs"
 
 ok(process.env.ECOSYSTEM_PASSWORD)
 const ECOSYSTEM_PASSWORD = process.env.ECOSYSTEM_PASSWORD
@@ -82,7 +82,7 @@ export default async function EcosystemLayout(props: {
         </div>
         <Info />
         {!authenticated && <PasswordForm login={enterPassword} />}
-        <LightTabs />
+        <Tabs />
         {props.children}
       </div>
     </EcosystemProvider>
