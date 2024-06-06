@@ -11,9 +11,14 @@ import {
 import {
   createLightInterruptionString,
   createLightScheduleString,
+  createPumpInterruptionString,
+  createPumpScheduleString,
   LightInterruption,
   LightSchedule,
   LightSettings,
+  PumpInterruption,
+  PumpSchedule,
+  PumpSetting,
   SystemStatus,
 } from "./ecosystem-models"
 import { callFunction, getVariable, GetVariableResponse } from "./particle-api"
@@ -113,5 +118,55 @@ export function setTimezone(deviceId: string, timezone: number) {
     deviceId,
     name: EcosystemFunctions.MuxFunction,
     argument: `timeZoneOffset-${timezone}`,
+  })
+}
+
+export async function getPump(
+  deviceId: string
+): Promise<StructuredVariableResponse<PumpSetting>> {
+  console.log("getting pump")
+  const response = await getVariable({
+    auth: PARTICLE_API_TOKEN,
+    deviceId,
+    name: EcosystemVariables.Pump,
+  })
+  if (response.statusCode !== 200) {
+    throw new Error(`Particle ${response.statusCode}: ${response.body.error}`)
+  }
+  return {
+    ...response,
+    body: {
+      ...response.body,
+      result: JSON.parse(response.body.result) as PumpSetting,
+    },
+  }
+}
+
+export function setPumpSchedule(deviceId: string, schedule: PumpSchedule) {
+  const str = createPumpScheduleString(PumpSchedule.parse(schedule))
+  return callFunction({
+    auth: PARTICLE_API_TOKEN,
+    deviceId,
+    name: EcosystemFunctions.SetPump,
+    argument: `schedule-${str}`,
+  })
+}
+
+export function resumePumpSchedule(deviceId: string) {
+  return callFunction({
+    auth: PARTICLE_API_TOKEN,
+    deviceId,
+    name: EcosystemFunctions.SetPump,
+    argument: "schedule-resume",
+  })
+}
+
+export function interruptPump(deviceId: string, setting: PumpInterruption) {
+  const str = createPumpInterruptionString(PumpInterruption.parse(setting))
+  return callFunction({
+    auth: PARTICLE_API_TOKEN,
+    deviceId,
+    name: EcosystemFunctions.SetPump,
+    argument: `temp-${str}`,
   })
 }

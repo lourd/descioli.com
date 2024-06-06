@@ -197,3 +197,69 @@ export type Wifi = {
   APs: string[]
   uptime: number
 }
+
+export enum PumpMode {
+  /** Won't ever turn on automatically */
+  Disabled = "DISABLED",
+  /** Won't ever turn off automatically */
+  ConstantOn = "CONSTANT_ON",
+  /** x mins on then y mins off... forever = EA behavior */
+  ArbitraryDutyCycle = "SCHEDULE_ARBITRARY_DUTY_CYCLE",
+  /** Default sched mode - deterministic on/off state by current minute */
+  HourAligned = "SCHEDULE_HOUR_ALIGNED",
+  /** Interrupted, holding an on/off state */
+  InterruptedContantState = "INTERRUPTED_CONSTANT_STATE",
+}
+
+export type PumpSetting = {
+  pumpOn: boolean
+  mode: PumpMode
+  why: SettingCause
+  /** nested object w/ data regarding our stored schedule */
+  sched: {
+    /** mins for which pump will stay continuously ON */
+    onTimeMins: number
+    /** mins for which pump will stay continuously OFF */
+    offTimeMins: number
+    /** If in mode `SCHEDULE_ARBITRARY_DUTY_CYCLE`, # secs left until we flip states */
+    arbitraryModeSecsLeft: number
+  }
+  /** nested object - relevant data IF we're interrupted */
+  inter: {
+    /** indicates if this is an indefinite length interruption */
+    indef: boolean
+    /** Total requested duration of this interruption in minutes */
+    dur: number
+    /** seconds left in this interruption, if active */
+    secsLeft: number
+  }
+  /** data regarding pump power readings */
+  power: {
+    /** if != 0, an alarm is active (not implemented) */
+    alarm: number
+    /** our most recent current reading (watts) */
+    value: number
+  }
+}
+
+export const PumpSchedule = z.object({
+  onPeriod: z.number().int().gte(0).lte(255),
+  offPeriod: z.number().int().gte(0).lte(255),
+})
+
+export type PumpSchedule = z.infer<typeof PumpSchedule>
+
+export function createPumpScheduleString(param: PumpSchedule) {
+  return [pad(3, param.onPeriod), pad(3, param.offPeriod)].join(":")
+}
+
+export const PumpInterruption = z.object({
+  state: z.boolean(),
+  duration: z.number().int().gte(0).lt(1440),
+})
+
+export type PumpInterruption = z.infer<typeof PumpInterruption>
+
+export function createPumpInterruptionString(param: PumpInterruption) {
+  return [Number(param.state), pad(4, param.duration)].join(":")
+}
