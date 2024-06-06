@@ -99,7 +99,7 @@ async function Info() {
 
     console.log("updating timezone to", offset)
     const response = await setTimezone(MY_ECOSYSTEM_DEVICE_ID, offset)
-    revalidatePath("/ecosystem/[light]", "layout")
+    revalidatePath("/ecosystem/[tab]", "layout")
     console.log("timezone response", response)
     return response.body.return_value
   }

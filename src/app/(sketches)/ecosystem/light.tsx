@@ -20,16 +20,18 @@ import {
   timeToDate,
 } from "./ecosystem-models"
 
-const PATH = "/ecosystem"
+type LightProps = EcosystemLamp & {
+  path: string
+}
 
-export async function Light(props: EcosystemLamp) {
+export async function Light(props: LightProps) {
   async function handleResumeSchedule() {
     "use server"
     const isAuthenticated = await protect()
     if (!isAuthenticated) return false
 
     const response = await resumeLightSchedule(MY_ECOSYSTEM_DEVICE_ID, props.id)
-    revalidatePath(PATH, "layout")
+    revalidatePath(props.path)
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
@@ -50,7 +52,7 @@ export async function Light(props: EcosystemLamp) {
       nightIntensity: schedule.night[0],
       nightColor: schedule.night[1],
     })
-    revalidatePath(PATH, "layout")
+    revalidatePath(props.path)
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
@@ -65,7 +67,7 @@ export async function Light(props: EcosystemLamp) {
     })
     const response = await interruptLight(MY_ECOSYSTEM_DEVICE_ID, setting)
     console.log("response", response)
-    revalidatePath(PATH, "layout")
+    revalidatePath(props.path)
   }
 
   const [lightResponse, systemResponse] = await Promise.all([
