@@ -1,0 +1,22 @@
+diff --git a/dist/vector-plugin-6f82aee9.esm.js b/dist/vector-plugin-6f82aee9.esm.js
+index 8bf534d96705c0bc5d21f7feeeaa203f94778a30..0966550d0df1583309d0c608b9650fd20f6fad11 100644
+--- a/dist/vector-plugin-6f82aee9.esm.js
++++ b/dist/vector-plugin-6f82aee9.esm.js
+@@ -1,4 +1,4 @@
+-import ReactDOM from 'react-dom';
++import { createRoot } from 'react-dom/client';
+ import React, { createContext, useContext, useRef, useCallback, useState, useEffect } from 'react';
+ import * as P from '@radix-ui/react-portal';
+ import { dequal } from 'dequal/lite';
+@@ -461,10 +461,7 @@ const debounce = (callback, wait, immediate = false) => {
+ const multiplyStep = event => event.shiftKey ? 5 : event.altKey ? 1 / 5 : 1;
+ 
+ function render(element, container) {
+-  const error = console.error;
+-  console.error = () => {};
+-  ReactDOM.render(element, container);
+-  console.error = error;
++  createRoot(container).render(element);
+ }
+ 
+ function mergeRefs(refs) {

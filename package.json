@@ -65,5 +65,10 @@
     "prettier": "^3.2.5",
     "puppeteer": "^22.3.0",
     "ws": "^8.18.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "leva": "patches/leva.patch"
+    }
   }
 }
