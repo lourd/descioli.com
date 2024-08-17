@@ -2,6 +2,7 @@
   "name": "descioli-dot-com",
   "version": "3.0.0",
   "private": true,
+  "packageManager": "^pnpm@9.0.0",
   "scripts": {
     "dev": "pnpm run --reporter=append-only --reporter-hide-prefix \"/^dev:.*/\"",
     "dev:content": "node ./content-watcher.js",
@@ -63,6 +64,6 @@
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
     "puppeteer": "^22.3.0",
-    "ws": "^8.16.0"
+    "ws": "^8.18.0"
   }
 }
