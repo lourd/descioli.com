@@ -17,10 +17,10 @@ export default async function HomePage() {
         </p>
         <p className="font-serif">
           <a
-            href="https://forms.gle/fBFoxdTn9eypPYo49"
+            href="https://together.online/alpha"
             className="transition-colors duration-200 text-link hocus:underline"
           >
-            Sign up to beta test
+            Sign up for the alpha
           </a>{" "}
           and come along for the ride.
         </p>
