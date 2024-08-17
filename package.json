@@ -40,7 +40,7 @@
     "react-error-boundary": "^4.0.12",
     "react-ink": "^6.5.4",
     "react-transition-group": "^4.4.5",
-    "react-use": "^17.5.0",
+    "react-use": "^17.5.1",
     "remark-gfm": "^3.0.0",
     "tailwindcss": "^3.4.1",
     "three": "^0.162.0",
