@@ -1,6 +1,7 @@
 "use client"
 
 import { Line, OrbitControls, Sky } from "@react-three/drei"
+// @ts-expect-error
 import { Canvas } from "@react-three/fiber"
 import { interpolateRainbow, interpolateSinebow } from "d3"
 import { useControls } from "leva"
@@ -11,6 +12,7 @@ export function DiamondLinesClient() {
       <Canvas>
         <Sky />
         <DiamondLines />
+        {/* @ts-expect-error */}
         <ambientLight />
         <OrbitControls />
       </Canvas>
@@ -103,7 +105,9 @@ function DiamondLines() {
     })
   return (
     <>
+      {/* @ts-expect-error */}
       <group>{lines}</group>
+      {/* @ts-expect-error */}
       <group rotation={[0, 0, Math.PI]}>{lines}</group>
     </>
   )
