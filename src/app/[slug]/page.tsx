@@ -31,36 +31,25 @@ export async function generateStaticParams(): Promise<
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  try {
-    const { data } = await getStory(params.slug)
-    return {
-      title: data.title,
-      description: data.description,
-      openGraph: {
-        images: `/${params.slug}/og.png`,
-      },
-      metadataBase: process.env.SITE_HOST
-        ? new URL(`https://${process.env.SITE_HOST}`)
-        : undefined,
-    } satisfies Metadata
-  } catch (error) {
-    console.error(error)
+  const story = await getStory(params.slug).catch((e) => e as Error)
+  if (story instanceof Error) {
+    console.error(story)
+    return
   }
+  return {
+    title: story.data.title,
+    description: story.data.description,
+    openGraph: {
+      images: `/${params.slug}/og.png`,
+    },
+    metadataBase: process.env.SITE_HOST
+      ? new URL(`https://${process.env.SITE_HOST}`)
+      : undefined,
+  } satisfies Metadata
 }
 
 export default async function StoryPage({ params }: PageProps) {
-  let story: Story
-
-  try {
-    story = await getStory(params.slug)
-  } catch (e) {
-    if ((e as Error).message !== "Story not found") {
-      throw e
-    }
-    notFound()
-  }
-
-  const { content, data, lastEditUrl, components } = story
+  const story = await getStory(params.slug)
 
   return (
     <article className="max-md:mt-12">
@@ -68,7 +57,7 @@ export default async function StoryPage({ params }: PageProps) {
         <Image
           alt=""
           className="min-h-[50vh] aspect-[5/2] max-h-[700px] w-full object-cover object-center"
-          src={data.header || data.image}
+          src={story.data.header || story.data.image}
           priority
           //   FIXME
           width={1200}
@@ -76,7 +65,7 @@ export default async function StoryPage({ params }: PageProps) {
         />
         <div className="absolute top-0 left-0 right-0 bottom-0 z-[1] flex flex-row justify-start items-end text-white">
           <h1 className="text-5xl flex-grow max-w-[680px] p-6 mx-auto md:text-[4rem] text-shadow shadow-black/30 font-bold leading-[1.1]">
-            {data.title}
+            {story.data.title}
           </h1>
         </div>
       </div>
@@ -92,12 +81,12 @@ export default async function StoryPage({ params }: PageProps) {
 
         <main className="mx-auto max-w-[680px] px-5 md:px-6 py-5 relative">
           <h2 className="text-3xl font-light text-balance">
-            {data.description}
+            {story.data.description}
           </h2>
           <div className="pt-3 pb-5">
             <p className="text-gray-400 whitespace-pre">
               <a
-                href={lastEditUrl}
+                href={story.lastEditUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
@@ -106,7 +95,7 @@ export default async function StoryPage({ params }: PageProps) {
               </a>{" "}
               <time>
                 {formatInTimeZone(
-                  data.publication,
+                  story.data.publication,
                   "UTC",
                   "eeee, LLLL do, yyyy"
                 )}
@@ -116,7 +105,7 @@ export default async function StoryPage({ params }: PageProps) {
 
           <div>
             <MDXRemote
-              source={content}
+              source={story.content}
               components={{
                 Image: MyImage,
                 Poem,
@@ -146,7 +135,7 @@ export default async function StoryPage({ params }: PageProps) {
                 li: (props) => (
                   <li {...props} className="mb-2 text-lg font-serif" />
                 ),
-                ...components,
+                ...story.components,
               }}
               options={{
                 mdxOptions: {

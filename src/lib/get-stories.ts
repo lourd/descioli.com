@@ -2,6 +2,7 @@ import { readdir, readFile } from "fs/promises"
 
 import { compareDesc } from "date-fns"
 import matter from "gray-matter"
+import { notFound } from "next/navigation"
 
 import { isFulfilled } from "./assert-settled"
 import { instanceOfNodeError } from "./node-errors"
@@ -46,7 +47,7 @@ export async function getStory(slug: string) {
   const stories = await getStories()
   const index = stories.findIndex((story) => story.slug === slug)
   if (index === -1) {
-    throw new Error("Story not found")
+    notFound()
   }
 
   const story = stories[index]
