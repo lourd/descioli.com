@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "pnpm run --reporter=append-only --reporter-hide-prefix \"/^dev:.*/\"",
     "dev:content": "node ./content-watcher.js",
-    "dev:next": "next dev --experimental-https",
+    "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "pnpm run \"/^lint:.*/\"",
