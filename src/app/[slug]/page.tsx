@@ -35,6 +35,9 @@ export async function generateMetadata({ params }: PageProps) {
     return {
       title: data.title,
       description: data.description,
+      openGraph: {
+        images: `/${params.slug}/og.png`,
+      },
     }
   } catch (error) {
     console.error(error)

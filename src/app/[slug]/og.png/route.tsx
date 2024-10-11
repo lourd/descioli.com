@@ -4,21 +4,23 @@ import fs from "fs/promises"
 import { format } from "date-fns"
 import { ImageResponse } from "next/og"
 
-import { getStory } from "@/lib/get-stories"
+import { getSlugs, getStory } from "@/lib/get-stories"
 
-export const size = {
+const size = {
   width: 1200,
   height: 630,
 }
-export const contentType = "image/png"
 
-export default async function BlogPreviewImage({
-  params,
-}: {
-  params: { slug: string }
-}) {
+export async function generateStaticParams() {
+  return await getSlugs()
+}
+
+export async function GET(
+  _: Request,
+  { params }: { params: { slug: string } }
+) {
   const story = await getStory(params.slug)
-  const url = new URL(`../../../public${story.data.image}`, import.meta.url)
+  const url = new URL(`../../../../public${story.data.image}`, import.meta.url)
   const imgData = await fs.readFile(url.pathname)
 
   const [interRegular, interBold, interLight] = await Promise.all([
