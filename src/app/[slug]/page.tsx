@@ -96,30 +96,22 @@ export default async function StoryPage({ params }: PageProps) {
           </h2>
           <div className="pt-3 pb-5">
             <p className="text-gray-400 whitespace-pre">
-              Published{" "}
+              <a
+                href={lastEditUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                Published
+              </a>{" "}
               <time>
                 {formatInTimeZone(
                   data.publication,
                   "UTC",
-                  "eeee LLLL do, yyyy"
+                  "eeee, LLLL do, yyyy"
                 )}
               </time>
             </p>
-            {data.lastEdit && data.publication !== data.lastEdit && (
-              <p className="text-gray-400 whitespace-pre">
-                <a
-                  href={lastEditUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
-                  Last edited
-                </a>{" "}
-                <time>
-                  {formatInTimeZone(data.lastEdit, "UTC", "eeee LLLL do, yyyy")}
-                </time>
-              </p>
-            )}
           </div>
 
           <div>
