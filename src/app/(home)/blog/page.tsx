@@ -1,4 +1,4 @@
-import { formatInTimeZone } from "date-fns-tz"
+import { format } from "date-fns"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -33,12 +33,8 @@ export default async function Blog() {
                 {story.data.description}
               </h3>
               <p className="text-xs md:text-sm">
-                {formatInTimeZone(
-                  story.data.publication,
-                  "UTC",
-                  "MMMM do, yyyy"
-                )}{" "}
-                • {story.readLength} min read
+                {format(story.data.publication, "MMMM do, yyyy")} •{" "}
+                {story.readLength} min read
               </p>
             </div>
             <Image
