@@ -73,9 +73,10 @@ export async function GET(
           </div>
           <div
             style={{
-              fontSize: 70,
+              fontSize: 52,
               fontWeight: 300,
-              paddingRight: 20,
+              paddingTop: 8,
+              paddingRight: 60,
             }}
           >
             {story.data.description}
@@ -84,8 +85,8 @@ export async function GET(
             style={{
               display: "flex",
               flexDirection: "row",
-              paddingTop: 14,
-              fontSize: 46,
+              paddingTop: 18,
+              fontSize: 38,
               fontWeight: 300,
             }}
           >
