@@ -35,4 +35,4 @@ I took a screenshot to remember the moment.
   caption="My mixed reality recording studio in Together 1.0."
 />
 
-It can be really hard building at the bleeding edge of computing. I've found that being the first one to something is oftentimes more painful than exhilirating. But this was one of those times where it felt amazing. I could viscerally feel my place in history, right there in my apartment, and I felt so unbelievably lucky to be where I was at that exact moment, realizing the future.
+It can be really hard building at the bleeding edge of computing. I've found that being the first one to something is oftentimes more painful than exhilirating. But this was one of those times where it felt amazing. I could viscerally feel my place in history, right there in my apartment. I feel so unbelievably lucky to be where I am at that this exact moment, realizing the future.
