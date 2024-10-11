@@ -1,4 +1,5 @@
 import { formatInTimeZone } from "date-fns-tz"
+import { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
@@ -38,7 +39,10 @@ export async function generateMetadata({ params }: PageProps) {
       openGraph: {
         images: `/${params.slug}/og.png`,
       },
-    }
+      metadataBase: process.env.SITE_HOST
+        ? new URL(`https://${process.env.SITE_HOST}`)
+        : undefined,
+    } satisfies Metadata
   } catch (error) {
     console.error(error)
   }

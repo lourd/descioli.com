@@ -56,7 +56,7 @@ export async function GET(
         />
         <div tw="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30" />
         <div
-          tw="p-14"
+          tw="py-14 px-20"
           style={{
             display: "flex",
             flexDirection: "column",
