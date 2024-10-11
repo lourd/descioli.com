@@ -74,8 +74,8 @@ export default async function StoryPage({ params }: PageProps) {
           width={1200}
           height={1200}
         />
-        <div className="absolute top-0 left-0 right-0 bottom-0  z-[1] flex flex-col justify-end items-start text-white">
-          <h1 className="text-5xl w-full max-w-[680px] p-6 mx-auto md:text-[4rem] text-shadow box-content shadow-black/30 font-bold leading-[1.1]">
+        <div className="absolute top-0 left-0 right-0 bottom-0 z-[1] flex flex-row justify-start items-end text-white">
+          <h1 className="text-5xl flex-grow max-w-[680px] p-6 mx-auto md:text-[4rem] text-shadow shadow-black/30 font-bold leading-[1.1]">
             {data.title}
           </h1>
         </div>
@@ -90,7 +90,7 @@ export default async function StoryPage({ params }: PageProps) {
           />
         </nav>
 
-        <main className="mx-auto max-w-[680px] box-content px-5 md:px-6 py-5 relative">
+        <main className="mx-auto max-w-[680px] px-5 md:px-6 py-5 relative">
           <h2 className="text-3xl font-light text-balance">
             {data.description}
           </h2>
