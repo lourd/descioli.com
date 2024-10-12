@@ -50,7 +50,7 @@ export function Image({
       style={{
         maxWidth,
       }}
-      className="flex flex-col items-center mx-auto pt-1 pb-8"
+      className="flex flex-col items-center mx-auto pt-2 mb-8"
     >
       {content}
     </figure>

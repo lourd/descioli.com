@@ -3,7 +3,6 @@ import { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
-import { notFound } from "next/navigation"
 import { createElement } from "react"
 import { onlyText } from "react-children-utilities"
 import remarkGfm from "remark-gfm"
@@ -64,7 +63,7 @@ export default async function StoryPage({ params }: PageProps) {
           height={1200}
         />
         <div className="absolute top-0 left-0 right-0 bottom-0 z-[1] flex flex-row justify-start items-end text-white">
-          <h1 className="text-5xl flex-grow max-w-[680px] p-6 mx-auto md:text-[4rem] text-shadow shadow-black/30 font-bold leading-[1.1]">
+          <h1 className="text-5xl flex-grow max-w-[600px] p-6 mx-auto md:text-[4rem] text-shadow shadow-black/30 font-bold leading-[1.1]">
             {story.data.title}
           </h1>
         </div>
@@ -79,7 +78,7 @@ export default async function StoryPage({ params }: PageProps) {
           />
         </nav>
 
-        <main className="mx-auto max-w-[680px] px-5 md:px-6 py-5 relative">
+        <main className="mx-auto max-w-[600px] px-5 md:px-6 py-5 relative">
           <h2 className="text-3xl font-light text-balance">
             {story.data.description}
           </h2>
@@ -118,7 +117,10 @@ export default async function StoryPage({ params }: PageProps) {
                 h5: createLinkedHeading("5"),
                 h6: createLinkedHeading("6"),
                 p: (props) => (
-                  <p className="font-serif mb-6 text-lg" {...props} />
+                  <p
+                    className="font-serif mb-5 text-lg leading-normal"
+                    {...props}
+                  />
                 ),
                 a: (props) => (
                   <a
@@ -145,27 +147,33 @@ export default async function StoryPage({ params }: PageProps) {
               }}
             />
           </div>
-          <nav className="my-10 grid grid-cols-2 text-2xl text-link italic">
-            <div className="flex justify-start">
-              {story.previous && (
+          <nav className="py-8 grid grid-cols-2 gap-2 text-2xl">
+            {story.previous && (
+              <div className="flex flex-col items-start justify-start">
+                <span className="uppercase text-foregroundGray text-xs font-light tracking-wider">
+                  Previous
+                </span>
                 <Link
                   href={`/${story.previous.slug}`}
-                  className="px-2 py-1 rounded hocus:bg-muted transition-colors duration-200 text-center flex justify-center items-center"
+                  className="px-2 py-1 -mx-2 rounded hocus:bg-muted transition-colors duration-200 text-link italic"
                 >
-                  👈&nbsp;&nbsp;<span>{story.previous.data.title}</span>
+                  {story.previous.data.title}
                 </Link>
-              )}
-            </div>
-            <div className="flex justify-end">
-              {story.next && (
+              </div>
+            )}
+            {story.next && (
+              <div className="flex flex-col items-end justify-end sm:col-start-2">
+                <span className="uppercase text-foregroundGray text-xs font-light tracking-wider">
+                  Next
+                </span>
                 <Link
                   href={`/${story.next.slug}`}
-                  className="px-2 py-1 rounded hocus:bg-muted transition-colors duration-200 text-center flex justify-center items-center"
+                  className="px-2 py-1 -mx-2 rounded hocus:bg-muted transition-colors duration-200 text-right text-link italic"
                 >
-                  <span>{story.next.data.title}</span>&nbsp;&nbsp;👉
+                  {story.next.data.title}
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </nav>
         </main>
       </div>
@@ -187,7 +195,7 @@ function createLinkedHeading(level: string) {
       {
         ...props,
         id: slug,
-        className: `relative group ${level === "2" ? "text-2xl font-bold pt-6 pb-3" : ""} ${level === "3" ? "text-xl font-bold pt-2 pb-3" : ""}`,
+        className: `relative group ${level === "2" ? "text-2xl font-bold pt-4 pb-3" : ""} ${level === "3" ? "text-xl font-bold pt-2 pb-3" : ""}`,
       },
       <a
         href={`#${slug}`}
