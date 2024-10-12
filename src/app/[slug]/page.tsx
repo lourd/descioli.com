@@ -82,25 +82,23 @@ export default async function StoryPage({ params }: PageProps) {
           <h2 className="text-3xl font-light text-balance">
             {story.data.description}
           </h2>
-          <div className="pt-3 pb-5">
-            <p className="text-gray-400 whitespace-pre">
-              <a
-                href={story.lastEditUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Published
-              </a>{" "}
-              <time>
-                {formatInTimeZone(
-                  story.data.publication,
-                  "UTC",
-                  "eeee, LLLL do, yyyy"
-                )}
-              </time>
-            </p>
-          </div>
+          <p className="mt-2 mb-6 text-gray-400 whitespace-pre text-sm">
+            <a
+              href={story.lastEditUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Published
+            </a>{" "}
+            <time>
+              {formatInTimeZone(
+                story.data.publication,
+                "UTC",
+                "eeee, LLLL do, yyyy"
+              )}
+            </time>
+          </p>
 
           <div>
             <MDXRemote
