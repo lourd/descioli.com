@@ -12,10 +12,9 @@ import { HistoryTracker } from "@/components/history-tracker"
 
 export const metadata: Metadata = {
   title: {
-    default: "DeScioli.com",
-    template: "%s • DeScioli.com",
+    default: "Louis DeScioli",
+    template: "%s - Louis DeScioli",
   },
-  description: "The personal site of Louis R. DeScioli",
   keywords: [
     "software engineer",
     "creative coding",
