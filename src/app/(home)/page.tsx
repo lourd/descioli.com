@@ -13,14 +13,21 @@ export default async function HomePage() {
         <p className="font-serif">But you can call me Lou, too.</p>
         <p className="font-serif">Welcome to my personal corner of the web.</p>
         <p className="font-serif">
-          {"I'm"} the founder and CEO of Together, an AR communication company.
+          {"I'm"} founder and CEO of{" "}
+          <a
+            href="https://www.together.online"
+            className="transition-colors duration-200 text-link hocus:underline"
+          >
+            Together
+          </a>
+          , an XR communication company.
         </p>
         <p className="font-serif">
           <a
-            href="https://together.online/alpha"
+            href="https://www.together.online/signup"
             className="transition-colors duration-200 text-link hocus:underline"
           >
-            Sign up for the alpha
+            Sign up for the beta
           </a>{" "}
           and come along for the ride.
         </p>

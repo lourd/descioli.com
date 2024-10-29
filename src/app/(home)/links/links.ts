@@ -82,7 +82,7 @@ export const links: Link[] = [
   {
     name: "YouTube",
     description: "Where I upload videos",
-    link: "https://www.youtube.com/c/LouisDeScioli",
+    link: "https://www.youtube.com/@DeScioli",
     color: "white",
     bg: "#D7311E",
   },

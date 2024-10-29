@@ -47,9 +47,16 @@ export default function BioPage() {
       </p>
       <br />
       <p>
-        {
-          "I'm currently in the midst of starting my own company. I'm the founder and CEO of Together, building an augmented reality telepresence application."
-        }
+        In 2024 I started my own company. {"I'm"} founder and CEO of{" "}
+        <a
+          href="https://www.together.online"
+          className="transition-colors duration-200 text-link hocus:underline"
+        >
+          Together
+        </a>
+        , where {"we're"} building mixed reality communication technology to
+        unlock greater levels of human connection and collaboration via shared
+        spatial computing.
       </p>
       <br />
       <p>

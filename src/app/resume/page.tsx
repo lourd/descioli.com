@@ -1,3 +1,4 @@
+import clsx from "clsx"
 import { format } from "date-fns"
 import Link from "next/link"
 import { ReactNode } from "react"
@@ -145,7 +146,7 @@ function JobSection(props: Job & { className?: string; dense?: boolean }) {
             {props.role}
           </span>
           <span className="text-[0.8rem] sm:px-[5px] print:px-[5px] hidden sm:inline-flex print:inline-flex">
-            for
+            -
           </span>
           <span>
             <Subtitle>{company}</Subtitle>
@@ -156,11 +157,19 @@ function JobSection(props: Job & { className?: string; dense?: boolean }) {
         <Years>{props.dates}</Years>
       </div>
       {props.bullets && (
-        <ul className="mt-1 print:ml-5 sm:ml-5">
-          {props.bullets.map((b, i) => (
+        <ul
+          className={clsx(
+            "mt-1",
+            props.bullets.length > 1 && "print:ml-5 sm:ml-5"
+          )}
+        >
+          {props.bullets.map((b, i, arr) => (
             <li
               key={i}
-              className="mb-2 mt-1 text-sm leading-tight list-none print:mb-0 sm:mb-0 md:list-disc print:list-disc [&_a:hover]:underline [&_a:focus]:underline"
+              className={clsx(
+                "mb-2 mt-1 text-sm leading-tight list-none print:mb-0 sm:mb-0 [&_a:hover]:underline [&_a:focus]:underline",
+                arr.length > 1 && "md:list-disc print:list-disc"
+              )}
               dangerouslySetInnerHTML={{ __html: b }}
             />
           ))}

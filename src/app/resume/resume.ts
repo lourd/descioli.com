@@ -95,6 +95,18 @@ export const resume: Resume = {
   ],
   work: [
     {
+      company: "Together",
+      site: "https://www.together.online",
+      location: "New York, NY",
+      role: "Founder & CEO",
+      dates: {
+        start: "2024-01-02",
+      },
+      bullets: [
+        "Meaningful communication & multiplayer computing meets mixed reality.",
+      ],
+    },
+    {
       company: "Spatial",
       site: "https://www.spatial.io",
       location: "New York, NY",
