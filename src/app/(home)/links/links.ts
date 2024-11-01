@@ -9,11 +9,18 @@ export type Link = {
 
 export const links: Link[] = [
   {
-    name: "Twitter",
+    name: "Bluesky",
     description: "Where I shout into the public square",
-    link: "https://twitter.com/descioli",
+    link: "https://bsky.app/profile/descioli.com",
     color: "white",
-    bg: "#2AA3EF",
+    bg: "#1C73FD",
+  },
+  {
+    name: "X",
+    description: "Where I shout into Elon's square",
+    link: "https://x.com/descioli",
+    color: "white",
+    bg: "#000000",
   },
   {
     name: "LinkedIn",
@@ -84,6 +91,6 @@ export const links: Link[] = [
     description: "Where I upload videos",
     link: "https://www.youtube.com/@DeScioli",
     color: "white",
-    bg: "#D7311E",
+    bg: "#FB0007",
   },
 ]
