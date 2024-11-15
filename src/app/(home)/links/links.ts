@@ -11,7 +11,7 @@ export const links: Link[] = [
   {
     name: "Bluesky",
     description: "Where I shout into the public square",
-    link: "https://bsky.app/profile/descioli.com",
+    link: "https://bsky.app/profile/lou.descioli.com",
     color: "white",
     bg: "#1C73FD",
   },
