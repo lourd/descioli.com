@@ -242,9 +242,11 @@ export type PumpSetting = {
   }
 }
 
+export const PUMP_MAX_CYCLE = 255
+
 export const PumpSchedule = z.object({
-  onPeriod: z.number().int().gte(0).lte(255),
-  offPeriod: z.number().int().gte(0).lte(255),
+  onPeriod: z.number().int().gte(0).lte(PUMP_MAX_CYCLE),
+  offPeriod: z.number().int().gte(0).lte(PUMP_MAX_CYCLE),
 })
 
 export type PumpSchedule = z.infer<typeof PumpSchedule>
