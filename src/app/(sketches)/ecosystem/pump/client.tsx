@@ -1,7 +1,7 @@
 "use client"
 
 import { range } from "d3"
-import { useState, useTransition } from "react"
+import { useReducer, useTransition } from "react"
 
 import type {
   PumpInterruption,
@@ -40,7 +40,7 @@ export function SetPump(props: SetPumpProps) {
           <select
             defaultValue={Number(props.setting.pumpOn)}
             name="state"
-            className="dark:bg-[--background-color] border-[1px] border-foreground px-2 mx-1 rounded"
+            className="dark:bg-[--background-color] border-[1px] border-foreground px-1 mx-1 rounded"
           >
             <option value={1}>on</option>
             <option value={0}>off</option>
@@ -99,40 +99,84 @@ type SetPumpScheduleProps = {
   setPumpSchedule: (schedule: PumpSchedule) => void
   setting: PumpSetting
   authenticated: boolean
+  maxCycle: number
 }
+
+type State = {
+  onPeriod: number
+  cycle: number
+}
+
+const getInitialState = (setting: PumpSetting): State => ({
+  onPeriod: setting.sched.onTimeMins,
+  cycle: setting.sched.onTimeMins + setting.sched.offTimeMins,
+})
+
+const reducer = (state: State, action: Partial<State>): State => ({
+  ...state,
+  ...action,
+})
 
 export function SetPumpSchedule(props: SetPumpScheduleProps) {
   const [isPending, startTransition] = useTransition()
-  const [state, setState] = useState(props.setting.sched.onTimeMins)
+  const [state, setState] = useReducer(reducer, props.setting, getInitialState)
   const onSubmit = () => {
     startTransition(() => {
       props.setPumpSchedule({
-        onPeriod: state,
-        offPeriod: 60 - state,
+        onPeriod: state.onPeriod,
+        offPeriod: state.cycle - state.onPeriod,
       })
     })
   }
   const cancel = () => {
-    setState(props.setting.sched.onTimeMins)
+    setState(getInitialState(props.setting))
   }
   return (
     <form
       className={`mt-2 p-2 border-[1px] rounded transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
       action={onSubmit}
     >
-      <h3 className="font-bold mb-2">Schedule</h3>
+      <div className="mb-2 flex flex-row justify-between items-center">
+        <h3 className="font-bold">Schedule</h3>
+        <div>
+          <select
+            className="bg-muted px-1 mr-2 rounded"
+            onChange={(e) => {
+              const newCycle = Number(e.currentTarget.value)
+              setState({
+                cycle: newCycle,
+                onPeriod: Math.min(state.onPeriod, newCycle),
+              })
+            }}
+            value={state.cycle}
+          >
+            {range(1, props.maxCycle + 1).map((i) => (
+              <option key={i} value={i}>
+                {i}
+              </option>
+            ))}
+          </select>
+          min cycle
+        </div>
+      </div>
       <div className="flex gap-2 justify-center items-center">
-        <span className="tabular-nums w-[76px] text-right">{state} min on</span>
+        <span className="tabular-nums w-[10ch] text-right">
+          {state.onPeriod} min on
+        </span>
         <input
           type="range"
           name="onPeriod"
-          value={state}
-          onChange={(e) => setState(Number(e.currentTarget.value))}
+          value={state.onPeriod}
+          onChange={(e) =>
+            setState({ onPeriod: Number(e.currentTarget.value) })
+          }
           className="w-40 mt-1"
-          max={60}
+          max={state.cycle}
           min={0}
         />
-        <span className="tabular-nums w-[76px]">{60 - state} min off</span>
+        <span className="tabular-nums w-[10ch]">
+          {state.cycle - state.onPeriod} min off
+        </span>
       </div>
       {props.authenticated && (
         <div className="flex flex-row w-full justify-around gap-2 mt-4">

@@ -12,6 +12,7 @@ import {
   setPumpSchedule,
 } from "../ecosystem-methods"
 import {
+  PUMP_MAX_CYCLE,
   PumpInterruption,
   PumpMode,
   PumpSchedule,
@@ -116,6 +117,7 @@ export default async function PumpPage() {
           setting={setting}
           setPumpSchedule={handleSetSchedule}
           authenticated={authenticated}
+          maxCycle={PUMP_MAX_CYCLE}
         />
       </ErrorBoundary>
     </div>
