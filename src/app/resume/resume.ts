@@ -103,7 +103,7 @@ export const resume: Resume = {
         start: "2024-01-02",
       },
       bullets: [
-        "Meaningful communication & multiplayer computing meets mixed reality.",
+        "Building a mixed reality collaboration app for Meta Quest and Apple Vision Pro.",
       ],
     },
     {
