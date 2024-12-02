@@ -20,7 +20,7 @@ export default async function HomePage() {
           >
             Together
           </a>
-          , an XR communication company.
+          , a digital teleportation company.
         </p>
         <p className="font-serif">
           <a
