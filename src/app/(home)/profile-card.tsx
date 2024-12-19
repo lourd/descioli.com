@@ -167,7 +167,9 @@ function MotionData() {
     }
     // This is its own listener because calling setState causes a re-render of AppProvider.
     // Only want it to run once.
-    const markReceivedData = () => {
+    const markReceivedData = (e: DeviceMotionEvent) => {
+      // Chrome Desktop fires the event with the values set to null
+      if (e.accelerationIncludingGravity?.x === null) return
       setState((draft) => {
         draft.motion!.state = "received-data"
       })
