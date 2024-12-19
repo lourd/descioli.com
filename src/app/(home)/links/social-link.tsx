@@ -13,14 +13,8 @@ export function SocialLink({ link }: { link: Link }) {
         link.copyToClipboard
           ? async () => {
               try {
-                if (typeof navigator.share === "function") {
-                  await navigator.share({
-                    text: link.link,
-                  })
-                } else {
-                  await navigator.clipboard.writeText(link.link)
-                  alert("Copied to clipboard")
-                }
+                await navigator.clipboard.writeText(link.link)
+                alert("Copied to clipboard")
               } catch {
                 // ignore it
               }
