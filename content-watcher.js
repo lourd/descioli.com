@@ -1,8 +1,10 @@
-const { WebSocketServer } = require("ws")
-const chokidar = require("chokidar")
+// @ts-check
+
+import chokidar from "chokidar"
+import { WebSocketServer } from "ws"
 
 const server = new WebSocketServer({ port: 3001 })
-const watchCallbacks = []
+let watchCallbacks = []
 
 chokidar.watch("./public").on("all", (event) => {
   if (event === "change") {
@@ -16,8 +18,7 @@ server.on("connection", function connection(socket) {
   const onChange = () => socket.send("refresh")
   watchCallbacks.push(onChange)
   socket.on("close", function close() {
-    const index = watchCallbacks.findIndex(onChange)
-    watchCallbacks.splice(index, 1)
+    watchCallbacks = watchCallbacks.filter((cb) => cb !== onChange)
   })
 })
 
