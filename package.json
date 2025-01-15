@@ -3,6 +3,7 @@
   "version": "3.0.0",
   "private": true,
   "packageManager": "^pnpm@9.0.0",
+  "type": "module",
   "scripts": {
     "dev": "pnpm run --reporter=append-only --reporter-hide-prefix \"/^dev:.*/\"",
     "dev:content": "node ./content-watcher.js",
