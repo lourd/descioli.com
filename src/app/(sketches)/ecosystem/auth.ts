@@ -13,7 +13,7 @@ const ECOSYSTEM_PASSWORD = new TextEncoder().encode(
 )
 
 export const protect = cache(async function protect() {
-  const ecoSession = cookies().get("eco-session")
+  const ecoSession = (await cookies()).get("eco-session")
   if (!ecoSession) {
     return false
   }

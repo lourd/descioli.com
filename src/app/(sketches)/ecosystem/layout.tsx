@@ -45,7 +45,7 @@ export default async function EcosystemLayout(props: {
       .setIssuedAt()
       .setExpirationTime("1 year")
       .sign(key)
-    cookies().set("eco-session", jwt, {
+    ;(await cookies()).set("eco-session", jwt, {
       expires: new Date(Date.now() + ONE_YEAR),
       httpOnly: true,
     })
@@ -54,7 +54,7 @@ export default async function EcosystemLayout(props: {
 
   async function logout() {
     "use server"
-    cookies().delete("eco-session")
+    ;(await cookies()).delete("eco-session")
   }
 
   const authenticated = await protect()
