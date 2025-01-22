@@ -284,7 +284,7 @@ const GooglyEye = forwardRef<GooglyEyeRef, GooglyEyeProps>(
 )
 
 function FollowCursor(props: {
-  circleRef: React.RefObject<HTMLDivElement>
+  circleRef: React.RefObject<HTMLDivElement | null>
   pupilRadius: number
   eyeRadius: number
   x: MotionValue<number>
@@ -317,7 +317,7 @@ function FollowCursor(props: {
 }
 
 function Physics(props: {
-  pupilRef: RefObject<HTMLDivElement>
+  pupilRef: RefObject<HTMLDivElement | null>
   eyeRadius: number
   pupilRadius: number
   x: MotionValue<number>
