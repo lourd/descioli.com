@@ -17,9 +17,9 @@ export async function generateStaticParams() {
 
 export async function GET(
   _: Request,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
-  const story = await getStory(params.slug)
+  const story = await getStory((await context.params).slug)
   const url = new URL(`../../../../public${story.data.image}`, import.meta.url)
   const imgData = await fs.readFile(url.pathname)
 
