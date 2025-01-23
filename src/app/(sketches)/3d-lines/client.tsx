@@ -8,7 +8,11 @@ import { useControls } from "leva"
 export function DiamondLinesClient() {
   return (
     <div className="w-screen h-screen">
-      <Canvas>
+      <Canvas
+        camera={{
+          position: [0, 0, 8],
+        }}
+      >
         <DiamondLines />
         <ambientLight />
         <CameraControls maxDistance={32} />
