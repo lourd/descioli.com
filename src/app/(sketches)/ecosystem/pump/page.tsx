@@ -26,11 +26,15 @@ export default async function PumpPage() {
   async function handleResumeSchedule() {
     "use server"
     const isAuthenticated = await protect()
-    if (!isAuthenticated) return false
+    if (!isAuthenticated) return
 
     const response = await resumePumpSchedule(MY_ECOSYSTEM_DEVICE_ID)
     revalidatePath(PATH)
-    return response.statusCode === 200 && response.body.return_value === 1
+    if (!(response.statusCode === 200 && response.body.return_value === 1)) {
+      console.error(
+        `Unexpected response resuming schedule, status: ${response.statusCode}, return_value: ${response.body.return_value}`
+      )
+    }
   }
 
   async function handleSetSchedule(schedule: PumpSchedule) {
