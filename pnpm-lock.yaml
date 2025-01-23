@@ -109,8 +109,8 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1(prettier@3.2.5)
       '@next/bundle-analyzer':
-        specifier: ^14.1.0
-        version: 14.1.0
+        specifier: ^15.1.6
+        version: 15.1.6
       '@types/color':
         specifier: ^3.0.6
         version: 3.0.6
@@ -461,8 +461,8 @@ packages:
   '@mediapipe/tasks-vision@0.10.8':
     resolution: {integrity: sha512-Rp7ll8BHrKB3wXaRFKhrltwZl1CiXGdibPxuWXvqGnKTnv8fqa/nvftYNuSbf+pbJWKYCXdBtYTITdAUTGGh0Q==}
 
-  '@next/bundle-analyzer@14.1.0':
-    resolution: {integrity: sha512-RJWjnlMp/1WSW0ahAdawV22WgJiC6BVaFS5Xfhw6gP7NJEX3cAJjh4JqSHKGr8GnLNRaFCVTQdDPoX84E421BA==}
+  '@next/bundle-analyzer@15.1.6':
+    resolution: {integrity: sha512-hGzQyDqJzFHcHNCyTqM3o05BpVq5tGnRODccZBVJDBf5Miv/26UJPMB0wh9L9j3ylgHC+0/v8BaBnBBek1rC6Q==}
 
   '@next/env@15.1.6':
     resolution: {integrity: sha512-d9AFQVPEYNr+aqokIiPLNK/MTyt3DWa/dpKveiAaVccUadFbhFEvY6FXYX2LJO2Hv7PHnLBu2oWwB4uBuHjr/w==}
@@ -3997,7 +3997,7 @@ snapshots:
 
   '@mediapipe/tasks-vision@0.10.8': {}
 
-  '@next/bundle-analyzer@14.1.0':
+  '@next/bundle-analyzer@15.1.6':
     dependencies:
       webpack-bundle-analyzer: 4.10.1
     transitivePeerDependencies:

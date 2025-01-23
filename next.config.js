@@ -21,6 +21,6 @@ let nextConfig = {
   },
 }
 
-export default createBundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-})(nextConfig)
+export default process.env.ANALYZE === "true"
+  ? createBundleAnalyzer()(nextConfig)
+  : nextConfig
