@@ -21,7 +21,7 @@ export function BackLinkWithHand({
   return (
     <div
       ref={ref as Ref<HTMLDivElement>}
-      className={`left-0 right-0 top-0 z-20 h-12 flex flex-row align-center max-md:p-1 max-md:bg-white/75 dark:max-md:bg-background/75 max-md:backdrop-blur-xl md:h-0 duration-200 transition-all ${className ?? ""}`}
+      className={`left-0 right-0 top-0 z-20 h-12 flex flex-row align-center max-md:p-1 max-md:bg-white/75 dark:max-md:bg-background/75 max-md:backdrop-blur-xl md:h-0 ${className ?? ""}`}
     >
       <BackLink
         className={`md:absolute md:top-4 md:left-4 lg:top-6 lg:left-6 hocus:bg-muted/75 md:backdrop-blur-xl md:bg-background/50 text-xl md:text-xl lg:text-2xl px-2 py-1 rounded flex items-center`}
