@@ -12,7 +12,7 @@ import { Image as MyImage } from "@/components/image"
 import { Poem } from "@/components/poem"
 import { Video } from "@/components/video"
 import { YouTube } from "@/components/youtube"
-import { getSlugs, getStory, Story } from "@/lib/get-stories"
+import { getSlugs, getStory } from "@/lib/get-stories"
 import { slugify } from "@/lib/slugify"
 
 type PageProps = {

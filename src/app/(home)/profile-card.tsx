@@ -322,8 +322,8 @@ function Physics(props: {
     const PX_TO_M = (96 / 2.54) * 22
 
     // Map hardware acceleration to screen layout, considering on device orientation
-    let aX = props.acceleration.x
-    let aY = props.acceleration.y * -1
+    const aX = props.acceleration.x
+    const aY = props.acceleration.y * -1
 
     // FIXME: Tried to handle orientation changes, but the differences between standardized at all between iOS and Android,
     // if (

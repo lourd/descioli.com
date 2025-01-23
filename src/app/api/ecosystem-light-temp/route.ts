@@ -1,4 +1,4 @@
-import { ok as assert } from "node:assert"
+import assert from "assert"
 
 import {
   interruptLight,
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     const json = await request.json()
     setting = LightInterruption.parse(json)
   } catch (err) {
-    return new Response((err as any).message, {
+    return new Response((err as Error).message, {
       status: 400,
     })
   }

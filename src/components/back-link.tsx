@@ -11,7 +11,6 @@ type BackLinkProps = React.ComponentProps<typeof Link> & {
 }
 
 export function BackLinkWithHand({
-  onClick,
   className,
   useBack = true,
   ref,

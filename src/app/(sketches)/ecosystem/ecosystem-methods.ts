@@ -1,4 +1,4 @@
-import { ok as assert } from "node:assert"
+import assert from "assert"
 
 import { cache } from "react"
 

@@ -1,4 +1,4 @@
-import { ok } from "assert"
+import assert from "assert"
 
 import { SignJWT } from "jose"
 import { Metadata } from "next"
@@ -16,7 +16,7 @@ import {
 import { PasswordForm } from "./password-form"
 import { Tabs } from "./tabs"
 
-ok(process.env.ECOSYSTEM_PASSWORD)
+assert(process.env.ECOSYSTEM_PASSWORD)
 const ECOSYSTEM_PASSWORD = process.env.ECOSYSTEM_PASSWORD
 
 // Also use it as the key, why not

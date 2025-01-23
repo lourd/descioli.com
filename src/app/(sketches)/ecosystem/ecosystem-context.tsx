@@ -4,7 +4,7 @@ import { createContext, useEffect, useReducer } from "react"
 
 import { Time, timeToDate } from "./ecosystem-models"
 
-export const EcosystemContext = createContext<Date>(null as any)
+export const EcosystemContext = createContext<Date>(null as never)
 
 const getTimeState = (args: { time: Time; timeZone: number }) => {
   const now = new Date()

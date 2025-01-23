@@ -26,7 +26,7 @@ The second instance was on Tuesday. I was sitting in my office, wearing my Visio
 
 And as I prepared for the first take, it struck me — I'm probably the first person to ever do this.
 
-I smiled and sat back, pausing to let it sink in. *How freaking cool*, I thought to myself.
+I smiled and sat back, pausing to let it sink in. _How freaking cool_, I thought to myself.
 
 I took a screenshot to remember the moment.
 

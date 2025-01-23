@@ -48,7 +48,7 @@ export type AppContext = {
   setState: (update: Action) => void
 }
 
-export const AppContext = createContext<AppContext>(null as any)
+export const AppContext = createContext<AppContext>(null as never)
 
 type AppProviderProps = {
   children: ReactNode

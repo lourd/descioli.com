@@ -175,7 +175,7 @@ export function timeToDate(time: Time, tzOffset: number) {
   const now = new Date()
   // Get UTC time in ms
   // convert to ms and add/subtract local time zone offset.
-  var utc = now.getTime() + now.getTimezoneOffset() * 60 * 1000
+  const utc = now.getTime() + now.getTimezoneOffset() * 60 * 1000
   // create new Date object for different city
   // using supplied offset
   const offsetTime = new Date(utc + tzOffset * 60 * 60 * 1000)
