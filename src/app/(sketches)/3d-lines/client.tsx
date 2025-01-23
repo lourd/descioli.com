@@ -1,6 +1,6 @@
 "use client"
 
-import { Line, OrbitControls, Sky } from "@react-three/drei"
+import { CameraControls, Line, Sky } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { interpolateRainbow, interpolateSinebow } from "d3"
 import { useControls } from "leva"
@@ -12,7 +12,7 @@ export function DiamondLinesClient() {
         <Sky />
         <DiamondLines />
         <ambientLight />
-        <OrbitControls />
+        <CameraControls maxDistance={32} />
       </Canvas>
     </div>
   )
