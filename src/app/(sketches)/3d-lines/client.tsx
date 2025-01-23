@@ -1,6 +1,6 @@
 "use client"
 
-import { CameraControls, Line, Sky } from "@react-three/drei"
+import { CameraControls, Line } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
 import { interpolateRainbow, interpolateSinebow } from "d3"
 import { useControls } from "leva"
@@ -9,7 +9,6 @@ export function DiamondLinesClient() {
   return (
     <div className="w-screen h-screen">
       <Canvas>
-        <Sky />
         <DiamondLines />
         <ambientLight />
         <CameraControls maxDistance={32} />
