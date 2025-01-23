@@ -10,14 +10,7 @@ import {
   useSpring,
 } from "framer-motion"
 import Image from "next/image"
-import {
-  forwardRef,
-  RefObject,
-  use,
-  useEffect,
-  useImperativeHandle,
-  useRef,
-} from "react"
+import { RefObject, use, useEffect, useImperativeHandle, useRef } from "react"
 import { useMedia } from "react-use"
 
 import { AppContext, AppState } from "@/components/app-context"
@@ -208,6 +201,7 @@ type GooglyEyeProps = {
   acceleration: AppState["mutableAcceleration"]
   motion: AppState["motion"]
   reducedMotion: boolean | null
+  ref: RefObject<GooglyEyeRef | null>
 }
 
 type GooglyEyeRef = {
@@ -216,75 +210,73 @@ type GooglyEyeRef = {
 
 const SPRING = { stiffness: 1000, damping: 27 }
 
-const GooglyEye = forwardRef<GooglyEyeRef, GooglyEyeProps>(
-  function GooglyEye(props, ref) {
-    const eyeRef = useRef<HTMLDivElement>(null)
-    const pupilRef = useRef<HTMLDivElement>(null)
-    const x = useMotionValue(props.initialX)
-    const y = useMotionValue(props.initialY)
-    const sprungX = useSpring(x, SPRING)
-    const sprungY = useSpring(y, SPRING)
-    const transform = useMotionTemplate`translate(calc(${sprungX}px - 50%), calc(${sprungY}px - 50%))`
+function GooglyEye(props: GooglyEyeProps) {
+  const eyeRef = useRef<HTMLDivElement>(null)
+  const pupilRef = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(props.initialX)
+  const y = useMotionValue(props.initialY)
+  const sprungX = useSpring(x, SPRING)
+  const sprungY = useSpring(y, SPRING)
+  const transform = useMotionTemplate`translate(calc(${sprungX}px - 50%), calc(${sprungY}px - 50%))`
 
-    useImperativeHandle(
-      ref,
-      () => {
-        return {
-          randomize() {
-            x.set(Math.random() * props.eyeRadius - props.pupilRadius)
-            y.set(Math.random() * props.eyeRadius - props.pupilRadius)
-          },
-        }
-      },
-      [props.eyeRadius, props.pupilRadius, x, y]
-    )
+  useImperativeHandle(
+    props.ref,
+    () => {
+      return {
+        randomize() {
+          x.set(Math.random() * props.eyeRadius - props.pupilRadius)
+          y.set(Math.random() * props.eyeRadius - props.pupilRadius)
+        },
+      }
+    },
+    [props.eyeRadius, props.pupilRadius, x, y]
+  )
 
-    return (
-      <div
-        style={{ width: props.eyeRadius * 2 }}
-        ref={eyeRef}
-        className={`absolute aspect-square rounded-full origin-center bg-gradient-to-t from-gray-300 via-gray-200 to-white shadow-sm opacity-0 animate-fadeIn animation-delay-1000 ${props.className}`}
-      >
-        <motion.div
-          ref={pupilRef}
-          style={{
-            transform,
-            width: props.pupilRadius * 2,
-          }}
-          className="aspect-square absolute z-10 top-1/2 left-1/2 bg-gray-900 rounded-full shadow-sm"
-        />
-        {!props.reducedMotion && (
-          <>
-            {props.motion?.state === "received-data" && (
-              <Physics
-                eyeRadius={props.eyeRadius}
-                pupilRef={pupilRef}
+  return (
+    <div
+      style={{ width: props.eyeRadius * 2 }}
+      ref={eyeRef}
+      className={`absolute aspect-square rounded-full origin-center bg-gradient-to-t from-gray-300 via-gray-200 to-white shadow-sm opacity-0 animate-fadeIn animation-delay-1000 ${props.className}`}
+    >
+      <motion.div
+        ref={pupilRef}
+        style={{
+          transform,
+          width: props.pupilRadius * 2,
+        }}
+        className="aspect-square absolute z-10 top-1/2 left-1/2 bg-gray-900 rounded-full shadow-sm"
+      />
+      {!props.reducedMotion && (
+        <>
+          {props.motion?.state === "received-data" && (
+            <Physics
+              eyeRadius={props.eyeRadius}
+              pupilRef={pupilRef}
+              pupilRadius={props.pupilRadius}
+              x={x}
+              y={y}
+              acceleration={props.acceleration}
+            />
+          )}
+          {/* Only follow cursor on browsers without support at all */}
+          {!props.motion ||
+            (props.motion.state === "auto-permitted" && (
+              <FollowCursor
+                circleRef={pupilRef}
                 pupilRadius={props.pupilRadius}
+                eyeRadius={props.eyeRadius}
                 x={x}
                 y={y}
-                acceleration={props.acceleration}
               />
-            )}
-            {/* Only follow cursor on browsers without support at all */}
-            {!props.motion ||
-              (props.motion.state === "auto-permitted" && (
-                <FollowCursor
-                  circleRef={pupilRef}
-                  pupilRadius={props.pupilRadius}
-                  eyeRadius={props.eyeRadius}
-                  x={x}
-                  y={y}
-                />
-              ))}
-          </>
-        )}
-      </div>
-    )
-  }
-)
+            ))}
+        </>
+      )}
+    </div>
+  )
+}
 
 function FollowCursor(props: {
-  circleRef: React.RefObject<HTMLDivElement | null>
+  circleRef: RefObject<HTMLDivElement | null>
   pupilRadius: number
   eyeRadius: number
   x: MotionValue<number>

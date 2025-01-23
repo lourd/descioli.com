@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import React, { ForwardedRef, forwardRef, MouseEvent, use } from "react"
+import React, { MouseEvent, Ref, use } from "react"
 
 import { AppContext } from "./app-context"
 
@@ -10,14 +10,17 @@ type BackLinkProps = React.ComponentProps<typeof Link> & {
   useBack?: boolean
 }
 
-export const BackLinkWithHand = forwardRef(function BackLinkWithHand(
-  { onClick, className, useBack = true, ...props }: BackLinkProps,
-  ref: ForwardedRef<HTMLDivElement>
-) {
+export function BackLinkWithHand({
+  onClick,
+  className,
+  useBack = true,
+  ref,
+  ...props
+}: BackLinkProps) {
   const BackLink = useBack ? MaybeGoBackLink : Link
   return (
     <div
-      ref={ref}
+      ref={ref as Ref<HTMLDivElement>}
       className={`left-0 right-0 top-0 z-20 h-12 flex flex-row align-center max-md:p-1 max-md:bg-white/75 dark:max-md:bg-background/75 max-md:backdrop-blur-xl md:h-0 duration-200 transition-all ${className ?? ""}`}
     >
       <BackLink
@@ -29,12 +32,13 @@ export const BackLinkWithHand = forwardRef(function BackLinkWithHand(
       </BackLink>
     </div>
   )
-})
+}
 
-const MaybeGoBackLink = forwardRef(function BackLink(
-  { onClick, ...props }: React.ComponentProps<typeof Link>,
-  ref: ForwardedRef<HTMLAnchorElement>
-) {
+function MaybeGoBackLink({
+  onClick,
+  ref,
+  ...props
+}: React.ComponentProps<typeof Link>) {
   const { state } = use(AppContext)
   const router = useRouter()
 
@@ -48,4 +52,4 @@ const MaybeGoBackLink = forwardRef(function BackLink(
   }
 
   return <Link onClick={handleClick} {...props} ref={ref} />
-})
+}
