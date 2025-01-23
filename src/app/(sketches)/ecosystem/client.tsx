@@ -7,8 +7,8 @@ import { debounce } from "lodash"
 import {
   ButtonHTMLAttributes,
   Dispatch,
+  use,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useReducer,
@@ -82,7 +82,7 @@ const MAX_TRANSITION_DURATION_SECS = 359 * 60
 export function SetLightSchedule(props: LightScheduleProps) {
   const [state, setState] = useReducer(reducer, props.data, getInitialState)
   const [isPending, startTransition] = useTransition()
-  const ecoNow = useContext(EcosystemContext)
+  const ecoNow = use(EcosystemContext)
   const currentTimeInSecs =
     (ecoNow.getHours() * 60 + ecoNow.getMinutes()) * 60 + ecoNow.getSeconds()
   const WIDTH = 350

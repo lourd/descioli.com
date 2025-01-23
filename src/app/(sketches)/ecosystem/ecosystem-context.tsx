@@ -41,9 +41,5 @@ export const EcosystemProvider = (props: {
     return () => clearInterval(intervalId)
   }, [])
 
-  return (
-    <EcosystemContext.Provider value={ecoNow}>
-      {props.children}
-    </EcosystemContext.Provider>
-  )
+  return <EcosystemContext value={ecoNow}>{props.children}</EcosystemContext>
 }

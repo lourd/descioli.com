@@ -64,9 +64,5 @@ function reducer(state: AppState, action: Action) {
 export function AppProvider(props: AppProviderProps) {
   const [state, setState] = useReducer(reducer, undefined, createInitialState)
 
-  return (
-    <AppContext.Provider value={{ state, setState }}>
-      {props.children}
-    </AppContext.Provider>
-  )
+  return <AppContext value={{ state, setState }}>{props.children}</AppContext>
 }
