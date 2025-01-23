@@ -1,13 +1,14 @@
 "use client"
 
-import { useFormState, useFormStatus } from "react-dom"
+import { useActionState } from "react"
+import { useFormStatus } from "react-dom"
 
 type PasswordFormProps = {
   login: (isWrongPassword: boolean, form: FormData) => Promise<boolean>
 }
 
 export function PasswordForm(props: PasswordFormProps) {
-  const [isWrongPassword, formAction] = useFormState(props.login, false)
+  const [isWrongPassword, formAction] = useActionState(props.login, false)
   return (
     <form action={formAction}>
       <PasswordField isWrongPassword={isWrongPassword} />

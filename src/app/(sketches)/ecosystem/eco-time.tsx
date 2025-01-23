@@ -1,8 +1,8 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useContext, useEffect } from "react"
-import { useFormState, useFormStatus } from "react-dom"
+import { use, useActionState, useEffect } from "react"
+import { useFormStatus } from "react-dom"
 
 import { ClientOnly } from "@/components/client-only"
 
@@ -13,12 +13,12 @@ export function EcoTime(props: {
   timeZone: number
 }) {
   const router = useRouter()
-  const ecoNow = useContext(EcosystemContext)
+  const ecoNow = use(EcosystemContext)
 
   const timeZone = (-1 * ecoNow.getTimezoneOffset()) / 60
   const matchingTimezones = timeZone === props.timeZone
 
-  const [response, action] = useFormState(
+  const [response, action] = useActionState(
     () => props.changeTimezone(timeZone),
     0
   )

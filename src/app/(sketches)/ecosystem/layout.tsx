@@ -1,4 +1,4 @@
-import { ok } from "assert"
+import assert from "assert"
 
 import { SignJWT } from "jose"
 import { Metadata } from "next"
@@ -16,7 +16,7 @@ import {
 import { PasswordForm } from "./password-form"
 import { Tabs } from "./tabs"
 
-ok(process.env.ECOSYSTEM_PASSWORD)
+assert(process.env.ECOSYSTEM_PASSWORD)
 const ECOSYSTEM_PASSWORD = process.env.ECOSYSTEM_PASSWORD
 
 // Also use it as the key, why not
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description: "A new take on controlling my still-living Ecosystem",
 }
 
-export const runtime = "edge"
+export const dynamic = "force-dynamic"
 
 const ONE_YEAR = 1000 * 60 * 60 * 24 * 365
 
@@ -45,7 +45,7 @@ export default async function EcosystemLayout(props: {
       .setIssuedAt()
       .setExpirationTime("1 year")
       .sign(key)
-    cookies().set("eco-session", jwt, {
+    ;(await cookies()).set("eco-session", jwt, {
       expires: new Date(Date.now() + ONE_YEAR),
       httpOnly: true,
     })
@@ -54,7 +54,7 @@ export default async function EcosystemLayout(props: {
 
   async function logout() {
     "use server"
-    cookies().delete("eco-session")
+    ;(await cookies()).delete("eco-session")
   }
 
   const authenticated = await protect()

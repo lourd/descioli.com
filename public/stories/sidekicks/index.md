@@ -32,7 +32,7 @@ Before joining Sidekicks I had very little exposure to autistic people or autist
 
 ## Affinity therapy
 
-The core idea that the Suskind's practiced with Owen and that Sidekicks built on is [affinity therapy](http://www.autistes-et-cliniciens.org/Affinity-Therapy-The-Return-of-a-Psychodynamic-Approach-to-the-Treatment-of). In conceptual terms, affinity therapy is meeting an autistic child where they're at and building from there. It is using their interests and passions as vessels for communicating with them. For Owen and the Suskind's, they used his overwhelming love for Disney and animated movies to engage with him. For other children, that passion may be anything from trains to Jewish comedians to ski lifts (all actual affinities of children I met).
+The core idea that the Suskinds practiced with Owen and that Sidekicks built on is [affinity therapy](http://www.autistes-et-cliniciens.org/Affinity-Therapy-The-Return-of-a-Psychodynamic-Approach-to-the-Treatment-of). In conceptual terms, affinity therapy is meeting an autistic child where they're at and building from there. It is using their interests and passions as vessels for communicating with them. For Owen and the Suskind's, they used his overwhelming love for Disney and animated movies to engage with him. For other children, that passion may be anything from trains to Jewish comedians to ski lifts (all actual affinities of children I met).
 
 You can read more about the ongoing research related to affinity therapy in [this Scientific American article](https://www.scientificamerican.com/article/an-oscar-nominated-film-inspires-a-new-approach-to-autism/).
 

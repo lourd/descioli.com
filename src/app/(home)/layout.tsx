@@ -14,7 +14,7 @@ export default function HomeLayout({
   children: React.ReactNode
 }) {
   const segment = useSelectedLayoutSegment()
-  const linkNode = useRef(null)
+  const linkNode = useRef<HTMLAnchorElement>(null)
   return (
     <>
       <CSSTransition
@@ -22,9 +22,10 @@ export default function HomeLayout({
         nodeRef={linkNode}
         timeout={200}
         classNames={{
-          enterActive: "opacity-100",
+          enter: "opacity-0",
+          enterActive: "transition-opacity duration-200 opacity-100",
           enterDone: "opacity-100",
-          exitActive: "opacity-0",
+          exitActive: "transition-opacity duration-200 opacity-0",
         }}
         unmountOnExit
       >

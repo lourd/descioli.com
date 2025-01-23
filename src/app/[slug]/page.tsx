@@ -12,25 +12,24 @@ import { Image as MyImage } from "@/components/image"
 import { Poem } from "@/components/poem"
 import { Video } from "@/components/video"
 import { YouTube } from "@/components/youtube"
-import { getSlugs, getStory, Story } from "@/lib/get-stories"
+import { getSlugs, getStory } from "@/lib/get-stories"
 import { slugify } from "@/lib/slugify"
 
 type PageProps = {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export const dynamicParams = false
 
-export async function generateStaticParams(): Promise<
-  Array<PageProps["params"]>
-> {
+export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   return await getSlugs()
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const story = await getStory(params.slug).catch((e) => e as Error)
+  const { slug } = await params
+  const story = await getStory(slug).catch((e) => e as Error)
   if (story instanceof Error) {
     console.error(story)
     return
@@ -39,7 +38,7 @@ export async function generateMetadata({ params }: PageProps) {
     title: story.data.title,
     description: story.data.description,
     openGraph: {
-      images: `/${params.slug}/og.png`,
+      images: `/${slug}/og.png`,
     },
     metadataBase: process.env.SITE_HOST
       ? new URL(`https://${process.env.SITE_HOST}`)
@@ -48,7 +47,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function StoryPage({ params }: PageProps) {
-  const story = await getStory(params.slug)
+  const story = await getStory((await params).slug)
 
   return (
     <article className="max-md:mt-12">

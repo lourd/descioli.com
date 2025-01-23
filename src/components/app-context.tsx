@@ -48,7 +48,7 @@ export type AppContext = {
   setState: (update: Action) => void
 }
 
-export const AppContext = createContext<AppContext>(null as any)
+export const AppContext = createContext<AppContext>(null as never)
 
 type AppProviderProps = {
   children: ReactNode
@@ -64,9 +64,5 @@ function reducer(state: AppState, action: Action) {
 export function AppProvider(props: AppProviderProps) {
   const [state, setState] = useReducer(reducer, undefined, createInitialState)
 
-  return (
-    <AppContext.Provider value={{ state, setState }}>
-      {props.children}
-    </AppContext.Provider>
-  )
+  return <AppContext value={{ state, setState }}>{props.children}</AppContext>
 }

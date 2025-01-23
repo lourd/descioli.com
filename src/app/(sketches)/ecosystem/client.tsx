@@ -7,8 +7,8 @@ import { debounce } from "lodash"
 import {
   ButtonHTMLAttributes,
   Dispatch,
+  use,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useReducer,
@@ -82,7 +82,7 @@ const MAX_TRANSITION_DURATION_SECS = 359 * 60
 export function SetLightSchedule(props: LightScheduleProps) {
   const [state, setState] = useReducer(reducer, props.data, getInitialState)
   const [isPending, startTransition] = useTransition()
-  const ecoNow = useContext(EcosystemContext)
+  const ecoNow = use(EcosystemContext)
   const currentTimeInSecs =
     (ecoNow.getHours() * 60 + ecoNow.getMinutes()) * 60 + ecoNow.getSeconds()
   const WIDTH = 350
@@ -238,7 +238,7 @@ export function SetLightSchedule(props: LightScheduleProps) {
                   }
                 >
                   <label
-                    className={`absolute px-1 bg-[--background-color] rounded-full flex flex-row items-center justify-center transition-all -translate-x-1/2 left-1/2 ${
+                    className={`absolute px-[5px] bg-background rounded-full flex flex-row items-center justify-center transition-all -translate-x-1/2 left-1/2 ${
                       isSelected ? "-top-10 text-lg" : "-top-5 text-xs"
                     }`}
                   >
@@ -263,7 +263,7 @@ export function SetLightSchedule(props: LightScheduleProps) {
               max={MAX_COLOR}
               value={selectedSetting?.[1] ?? 0}
               onChange={onColorChange}
-              className={`${classes.slider} -mt-2 -mb-4 pt-4 pb-4 [&::-webkit-slider-runnable-track]:bg-gradient-to-r from-[#ffd026] via-white to-[#89e1ff]`}
+              className={`${classes.slider} -mt-2 -mb-4 pt-4 pb-4`}
             />
           </div>
         )}

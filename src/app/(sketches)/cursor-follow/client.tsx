@@ -45,7 +45,7 @@ export function CursorFollowStudy() {
  * through React's rendering with `useState`.
  */
 function SetState() {
-  let [state, setState] = useState({ x: 0, y: 0 })
+  const [state, setState] = useState({ x: 0, y: 0 })
   const handleMouseMove = (
     evt: React.MouseEvent<SVGSVGElement, MouseEvent>
   ) => {

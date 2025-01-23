@@ -1,12 +1,10 @@
-import { ok as assert } from "node:assert"
+import assert from "assert"
 
 import {
   interruptLight,
   MY_ECOSYSTEM_DEVICE_ID,
 } from "../../(sketches)/ecosystem/ecosystem-methods"
 import { LightInterruption } from "../../(sketches)/ecosystem/ecosystem-models"
-
-export const runtime = "edge"
 
 assert(process.env.API_SECRET, "API_SECRET not set")
 const API_SECRET = process.env.API_SECRET
@@ -25,7 +23,7 @@ export async function POST(request: Request) {
     const json = await request.json()
     setting = LightInterruption.parse(json)
   } catch (err) {
-    return new Response((err as any).message, {
+    return new Response((err as Error).message, {
       status: 400,
     })
   }
