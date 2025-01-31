@@ -73,7 +73,7 @@ export default async function EcosystemLayout(props: {
             <form action={logout}>
               <button
                 type="submit"
-                className="bg-muted px-2 py-1 rounded text-sm"
+                className="bg-muted px-2 py-1 rounded-sm text-sm"
               >
                 Logout
               </button>
@@ -106,7 +106,7 @@ async function Info() {
 
   const response = await reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID)
   return (
-    <pre className="mt-2 mb-2 text-foregroundGray text-sm">
+    <pre className="mt-2 mb-2 text-foreground-gray text-sm">
       {response.body.result.sn}
       <EcoTime
         changeTimezone={updateTimezone}

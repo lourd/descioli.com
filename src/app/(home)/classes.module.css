@@ -1,0 +1,35 @@
+@reference "../global.css";
+
+.playBtn {
+  border-bottom-width: 4px;
+  border-color: var(--color-rose-300);
+  background: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--color-rose-300) 50%, transparent),
+    var(--color-rose-300) 40%,
+    color-mix(in oklab, var(--color-rose-300) 20%, transparent)
+  );
+  box-shadow:
+    0px 10px 13px -7px black,
+    5px 5px 15px 5px rgba(0, 0, 0, 0);
+
+  &:not(:active) {
+    &:hover,
+    &:focus {
+      border-bottom-width: 2px;
+      transform: translateY(1px);
+    }
+  }
+
+  &:active {
+    border-bottom-width: 0px;
+    background: linear-gradient(
+      to top,
+      color-mix(in oklab, var(--color-rose-300) 57%, transparent),
+      var(--color-rose-300) 40%,
+      color-mix(in oklab, var(--color-rose-300) 27%, transparent)
+    );
+    box-shadow: 0px 3px 8px -7px black;
+    transform: scaleX(1.06) scaleY(0.95) translateY(2px);
+  }
+}

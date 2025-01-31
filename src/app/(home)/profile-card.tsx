@@ -16,6 +16,8 @@ import { useMedia } from "react-use"
 import { AppContext, AppState } from "@/components/app-context"
 import { ClientOnly } from "@/components/client-only"
 
+import classes from "./classes.module.css"
+
 /**
  * @fileoverview A card with a picture of some googly eyes placed over. The eyes
  * follow the mouse cursor or have springy physics depending on device's support
@@ -86,7 +88,7 @@ export function ProfileCard() {
   const initialY = -(0.2 * pupilRadius)
 
   return (
-    <div className="shadow-sm bg-white p-5 block max-w-md rotate-2 select-none">
+    <div className="shadow-xs bg-white p-5 block max-w-md rotate-2 select-none">
       <div className="relative">
         <Image
           src="/home-profile.jpg"
@@ -130,7 +132,7 @@ export function ProfileCard() {
           <button
             onClick={onClick}
             // keep transition values in sync with animation in the tailwind config
-            className="px-4 py-1 transform border-b-4 border-rose-300 hocus:border-b-2 active:!border-b-0 bg-gradient-to-t from-rose-300/50  via-rose-300 via-40% to-rose-300/20 rounded-2xl hocus:translate-y-px active:!translate-y-[2px] shadow-[0px_10px_13px_-7px_#000000,_5px_5px_15px_5px_rgba(0,0,0,0)] active:shadow-[0px_3px_8px_-7px_#000000] active:to-rose-300/25 active:from-rose-300/55 active:via-rose-300 transition-all animate-pressBtn animation-delay-[2.5s] active:scale-x-[1.05] active:scale-y-[0.95]"
+            className={`${classes.playBtn} px-4 py-1 transform rounded-2xl transition-all animate-pressBtn animation-delay-[2.5s]`}
           >
             play
           </button>
@@ -236,7 +238,7 @@ function GooglyEye(props: GooglyEyeProps) {
     <div
       style={{ width: props.eyeRadius * 2 }}
       ref={eyeRef}
-      className={`absolute aspect-square rounded-full origin-center bg-gradient-to-t from-gray-300 via-gray-200 to-white shadow-sm opacity-0 animate-fadeIn animation-delay-1000 ${props.className}`}
+      className={`absolute aspect-square rounded-full origin-center bg-linear-to-t from-gray-300 via-gray-200 to-white shadow-xs opacity-0 animate-fadeIn animation-delay-1000 ${props.className}`}
     >
       <motion.div
         ref={pupilRef}
@@ -244,7 +246,7 @@ function GooglyEye(props: GooglyEyeProps) {
           transform,
           width: props.pupilRadius * 2,
         }}
-        className="aspect-square absolute z-10 top-1/2 left-1/2 bg-gray-900 rounded-full shadow-sm"
+        className="aspect-square absolute z-10 top-1/2 left-1/2 bg-gray-900 rounded-full shadow-xs"
       />
       {!props.reducedMotion && (
         <>

@@ -31,7 +31,7 @@ function PasswordField(props: { isWrongPassword: boolean }) {
         type="password"
         name="password"
         id="password"
-        className="ml-2 border-muted border rounded bg-background px-1"
+        className="ml-2 border-muted border rounded-sm bg-background px-1"
         disabled={pending}
       />
     </div>
