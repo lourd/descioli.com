@@ -63,7 +63,7 @@ export default async function StoryPage({ params }: PageProps) {
           width={1200}
           height={1200}
         />
-        <div className="absolute top-0 left-0 right-0 bottom-0 z-1 flex flex-row justify-start items-end text-white">
+        <div className="absolute top-0 left-0 right-0 bottom-0 z-1 flex flex-row justify-start items-end text-white bg-linear-to-b via-66% via-transparent to-black/70">
           <div className="max-w-[600px] grow p-6 mx-auto text-shadow-md shadow-black/70">
             <h1 className="text-5xl md:text-[4rem] font-bold leading-[1.1]">
               {story.data.title}
