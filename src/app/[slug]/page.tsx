@@ -15,6 +15,8 @@ import { YouTube } from "@/components/youtube"
 import { getSlugs, getStory } from "@/lib/get-stories"
 import { slugify } from "@/lib/slugify"
 
+import classes from "./classes.module.css"
+
 type PageProps = {
   params: Promise<{
     slug: string
@@ -62,9 +64,31 @@ export default async function StoryPage({ params }: PageProps) {
           height={1200}
         />
         <div className="absolute top-0 left-0 right-0 bottom-0 z-[1] flex flex-row justify-start items-end text-white">
-          <h1 className="text-5xl flex-grow max-w-[600px] p-6 mx-auto md:text-[4rem] text-shadow shadow-black/30 font-bold leading-[1.1]">
-            {story.data.title}
-          </h1>
+          <div className="max-w-[600px] flex-grow p-6 mx-auto text-shadow shadow-black/70">
+            <h1 className="text-5xl md:text-[4rem] font-bold leading-[1.1]">
+              {story.data.title}
+            </h1>
+            <h2 className="text-3xl font-light text-balance">
+              {story.data.description}
+            </h2>
+            <p className="mt-2 whitespace-pre text-sm">
+              <a
+                href={story.lastEditUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                Published
+              </a>{" "}
+              <time>
+                {formatInTimeZone(
+                  story.data.publication,
+                  "UTC",
+                  "eeee, LLLL do, yyyy"
+                )}
+              </time>
+            </p>
+          </div>
         </div>
       </div>
 
@@ -77,29 +101,8 @@ export default async function StoryPage({ params }: PageProps) {
           />
         </nav>
 
-        <main className="mx-auto max-w-[600px] px-5 md:px-6 py-5 relative">
-          <h2 className="text-3xl font-light text-balance">
-            {story.data.description}
-          </h2>
-          <p className="mt-2 mb-6 text-gray-400 whitespace-pre text-sm">
-            <a
-              href={story.lastEditUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Published
-            </a>{" "}
-            <time>
-              {formatInTimeZone(
-                story.data.publication,
-                "UTC",
-                "eeee, LLLL do, yyyy"
-              )}
-            </time>
-          </p>
-
-          <div>
+        <div className={`mx-auto max-w-[600px] px-5 md:px-6 py-6 relative`}>
+          <main className={classes.content}>
             <MDXRemote
               source={story.content}
               components={{
@@ -143,7 +146,7 @@ export default async function StoryPage({ params }: PageProps) {
                 },
               }}
             />
-          </div>
+          </main>
           <nav className="py-8 grid grid-cols-2 gap-2 text-2xl">
             {story.previous && (
               <div className="flex flex-col items-start justify-start">
@@ -172,7 +175,7 @@ export default async function StoryPage({ params }: PageProps) {
               </div>
             )}
           </nav>
-        </main>
+        </div>
       </div>
     </article>
   )
