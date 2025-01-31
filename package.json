@@ -34,7 +34,6 @@
     "next": "15.1.6",
     "next-mdx-remote": "^5.0.0",
     "react": "19.0.0",
-    "react-children-utilities": "^2.10.0",
     "react-dom": "19.0.0",
     "react-error-boundary": "^4.0.12",
     "react-ink": "^6.5.4",

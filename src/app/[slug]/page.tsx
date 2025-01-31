@@ -3,8 +3,6 @@ import { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Image from "next/image"
 import Link from "next/link"
-import { createElement } from "react"
-import { onlyText } from "react-children-utilities"
 import remarkGfm from "remark-gfm"
 
 import { BackLinkWithHand } from "@/components/back-link"
@@ -160,23 +158,21 @@ export default async function StoryPage({ params }: PageProps) {
   )
 }
 
-function createLinkedHeading(level: string) {
+type HeadingLevels = "1" | "2" | "3" | "4" | "5" | "6"
+
+function createLinkedHeading(level: HeadingLevels) {
   return function Heading({
     children,
     ...props
   }: {
     children?: React.ReactNode
   }) {
-    const textContent = onlyText(children)
-    const slug = slugify(textContent)
-    return createElement(
-      `h${level}`,
-      {
-        ...props,
-        id: slug,
-      },
-      <a href={`#${slug}`} />,
-      children
+    const slug = slugify(children as string)
+    const Comp = `h${level}` as const
+    return (
+      <Comp {...props} id={slug}>
+        <a href={`#${slug}`}>{children}</a>
+      </Comp>
     )
   }
 }
