@@ -56,15 +56,15 @@ export default async function StoryPage({ params }: PageProps) {
       <div className="relative">
         <Image
           alt=""
-          className="min-h-[50vh] aspect-[5/2] max-h-[700px] w-full object-cover object-center"
+          className="min-h-[50vh] aspect-5/2 max-h-[700px] w-full object-cover object-center"
           src={story.data.header || story.data.image}
           priority
           //   FIXME
           width={1200}
           height={1200}
         />
-        <div className="absolute top-0 left-0 right-0 bottom-0 z-[1] flex flex-row justify-start items-end text-white">
-          <div className="max-w-[600px] flex-grow p-6 mx-auto text-shadow shadow-black/70">
+        <div className="absolute top-0 left-0 right-0 bottom-0 z-1 flex flex-row justify-start items-end text-white">
+          <div className="max-w-[600px] grow p-6 mx-auto text-shadow-md shadow-black/70">
             <h1 className="text-5xl md:text-[4rem] font-bold leading-[1.1]">
               {story.data.title}
             </h1>
@@ -116,27 +116,6 @@ export default async function StoryPage({ params }: PageProps) {
                 h4: createLinkedHeading("4"),
                 h5: createLinkedHeading("5"),
                 h6: createLinkedHeading("6"),
-                p: (props) => (
-                  <p
-                    className="font-serif mb-5 text-lg leading-normal"
-                    {...props}
-                  />
-                ),
-                a: (props) => (
-                  <a
-                    className="text-link underline visited:text-link-visited"
-                    {...props}
-                  />
-                ),
-                ul: (props) => (
-                  <ul
-                    className="list-disc list-outside mt-0 mr-0 mb-[1.45rem] ml-[1.45rem]"
-                    {...props}
-                  />
-                ),
-                li: (props) => (
-                  <li {...props} className="mb-2 text-lg font-serif" />
-                ),
                 ...story.components,
               }}
               options={{
@@ -150,12 +129,12 @@ export default async function StoryPage({ params }: PageProps) {
           <nav className="py-8 grid grid-cols-2 gap-2 text-2xl">
             {story.previous && (
               <div className="flex flex-col items-start justify-start">
-                <span className="uppercase text-foregroundGray text-xs font-light tracking-wider">
+                <span className="uppercase text-foreground-gray text-xs font-light tracking-wider">
                   Previous
                 </span>
                 <Link
                   href={`/${story.previous.slug}`}
-                  className="px-2 py-1 -mx-2 rounded hocus:bg-muted transition-colors duration-200 text-link italic"
+                  className="px-2 py-1 -mx-2 rounded-sm hocus:bg-muted transition-colors duration-200 text-link italic"
                 >
                   {story.previous.data.title}
                 </Link>
@@ -163,12 +142,12 @@ export default async function StoryPage({ params }: PageProps) {
             )}
             {story.next && (
               <div className="flex flex-col items-end justify-end sm:col-start-2">
-                <span className="uppercase text-foregroundGray text-xs font-light tracking-wider">
+                <span className="uppercase text-foreground-gray text-xs font-light tracking-wider">
                   Next
                 </span>
                 <Link
                   href={`/${story.next.slug}`}
-                  className="px-2 py-1 -mx-2 rounded hocus:bg-muted transition-colors duration-200 text-right text-link italic"
+                  className="px-2 py-1 -mx-2 rounded-sm hocus:bg-muted transition-colors duration-200 text-right text-link italic"
                 >
                   {story.next.data.title}
                 </Link>
@@ -195,12 +174,8 @@ function createLinkedHeading(level: string) {
       {
         ...props,
         id: slug,
-        className: `relative group ${level === "2" ? "text-2xl font-bold pt-4 pb-3" : ""} ${level === "3" ? "text-xl font-bold pt-2 pb-3" : ""}`,
       },
-      <a
-        href={`#${slug}`}
-        className="absolute left-0 -translate-x-[100%] font-light !text-gray-400 !no-underline after:content-['#'] transition-opacity duration-100 pr-[3px] md:px-2 opacity-0 focus:opacity-100 group-hover:opacity-100"
-      />,
+      <a href={`#${slug}`} />,
       children
     )
   }

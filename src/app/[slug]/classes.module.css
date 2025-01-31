@@ -1,9 +1,50 @@
+@reference "../globals.css";
+
+@supports (initial-letter: 3) {
+  .content:has(p:nth-of-type(5)) p:first-of-type::first-letter {
+    initial-letter: 3;
+    margin-inline-end: 0.5rem;
+  }
+}
+
 .content {
-  @supports (initial-letter: 3) {
-    &:has(p:nth-of-type(5)) {
-      p:first-of-type::first-letter {
-        initial-letter: 3;
-        margin-inline-end: 0.5rem;
+  & p {
+    @apply font-serif mb-5 text-lg leading-normal;
+  }
+  & a {
+    @apply text-link underline visited:text-link-visited;
+  }
+  & ul {
+    @apply list-disc list-outside mt-0 mr-0;
+    margin-bottom: 1.45rem;
+    margin-left: 1.45rem;
+  }
+  & li {
+    @apply mb-2 text-lg font-serif;
+  }
+  & li {
+    @apply mb-2 text-lg font-serif;
+  }
+  & h2 {
+    @apply text-2xl font-bold pt-4 pb-3;
+  }
+  & h3 {
+    @apply text-xl font-bold pt-2 pb-3;
+  }
+  & h1,
+  & h2,
+  & h3,
+  & h4,
+  & h5,
+  & h6 {
+    position: relative;
+    &:hover a {
+      opacity: 1;
+    }
+    & a {
+      @apply absolute left-0 -translate-x-[100%] font-light text-gray-400! no-underline! after:content-['#'] transition-opacity duration-100 pr-[3px] md:px-2 opacity-0;
+      &:focus {
+        opacity: 1;
       }
     }
   }

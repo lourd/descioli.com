@@ -15,7 +15,7 @@ export default function ResumePage() {
   return (
     <>
       <BackLinkWithHand href="/" className="print:hidden sticky" />
-      <main className="relative pt-2 pb-8 md:pt-10 px-[2.5%] max-w-[800px] mx-auto [&_a]:text-link [&_a:visited]:text-link-visited [&_a]:print:text-foreground [&_a:visited]:print:text-foreground">
+      <main className="relative pt-2 pb-8 md:pt-10 px-[2.5%] max-w-[800px] mx-auto [&_a]:text-link [&_a:visited]:text-link-visited print:[&_a]:text-foreground print:[&_a:visited]:text-foreground">
         <h1 className="text-center text-4xl medium:mb-2 font-bold leading-tight">
           {resume.name}
         </h1>
@@ -98,7 +98,7 @@ function SectionTitle({ children }: { children: ReactNode }) {
   return (
     <>
       <h2 className="mb-0 mt-4 text-2xl font-bold">{children}</h2>
-      <hr className="mt-[2px] mb-2 border-[--foreground-color]" />
+      <hr className="mt-[2px] mb-2 border-foreground" />
     </>
   )
 }
@@ -117,7 +117,7 @@ function Comma() {
 
 function Years({ children }: { children: TimePeriod }) {
   return (
-    <span className="text-gray-400 text-[0.8rem] whitespace-nowrap text-left sm:pl-1 sm:text-right print:text-right sm:flex-grow print:flex-grow">
+    <span className="text-gray-400 text-[0.8rem] whitespace-nowrap text-left sm:pl-1 sm:text-right print:text-right sm:grow print:grow">
       {datesFormatter(children)}
     </span>
   )

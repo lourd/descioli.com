@@ -26,7 +26,7 @@ export function SocialLink({ link }: { link: Link }) {
           "--color": link.color,
         } as React.CSSProperties
       }
-      className="group relative flex items-center py-2 px-2 no-underline transitionhocus:underline hocus:z-10 text-[1.7rem] font-light hocus:duration duration-1000 hocus:duration-200 leading-none text-foreground hocus:text-[--color] text-shadow-sm shadow-gray-900/30"
+      className="group relative flex items-center py-2 px-2 no-underline transitionhocus:underline hocus:z-10 text-[1.7rem] font-light hocus:duration duration-1000 hocus:duration-200 leading-none text-foreground hocus:text-(--color) text-shadow-sm shadow-gray-900/30"
       title={link.name}
     >
       {link.description}

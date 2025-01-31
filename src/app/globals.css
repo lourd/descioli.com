@@ -1,34 +1,77 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --foreground-color: 0deg 0% 0%;
-  --foreground-gray: 217deg 19% 27%;
-  --gray-3: 217deg 19% 40%;
-  --accent: 217deg 91% 55%;
-  --muted: 220deg 13% 91%;
-  --background-color: 0deg 0% 100%;
-  --link-color: 240deg 100% 47.1%;
-  --link-visited-color: 271deg 68.5% 32.4%;
+@theme {
+  --font-serif: "Palatino Linotype", "Book Antiqua", "Palatino", "serif";
+
+  --color-foreground: hsl(0deg 0% 0%);
+  --color-foreground-gray: hsl(217deg 19% 27%);
+  --color-gray-3: hsl(217deg 19% 40%);
+  --color-accent: hsl(217deg 91% 55%);
+  --color-muted: hsl(220deg 13% 91%);
+  --color-background: hsl(0deg 0% 100%);
+  --color-link: hsl(240deg 100% 47.1%);
+  --color-link-visited: hsl(271deg 68.5% 32.4%);
+
+  --shadow-xs: 0 1.5px 4px rgba(0, 0, 0, 0.24), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 3px 12px rgba(0, 0, 0, 0.23), 0 3px 12px rgba(0, 0, 0, 0.16);
+  --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.22), 0 14px 56px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 15px 24px rgba(0, 0, 0, 0.22), 0 19px 76px rgba(0, 0, 0, 0.3);
+
+  --text-shadow-sm: 0 1px 2px;
+  --text-shadow-md: 0 0px 5px;
+  --text-shadow-lg: 0 8px 16px;
+
+  --animate-fadeIn: fadeIn 0.2s ease-in-out forwards;
+  --animate-pressBtn: pressBtn 0.8s ease-in-out;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* keep values in sync with profile-card.tsx */
+  @keyframes pressBtn {
+    0%,
+    50%,
+    100% {
+      border-bottom-width: 4px;
+      box-shadow:
+        0px 10px 13px -7px #000000,
+        5px 5px 15px 5px rgba(0, 0, 0, 0);
+      transform: scaleX(1) scaleY(1) translateY(0px);
+    }
+    20%,
+    70% {
+      border-bottom-width: 0;
+      box-shadow:
+        0px 5px 8px -7px #000000,
+        5px 5px 15px 5px rgba(0, 0, 0, 0);
+      transform: scaleX(1.05) scaleY(0.95) translateY(2px);
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-color: 0deg 0% 100%;
-    --foreground-gray: 220deg 13% 90%;
-    --gray-3: 220deg 13% 75%;
-    --accent: 217deg 91% 66%;
-    --muted: 217deg 19% 27%;
-    --background-color: 225deg 5.9% 13.3%;
-    --link-color: 217deg 88.7% 75.7%;
-    --link-visited-color: 270deg 95.2% 75.3%;
+    --color-foreground: hsl(0deg 0% 100%);
+    --color-foreground-gray: hsl(220deg 13% 90%);
+    --color-gray-3: hsl(220deg 13% 75%);
+    --color-accent: hsl(217deg 91% 66%);
+    --color-muted: hsl(217deg 19% 27%);
+    --color-background: hsl(225deg 5.9% 13.3%);
+    --color-link: hsl(217deg 88.7% 75.7%);
+    --color-link-visited: hsl(270deg 95.2% 75.3%);
   }
 }
 
 body {
-  color: hsl(var(--foreground-color));
-  background-color: hsl(var(--background-color));
+  color: var(--color-foreground);
+  background-color: var(--color-background);
 
   font-family:
     -apple-system,
@@ -49,4 +92,27 @@ body {
   -ms-font-feature-settings: "kern", "liga", "clig", "calt";
   -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
   font-feature-settings: "kern", "liga", "clig", "calt";
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@custom-variant hocus {
+  &:hover,
+  &:focus {
+    @slot;
+  }
+}
+
+@utility text-shadow-* {
+  text-shadow: --value(--text-shadow- *) var(--tw-shadow-color);
+}
+
+@utility animation-delay-* {
+  animation-delay: --value([ *]);
+  animation-delay: calc(--value(integer) * 1ms);
 }

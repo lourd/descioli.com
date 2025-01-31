@@ -43,13 +43,13 @@ export default function ExperimentsPage() {
             <Link
               key={link.link}
               href={link.link}
-              className="group flex flex-col py-1 px-2 text-xl md:text-3xl font-bold duration-200 hocus:bg-muted rounded text-link"
+              className="group flex flex-col py-1 px-2 text-xl md:text-3xl font-bold duration-200 hocus:bg-muted rounded-sm text-link"
             >
               {link.name}
-              <div className="text-base font-extralight text-foregroundGray">
+              <div className="text-base font-extralight text-foreground-gray">
                 {link.description}
               </div>
-              <time className="text-xs font-extralight text-foregroundGray leading-normal">
+              <time className="text-xs font-extralight text-foreground-gray leading-normal">
                 {link.date.toDateString()}
               </time>
             </Link>

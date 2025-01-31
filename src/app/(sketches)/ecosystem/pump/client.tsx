@@ -29,7 +29,7 @@ export function SetPump(props: SetPumpProps) {
   }
   return (
     <form
-      className={`mt-2 p-2 border-[1px] rounded transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
+      className={`mt-2 p-2 border-[1px] rounded-sm transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
       onSubmit={onSubmit}
     >
       <div className="w-[220px] mx-auto flex flex-col gap-2">
@@ -40,7 +40,7 @@ export function SetPump(props: SetPumpProps) {
           <select
             defaultValue={Number(props.setting.pumpOn)}
             name="state"
-            className="dark:bg-[--background-color] border-[1px] border-foreground px-1 mx-1 rounded"
+            className="border-[1px] border-foreground px-1 mx-1 rounded-sm"
           >
             <option value={1}>on</option>
             <option value={0}>off</option>
@@ -51,7 +51,7 @@ export function SetPump(props: SetPumpProps) {
           <select
             name="hours"
             defaultValue={0}
-            className="dark:bg-[--background-color] border-[1px] border-foreground px-2 mx-1 rounded"
+            className="border-[1px] border-foreground px-2 mx-1 rounded-sm"
           >
             {range(0, 24).map((i) => (
               <option key={i} value={i}>
@@ -68,7 +68,7 @@ export function SetPump(props: SetPumpProps) {
           <select
             name="mins"
             defaultValue={0}
-            className="dark:bg-[--background-color] border-[1px] border-foreground px-2 mx-1 rounded"
+            className="border-[1px] border-foreground px-2 mx-1 rounded-sm"
           >
             {range(0, 60).map((i) => (
               <option key={i} value={i}>
@@ -85,7 +85,7 @@ export function SetPump(props: SetPumpProps) {
         <div className="mt-4 grid grid-cols-2">
           <button
             type="submit"
-            className="py-[1px] col-start-2 rounded bg-muted"
+            className="py-[1px] col-start-2 rounded-sm bg-muted"
           >
             Submit
           </button>
@@ -133,14 +133,14 @@ export function SetPumpSchedule(props: SetPumpScheduleProps) {
   }
   return (
     <form
-      className={`mt-2 p-2 border-[1px] rounded transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
+      className={`mt-2 p-2 border-[1px] rounded-sm transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
       action={onSubmit}
     >
       <div className="mb-2 flex flex-row justify-between items-center">
         <h3 className="font-bold">Schedule</h3>
         <div>
           <select
-            className="bg-muted px-1 mr-2 rounded"
+            className="bg-muted px-1 mr-2 rounded-sm"
             onChange={(e) => {
               const newCycle = Number(e.currentTarget.value)
               setState({
@@ -183,13 +183,13 @@ export function SetPumpSchedule(props: SetPumpScheduleProps) {
           <button
             onClick={cancel}
             type="button"
-            className="px-2 py-[1px] rounded border-muted border flex-grow"
+            className="px-2 py-[1px] rounded-sm border-muted border grow"
           >
             Cancel
           </button>
           <button
             type="submit"
-            className="px-2 py-[1px] rounded bg-muted flex-grow"
+            className="px-2 py-[1px] rounded-sm bg-muted grow"
           >
             Submit
           </button>

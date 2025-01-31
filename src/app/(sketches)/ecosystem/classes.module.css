@@ -1,3 +1,5 @@
+@reference "../../globals.css";
+
 .slider {
   appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
@@ -6,26 +8,16 @@
     cursor: pointer;
     &:hover::-webkit-slider-thumb,
     &:focus::-webkit-slider-thumb {
-      border-color: theme(colors.accent);
+      border-color: var(--color-accent);
     }
     &:hover::-moz-range-thumb,
     &:focus::-moz-range-thumb {
-      border-color: theme(colors.accent);
+      border-color: var(--color-accent);
     }
   }
 
   &:focus {
     outline: none; /* Removes the blue border. */
-  }
-
-  &::-ms-track {
-    width: 100%;
-    cursor: pointer;
-
-    /* Hides the slider so custom styles can be added */
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
   }
 
   &::-webkit-slider-runnable-track {
@@ -34,16 +26,10 @@
     height: 12px;
   }
 
-  &::-moz-range-track {
-    @apply rounded-full;
-    background: linear-gradient(to right, #ffd026, white, #89e1ff);
-    height: 12px;
-  }
-
   &::-webkit-slider-thumb {
     appearance: none;
-    @apply h-full w-3 rounded-full shadow;
-    border: 1px solid theme(colors.foreground);
+    @apply h-full w-3 rounded-full shadow-sm;
+    border: 1px solid var(--color-foreground);
     scale: 1.2;
     @media (prefers-color-scheme: dark) {
       border-width: 2px;
@@ -51,10 +37,16 @@
     }
   }
 
+  &::-moz-range-track {
+    @apply rounded-full;
+    background: linear-gradient(to right, #ffd026, white, #89e1ff);
+    height: 12px;
+  }
+
   &::-moz-range-thumb {
     background: transparent;
-    @apply rounded-full shadow;
-    border: 1px solid theme(colors.foreground);
+    @apply rounded-full shadow-sm;
+    border: 1px solid var(--color-foreground);
     @media (prefers-color-scheme: dark) {
       border-width: 2px;
     }

@@ -10,7 +10,7 @@ export default function NotFound() {
       </h1>
       <Link
         href="/"
-        className="border border-foreground rounded px-2 py-1 hocus:bg-muted transition-colors duration-200"
+        className="border border-foreground rounded-sm px-2 py-1 hocus:bg-muted transition-colors duration-200"
       >
         Go home
       </Link>

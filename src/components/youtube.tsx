@@ -1,7 +1,7 @@
 export function YouTube({ videoId }: { videoId: string }) {
   return (
     <div className="pt-2 pb-8">
-      <div className="aspect-video shadow-sm">
+      <div className="aspect-video shadow-xs">
         <iframe
           src={`//www.youtube.com/embed/${videoId}`}
           width="100%"

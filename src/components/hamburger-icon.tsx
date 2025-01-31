@@ -56,7 +56,7 @@ const transition: Transition = {
 }
 
 const BAR_CLASSES =
-  "absolute w-[--bar-length] bg-white h-[--bar-thickness] rounded-md"
+  "absolute w-(--bar-length) bg-white h-(--bar-thickness) rounded-md"
 
 export function HamburgerIcon(props: HamburgerIconProps) {
   return (

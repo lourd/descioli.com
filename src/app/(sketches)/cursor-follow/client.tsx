@@ -22,7 +22,7 @@ export function CursorFollowStudy() {
           onChange={(evt) => {
             setActive(evt.target.value as Idea)
           }}
-          className="mt-16 border border-muted bg-transparent px-2 py-1 rounded"
+          className="mt-16 border border-muted bg-transparent px-2 py-1 rounded-sm"
         >
           <option value="exact">Exact follow with React</option>
           <option value="exact-framer">Exact follow with Framer</option>

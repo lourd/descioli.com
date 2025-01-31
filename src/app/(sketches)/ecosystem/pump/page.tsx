@@ -91,7 +91,7 @@ export default async function PumpPage() {
             </p>
             {authenticated && (
               <form action={handleResumeSchedule} className="ml-2">
-                <button className="px-2 py-0 rounded bg-gray-200 dark:bg-gray-700 whitespace-nowrap">
+                <button className="px-2 py-0 rounded-sm bg-gray-200 dark:bg-gray-700 whitespace-nowrap">
                   Resume schedule
                 </button>
               </form>

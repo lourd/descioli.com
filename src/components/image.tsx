@@ -25,7 +25,7 @@ export function Image({
       loading="lazy"
       height={height}
       width={width}
-      className="shadow-sm"
+      className="shadow-xs"
     />
   )
   if (linkToOriginal) {

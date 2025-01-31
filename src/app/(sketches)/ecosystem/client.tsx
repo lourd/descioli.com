@@ -139,7 +139,7 @@ export function SetLightSchedule(props: LightScheduleProps) {
 
   return (
     <div
-      className={`mt-2 p-2 border-[1px] rounded transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
+      className={`mt-2 p-2 border-[1px] rounded-sm transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
     >
       <h3 className="mb-2 font-semibold">Schedule</h3>
       <form action={onSubmit} ref={containerRef}>
@@ -152,7 +152,7 @@ export function SetLightSchedule(props: LightScheduleProps) {
               height={HEIGHT}
               viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
               fill="none"
-              className="rounded"
+              className="rounded-sm"
             >
               <rect
                 width={WIDTH}
@@ -225,8 +225,8 @@ export function SetLightSchedule(props: LightScheduleProps) {
                   key={i}
                   type="button"
                   className={`w-3 h-3 absolute top-0 left-0 bg-white/50 hocus:border-accent ${
-                    isSelected ? "border-accent z-[1]" : ""
-                  } rounded-full border-2 border-[--foreground-color] box-content`}
+                    isSelected ? "border-accent z-1" : ""
+                  } rounded-full border-2 border-foreground box-content`}
                   style={{
                     transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%))`,
                   }}
@@ -272,13 +272,13 @@ export function SetLightSchedule(props: LightScheduleProps) {
             <button
               onClick={cancel}
               type="button"
-              className="px-2 py-[1px] rounded border border-muted flex-grow"
+              className="px-2 py-[1px] rounded-sm border border-muted grow"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-2 py-[1px] rounded bg-muted flex-grow"
+              className="px-2 py-[1px] rounded-sm bg-muted grow"
             >
               Submit
             </button>
@@ -437,7 +437,7 @@ export function SetLight(props: SetLightProps) {
 
   return (
     <div
-      className={`mt-2 p-2 border-[1px] rounded transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
+      className={`mt-2 p-2 border-[1px] rounded-sm transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
     >
       <div className="flex flex-col">
         <div className="mt-[2px] mb-[10px] flex flex-row items-center">
@@ -450,7 +450,7 @@ export function SetLight(props: SetLightProps) {
                   draft.hours = Number(e.target.value)
                 })
               }}
-              className="dark:bg-[--background-color] border-[1px] border-foreground px-2 rounded"
+              className="border-[1px] border-foreground px-2 rounded-sm"
               name="hours"
             >
               {range(0, 24).map((i) => (
@@ -470,7 +470,7 @@ export function SetLight(props: SetLightProps) {
                   draft.minutes = Number(e.target.value)
                 })
               }}
-              className="ml-2 dark:bg-[--background-color] border-[1px] border-foreground px-2 rounded"
+              className="ml-2 border-[1px] border-foreground px-2 rounded-sm"
             >
               {range(0, 60).map((i) => (
                 <option key={i} value={i}>
@@ -491,7 +491,7 @@ export function SetLight(props: SetLightProps) {
             height={HEIGHT}
             viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
             fill="none"
-            className="rounded cursor-pointer"
+            className="rounded-sm cursor-pointer"
             onPointerDown={(evt) => {
               handleDrag(evt)
               window.addEventListener("pointermove", handleDrag)
@@ -555,7 +555,7 @@ export function SetLight(props: SetLightProps) {
             </defs>
           </svg>
           <button
-            className={`w-5 h-5 absolute top-0 left-0 bg-white/50 rounded-full border-2 border-[--foreground-color] box-content pointer-events-none`}
+            className={`w-5 h-5 absolute top-0 left-0 bg-white/50 rounded-full border-2 border-foreground box-content pointer-events-none`}
             style={{
               transform: `translate(calc(${x}px - 50%), calc(${y}px - 50%))`,
             }}
