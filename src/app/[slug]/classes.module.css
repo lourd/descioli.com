@@ -1,0 +1,10 @@
+.content {
+  @supports (initial-letter: 3) {
+    &:has(p:nth-of-type(5)) {
+      p:first-of-type::first-letter {
+        initial-letter: 3;
+        margin-inline-end: 0.5rem;
+      }
+    }
+  }
+}

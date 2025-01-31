@@ -9,9 +9,7 @@ tags:
   - together
 ---
 
-One of my favorite things about my job is that I'm often doing things for the first time, of anyone, ever.
-
-I had two instances of that this week while recording demos for Together. We just launched Together 1.0 last week and Elliot and I have been working on some fresh demo videos to share with investors.
+One of my favorite things about my job is that I'm often doing things for the first time, of anyone, ever. I had two instances of that this week while recording demos for Together. We just launched Together 1.0 last week and Elliot and I have been working on some fresh demo videos to share with investors.
 
 The first instance was on Monday. I was outside, here in New York, in the East Village. I walked up to this nice meadow that's surrounded by benches, near where I live. A few people were already there, quietly reading or on their phone. I walked up to one of the empty benches, carefully pulled out my Vision Pro, paired it to my phone, then called Elliot on Together. He picked up and his hologram appeared. I said "hey!", waved, and dove right into talking about our shot plan, walking all around, setting up markers and cameras.
 
