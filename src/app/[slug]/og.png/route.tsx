@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import fs from "fs/promises"
 
+import { utc } from "@date-fns/utc"
 import { format } from "date-fns"
 import { ImageResponse } from "next/og"
 
@@ -90,7 +91,7 @@ export async function GET(
               fontWeight: 300,
             }}
           >
-            {format(story.data.publication, "LLLL do, yyyy")} •{" "}
+            {format(story.data.publication, "LLLL do, yyyy", { in: utc })} •{" "}
             {story.readLength} min read
           </div>
         </div>

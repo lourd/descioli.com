@@ -1,11 +1,11 @@
 import createBundleAnalyzer from "@next/bundle-analyzer"
+import { NextConfig } from "next"
 
-/** @type {import('next').NextConfig} */
-let nextConfig = {
+const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["d3"],
   },
-  redirects() {
+  async redirects() {
     return [
       {
         source: "/portfolio",
