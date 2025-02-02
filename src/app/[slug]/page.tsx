@@ -1,4 +1,5 @@
-import { formatInTimeZone } from "date-fns-tz"
+import { utc } from "@date-fns/utc"
+import { format } from "date-fns"
 import { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import Image from "next/image"
@@ -79,11 +80,9 @@ export default async function StoryPage({ params }: PageProps) {
                 Published
               </a>{" "}
               <time>
-                {formatInTimeZone(
-                  story.data.publication,
-                  "UTC",
-                  "eeee, LLLL do, yyyy"
-                )}
+                {format(story.data.publication, "eeee, LLLL do, yyyy", {
+                  in: utc,
+                })}
               </time>
             </p>
           </div>

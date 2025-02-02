@@ -1,3 +1,4 @@
+import { utc } from "@date-fns/utc"
 import { format } from "date-fns"
 import Image from "next/image"
 import Link from "next/link"
@@ -33,8 +34,10 @@ export default async function Blog() {
                 {story.data.description}
               </h3>
               <p className="text-xs md:text-sm">
-                {format(story.data.publication, "MMMM do, yyyy")} •{" "}
-                {story.readLength} min read
+                {format(story.data.publication, "MMMM do, yyyy", {
+                  in: utc,
+                })}{" "}
+                • {story.readLength} min read
               </p>
             </div>
             <Image
