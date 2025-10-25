@@ -2,6 +2,7 @@ import createBundleAnalyzer from "@next/bundle-analyzer"
 import { NextConfig } from "next"
 
 const nextConfig: NextConfig = {
+  reactCompiler: true,
   experimental: {
     optimizePackageImports: ["d3"],
   },
