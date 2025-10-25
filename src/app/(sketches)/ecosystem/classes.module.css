@@ -52,3 +52,12 @@
     }
   }
 }
+
+.tempBar {
+  transition: height 200ms;
+  height: 0;
+  overflow: hidden;
+  &:has(> p) {
+    height: 20px;
+  }
+}
