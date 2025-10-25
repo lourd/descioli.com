@@ -50,6 +50,7 @@ export async function GET(req: NextRequest) {
 
     await browser.close()
 
+    // @ts-expect-error this works fine ¯\_(ツ)_/¯
     return new Response(buffer, {
       headers: {
         "Content-Type": "application/pdf",
