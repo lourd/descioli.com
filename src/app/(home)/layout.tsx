@@ -1,7 +1,7 @@
 "use client"
 
 import { useSelectedLayoutSegment } from "next/navigation"
-import { useRef } from "react"
+import { useRef, ViewTransition } from "react"
 import { CSSTransition } from "react-transition-group"
 
 import { BackLinkWithHand } from "@/components/back-link"
@@ -50,7 +50,7 @@ export default function HomeLayout({
         <div
           className={`flex flex-col items-start justify-center pb-10 lg:pt-10 max-lg:mx-auto lg:pr-4`}
         >
-          {children}
+          <ViewTransition>{children}</ViewTransition>
         </div>
       </div>
     </>
