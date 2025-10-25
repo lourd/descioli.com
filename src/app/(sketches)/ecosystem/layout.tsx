@@ -4,7 +4,7 @@ import { SignJWT } from "jose"
 import { Metadata } from "next"
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
-import { ViewTransition } from "react"
+import { Suspense, ViewTransition } from "react"
 
 import { protect } from "./auth"
 import { EcoTime } from "./eco-time"
@@ -35,6 +35,40 @@ const ONE_YEAR = 1000 * 60 * 60 * 24 * 365
 export default async function EcosystemLayout(props: {
   children: React.ReactNode
 }) {
+  return (
+    <div className="max-w-lg mx-auto pt-2 pb-8 px-[2.5%]">
+      <div className="flex flex-row items-center gap-4 justify-between md:mt-6">
+        <h1 className="text-3xl">{"Lou's Ecosystem"}</h1>
+        <Suspense>
+          <LogoutButton />
+        </Suspense>
+      </div>
+      <Suspense>
+        <Content>{props.children}</Content>
+      </Suspense>
+    </div>
+  )
+}
+
+async function LogoutButton() {
+  const authenticated = await protect()
+  async function logout() {
+    "use server"
+    ;(await cookies()).delete("eco-session")
+  }
+
+  return (
+    authenticated && (
+      <form action={logout}>
+        <button type="submit" className="bg-muted px-2 py-1 rounded-sm text-sm">
+          Logout
+        </button>
+      </form>
+    )
+  )
+}
+
+async function Content(props: { children: React.ReactNode }) {
   async function enterPassword(_state: boolean, form: FormData) {
     "use server"
     const submission = form.get("password")
@@ -53,39 +87,18 @@ export default async function EcosystemLayout(props: {
     return false
   }
 
-  async function logout() {
-    "use server"
-    ;(await cookies()).delete("eco-session")
-  }
-
   const authenticated = await protect()
 
   const response = await reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID)
-
   return (
     <EcosystemProvider
       time={response.body.result.time}
       timeZone={response.body.result.timeZone}
     >
-      <div className="max-w-lg mx-auto pt-2 pb-8 px-[2.5%]">
-        <div className="flex flex-row items-center gap-4 justify-between md:mt-6">
-          <h1 className="text-3xl">{"Lou's Ecosystem"}</h1>
-          {authenticated && (
-            <form action={logout}>
-              <button
-                type="submit"
-                className="bg-muted px-2 py-1 rounded-sm text-sm"
-              >
-                Logout
-              </button>
-            </form>
-          )}
-        </div>
-        <Info />
-        {!authenticated && <PasswordForm login={enterPassword} />}
-        <Tabs />
-        <ViewTransition>{props.children}</ViewTransition>
-      </div>
+      <Info />
+      {!authenticated && <PasswordForm login={enterPassword} />}
+      <Tabs />
+      <ViewTransition>{props.children}</ViewTransition>
     </EcosystemProvider>
   )
 }
