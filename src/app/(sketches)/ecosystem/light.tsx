@@ -1,5 +1,6 @@
 import { addSeconds } from "date-fns"
 import { revalidatePath } from "next/cache"
+import { connection } from "next/server"
 import { ViewTransition } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 
@@ -76,6 +77,7 @@ export async function Light(props: LightProps) {
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
+  await connection() // Don't pre-render this page
   const [lightResponse, systemResponse] = await Promise.all([
     getLight(MY_ECOSYSTEM_DEVICE_ID, props.variable),
     reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID),
