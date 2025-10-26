@@ -1,5 +1,12 @@
-import { redirect } from "next/navigation"
+import { EcosystemLightId, EcosystemVariables } from "./ecosystem-enums"
+import { Light } from "./light"
 
 export default function EcoPage() {
-  redirect("/ecosystem/canopy")
+  return (
+    <Light
+      path="/ecosystem"
+      id={EcosystemLightId.Canopy}
+      variable={EcosystemVariables.CanopyLight}
+    />
+  )
 }
