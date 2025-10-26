@@ -11,8 +11,6 @@ import puppeteer from "puppeteer"
  * build is an error; there's no server running at that time.
  */
 
-export const dynamic = "force-static"
-
 export async function GET(req: NextRequest) {
   if (process.env.NODE_ENV !== "development") {
     return new Response(undefined, { status: 404 })
