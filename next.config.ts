@@ -3,6 +3,7 @@ import { NextConfig } from "next"
 export default {
   reactCompiler: true,
   typedRoutes: true,
+  cacheComponents: true,
   experimental: {
     optimizePackageImports: ["d3"],
   },
