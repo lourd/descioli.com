@@ -1,5 +1,6 @@
 import { addSeconds } from "date-fns"
 import { revalidatePath } from "next/cache"
+import { ViewTransition } from "react"
 import { ErrorBoundary } from "react-error-boundary"
 
 import { protect } from "./auth"
@@ -19,6 +20,7 @@ import {
   LightScheduleInfo,
   timeToDate,
 } from "./ecosystem-models"
+import classes from "./classes.module.css"
 
 type LightProps = EcosystemLamp & {
   path: string
@@ -84,33 +86,35 @@ export async function Light(props: LightProps) {
 
   return (
     <div className="max-w-md mt-2">
-      {(() => {
-        if (
-          setting.mode === LightMode.SCHED_SS ||
-          setting.mode === LightMode.FADEtoSCHED
-        ) {
-          return null
-        }
+      <div className={`${classes.tempBar} flex flex-row items-center text-sm`}>
+        {(() => {
+          if (
+            setting.mode === LightMode.SCHED_SS ||
+            setting.mode === LightMode.FADEtoSCHED
+          ) {
+            return null
+          }
 
-        const date = timeToDate(
-          systemResponse.body.result.time,
-          systemResponse.body.result.timeZone
-        )
-        const pauseEndDate = addSeconds(date, setting.inter.secsLeft)
+          const date = timeToDate(
+            systemResponse.body.result.time,
+            systemResponse.body.result.timeZone
+          )
+          const pauseEndDate = addSeconds(date, setting.inter.secsLeft)
 
-        return (
-          <div className="flex flex-row items-center text-sm">
-            <p>Temporarily set until {pauseEndDate.toLocaleTimeString()}</p>
-            {authenticated && (
-              <form action={handleResumeSchedule} className="ml-2">
-                <button className="px-2 py-0 rounded-sm bg-gray-200 dark:bg-gray-700 whitespace-nowrap">
-                  Resume schedule
-                </button>
-              </form>
-            )}
-          </div>
-        )
-      })()}
+          return (
+            <ViewTransition>
+              <p>Temporarily set until {pauseEndDate.toLocaleTimeString()}</p>
+              {authenticated && (
+                <form action={handleResumeSchedule} className="ml-2">
+                  <button className="px-2 py-0 rounded-sm bg-gray-200 dark:bg-gray-700 whitespace-nowrap">
+                    Resume schedule
+                  </button>
+                </form>
+              )}
+            </ViewTransition>
+          )
+        })()}
+      </div>
 
       <ErrorBoundary
         fallback={

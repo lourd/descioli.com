@@ -1,5 +1,3 @@
-// TODO: re-enable after https://github.com/facebook/react/issues/31687 is published in eslint-plugin-react-hooks 5.2
-/* eslint-disable react-hooks/rules-of-hooks */
 "use client"
 
 import { useControls } from "leva"

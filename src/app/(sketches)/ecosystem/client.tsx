@@ -3,14 +3,11 @@
 import { range, scaleLinear } from "d3"
 import { clamp } from "framer-motion"
 import { Draft, produce } from "immer"
-import { debounce } from "lodash"
 import {
   ButtonHTMLAttributes,
   Dispatch,
   use,
-  useCallback,
   useEffect,
-  useMemo,
   useReducer,
   useRef,
   useTransition,
@@ -385,55 +382,47 @@ const getInitialLightTempState = (
 }
 
 export function SetLight(props: SetLightProps) {
-  const [state, dispatch] = useReducer(
+  const [state, setState] = useReducer(
     lightReducer,
     props.setting,
     getInitialLightTempState
   )
-  const stateRef = useRef(state)
-  useEffect(() => {
-    stateRef.current = state
-  }, [state])
   const [isPending, startTransition] = useTransition()
   const canvasRef = useRef<SVGSVGElement>(null)
-  const debouncedSetLight = useMemo(() => {
-    return debounce(() => {
-      startTransition(() => {
-        props.setLight({
-          color: Math.round(stateRef.current.color),
-          intensity: Math.round(stateRef.current.intensity),
-          duration: stateRef.current.hours * 60 + stateRef.current.minutes,
-        })
-      })
-    }, 500)
-  }, [props])
+  const timeoutRef = useRef(-1)
 
   const WIDTH = 350
   const x = (state.color / MAX_COLOR) * WIDTH
   const y = (1 - state.intensity / MAX_BRIGHTNESS) * HEIGHT
 
-  const handleDrag = useCallback(
-    (evt: PointerEvent | React.PointerEvent) => {
-      const parentRect = canvasRef.current!.getBoundingClientRect()
-      const newColor =
-        clamp(0, 1, (evt.pageX - parentRect.x) / parentRect.width) * MAX_COLOR
-      let newIntensity =
-        clamp(
-          0,
-          1,
-          1 - (evt.pageY - (parentRect.y + window.scrollY)) / parentRect.height
-        ) * MAX_BRIGHTNESS
-      newIntensity = Math.round(newIntensity)
-      dispatch((draft) => {
-        draft.intensity = newIntensity
-        draft.color = newColor
+  const handleDrag = (evt: PointerEvent | React.PointerEvent) => {
+    const parentRect = canvasRef.current!.getBoundingClientRect()
+    const newColor =
+      clamp(0, 1, (evt.pageX - parentRect.x) / parentRect.width) * MAX_COLOR
+    const newIntensity =
+      clamp(
+        0,
+        1,
+        1 - (evt.pageY - (parentRect.y + window.scrollY)) / parentRect.height
+      ) * MAX_BRIGHTNESS
+    setState((draft) => {
+      draft.intensity = newIntensity
+      draft.color = newColor
+    })
+
+    if (!props.authenticated) return
+    const payload = {
+      color: Math.round(newColor),
+      intensity: Math.round(newIntensity),
+      duration: state.hours * 60 + state.minutes,
+    }
+    clearTimeout(timeoutRef.current)
+    timeoutRef.current = window.setTimeout(() => {
+      startTransition(async () => {
+        await props.setLight(payload)
       })
-      if (props.authenticated) {
-        debouncedSetLight()
-      }
-    },
-    [debouncedSetLight, props.authenticated]
-  )
+    }, 500)
+  }
 
   return (
     <div
@@ -446,7 +435,7 @@ export function SetLight(props: SetLightProps) {
             <select
               value={state.hours}
               onChange={(e) => {
-                dispatch((draft) => {
+                setState((draft) => {
                   draft.hours = Number(e.target.value)
                 })
               }}
@@ -466,7 +455,7 @@ export function SetLight(props: SetLightProps) {
               value={state.minutes}
               name="minutes"
               onChange={(e) => {
-                dispatch((draft) => {
+                setState((draft) => {
                   draft.minutes = Number(e.target.value)
                 })
               }}

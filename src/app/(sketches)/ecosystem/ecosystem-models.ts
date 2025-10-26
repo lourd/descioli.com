@@ -8,8 +8,8 @@ const LightColor = z.number().int().gte(0).lte(100)
 
 export const LightSchedule = z
   .object({
-    fadeType: z.nativeEnum(FadeType),
-    light: z.nativeEnum(EcosystemLightId),
+    fadeType: z.enum(FadeType),
+    light: z.enum(EcosystemLightId),
     sunriseBeginTime: z.number().int().gte(0),
     sunriseDuration: z.number().int().gte(0).lt(360),
     dayIntensity: LightIntensity,
@@ -49,7 +49,7 @@ export function createLightScheduleString(params: LightSchedule) {
 }
 
 export const LightInterruption = z.object({
-  light: z.nativeEnum(EcosystemLightId),
+  light: z.enum(EcosystemLightId),
   duration: z.number().int().gte(0).lt(1440),
   intensity: LightIntensity,
   color: LightColor,

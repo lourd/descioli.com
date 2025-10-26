@@ -59,8 +59,9 @@ export async function getStory(slug: string) {
 
   let components = {}
   try {
-    components = await import(`../../public/${directory}/components.tsx`)
+    components = await import(`../../${directory}/components`)
   } catch (e) {
+    // Only throw if it's an error other than this
     if (!instanceOfNodeError(e, Error) || e.code !== "MODULE_NOT_FOUND") {
       throw e
     }

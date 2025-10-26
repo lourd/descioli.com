@@ -21,8 +21,8 @@ export async function GET(
   context: { params: Promise<{ slug: string }> }
 ) {
   const story = await getStory((await context.params).slug)
-  const url = new URL(`../../../../public${story.data.image}`, import.meta.url)
-  const imgData = await fs.readFile(url.pathname)
+
+  const imgData = await fs.readFile(`public/${story.data.image}`)
 
   const [interRegular, interBold, interLight] = await Promise.all([
     fetchFont(`https://fonts.googleapis.com/css2?family=Inter:opsz@14..32`),

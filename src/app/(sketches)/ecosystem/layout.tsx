@@ -4,6 +4,7 @@ import { SignJWT } from "jose"
 import { Metadata } from "next"
 import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
+import { ViewTransition } from "react"
 
 import { protect } from "./auth"
 import { EcoTime } from "./eco-time"
@@ -83,7 +84,7 @@ export default async function EcosystemLayout(props: {
         <Info />
         {!authenticated && <PasswordForm login={enterPassword} />}
         <Tabs />
-        {props.children}
+        <ViewTransition>{props.children}</ViewTransition>
       </div>
     </EcosystemProvider>
   )
