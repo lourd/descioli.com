@@ -17,8 +17,6 @@ import { slugify } from "@/lib/slugify"
 
 import classes from "./classes.module.css"
 
-export const dynamicParams = false
-
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   return await getSlugs()
 }
@@ -43,6 +41,7 @@ export async function generateMetadata({ params }: PageProps<"/[slug]">) {
 }
 
 export default async function StoryPage({ params }: PageProps<"/[slug]">) {
+  "use cache"
   const story = await getStory((await params).slug)
 
   return (
