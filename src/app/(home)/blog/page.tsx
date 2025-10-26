@@ -11,6 +11,7 @@ export const metadata = {
 }
 
 export default async function Blog() {
+  "use cache"
   const stories = await getStories()
 
   return (
