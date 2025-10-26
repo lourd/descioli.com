@@ -28,8 +28,6 @@ export const metadata: Metadata = {
   description: "A new take on controlling my still-living Ecosystem",
 }
 
-export const dynamic = "force-dynamic"
-
 const ONE_YEAR = 1000 * 60 * 60 * 24 * 365
 
 export default async function EcosystemLayout(props: {

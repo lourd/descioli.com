@@ -1,5 +1,6 @@
 import { addSeconds } from "date-fns"
 import { revalidatePath } from "next/cache"
+import { connection } from "next/server"
 import { ErrorBoundary } from "react-error-boundary"
 
 import { protect } from "../auth"
@@ -58,6 +59,7 @@ export default async function PumpPage() {
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
+  await connection() // Don't pre-render this page
   const [pumpResponse, systemResponse] = await Promise.all([
     getPump(MY_ECOSYSTEM_DEVICE_ID),
     reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID),
