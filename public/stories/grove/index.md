@@ -360,7 +360,7 @@ We scrambled to answer those questions, and to just sell some units. We had a li
   caption="The time Elias, Steph, and I handed out fliers at an event with Michael Pollan and pitched him on getting a grove"
 />
 
-### Mr. Ritz and the [Green Bronx Machine](https://greenbronxmachine.org/)
+### Mr. Ritz and the Green Bronx Machine
 
 One of the most exciting opportunities we had was with a man named Stephen Ritz. Stephen is an amazing teacher in the South Bronx who has made a name for himself practicing Nature-centric learning in his classroom to great success.
 
@@ -368,7 +368,7 @@ One of the most exciting opportunities we had was with a man named Stephen Ritz.
 
 Stephen had met Gabe and Elias at an event earlier in the year. After hearing Gabe speak on a panel, he approached Elias and expressed interest in collaborating in some way with Grove.
 
-One of the first opportunities for that collaboration was the opening of the [National Health and Wellness Center at C.S. 55](https://greenbronxmachine.org/projects/the-national-health-and-wellness-center-at-ps-55/). They had been transforming an old, empty library into a "an innovative and engaging wonderland" for the better part of a year, and it was going to have its grand opening in May. I learned that we had the opportunity to sponsor the Green Bronx Machine and give them an Ecosystem for the debut. I lept at the chance.
+One of the first opportunities for that collaboration was the opening of the [National Health and Wellness Center at C.S. 55](https://greenbronxmachine.org/projects/the-national-health-and-wellness-center-at-ps-55/). They had been transforming an old, empty library into a "an innovative and engaging wonderland" for the better part of a year, and it was going to have its grand opening in May. I learned that we had the opportunity to sponsor the [Green Bronx Machine](https://greenbronxmachine.org/) and give them an Ecosystem for the debut. I lept at the chance.
 
 The hardware team responded heroically to the call to have Ecosystem #1 ready for Mr. Ritz. They made extraordinary exceptions to their plans to have a special unit completed in time. Nick later told me he's never pushed himself as hard as he did for that delivery, which is insane if you know how hard Nick works. On the last Friday in April, six of us drove down to New York City and delivered the first Ecosystem to Mr. Ritz in person.
 
