@@ -4,6 +4,7 @@ import Link from "next/link"
 import { getStories } from "@/lib/get-stories"
 
 export default async function HomePage() {
+  "use cache"
   const stories = await getStories()
   const latest = stories[0]
 
