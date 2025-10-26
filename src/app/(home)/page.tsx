@@ -1,3 +1,4 @@
+import { Route } from "next"
 import Link from "next/link"
 
 import { getStories } from "@/lib/get-stories"
@@ -46,7 +47,7 @@ export default async function HomePage() {
             Read my latest{" "}
             <span className="-scale-x-100 inline-block">{"👀"}</span>
             <Link
-              href={latest.slug}
+              href={latest.slug as Route}
               className="hocus:bg-muted ml-1 px-1 py-[2px] font-bold italic text-link transition-colors duration-200 rounded-xs"
             >
               {latest.data.description}

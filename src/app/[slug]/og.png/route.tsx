@@ -16,10 +16,7 @@ export async function generateStaticParams() {
   return await getSlugs()
 }
 
-export async function GET(
-  _: Request,
-  context: { params: Promise<{ slug: string }> }
-) {
+export async function GET(_: Request, context: RouteContext<"/[slug]/og.png">) {
   const story = await getStory((await context.params).slug)
 
   const imgData = await fs.readFile(`public/${story.data.image}`)

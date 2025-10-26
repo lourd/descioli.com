@@ -1,3 +1,4 @@
+import { Route } from "next"
 import Link from "next/link"
 
 export const metadata = {
@@ -30,7 +31,12 @@ const links = [
     link: "/cursor-follow",
     date: new Date("2021-01-31"),
   },
-]
+] satisfies Array<{
+  name: string
+  description: string
+  link: Route
+  date: Date
+}>
 
 export default function ExperimentsPage() {
   return (

@@ -16,19 +16,13 @@ import { slugify } from "@/lib/slugify"
 
 import classes from "./classes.module.css"
 
-type PageProps = {
-  params: Promise<{
-    slug: string
-  }>
-}
-
 export const dynamicParams = false
 
 export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
   return await getSlugs()
 }
 
-export async function generateMetadata({ params }: PageProps) {
+export async function generateMetadata({ params }: PageProps<"/[slug]">) {
   const { slug } = await params
   const story = await getStory(slug).catch((e) => e as Error)
   if (story instanceof Error) {
@@ -47,7 +41,7 @@ export async function generateMetadata({ params }: PageProps) {
   } satisfies Metadata
 }
 
-export default async function StoryPage({ params }: PageProps) {
+export default async function StoryPage({ params }: PageProps<"/[slug]">) {
   const story = await getStory((await params).slug)
 
   return (

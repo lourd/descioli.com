@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import { format } from "date-fns"
+import { Route } from "next"
 import Link from "next/link"
 import { ReactNode } from "react"
 
@@ -188,7 +189,7 @@ function JobSection(props: Job & { className?: string; dense?: boolean }) {
   if (props.story) {
     return (
       <Link
-        href={props.story}
+        href={props.story as Route}
         className={`${paddingClasses} w-full block no-underline transition-colors duration-200 rounded-md hocus:bg-gray-100 dark:hocus:bg-gray-800`}
       >
         {content}
