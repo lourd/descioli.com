@@ -1,17 +1,27 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useSyncExternalStore } from "react"
 
-let isClient = false
+export interface ClientOnlyProps {
+  children: React.ReactNode
+  fallback?: React.ReactNode
+}
 
-export function ClientOnly(props: { children: React.ReactNode }) {
-  const [isMounted, setIsMounted] = useState(isClient)
-  useEffect(() => {
-    if (!isClient) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- Intentional cascading render
-      setIsMounted(true)
-      isClient = true
-    }
-  }, [])
-  return isMounted ? props.children : null
+/**
+ * Renders `children` only on the client/after hydration, with an optional `fallback`.
+ */
+export function ClientOnly({ children, fallback = null }: ClientOnlyProps) {
+  return useHydrated() ? children : fallback
+}
+
+function useHydrated(): boolean {
+  return useSyncExternalStore(
+    noop,
+    () => true,
+    () => false
+  )
+}
+
+function noop() {
+  return () => {}
 }
