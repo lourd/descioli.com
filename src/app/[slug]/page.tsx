@@ -16,8 +16,6 @@ import { slugify } from "@/lib/slugify"
 
 import classes from "./classes.module.css"
 
-export const dynamicParams = false
-
 export function generateStaticParams(): Array<{ slug: string }> {
   return getSlugs()
 }
