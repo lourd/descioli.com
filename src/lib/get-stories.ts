@@ -5,7 +5,6 @@ import matter from "gray-matter"
 import { notFound } from "next/navigation"
 
 import { isFulfilled } from "./assert-settled"
-import { instanceOfNodeError } from "./node-errors"
 
 const WPM = 300
 
@@ -57,20 +56,10 @@ export async function getStory(slug: string) {
   const directory = "public/stories/" + slug
   const filename = directory + "/index.md"
 
-  let components = {}
-  try {
-    components = await import(`../../${directory}/components`)
-  } catch (e) {
-    // Only throw if it's an error other than this
-    if (!instanceOfNodeError(e, Error) || e.code !== "MODULE_NOT_FOUND") {
-      throw e
-    }
-  }
-
   const lastEditUrl =
     "https://www.github.com/lourd/descioli.com/commits/main/" + filename
 
-  return { ...story, lastEditUrl, components, index, next, previous }
+  return { ...story, lastEditUrl, index, next, previous }
 }
 
 export type Story = typeof getStory extends (slug: string) => Promise<infer T>

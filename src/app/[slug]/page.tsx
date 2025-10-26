@@ -1,7 +1,7 @@
 import { utc } from "@date-fns/utc"
 import { format } from "date-fns"
 import { Metadata } from "next"
-import { MDXRemote } from "next-mdx-remote/rsc"
+import { MDXRemote } from "next-mdx-remote-client/rsc"
 import Image from "next/image"
 import Link from "next/link"
 import remarkGfm from "remark-gfm"
@@ -113,11 +113,9 @@ export default async function StoryPage({ params }: PageProps) {
                 h4: createLinkedHeading("4"),
                 h5: createLinkedHeading("5"),
                 h6: createLinkedHeading("6"),
-                ...story.components,
               }}
               options={{
                 mdxOptions: {
-                  useDynamicImport: true,
                   remarkPlugins: [remarkGfm],
                 },
               }}
