@@ -29,11 +29,12 @@ export function EcoTime(props: {
     // accurate, so loop refetching the time until the timezones match.
     if (stillMismatching) {
       let timeout = 1000
-      let timeoutId = setTimeout(function refresh(): void {
+      const refresh = () => {
         router.refresh()
         timeout *= 2
         timeoutId = setTimeout(refresh, timeout)
-      }, timeout)
+      }
+      let timeoutId = setTimeout(refresh, timeout)
       return () => clearTimeout(timeoutId)
     }
   }, [response, router, stillMismatching])
@@ -62,8 +63,12 @@ function EcoTimeButton(props: { refetching: boolean }) {
     <button
       type="submit"
       disabled={loading}
-      title="The time zone on your Ecosystem and this computer don't match. Click to update the Ecosystem's timezone"
-      className={`${loading ? "bg-accent/80" : "border border-amber-500 hocus:bg-amber-500"} px-2 h-5 text-xs rounded-full transition-colors`}
+      title={
+        loading
+          ? "Updating time zone..."
+          : "The time zone on your Ecosystem and this computer don't match. Click to update the Ecosystem's timezone"
+      }
+      className={`${loading ? "bg-accent/80" : "border border-amber-500 hocus:bg-amber-500 transition-colors"} px-2 h-5 text-xs rounded-full transition-colors`}
     >
       {loading ? "🪄" : "⏰"}
     </button>
