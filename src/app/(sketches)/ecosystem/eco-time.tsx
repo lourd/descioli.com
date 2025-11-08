@@ -29,11 +29,12 @@ export function EcoTime(props: {
     // accurate, so loop refetching the time until the timezones match.
     if (stillMismatching) {
       let timeout = 1000
-      let timeoutId = setTimeout(function refresh(): void {
+      const refresh = () => {
         router.refresh()
         timeout *= 2
         timeoutId = setTimeout(refresh, timeout)
-      }, timeout)
+      }
+      let timeoutId = setTimeout(refresh, timeout)
       return () => clearTimeout(timeoutId)
     }
   }, [response, router, stillMismatching])
