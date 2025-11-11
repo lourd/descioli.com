@@ -3,7 +3,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import type { Metadata } from "next"
 import { ReactNode, Suspense } from "react"
 
-import AutoRefresh from "@/components/auto-refresh"
+import { AutoRefresh } from "@/components/auto-refresh"
 
 import "./globals.css"
 
@@ -33,14 +33,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
-        <AutoRefresh>
-          <AppProvider>
-            <Suspense fallback={null}>
-              <HistoryTracker />
-            </Suspense>
-            {children}
-          </AppProvider>
-        </AutoRefresh>
+        <AutoRefresh />
+        <AppProvider>
+          <Suspense fallback={null}>
+            <HistoryTracker />
+          </Suspense>
+          {children}
+        </AppProvider>
         <Analytics />
         <SpeedInsights />
       </body>

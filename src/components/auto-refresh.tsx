@@ -3,12 +3,12 @@
 import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 
-let AutoRefresh = ({ children }: { children: React.ReactNode }) => {
-  return children
+let AutoRefresh = () => {
+  return null
 }
 
 if (process.env.NODE_ENV === "development") {
-  AutoRefresh = function AutoRefresh({ children }) {
+  AutoRefresh = function AutoRefresh() {
     const router = useRouter()
     useEffect(() => {
       const ws = new WebSocket("ws://localhost:3001")
@@ -21,8 +21,8 @@ if (process.env.NODE_ENV === "development") {
         ws.close()
       }
     }, [router])
-    return children
+    return null
   }
 }
 
-export default AutoRefresh
+export { AutoRefresh }
