@@ -1,10 +1,7 @@
 "use client"
 
-import { Draft, produce, setAutoFreeze } from "immer"
+import { Draft, freeze, produce } from "immer"
 import { createContext, ReactNode, useReducer } from "react"
-
-// Need the mutability for rapidly updating motion data
-setAutoFreeze(false)
 
 type MotionState =
   | "auto-permitted" // Chrome
@@ -34,8 +31,12 @@ const createInitialState = () => {
   return {
     history: [] as string[],
     motion: getInitialMotionState(),
-    mutableAcceleration: { x: 0, y: 0, z: 0 },
-    mutableOrientation: { alpha: 0, beta: 0, gamma: 0 },
+    // pre-freezing shallowly to allow mutation of these properties
+    // without getting error writing to readonly property
+    sensors: freeze({
+      acceleration: { x: 0, y: 0, z: 0 },
+      orientation: { alpha: 0, beta: 0, gamma: 0 },
+    }),
   }
 }
 

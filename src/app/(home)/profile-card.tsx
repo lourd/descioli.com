@@ -109,7 +109,7 @@ export function ProfileCard() {
             initialX={initialX}
             initialY={initialY}
             ref={leftEye}
-            acceleration={state.mutableAcceleration}
+            acceleration={state.sensors.acceleration}
             motion={state.motion}
             reducedMotion={reducedMotion}
           />
@@ -120,7 +120,7 @@ export function ProfileCard() {
             initialX={initialX}
             initialY={initialY}
             ref={rightEye}
-            acceleration={state.mutableAcceleration}
+            acceleration={state.sensors.acceleration}
             motion={state.motion}
             reducedMotion={reducedMotion}
           />
@@ -151,13 +151,13 @@ function MotionData() {
   const { state, setState } = use(AppContext)
   useEffect(() => {
     const updateAcceleration = (e: DeviceMotionEvent) => {
-      state.mutableAcceleration.x = e.accelerationIncludingGravity?.x ?? 0
-      state.mutableAcceleration.y = e.accelerationIncludingGravity?.y ?? 0
-      state.mutableAcceleration.z = e.accelerationIncludingGravity?.z ?? 0
+      state.sensors.acceleration.x = e.accelerationIncludingGravity?.x ?? 0
+      state.sensors.acceleration.y = e.accelerationIncludingGravity?.y ?? 0
+      state.sensors.acceleration.z = e.accelerationIncludingGravity?.z ?? 0
 
       if (state.motion?.flipAxes) {
-        state.mutableAcceleration.x *= -1
-        state.mutableAcceleration.y *= -1
+        state.sensors.acceleration.x *= -1
+        state.sensors.acceleration.y *= -1
       }
     }
     // This is its own listener because calling setState causes a re-render of AppProvider.
@@ -171,9 +171,9 @@ function MotionData() {
     }
 
     const updateOrientation = (e: DeviceOrientationEvent) => {
-      state.mutableOrientation.alpha = e.alpha ?? 0
-      state.mutableOrientation.beta = e.beta ?? 0
-      state.mutableOrientation.gamma = e.gamma ?? 0
+      state.sensors.orientation.alpha = e.alpha ?? 0
+      state.sensors.orientation.beta = e.beta ?? 0
+      state.sensors.orientation.gamma = e.gamma ?? 0
     }
 
     window.addEventListener("devicemotion", markReceivedData, { once: true })
@@ -185,8 +185,8 @@ function MotionData() {
       window.removeEventListener("deviceorientation", updateOrientation)
     }
   }, [
-    state.mutableAcceleration,
-    state.mutableOrientation,
+    state.sensors.acceleration,
+    state.sensors.orientation,
     state.motion?.flipAxes,
     setState,
   ])
@@ -200,7 +200,7 @@ type GooglyEyeProps = {
   className?: string
   initialX: number
   initialY: number
-  acceleration: AppState["mutableAcceleration"]
+  acceleration: AppState["sensors"]["acceleration"]
   motion: AppState["motion"]
   reducedMotion: boolean | null
   ref: RefObject<GooglyEyeRef | null>
@@ -316,7 +316,7 @@ function Physics(props: {
   pupilRadius: number
   x: MotionValue<number>
   y: MotionValue<number>
-  acceleration: AppState["mutableAcceleration"]
+  acceleration: AppState["sensors"]["acceleration"]
 }) {
   useAnimationFrame((_, deltaMs) => {
     const deltaT = deltaMs / 1000
@@ -330,11 +330,11 @@ function Physics(props: {
     // FIXME: Tried to handle orientation changes, but the differences between standardized at all between iOS and Android,
     // if (
     //   // not in portrait orientation
-    //   state.mutableOrientation.alpha > 60 &&
-    //   state.mutableOrientation.alpha < 300
+    //   state.sensors.orientation.alpha > 60 &&
+    //   state.sensors.orientation.alpha < 300
     // ) {
     //   // Rotated to the left
-    //   if (state.mutableOrientation.alpha < 180) {
+    //   if (state.sensors.orientation.alpha < 180) {
     //     let _aY = aY
     //     aY = -aX // y acceleration is now invert x acceleration
     //     aX = _aY
