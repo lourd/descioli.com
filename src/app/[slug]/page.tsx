@@ -4,6 +4,7 @@ import { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote-client/rsc"
 import Image from "next/image"
 import Link from "next/link"
+import { ViewTransition } from "react"
 import remarkGfm from "remark-gfm"
 
 import { BackLinkWithHand } from "@/components/back-link"
@@ -46,42 +47,44 @@ export default async function StoryPage({ params }: PageProps<"/[slug]">) {
 
   return (
     <article className="max-md:mt-12">
-      <div className="relative">
-        <Image
-          alt=""
-          className="min-h-[50vh] aspect-5/2 max-h-[700px] w-full object-cover object-center"
-          src={story.data.header || story.data.image}
-          priority
-          //   FIXME
-          width={1200}
-          height={1200}
-        />
-        <div className="absolute top-0 left-0 right-0 bottom-0 z-1 flex flex-row justify-start items-end text-white bg-linear-to-b via-66% via-transparent to-black/70">
-          <div className="max-w-[600px] grow p-6 mx-auto text-shadow-md shadow-black/70">
-            <h1 className="text-5xl md:text-[4rem] font-bold leading-[1.1]">
-              {story.data.title}
-            </h1>
-            <h2 className="text-3xl font-light text-balance">
-              {story.data.description}
-            </h2>
-            <p className="mt-2 whitespace-pre text-sm">
-              <a
-                href={story.lastEditUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                Published
-              </a>{" "}
-              <time>
-                {format(story.data.publication, "eeee, LLLL do, yyyy", {
-                  in: utc,
-                })}
-              </time>
-            </p>
+      <ViewTransition name={story.slug}>
+        <div className="relative">
+          <Image
+            alt=""
+            className="min-h-[50vh] aspect-5/2 max-h-[700px] w-full object-cover object-center"
+            src={story.data.header || story.data.image}
+            priority
+            //   FIXME
+            width={1200}
+            height={1200}
+          />
+          <div className="absolute top-0 left-0 right-0 bottom-0 z-1 flex flex-row justify-start items-end text-white bg-linear-to-b via-66% via-transparent to-black/70">
+            <div className="max-w-[600px] grow p-6 mx-auto text-shadow-md shadow-black/70">
+              <h1 className="text-5xl md:text-[4rem] font-bold leading-[1.1]">
+                {story.data.title}
+              </h1>
+              <h2 className="text-3xl font-light text-balance">
+                {story.data.description}
+              </h2>
+              <p className="mt-2 whitespace-pre text-sm">
+                <a
+                  href={story.lastEditUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Published
+                </a>{" "}
+                <time>
+                  {format(story.data.publication, "eeee, LLLL do, yyyy", {
+                    in: utc,
+                  })}
+                </time>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </ViewTransition>
 
       <div className="relative">
         <nav className="lg:sticky top-0">
