@@ -30,7 +30,7 @@
     "jose": "^5.2.2",
     "leva": "^0.10.0",
     "lodash": "^4.17.21",
-    "next": "16.0.7",
+    "next": "16.0.9",
     "next-mdx-remote-client": "^2.1.7",
     "react": "19.2.0",
     "react-dom": "19.2.0",
