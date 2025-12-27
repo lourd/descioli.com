@@ -21,7 +21,6 @@
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
     "clsx": "^2.1.1",
-    "color": "^4.2.3",
     "d3": "^7.8.5",
     "date-fns": "^4.0.0",
     "gray-matter": "^4.0.3",
