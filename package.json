@@ -59,7 +59,7 @@
     "eslint-config-prettier": "^10.0.1",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",
-    "puppeteer": "^22.3.0",
+    "puppeteer": "^24.34.0",
     "remark-gfm": "^4.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "5.9.3",
