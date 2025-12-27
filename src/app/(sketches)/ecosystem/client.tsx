@@ -1,5 +1,7 @@
 "use client"
 
+import assert from "assert"
+
 import { range, scaleLinear } from "d3"
 import { Draft, produce } from "immer"
 import { clamp } from "motion"
@@ -357,8 +359,6 @@ type SetLightProps = {
 }
 
 type LightTempState = {
-  hours: number
-  minutes: number
   intensity: number
   color: number
 }
@@ -372,11 +372,7 @@ const lightReducer = (state: LightTempState, action: LightTempStateUpdate) => {
 const getInitialLightTempState = (
   setting: LightInterruptSetting
 ): LightTempState => {
-  const hours = Math.floor(setting.dur / 60)
-  const minutes = Math.floor(setting.dur) % 60
   return {
-    hours,
-    minutes,
     intensity: setting.ls[0],
     color: setting.ls[1],
   }
@@ -388,9 +384,13 @@ export function SetLight(props: SetLightProps) {
     props.setting,
     getInitialLightTempState
   )
+  const defaultHours = Math.floor(props.setting.dur / 60)
+  const defaultMinutes = props.setting.dur % 60
   const [isPending, startTransition] = useTransition()
   const canvasRef = useRef<SVGSVGElement>(null)
   const timeoutRef = useRef(-1)
+  const hoursRef = useRef<HTMLSelectElement>(null)
+  const minutesRef = useRef<HTMLSelectElement>(null)
 
   const WIDTH = 350
   const x = (state.color / MAX_COLOR) * WIDTH
@@ -412,10 +412,13 @@ export function SetLight(props: SetLightProps) {
     })
 
     if (!props.authenticated) return
+    assert(hoursRef.current)
+    assert(minutesRef.current)
     const payload = {
       color: Math.round(newColor),
       intensity: Math.round(newIntensity),
-      duration: state.hours * 60 + state.minutes,
+      duration:
+        Number(hoursRef.current.value) * 60 + Number(minutesRef.current.value),
     }
     clearTimeout(timeoutRef.current)
     timeoutRef.current = window.setTimeout(() => {
@@ -434,12 +437,8 @@ export function SetLight(props: SetLightProps) {
           <h3 className="font-semibold">Set temporarily</h3>
           <div className="ml-3 flex flex-row items-center">
             <select
-              value={state.hours}
-              onChange={(e) => {
-                setState((draft) => {
-                  draft.hours = Number(e.target.value)
-                })
-              }}
+              defaultValue={defaultHours}
+              ref={hoursRef}
               className="border-[1px] border-foreground px-2 rounded-sm"
               name="hours"
             >
@@ -453,13 +452,9 @@ export function SetLight(props: SetLightProps) {
               hrs
             </label>
             <select
-              value={state.minutes}
+              defaultValue={defaultMinutes}
+              ref={minutesRef}
               name="minutes"
-              onChange={(e) => {
-                setState((draft) => {
-                  draft.minutes = Number(e.target.value)
-                })
-              }}
               className="ml-2 border-[1px] border-foreground px-2 rounded-sm"
             >
               {range(0, 60).map((i) => (
