@@ -2,7 +2,7 @@ import { z } from "zod"
 
 import { EcosystemLightId, FadeType } from "./ecosystem-enums"
 
-const LightIntensity = z.number().int().gte(0).lte(100)
+const LightIntensity = z.number().gte(0).lte(100)
 
 const LightColor = z.number().int().gte(0).lte(100)
 
@@ -66,48 +66,10 @@ export function createLightInterruptionString(param: LightInterruption) {
   ].join(":")
 }
 
-export type LightSettings = {
-  mode: LightMode
-  why: SettingCause
-  /** Current intensity outputted to each of this light's N strings (%) */
-  sInt: [number, number]
-  sched: LightScheduleInfo
-  /** relevant data IF we're interrupted */
-  inter: LightInterruptSetting
-}
-
-export type LightInterruptSetting = {
-  /** indicates if this is an indefinite length interruption */
-  indef: boolean
-  /** Total requested duration of this interruption in minutes */
-  dur: number
-  /** # seconds left in this interruption, if active */
-  secsLeft: number
-  /** {@link LightSetting} we'll be following while interrupted */
-  ls: LightSetting
-}
-
 /** intensity and color temperature, 0-100 */
-type LightSetting = [number, number]
+export const LightSetting = z.tuple([LightIntensity, LightColor])
 
-export type LightScheduleInfo = {
-  /** Period we think we're in (only updated in SCHED_SS or FADEtoSCHED mode) */
-  lastPeriod: string
-  /** {@link FadeType} of sunrise+sunset */
-  fType: FadeType
-  /**
-   * SECONDS since midnight when transitions occur in schedule.
-   * 1. sunriseBeginTimeOfDay - time when sunrise begins / nighttime ends
-   * 2. daylightBeginTimeOfDay - time when daylight begins / sunrise ends
-   * 3. sunsetBeginTimeOfDay - time when sunset begins / daylight ends
-   * 4. nighttimeBeginTimeOfDay - time when nighttime starts / sunset ends
-   */
-  times: [number, number, number, number]
-  /** {@link LightSetting} for "daytime", as defined by "times"  */
-  day: LightSetting
-  /** {@link LightSetting} for "nighttime", as defined by "times"  */
-  night: LightSetting
-}
+export type LightSetting = z.infer<typeof LightSetting>
 
 export enum LightMode {
   /** In steady state, following our stored schedule */
@@ -123,53 +85,122 @@ export enum LightMode {
 }
 
 /** Origin of last state change */
-enum SettingCause {
+export enum SettingCause {
   AUTO = "AUTO",
   OTA = "OTA",
   FP = "FP",
 }
 
-export type SystemStatus = {
-  userSW: string
-  sysSW: string
-  sn: string
-  powerOn: boolean
-  safeMode: SafeMode
-  timeZone: number
-  setUp: boolean
-  knobIntDur: number
-  aquaTempTarget: number
-  watchdog: number
-  loopTime: number
-  freeMemory: number
-  i2cMisfires: number
-  wifi: Wifi
-  state: {
-    listening: boolean
-  }
-  time: Time
-  fancyP: FancyP
-}
+export const LightScheduleInfo = z.object({
+  /** Period we think we're in (only updated in SCHED_SS or FADEtoSCHED mode) */
+  lastPeriod: z.string(),
+  /** {@link FadeType} of sunrise+sunset */
+  fType: z.enum(FadeType),
+  /**
+   * SECONDS since midnight when transitions occur in schedule.
+   * 1. sunriseBeginTimeOfDay - time when sunrise begins / nighttime ends
+   * 2. daylightBeginTimeOfDay - time when daylight begins / sunrise ends
+   * 3. sunsetBeginTimeOfDay - time when sunset begins / daylight ends
+   * 4. nighttimeBeginTimeOfDay - time when nighttime starts / sunset ends
+   */
+  times: z.tuple([
+    z.number().int().gte(0),
+    z.number().int().gte(0),
+    z.number().int().gte(0),
+    z.number().int().gte(0),
+  ]),
+  /** {@link LightSetting} for "daytime", as defined by "times"  */
+  day: LightSetting,
+  /** {@link LightSetting} for "nighttime", as defined by "times"  */
+  night: LightSetting,
+})
 
-export type FancyP = {
-  peripheral: string
-  dMode: number
-  secsSinceTouch: number
-}
+export type LightScheduleInfo = z.infer<typeof LightScheduleInfo>
 
-export type SafeMode = {
-  on: boolean
-  verbose: boolean
-}
+export const LightInterruptSetting = z.object({
+  /** indicates if this is an indefinite length interruption */
+  indef: z.boolean(),
+  /** Total requested duration of this interruption in minutes */
+  dur: z.number().int().gte(0),
+  /** # seconds left in this interruption, if active */
+  secsLeft: z.number().int().gte(0),
+  /** {@link LightSetting} we'll be following while interrupted */
+  ls: LightSetting,
+})
 
-export type Time = {
+export type LightInterruptSetting = z.infer<typeof LightInterruptSetting>
+
+export const LightSettings = z.object({
+  mode: z.enum(LightMode),
+  why: z.enum(SettingCause),
+  /** Current intensity outputted to each of this light's N strings (%) */
+  sInt: z.array(LightIntensity),
+  sched: LightScheduleInfo,
+  /** relevant data IF we're interrupted */
+  inter: LightInterruptSetting,
+})
+
+export type LightSettings = z.infer<typeof LightSettings>
+
+export const SafeMode = z.object({
+  on: z.boolean(),
+  verbose: z.boolean(),
+})
+
+export type SafeMode = z.infer<typeof SafeMode>
+
+export const Wifi = z.object({
+  ssid: z.string(),
+  rssi: z.number(),
+  ip: z.string(),
+  APs: z.array(z.string()),
+  uptime: z.number(),
+})
+
+export type Wifi = z.infer<typeof Wifi>
+
+export const Time = z.object({
   /** Epoch time Photon believes it is, from RTC and Particle cloud */
-  epoch: number
+  epoch: z.number(),
   /** How many seconds we think we're past midnight, using TZ offset */
-  secOfDay: number
+  secOfDay: z.number(),
   /** How many millseconds have elapsed since boot */
-  millis: number
-}
+  millis: z.number(),
+})
+
+export type Time = z.infer<typeof Time>
+
+export const FancyP = z.object({
+  peripheral: z.string(),
+  dMode: z.number(),
+  secsSinceTouch: z.number(),
+})
+
+export type FancyP = z.infer<typeof FancyP>
+
+export const SystemStatus = z.object({
+  userSW: z.string(),
+  sysSW: z.string(),
+  sn: z.string(),
+  powerOn: z.boolean(),
+  safeMode: SafeMode,
+  timeZone: z.number(),
+  setUp: z.boolean(),
+  knobIntDur: z.number(),
+  aquaTempTarget: z.number(),
+  watchdog: z.number(),
+  loopTime: z.number(),
+  freeMemory: z.number(),
+  i2cMisfires: z.number(),
+  wifi: Wifi,
+  state: z.object({
+    listening: z.boolean(),
+  }),
+  time: Time,
+  fancyP: FancyP,
+})
+
+export type SystemStatus = z.infer<typeof SystemStatus>
 
 export function timeToDate(time: Time, tzOffset: number) {
   const now = new Date()
@@ -190,14 +221,6 @@ export function timeToDate(time: Time, tzOffset: number) {
   )
 }
 
-export type Wifi = {
-  ssid: string
-  rssi: number
-  ip: string
-  APs: string[]
-  uptime: number
-}
-
 export enum PumpMode {
   /** Won't ever turn on automatically */
   Disabled = "DISABLED",
@@ -211,36 +234,38 @@ export enum PumpMode {
   InterruptedContantState = "INTERRUPTED_CONSTANT_STATE",
 }
 
-export type PumpSetting = {
-  pumpOn: boolean
-  mode: PumpMode
-  why: SettingCause
+export const PumpSetting = z.object({
+  pumpOn: z.boolean(),
+  mode: z.enum(PumpMode),
+  why: z.enum(SettingCause),
   /** nested object w/ data regarding our stored schedule */
-  sched: {
+  sched: z.object({
     /** mins for which pump will stay continuously ON */
-    onTimeMins: number
+    onTimeMins: z.number().int().gte(0),
     /** mins for which pump will stay continuously OFF */
-    offTimeMins: number
+    offTimeMins: z.number().int().gte(0),
     /** If in mode `SCHEDULE_ARBITRARY_DUTY_CYCLE`, # secs left until we flip states */
-    arbitraryModeSecsLeft: number
-  }
+    arbitraryModeSecsLeft: z.number().int().gte(0).optional(),
+  }),
   /** nested object - relevant data IF we're interrupted */
-  inter: {
+  inter: z.object({
     /** indicates if this is an indefinite length interruption */
-    indef: boolean
+    indef: z.boolean(),
     /** Total requested duration of this interruption in minutes */
-    dur: number
+    dur: z.number().int().gte(0),
     /** seconds left in this interruption, if active */
-    secsLeft: number
-  }
+    secsLeft: z.number().int().gte(0),
+  }),
   /** data regarding pump power readings */
-  power: {
+  power: z.object({
     /** if != 0, an alarm is active (not implemented) */
-    alarm: number
+    alarm: z.number().int().gte(0),
     /** our most recent current reading (watts) */
-    value: number
-  }
-}
+    value: z.number().gte(0),
+  }),
+})
+
+export type PumpSetting = z.infer<typeof PumpSetting>
 
 export const PUMP_MAX_CYCLE = 255
 

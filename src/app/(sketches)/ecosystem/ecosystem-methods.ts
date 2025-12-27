@@ -1,6 +1,9 @@
 import assert from "assert"
 
 import { cache } from "react"
+import z from "zod"
+
+import { jsonCodec } from "@/lib/json-codec"
 
 import {
   EcosystemFunctions,
@@ -37,6 +40,10 @@ type StructuredVariableResponse<T> = Omit<GetVariableResponse, "body"> & {
   }
 }
 
+const SystemStatusCodec = jsonCodec(SystemStatus)
+const LightSettingsCodec = jsonCodec(LightSettings)
+const PumpSettingCodec = jsonCodec(PumpSetting)
+
 async function getSystemStatus(
   deviceId: string
 ): Promise<StructuredVariableResponse<SystemStatus>> {
@@ -49,11 +56,17 @@ async function getSystemStatus(
   if (response.statusCode !== 200) {
     throw new Error(`Particle ${response.statusCode}: ${response.body.error}`)
   }
+  const result = SystemStatusCodec.safeDecode(response.body.result)
+  if (!result.success) {
+    throw new Error(
+      `Failed to decode system status: ${z.prettifyError(result.error)}`
+    )
+  }
   return {
     ...response,
     body: {
       ...response.body,
-      result: JSON.parse(response.body.result) as SystemStatus,
+      result: result.data,
     },
   }
 }
@@ -71,11 +84,17 @@ export async function getLight(
   if (response.statusCode !== 200) {
     throw new Error(`Particle ${response.statusCode}: ${response.body.error}`)
   }
+  const result = LightSettingsCodec.safeDecode(response.body.result)
+  if (!result.success) {
+    throw new Error(
+      `Failed to decode light settings: ${z.prettifyError(result.error)}`
+    )
+  }
   return {
     ...response,
     body: {
       ...response.body,
-      result: JSON.parse(response.body.result) as LightSettings,
+      result: result.data,
     },
   }
 }
@@ -133,11 +152,17 @@ export async function getPump(
   if (response.statusCode !== 200) {
     throw new Error(`Particle ${response.statusCode}: ${response.body.error}`)
   }
+  const result = PumpSettingCodec.safeDecode(response.body.result)
+  if (!result.success) {
+    throw new Error(
+      `Failed to decode pump settings: ${z.prettifyError(result.error)}`
+    )
+  }
   return {
     ...response,
     body: {
       ...response.body,
-      result: JSON.parse(response.body.result) as PumpSetting,
+      result: result.data,
     },
   }
 }
