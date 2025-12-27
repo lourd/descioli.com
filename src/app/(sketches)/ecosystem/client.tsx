@@ -372,7 +372,8 @@ const lightReducer = (state: LightTempState, action: LightTempStateUpdate) => {
 const getInitialLightTempState = (
   setting: LightInterruptSetting
 ): LightTempState => {
-  const { hours, minutes } = secsToHoursMin(setting.dur)
+  const hours = Math.floor(setting.dur / 60)
+  const minutes = Math.floor(setting.dur) % 60
   return {
     hours,
     minutes,
