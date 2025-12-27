@@ -1,7 +1,6 @@
-import createBundleAnalyzer from "@next/bundle-analyzer"
 import { NextConfig } from "next"
 
-const nextConfig: NextConfig = {
+export default {
   reactCompiler: true,
   typedRoutes: true,
   experimental: {
@@ -21,8 +20,4 @@ const nextConfig: NextConfig = {
       },
     ]
   },
-}
-
-export default process.env.ANALYZE === "true"
-  ? createBundleAnalyzer()(nextConfig)
-  : nextConfig
+} satisfies NextConfig
