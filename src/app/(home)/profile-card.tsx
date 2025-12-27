@@ -8,7 +8,7 @@ import {
   useMotionValue,
   useReducedMotion,
   useSpring,
-} from "framer-motion"
+} from "motion/react"
 import Image from "next/image"
 import { RefObject, use, useEffect, useImperativeHandle, useRef } from "react"
 import { useMedia } from "react-use"

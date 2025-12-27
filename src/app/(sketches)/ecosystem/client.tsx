@@ -1,8 +1,8 @@
 "use client"
 
 import { range, scaleLinear } from "d3"
-import { clamp } from "framer-motion"
 import { Draft, produce } from "immer"
+import { clamp } from "motion"
 import {
   ButtonHTMLAttributes,
   Dispatch,

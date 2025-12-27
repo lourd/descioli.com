@@ -1,4 +1,4 @@
-import { motion, Transition, Variants } from "framer-motion"
+import { motion, Transition, Variants } from "motion/react"
 import { CSSProperties } from "react"
 
 type HamburgerIconProps = {

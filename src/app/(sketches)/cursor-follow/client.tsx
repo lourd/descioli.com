@@ -5,7 +5,7 @@ import {
   useMotionTemplate,
   useMotionValue,
   useSpring,
-} from "framer-motion"
+} from "motion/react"
 import React, { useState } from "react"
 
 type Idea = "exact" | "spring" | "spring-and-scale" | "exact-framer"
