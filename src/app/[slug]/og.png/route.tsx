@@ -32,68 +32,66 @@ export async function GET(_: Request, context: RouteContext<"/[slug]/og.png">) {
   ])
 
   return new ImageResponse(
-    (
-      <div
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        fontFamily: "Inter",
+        textShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
+        color: "white",
+      }}
+    >
+      <img
+        src={imgData.buffer as never}
+        alt=""
+        tw="absolute top-0 left-0 right-0 bottom-0"
         style={{
-          width: "100%",
-          height: "100%",
+          filter: "blur(4px)",
+          objectFit: "cover",
+        }}
+      />
+      <div tw="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30" />
+      <div
+        tw="py-14 px-20"
+        style={{
           display: "flex",
-          fontFamily: "Inter",
-          textShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
-          color: "white",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
       >
-        <img
-          src={imgData.buffer as never}
-          alt=""
-          tw="absolute top-0 left-0 right-0 bottom-0"
-          style={{
-            filter: "blur(4px)",
-            objectFit: "cover",
-          }}
-        />
-        <div tw="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30" />
         <div
-          tw="py-14 px-20"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
+            fontSize: 104,
+            fontWeight: "bold",
           }}
         >
-          <div
-            style={{
-              fontSize: 104,
-              fontWeight: "bold",
-            }}
-          >
-            {story.data.title}
-          </div>
-          <div
-            style={{
-              fontSize: 52,
-              fontWeight: 300,
-              paddingTop: 8,
-              paddingRight: 60,
-            }}
-          >
-            {story.data.description}
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              paddingTop: 18,
-              fontSize: 38,
-              fontWeight: 300,
-            }}
-          >
-            {format(story.data.publication, "LLLL do, yyyy", { in: utc })} •{" "}
-            {story.readLength} min read
-          </div>
+          {story.data.title}
+        </div>
+        <div
+          style={{
+            fontSize: 52,
+            fontWeight: 300,
+            paddingTop: 8,
+            paddingRight: 60,
+          }}
+        >
+          {story.data.description}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            paddingTop: 18,
+            fontSize: 38,
+            fontWeight: 300,
+          }}
+        >
+          {format(story.data.publication, "LLLL do, yyyy", { in: utc })} •{" "}
+          {story.readLength} min read
         </div>
       </div>
-    ),
+    </div>,
     {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.

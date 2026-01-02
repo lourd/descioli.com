@@ -109,10 +109,10 @@ body {
 }
 
 @utility text-shadow-* {
-  text-shadow: --value(--text-shadow- *) var(--tw-shadow-color);
+  text-shadow: --value(--text-shadow-*) var(--tw-shadow-color);
 }
 
 @utility animation-delay-* {
-  animation-delay: --value([ *]);
+  animation-delay: --value([*]);
   animation-delay: calc(--value(integer) * 1ms);
 }
