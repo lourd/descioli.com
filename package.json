@@ -2,7 +2,7 @@
   "name": "descioli-dot-com",
   "version": "3.0.0",
   "private": true,
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@10.27.0",
   "type": "module",
   "scripts": {
     "dev": "pnpm run --reporter=append-only --reporter-hide-prefix \"/^dev:.*/\"",
