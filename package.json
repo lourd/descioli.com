@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run --reporter=append-only --reporter-hide-prefix \"/^dev:.*/\"",
-    "dev:content": "node ./content-watcher.js",
+    "dev:content": "node --experimental-strip-types ./content-watcher.ts",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
@@ -51,6 +51,7 @@
     "@types/react-dom": "19.2.2",
     "@types/react-transition-group": "^4.4.10",
     "@types/three": "^0.162.0",
+    "@types/ws": "^8.18.1",
     "babel-plugin-react-compiler": "^1.0.0",
     "chokidar": "^3.6.0",
     "eslint": "^9.38.0",

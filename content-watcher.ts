@@ -1,10 +1,8 @@
-// @ts-check
-
 import chokidar from "chokidar"
 import { WebSocketServer } from "ws"
 
 const server = new WebSocketServer({ port: 3001 })
-let watchCallbacks = []
+let watchCallbacks: Array<() => void> = []
 
 chokidar.watch("./public").on("all", (event) => {
   if (event === "change") {
