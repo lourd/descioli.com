@@ -1,6 +1,4 @@
-import { utc } from "@date-fns/utc"
 import clsx from "clsx"
-import { format } from "date-fns"
 import { Route } from "next"
 import Link from "next/link"
 import { ReactNode } from "react"
@@ -61,7 +59,26 @@ export default function ResumePage() {
   )
 }
 
-const DATE_FORMAT = "MMM yyyy"
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+]
+
+/** Formats an ISO date string (YYYY-MM-DD) as "MMM yyyy" */
+const formatIsoDate = (isoDate: string) => {
+  const [year, month] = isoDate.split("-")
+  return `${MONTHS[parseInt(month, 10) - 1]} ${year}`
+}
 
 /**
  * Handles the formatting for the different expected types of date range data
@@ -71,14 +88,12 @@ const datesFormatter = (dates: TimePeriod) => {
   if (typeof dates === "string") return dates
   const { start, end, recurring } = dates
   if (recurring) {
-    return recurring
-      .map((date) => format(new Date(date), DATE_FORMAT, { in: utc }))
-      .join(", ")
+    return recurring.map(formatIsoDate).join(", ")
   }
   if (!start) throw new Error("expected start date")
-  const formattedStart = format(new Date(start), DATE_FORMAT, { in: utc })
+  const formattedStart = formatIsoDate(start)
   if (!end) return `${formattedStart} - Present`
-  const formattedEnd = format(new Date(end), DATE_FORMAT, { in: utc })
+  const formattedEnd = formatIsoDate(end)
   return `${formattedStart} - ${formattedEnd}`
 }
 
