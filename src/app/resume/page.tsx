@@ -1,3 +1,4 @@
+import { utc } from "@date-fns/utc"
 import clsx from "clsx"
 import { format } from "date-fns"
 import { Route } from "next"
@@ -71,13 +72,13 @@ const datesFormatter = (dates: TimePeriod) => {
   const { start, end, recurring } = dates
   if (recurring) {
     return recurring
-      .map((date) => format(new Date(date), DATE_FORMAT))
+      .map((date) => format(new Date(date), DATE_FORMAT, { in: utc }))
       .join(", ")
   }
   if (!start) throw new Error("expected start date")
-  const formattedStart = format(new Date(start), DATE_FORMAT)
+  const formattedStart = format(new Date(start), DATE_FORMAT, { in: utc })
   if (!end) return `${formattedStart} - Present`
-  const formattedEnd = format(new Date(end), DATE_FORMAT)
+  const formattedEnd = format(new Date(end), DATE_FORMAT, { in: utc })
   return `${formattedStart} - ${formattedEnd}`
 }
 

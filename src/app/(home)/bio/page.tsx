@@ -34,7 +34,7 @@ export default function BioPage() {
       <br />
       <p>
         {
-          "I've spent my 10+ year career figuring out how to use computers to connect us more meaningfully with ourselves, each other, and the world around us. I've built strange and wonderful things, from smart aquaponic gardens, to autism therapy applications, to “the metaverse”. You can read about these and more on "
+          "I've spent my career figuring out how to use computers to connect us more meaningfully with ourselves, each other, and the world around us. I've built strange and wonderful things, from smart aquaponic gardens, to autism therapy applications, to “the metaverse”. You can read about these and more on "
         }
         <Link href="/blog" className="text-link hocus:underline">
           my blog
@@ -44,19 +44,6 @@ export default function BioPage() {
           my resume
         </Link>
         .
-      </p>
-      <br />
-      <p>
-        In 2024 I started my own company. {"I'm"} founder and CEO of{" "}
-        <a
-          href="https://www.together.online"
-          className="transition-colors duration-200 text-link hocus:underline"
-        >
-          Together
-        </a>
-        , where {"we're"} building mixed reality communication technology to
-        unlock greater levels of human connection and collaboration via shared
-        spatial computing.
       </p>
       <br />
       <p>

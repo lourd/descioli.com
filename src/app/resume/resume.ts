@@ -95,15 +95,31 @@ export const resume: Resume = {
   ],
   work: [
     {
-      company: "Together",
-      site: "https://www.together.online",
+      company: "Tennr",
+      site: "https://www.tennr.com",
+      location: "New York, NY",
+      role: "Staff Software Engineer",
+      dates: {
+        start: "2025-02-01",
+      },
+      bullets: [
+        "Lead engineer at the next generational healthcare technology company, solving the patient pre-processing problem.",
+      ],
+    },
+    {
+      company: "Together Computing Co.",
       location: "New York, NY",
       role: "Founder & CEO",
       dates: {
         start: "2024-01-02",
+        end: "2025-01-31",
       },
       bullets: [
-        "Building a mixed reality collaboration app for Meta Quest and Apple Vision Pro.",
+        "Founded a company to create mixed reality collaboration software focused on virtual command centers and mixed reality content creation.",
+        "Developed and shipped a beta app for Apple Vision Pro and Meta Quest with my cofounder & CTO, Elliot Pjecha.",
+        "Invented a novel cloud rendering system for infinite, persistent, and real-time virtual collaboration and content creation.",
+        "Raised six figures in angel investment.",
+        "Shelved the product due to market nascency.",
       ],
     },
     {
