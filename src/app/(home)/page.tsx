@@ -13,25 +13,6 @@ export default async function HomePage() {
         <p className="text-5xl mb-2">Hi, {"I'm"} Louis</p>
         <p className="font-serif">But you can call me Lou, too.</p>
         <p className="font-serif">Welcome to my personal corner of the web.</p>
-        <p className="font-serif">
-          {"I'm"} founder and CEO of{" "}
-          <a
-            href="https://www.together.online"
-            className="transition-colors duration-200 text-link hocus:underline"
-          >
-            Together
-          </a>
-          , a digital teleportation company.
-        </p>
-        <p className="font-serif">
-          <a
-            href="https://www.together.online/signup"
-            className="transition-colors duration-200 text-link hocus:underline"
-          >
-            Sign up for the beta
-          </a>{" "}
-          and come along for the ride.
-        </p>
         <p className="font-serif">Enjoy your time here 🖖</p>
       </div>
       <nav className="mt-8 flex flex-col gap-[5px]">

@@ -3,7 +3,7 @@ title: Out Here Archery
 publication: 2018-02-09
 lastEdit: 2018-02-09
 date: 2017-12-01
-description: My venture into software beyond surfaces
+description: My first venture into software beyond surfaces
 image: /stories/out-here-archery/header.png
 tags:
   - work
