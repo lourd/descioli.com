@@ -68,7 +68,11 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@vercel/speed-insight"
+      "@vercel/speed-insights",
+      "sharp"
+    ],
+    "ignoredBuiltDependencies": [
+      "puppeteer"
     ]
   }
 }
