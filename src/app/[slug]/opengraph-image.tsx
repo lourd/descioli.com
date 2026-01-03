@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import fs from "fs/promises"
+import fs from "fs"
 
 import { utc } from "@date-fns/utc"
 import { format } from "date-fns"
@@ -12,14 +11,15 @@ const size = {
   height: 630,
 }
 
-export async function generateStaticParams() {
-  return await getSlugs()
+export function generateStaticParams(): Array<{ slug: string }> {
+  return getSlugs()
 }
 
-export async function GET(_: Request, context: RouteContext<"/[slug]/og.png">) {
-  const story = await getStory((await context.params).slug)
+export default async function Image(context: PageProps<"/[slug]">) {
+  const { slug } = await context.params
+  const story = getStory(slug)
 
-  const imgData = await fs.readFile(`public/${story.data.image}`)
+  const imgData = fs.readFileSync(`public/${story.data.image}`)
 
   const [interRegular, interBold, interLight] = await Promise.all([
     fetchFont(`https://fonts.googleapis.com/css2?family=Inter:opsz@14..32`),
@@ -32,66 +32,68 @@ export async function GET(_: Request, context: RouteContext<"/[slug]/og.png">) {
   ])
 
   return new ImageResponse(
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        fontFamily: "Inter",
-        textShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
-        color: "white",
-      }}
-    >
-      <img
-        src={imgData.buffer as never}
-        alt=""
-        tw="absolute top-0 left-0 right-0 bottom-0"
-        style={{
-          filter: "blur(4px)",
-          objectFit: "cover",
-        }}
-      />
-      <div tw="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30" />
+    (
       <div
-        tw="py-14 px-20"
         style={{
+          width: "100%",
+          height: "100%",
           display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          fontFamily: "Inter",
+          textShadow: "0 0 8px rgba(0, 0, 0, 0.5)",
+          color: "white",
         }}
       >
-        <div
+        <img
+          src={imgData.buffer as unknown as Blob}
+          alt=""
+          tw="absolute top-0 left-0 right-0 bottom-0"
           style={{
-            fontSize: 104,
-            fontWeight: "bold",
+            filter: "blur(4px)",
+            objectFit: "cover",
           }}
-        >
-          {story.data.title}
-        </div>
+        />
+        <div tw="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-30" />
         <div
-          style={{
-            fontSize: 52,
-            fontWeight: 300,
-            paddingTop: 8,
-            paddingRight: 60,
-          }}
-        >
-          {story.data.description}
-        </div>
-        <div
+          tw="py-14 px-20"
           style={{
             display: "flex",
-            flexDirection: "row",
-            paddingTop: 18,
-            fontSize: 38,
-            fontWeight: 300,
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-          {format(story.data.publication, "LLLL do, yyyy", { in: utc })} •{" "}
-          {story.readLength} min read
+          <div
+            style={{
+              fontSize: 104,
+              fontWeight: "bold",
+            }}
+          >
+            {story.data.title}
+          </div>
+          <div
+            style={{
+              fontSize: 52,
+              fontWeight: 300,
+              paddingTop: 8,
+              paddingRight: 60,
+            }}
+          >
+            {story.data.description}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              paddingTop: 18,
+              fontSize: 38,
+              fontWeight: 300,
+            }}
+          >
+            {format(story.data.publication, "LLLL do, yyyy", { in: utc })} •{" "}
+            {story.readLength} min read
+          </div>
         </div>
       </div>
-    </div>,
+    ),
     {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
