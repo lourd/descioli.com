@@ -21,15 +21,16 @@ export default async function Image(context: PageProps<"/[slug]">) {
 
   const imgData = fs.readFileSync(`public/${story.data.image}`)
 
-  const [interRegular, interBold, interLight] = await Promise.all([
-    fetchFont(`https://fonts.googleapis.com/css2?family=Inter:opsz@14..32`),
-    fetchFont(
-      `https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,700`
-    ),
-    fetchFont(
-      `https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300`
-    ),
-  ])
+  // Comment this in to see the route become dynamic
+  // const [interRegular, interBold, interLight] = await Promise.all([
+  //   fetchFont(`https://fonts.googleapis.com/css2?family=Inter:opsz@14..32`),
+  //   fetchFont(
+  //     `https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,700`
+  //   ),
+  //   fetchFont(
+  //     `https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300`
+  //   ),
+  // ])
 
   return new ImageResponse(
     (
@@ -88,7 +89,8 @@ export default async function Image(context: PageProps<"/[slug]">) {
               fontWeight: 300,
             }}
           >
-            {format(story.data.publication, "LLLL do, yyyy", { in: utc })} •{" "}
+            {/* Comment this in to see that the route becomes dynamic */}
+            {/* {format(story.data.publication, "LLLL do, yyyy", { in: utc })} •{" "} */}
             {story.readLength} min read
           </div>
         </div>
@@ -98,26 +100,26 @@ export default async function Image(context: PageProps<"/[slug]">) {
       // For convenience, we can re-use the exported opengraph-image
       // size config to also set the ImageResponse's width and height.
       ...size,
-      fonts: [
-        {
-          name: "Inter",
-          data: interLight,
-          style: "normal",
-          weight: 300,
-        },
-        {
-          name: "Inter",
-          data: interRegular,
-          style: "normal",
-          weight: 400,
-        },
-        {
-          name: "Inter",
-          data: interBold,
-          style: "normal",
-          weight: 700,
-        },
-      ],
+      // fonts: [
+      //   {
+      //     name: "Inter",
+      //     data: interLight,
+      //     style: "normal",
+      //     weight: 300,
+      //   },
+      //   {
+      //     name: "Inter",
+      //     data: interRegular,
+      //     style: "normal",
+      //     weight: 400,
+      //   },
+      //   {
+      //     name: "Inter",
+      //     data: interBold,
+      //     style: "normal",
+      //     weight: 700,
+      //   },
+      // ],
     }
   )
 }
