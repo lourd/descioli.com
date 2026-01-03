@@ -19,31 +19,21 @@ import classes from "./classes.module.css"
 
 export const dynamicParams = false
 
-export async function generateStaticParams(): Promise<Array<{ slug: string }>> {
-  return await getSlugs()
+export function generateStaticParams(): Array<{ slug: string }> {
+  return getSlugs()
 }
 
 export async function generateMetadata({ params }: PageProps<"/[slug]">) {
   const { slug } = await params
-  const story = await getStory(slug).catch((e) => e as Error)
-  if (story instanceof Error) {
-    console.error(story)
-    return
-  }
+  const story = getStory(slug)
   return {
     title: story.data.title,
     description: story.data.description,
-    openGraph: {
-      images: `/${slug}/og.png`,
-    },
-    metadataBase: process.env.SITE_HOST
-      ? new URL(`https://${process.env.SITE_HOST}`)
-      : undefined,
   } satisfies Metadata
 }
 
 export default async function StoryPage({ params }: PageProps<"/[slug]">) {
-  const story = await getStory((await params).slug)
+  const story = getStory((await params).slug)
 
   return (
     <article className="max-md:mt-12">
