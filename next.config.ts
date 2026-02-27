@@ -18,6 +18,11 @@ export default {
         destination: "/links",
         permanent: true,
       },
+      {
+        source: "/ecosystem",
+        destination: "/ecosystem/lou",
+        permanent: true,
+      },
     ]
   },
 } satisfies NextConfig

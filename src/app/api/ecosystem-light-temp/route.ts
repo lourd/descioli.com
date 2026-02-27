@@ -1,10 +1,7 @@
 import assert from "assert"
 
-import {
-  interruptLight,
-  MY_ECOSYSTEM_DEVICE_ID,
-} from "../../(sketches)/ecosystem/ecosystem-methods"
-import { LightInterruption } from "../../(sketches)/ecosystem/ecosystem-models"
+import { LightInterruption } from "../../(sketches)/ecosystem/[name]/ecosystem-models"
+import { getGrove } from "../../(sketches)/ecosystem/[name]/groves"
 
 assert(process.env.API_SECRET, "API_SECRET not set")
 const API_SECRET = process.env.API_SECRET
@@ -28,6 +25,12 @@ export async function POST(request: Request) {
     })
   }
 
-  const result = await interruptLight(MY_ECOSYSTEM_DEVICE_ID, setting)
+  const grove = getGrove("lou")
+  if (grove instanceof Error) {
+    return new Response("Grove not found", {
+      status: 404,
+    })
+  }
+  const result = await grove.particleApi.interruptLight(grove.deviceId, setting)
   return new Response(undefined, { status: result.statusCode })
 }

@@ -1,23 +1,20 @@
-import assert from "assert"
-
 import { jwtVerify } from "jose"
 import { cookies } from "next/headers"
 import { cache } from "react"
 
-assert(process.env.ECOSYSTEM_PASSWORD)
+import { getGrove } from "./groves"
 
-// Also use it as the key, why not
-const ECOSYSTEM_PASSWORD = new TextEncoder().encode(
-  process.env.ECOSYSTEM_PASSWORD
-)
-
-export const protect = cache(async function protect() {
-  const ecoSession = (await cookies()).get("eco-session")
+export const protect = cache(async function protect(name: string) {
+  const grove = getGrove(name)
+  if (grove instanceof Error) {
+    return false
+  }
+  const ecoSession = (await cookies()).get(grove.cookie)
   if (!ecoSession) {
     return false
   }
   try {
-    await jwtVerify(ecoSession.value, ECOSYSTEM_PASSWORD, {
+    await jwtVerify(ecoSession.value, grove.signingKey, {
       algorithms: ["HS256"],
     })
     return true

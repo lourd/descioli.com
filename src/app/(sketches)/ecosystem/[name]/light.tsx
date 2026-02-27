@@ -1,37 +1,37 @@
 import { addSeconds } from "date-fns"
 import { revalidatePath } from "next/cache"
+import { notFound } from "next/navigation"
 import { ErrorBoundary } from "react-error-boundary"
 
 import { protect } from "./auth"
 import { SetLight, SetLightSchedule } from "./client"
 import { EcosystemLamp, FadeType } from "./ecosystem-enums"
 import {
-  getLight,
-  interruptLight,
-  MY_ECOSYSTEM_DEVICE_ID,
-  reactCachedGetSystemStatus,
-  resumeLightSchedule,
-  setLightSchedule,
-} from "./ecosystem-methods"
-import {
   LightInterruption,
   LightMode,
   LightScheduleInfo,
   timeToDate,
 } from "./ecosystem-models"
+import { getGrove } from "./groves"
 import { ResumeSchedule } from "./resume-schedule"
 
 type LightProps = EcosystemLamp & {
   path: string
+  name: string
 }
 
 export async function Light(props: LightProps) {
   async function handleResumeSchedule() {
     "use server"
-    const isAuthenticated = await protect()
+    const isAuthenticated = await protect(props.name)
     if (!isAuthenticated) return
 
-    const response = await resumeLightSchedule(MY_ECOSYSTEM_DEVICE_ID, props.id)
+    const grove = getGrove(props.name)
+    if (grove instanceof Error) throw grove
+    const response = await grove.particleApi.resumeLightSchedule(
+      grove.deviceId,
+      props.id
+    )
     revalidatePath(props.path)
     if (!(response.statusCode === 200 && response.body.return_value === 1)) {
       console.error(
@@ -42,10 +42,12 @@ export async function Light(props: LightProps) {
 
   async function handleSetSchedule(schedule: LightScheduleInfo) {
     "use server"
-    const isAuthenticated = await protect()
+    const isAuthenticated = await protect(props.name)
     if (!isAuthenticated) return false
 
-    const response = await setLightSchedule(MY_ECOSYSTEM_DEVICE_ID, {
+    const grove = getGrove(props.name)
+    if (grove instanceof Error) throw grove
+    const response = await grove.particleApi.setLightSchedule(grove.deviceId, {
       fadeType: FadeType.QUINTIC_EASE_IN_OUT,
       light: props.id,
       sunriseBeginTime: Math.round(schedule.times[0] / 60),
@@ -63,25 +65,34 @@ export async function Light(props: LightProps) {
 
   async function handleLightInterrupt(data: Omit<LightInterruption, "light">) {
     "use server"
-    const isAuthenticated = await protect()
+    const isAuthenticated = await protect(props.name)
     if (!isAuthenticated) return false
 
     const setting = LightInterruption.parse({
       ...data,
       light: props.id,
     })
-    const response = await interruptLight(MY_ECOSYSTEM_DEVICE_ID, setting)
+    const grove = getGrove(props.name)
+    if (grove instanceof Error) throw grove
+    const response = await grove.particleApi.interruptLight(
+      grove.deviceId,
+      setting
+    )
     revalidatePath(props.path)
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
+  const grove = getGrove(props.name)
+  if (grove instanceof Error) {
+    notFound()
+  }
   const [lightResponse, systemResponse] = await Promise.all([
-    getLight(MY_ECOSYSTEM_DEVICE_ID, props.variable),
-    reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID),
+    grove.particleApi.getLight(grove.deviceId, props.variable),
+    grove.particleApi.getSystemStatus(grove.deviceId),
   ])
   const setting = lightResponse.body.result
 
-  const authenticated = await protect()
+  const authenticated = await protect(props.name)
 
   const date = timeToDate(
     systemResponse.body.result.time,

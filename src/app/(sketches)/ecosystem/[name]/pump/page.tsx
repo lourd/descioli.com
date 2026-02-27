@@ -1,16 +1,9 @@
 import { addSeconds } from "date-fns"
 import { revalidatePath } from "next/cache"
+import { notFound } from "next/navigation"
 import { ErrorBoundary } from "react-error-boundary"
 
 import { protect } from "../auth"
-import {
-  getPump,
-  interruptPump,
-  MY_ECOSYSTEM_DEVICE_ID,
-  reactCachedGetSystemStatus,
-  resumePumpSchedule,
-  setPumpSchedule,
-} from "../ecosystem-methods"
 import {
   PUMP_MAX_CYCLE,
   PumpInterruption,
@@ -18,19 +11,25 @@ import {
   PumpSchedule,
   timeToDate,
 } from "../ecosystem-models"
+import { getGrove } from "../groves"
 import { ResumeSchedule } from "../resume-schedule"
 import { SetPump, SetPumpSchedule } from "./client"
 
-const PATH = "/ecosystem/pump"
+export default async function PumpPage(
+  props: PageProps<"/ecosystem/[name]/pump">
+) {
+  const params = await props.params
+  const path = `/ecosystem/${params.name}/pump`
 
-export default async function PumpPage() {
   async function handleResumeSchedule() {
     "use server"
-    const isAuthenticated = await protect()
+    const isAuthenticated = await protect(params.name)
     if (!isAuthenticated) return
 
-    const response = await resumePumpSchedule(MY_ECOSYSTEM_DEVICE_ID)
-    revalidatePath(PATH)
+    const grove = getGrove(params.name)
+    if (grove instanceof Error) throw grove
+    const response = await grove.particleApi.resumePumpSchedule(grove.deviceId)
+    revalidatePath(path)
     if (!(response.statusCode === 200 && response.body.return_value === 1)) {
       console.error(
         `Unexpected response resuming schedule, status: ${response.statusCode}, return_value: ${response.body.return_value}`
@@ -40,31 +39,42 @@ export default async function PumpPage() {
 
   async function handleSetSchedule(schedule: PumpSchedule) {
     "use server"
-    const isAuthenticated = await protect()
+    const isAuthenticated = await protect(params.name)
     if (!isAuthenticated) return false
 
-    const response = await setPumpSchedule(MY_ECOSYSTEM_DEVICE_ID, schedule)
-    revalidatePath(PATH)
+    const grove = getGrove(params.name)
+    if (grove instanceof Error) throw grove
+    const response = await grove.particleApi.setPumpSchedule(
+      grove.deviceId,
+      schedule
+    )
+    revalidatePath(path)
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
   async function handleInterrupt(data: PumpInterruption) {
     "use server"
-    const isAuthenticated = await protect()
+    const isAuthenticated = await protect(params.name)
     if (!isAuthenticated) return false
 
-    const response = await interruptPump(MY_ECOSYSTEM_DEVICE_ID, data)
-    revalidatePath(PATH)
+    const grove = getGrove(params.name)
+    if (grove instanceof Error) throw grove
+    const response = await grove.particleApi.interruptPump(grove.deviceId, data)
+    revalidatePath(path)
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
+  const grove = getGrove(params.name)
+  if (grove instanceof Error) {
+    notFound()
+  }
   const [pumpResponse, systemResponse] = await Promise.all([
-    getPump(MY_ECOSYSTEM_DEVICE_ID),
-    reactCachedGetSystemStatus(MY_ECOSYSTEM_DEVICE_ID),
+    grove.particleApi.getPump(grove.deviceId),
+    grove.particleApi.getSystemStatus(grove.deviceId),
   ])
   const setting = pumpResponse.body.result
 
-  const authenticated = await protect()
+  const authenticated = await protect(params.name)
 
   const date = timeToDate(
     systemResponse.body.result.time,

@@ -1,4 +1,4 @@
-@reference "../../globals.css";
+@reference "../../../globals.css";
 
 .slider {
   appearance: none; /* Hides the slider so that custom slider can be made */

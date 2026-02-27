@@ -6,11 +6,22 @@ export const metadata = {
   description: "Explorations and tools",
 }
 
-const links = [
+// Needed to account for type-checking dynamic routes.
+// Overkill? Yes, absolutely. Just doing it as a learning exercise.
+const createLinks = <T extends string>(
+  links: ReadonlyArray<{
+    name: string
+    description: string
+    link: Route<T> // The generic here allows each link to be individually inferred
+    date: Date
+  }>
+) => links
+
+const links = createLinks([
   {
     name: "A New Ecosystem Interface",
     description: "A new take on controlling my still-living Grove Ecosystem",
-    link: "/ecosystem",
+    link: "/ecosystem/lou",
     date: new Date("2023-12-17"),
   },
   {
@@ -31,12 +42,7 @@ const links = [
     link: "/cursor-follow",
     date: new Date("2021-01-31"),
   },
-] satisfies Array<{
-  name: string
-  description: string
-  link: Route
-  date: Date
-}>
+])
 
 export default function ExperimentsPage() {
   return (

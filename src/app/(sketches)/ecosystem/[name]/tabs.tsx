@@ -11,7 +11,7 @@ const tabs = [
   ["Pump", "pump"],
 ]
 
-export function Tabs() {
+export function Tabs(props: { base: `/ecosystem${string}` }) {
   const segment = useSelectedLayoutSegment()
   const [optSegment, setSegment] = useOptimistic(segment)
 
@@ -25,7 +25,7 @@ export function Tabs() {
               `px-3 py-1 transition-colors first:rounded-l-full last:rounded-r-full aria-pressed:bg-muted!`,
               optSegment === slug ? "bg-muted/60" : "hocus:bg-muted/20"
             )}
-            href={`/ecosystem${slug ? `/${slug}` : ""}`}
+            href={`${props.base}${slug ? `/${slug}` : ""}`}
             onNavigate={() => startTransition(() => setSegment(slug))}
             aria-pressed={segment === slug ? true : undefined}
           >
