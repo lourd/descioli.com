@@ -34,7 +34,6 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-error-boundary": "^6.0.1",
-    "react-ink": "^6.5.4",
     "react-transition-group": "^4.4.5",
     "react-use": "^17.6.0",
     "three": "^0.182.0",

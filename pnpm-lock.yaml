@@ -65,9 +65,6 @@ importers:
       react-error-boundary:
         specifier: ^6.0.1
         version: 6.0.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      react-ink:
-        specifier: ^6.5.4
-        version: 6.5.4
       react-transition-group:
         specifier: ^4.4.5
         version: 4.4.5(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -3260,9 +3257,6 @@ packages:
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
-
-  react-ink@6.5.4:
-    resolution: {integrity: sha512-PgpILtizPPyl2/ahyWfSduEbHBHCwx8aMe1CEGx+idihsH6Oz2Wo2IN+HatwpPEo2zBJi2hVTtJ8qM9yHiarNA==}
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -7530,8 +7524,6 @@ snapshots:
     dependencies:
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
-
-  react-ink@6.5.4: {}
 
   react-is@16.13.1: {}
 
