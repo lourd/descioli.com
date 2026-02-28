@@ -111,7 +111,7 @@ async function Content(props: { name: string; children: React.ReactNode }) {
       time={response.body.result.time}
       timeZone={response.body.result.timeZone}
     >
-      <Info name={props.name} />
+      <Info name={props.name} authenticated={authenticated} />
       {!authenticated && <PasswordForm login={enterPassword} />}
       <Tabs base={`/ecosystem/${props.name}`} />
       <ViewTransition>{props.children}</ViewTransition>
@@ -119,7 +119,7 @@ async function Content(props: { name: string; children: React.ReactNode }) {
   )
 }
 
-async function Info(props: { name: string }) {
+async function Info(props: { name: string; authenticated: boolean }) {
   async function updateTimezone(offset: number) {
     "use server"
     const authenticated = await protect(props.name)
@@ -149,6 +149,7 @@ async function Info(props: { name: string }) {
       <EcoTime
         changeTimezone={updateTimezone}
         timeZone={response.body.result.timeZone}
+        authenticated={props.authenticated}
       />
     </pre>
   )

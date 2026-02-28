@@ -11,6 +11,7 @@ import { EcosystemContext } from "./ecosystem-context"
 export function EcoTime(props: {
   changeTimezone: (offset: number) => Promise<number>
   timeZone: number
+  authenticated: boolean
 }) {
   const router = useRouter()
   const ecoNow = use(EcosystemContext)
@@ -47,7 +48,7 @@ export function EcoTime(props: {
       >
         {ecoNow.toLocaleTimeString()}
       </span>{" "}
-      {!matchingTimezones && (
+      {props.authenticated && !matchingTimezones && (
         <form action={action} className="inline-flex ">
           <EcoTimeButton refetching={stillMismatching} />
         </form>
