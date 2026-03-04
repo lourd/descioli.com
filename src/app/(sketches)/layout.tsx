@@ -1,3 +1,5 @@
+import { ViewTransition } from "react"
+
 import { BackLinkWithHand } from "@/components/back-link"
 
 export default function SketchesPageLayout({
@@ -8,7 +10,7 @@ export default function SketchesPageLayout({
   return (
     <>
       <BackLinkWithHand href="/sketches" useBack={false} className="sticky" />
-      {children}
+      <ViewTransition>{children}</ViewTransition>
     </>
   )
 }
