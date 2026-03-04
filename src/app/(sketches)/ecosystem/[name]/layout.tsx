@@ -4,10 +4,12 @@ import { revalidatePath } from "next/cache"
 import { cookies } from "next/headers"
 import { notFound } from "next/navigation"
 import { Suspense, ViewTransition } from "react"
+import { ErrorBoundary } from "react-error-boundary"
 
 import { protect } from "./auth"
 import { EcoTime } from "./eco-time"
 import { EcosystemProvider } from "./ecosystem-context"
+import { ErrorFallback } from "./error-fallback"
 import { GroveSelect } from "./grove-select"
 import { getGrove, getNames } from "./groves"
 import { PasswordForm } from "./password-form"
@@ -44,7 +46,9 @@ export default async function EcosystemLayout(
           <LogoutButton name={params.name} />
         </Suspense>
         <Suspense>
-          <Content name={params.name}>{props.children}</Content>
+          <ErrorBoundary FallbackComponent={ErrorFallback}>
+            <Content name={params.name}>{props.children}</Content>
+          </ErrorBoundary>
         </Suspense>
       </div>
     </div>
