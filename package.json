@@ -29,7 +29,7 @@
     "leva": "^0.10.1",
     "lodash": "^4.17.23",
     "motion": "^12.23.26",
-    "next": "16.1.7",
+    "next": "16.2.3",
     "next-mdx-remote-client": "^2.1.7",
     "react": "19.2.3",
     "react-dom": "19.2.3",
