@@ -29,7 +29,7 @@ export function SetPump(props: SetPumpProps) {
   }
   return (
     <form
-      className={`mt-2 p-2 border-[1px] rounded-sm transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
+      className={`mt-2 p-2 border rounded-sm transition-colors duration-500 ${isPending ? "border-accent" : "border-muted"}`}
       onSubmit={onSubmit}
     >
       <div className="w-[220px] mx-auto flex flex-col gap-2">
@@ -40,7 +40,7 @@ export function SetPump(props: SetPumpProps) {
           <select
             defaultValue={Number(props.setting.pumpOn)}
             name="state"
-            className="border-[1px] border-foreground px-1 mx-1 rounded-sm"
+            className="border border-foreground px-1 mx-1 rounded-sm"
           >
             <option value={1}>on</option>
             <option value={0}>off</option>
@@ -51,7 +51,7 @@ export function SetPump(props: SetPumpProps) {
           <select
             name="hours"
             defaultValue={0}
-            className="border-[1px] border-foreground px-2 mx-1 rounded-sm"
+            className="border border-foreground px-2 mx-1 rounded-sm"
           >
             {range(0, 24).map((i) => (
               <option key={i} value={i}>
@@ -68,7 +68,7 @@ export function SetPump(props: SetPumpProps) {
           <select
             name="mins"
             defaultValue={0}
-            className="border-[1px] border-foreground px-2 mx-1 rounded-sm"
+            className="border border-foreground px-2 mx-1 rounded-sm"
           >
             {range(0, 60).map((i) => (
               <option key={i} value={i}>
@@ -85,7 +85,7 @@ export function SetPump(props: SetPumpProps) {
         <div className="mt-4 grid grid-cols-2">
           <button
             type="submit"
-            className="py-[1px] col-start-2 rounded-sm bg-muted"
+            className="py-px col-start-2 rounded-sm bg-muted"
           >
             Submit
           </button>
@@ -183,14 +183,11 @@ export function SetPumpSchedule(props: SetPumpScheduleProps) {
           <button
             onClick={cancel}
             type="button"
-            className="px-2 py-[1px] rounded-sm border-muted border grow"
+            className="px-2 py-px rounded-sm border-muted border grow"
           >
             Cancel
           </button>
-          <button
-            type="submit"
-            className="px-2 py-[1px] rounded-sm bg-muted grow"
-          >
+          <button type="submit" className="px-2 py-px rounded-sm bg-muted grow">
             Submit
           </button>
         </div>
