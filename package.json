@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run --reporter=append-only --reporter-hide-prefix \"/^dev:.*/\"",
-    "dev:content": "node --experimental-strip-types ./content-watcher.ts",
+    "dev:content": "node ./content-watcher.ts",
     "dev:next": "next dev",
     "build": "next build",
     "start": "next start",
