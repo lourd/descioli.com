@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     default: "Louis DeScioli",
     template: "%s - Louis DeScioli",
   },
+  metadataBase: process.env.SITE_HOST
+    ? new URL(`https://${process.env.SITE_HOST}`)
+    : new URL("https://www.descioli.com"),
   keywords: [
     "software engineer",
     "creative coding",
