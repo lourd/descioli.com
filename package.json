@@ -15,7 +15,6 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@date-fns/utc": "^2.1.1",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "9.5.0",
     "@vercel/analytics": "^1.6.1",

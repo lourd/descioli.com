@@ -1,4 +1,3 @@
-import { utc } from "@date-fns/utc"
 import { format } from "date-fns"
 import { Metadata } from "next"
 import { MDXRemote } from "next-mdx-remote-client/rsc"
@@ -66,9 +65,7 @@ export default async function StoryPage({ params }: PageProps<"/[slug]">) {
                   Published
                 </a>{" "}
                 <time>
-                  {format(story.data.publication, "eeee, LLLL do, yyyy", {
-                    in: utc,
-                  })}
+                  {format(story.data.publication, "eeee, LLLL do, yyyy")}
                 </time>
               </p>
             </div>
