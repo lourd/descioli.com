@@ -31,6 +31,10 @@ export async function generateMetadata(
   }
 }
 
+export function generateStaticParams() {
+  return Object.keys(getNames()).map((slug) => ({ name: slug }))
+}
+
 export default async function EcosystemLayout(
   props: LayoutProps<"/ecosystem/[name]">
 ) {
