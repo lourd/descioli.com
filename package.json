@@ -8,6 +8,7 @@
     "dev": "pnpm run --reporter=append-only --reporter-hide-prefix \"/^dev:.*/\"",
     "dev:content": "node ./content-watcher.ts",
     "dev:next": "next dev",
+    "typecheck": "next typegen && tsc --noEmit",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -61,7 +62,7 @@
     "puppeteer": "^24.34.0",
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.1.18",
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "ws": "^8.18.3"
   },
   "pnpm": {

@@ -6,6 +6,9 @@ export default {
   experimental: {
     optimizePackageImports: ["d3"],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   async redirects() {
     return [
       {
