@@ -1,6 +1,7 @@
 import { addSeconds } from "date-fns"
 import { revalidatePath } from "next/cache"
 import { notFound } from "next/navigation"
+import { connection } from "next/server"
 import { ErrorBoundary } from "react-error-boundary"
 
 import { protect } from "./auth"
@@ -82,6 +83,7 @@ export async function Light(props: LightProps) {
     return response.statusCode === 200 && response.body.return_value === 1
   }
 
+  await connection() // Don't pre-render this page
   const grove = getGrove(props.name)
   if (grove instanceof Error) {
     notFound()

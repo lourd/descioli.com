@@ -20,12 +20,12 @@ export default async function Image(context: PageProps<"/[slug]">) {
   const imgData = fs.readFileSync(`public/${story.data.image}`)
 
   const [interRegular, interBold, interLight] = await Promise.all([
-    fetchFont(`https://fonts.googleapis.com/css2?family=Inter:opsz@14..32`),
+    fetchFont("https://fonts.googleapis.com/css2?family=Inter:opsz@14..32"),
     fetchFont(
-      `https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,700`
+      "https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,700"
     ),
     fetchFont(
-      `https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300`
+      "https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300"
     ),
   ])
 
@@ -122,6 +122,7 @@ export default async function Image(context: PageProps<"/[slug]">) {
  * Referenced https://github.com/vercel/satori/blob/618d565edb83270d9b829edc430788032e6f2bc6/playground/pages/api/font.ts#L86-L111
  */
 async function fetchFont(gfontsUrl: string): Promise<ArrayBuffer> {
+  "use cache"
   const css = await fetch(gfontsUrl, {
     headers: {
       // Make sure it returns TTF.
