@@ -40,7 +40,13 @@ export default async function EcosystemLayout(
     <div className="max-w-lg mx-auto pt-2 pb-8">
       <div className="mx-[2.5vw] relative">
         <div className="flex flex-row items-center gap-4 justify-between md:mt-6">
-          <GroveSelect options={names} />
+          <GroveSelect value={params.name}>
+            {Object.entries(names).map(([slug, name]) => (
+              <option key={name} value={slug}>
+                {name}
+              </option>
+            ))}
+          </GroveSelect>
         </div>
         <Suspense>
           <LogoutButton name={params.name} />

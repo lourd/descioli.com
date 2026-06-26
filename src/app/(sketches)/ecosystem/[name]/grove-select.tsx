@@ -1,27 +1,23 @@
 "use client"
 
 import { Route } from "next"
-import { useParams, usePathname, useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 
-export function GroveSelect(props: { options: Record<string, string> }) {
+export function GroveSelect(props: {
+  children: React.ReactNode
+  value: string
+}) {
   const path = usePathname()
-  const params = useParams<{ name: string }>()
   const router = useRouter()
-  const names = Object.entries(props.options)
   return (
     <select
       className="text-3xl -mx-1"
-      defaultValue={params.name}
+      value={props.value}
       onChange={(evt) => {
-        const slug = evt.target.value
-        router.push(path.replace(params.name, slug) as Route)
+        router.push(path.replace(props.value, evt.target.value) as Route)
       }}
     >
-      {names.map(([slug, name]) => (
-        <option key={name} value={slug}>
-          {name}
-        </option>
-      ))}
+      {props.children}
     </select>
   )
 }
