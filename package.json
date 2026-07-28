@@ -63,7 +63,7 @@
     "remark-gfm": "^4.0.1",
     "tailwindcss": "^4.1.18",
     "typescript": "6.0.3",
-    "ws": "^8.18.3"
+    "ws": "^8.21.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
